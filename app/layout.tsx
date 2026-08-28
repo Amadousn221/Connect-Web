@@ -22,10 +22,17 @@ const hanken = Hanken_Grotesk({
   display: 'swap',
 });
 
+// URL de base pour les liens absolus (OG, canoniques). `NEXT_PUBLIC_SITE_URL`
+// peut être inlinée en chaîne vide quand la variable n'est pas définie (build
+// Vercel sans env) — d'où `||` et non `??`. Repli sur l'URL de déploiement
+// Vercel, puis localhost.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '') ||
+  'http://localhost:3000';
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
-  ),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Connect Web — studio digital à Dakar',
     template: '%s · Connect Web',
