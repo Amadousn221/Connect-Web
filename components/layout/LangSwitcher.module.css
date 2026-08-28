@@ -1,0 +1,50 @@
+/* Segmented control FR/EN — mockup header lignes 136-139. Angles vifs, bordure. */
+.bar {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.stack {
+  display: flex;
+  gap: 10px;
+}
+
+.bar button,
+.stack button {
+  border: none;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: var(--ink);
+  transition:
+    background var(--dur-quick) ease,
+    color var(--dur-quick) ease;
+}
+
+.stack button {
+  flex: 1;
+  padding: 13px;
+  font-size: 14px;
+}
+
+/* La variante `stack` n'est utilisée que dans le drawer mobile (pétrole nuit). */
+.stack button {
+  color: #fff;
+}
+.stack .inactive {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.active {
+  background: var(--orange);
+  color: #fff !important;
+}
+
+.inactive:disabled {
+  cursor: default;
+  opacity: 1; /* garde le contraste : c'est un état « à venir » (M4), pas désactivé visuellement */
+}

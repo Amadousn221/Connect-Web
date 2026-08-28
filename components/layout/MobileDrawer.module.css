@@ -1,0 +1,113 @@
+/* Drawer mobile — mockup Accueil V2 lignes 178-203. */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer-overlay);
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-standard) ease;
+}
+.overlay[data-open='true'] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(88vw, 380px);
+  background: var(--petrol-nuit);
+  z-index: var(--z-drawer);
+  transform: translateX(100%);
+  transition: transform var(--dur-standard) var(--ease-default);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+.drawer[data-open='true'] {
+  transform: translateX(0);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.logo {
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.close {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.nav a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  font-weight: 500;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.nav a:hover {
+  color: #fff;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  align-items: stretch;
+}
+.themeInline {
+  height: auto;
+  flex: 0 0 48px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cta {
+  text-align: center;
+  background: var(--orange);
+  color: #fff;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.cta:hover {
+  color: #fff;
+}
+
+.reach {
+  display: flex;
+  gap: 12px;
+}
+.reach a {
+  flex: 1;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 500;
+}

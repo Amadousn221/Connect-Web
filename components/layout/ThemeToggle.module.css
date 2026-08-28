@@ -1,0 +1,32 @@
+/* Bouton thème — mockup header lignes 140-144 : 40x40, bordure, angles vifs. */
+.toggle {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: var(--radius-0);
+  transition:
+    color var(--dur-quick) ease,
+    border-color var(--dur-quick) ease;
+}
+
+.toggle:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+/* Sur surface pétrole nuit (drawer mobile) : la couleur de thème courante ne
+   contraste pas, on force le blanc. */
+.onDark {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.onDark:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}

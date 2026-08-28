@@ -1,0 +1,123 @@
+/* Pied de page — mockup Accueil V2 lignes 952-980. Surface pétrole nuit. */
+.footer {
+  background: var(--petrol-nuit);
+  color: #fff;
+  padding: 64px 0 32px;
+}
+
+.inner {
+  /* .cw-sec fournit max-width + padding horizontal */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blurb {
+  margin: 0 0 20px;
+  max-width: 300px;
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.social {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.socialBtn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+.socialBtn:hover {
+  color: #fff;
+  border-color: var(--orange);
+}
+
+.pending {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  border: 1px dashed var(--orange);
+  padding: 6px 9px;
+}
+
+.colHeading {
+  margin: 0 0 18px;
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.colList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.colList a {
+  color: rgba(255, 255, 255, 0.7);
+}
+.colList a:hover {
+  color: #fff;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.legal {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+}
+.legal a {
+  color: rgba(255, 255, 255, 0.4);
+}
+.legal a:hover {
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 34px;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

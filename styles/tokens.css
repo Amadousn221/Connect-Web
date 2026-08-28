@@ -1,0 +1,134 @@
+/* ===========================================================================
+   Connect Web — Design tokens
+   Portés depuis `Connect Web - Design Foundations.dc.html` (sections 02→05)
+   et le bloc :root partagé des 15 mockups (`Connect Web - Accueil V2.dc.html`
+   lignes 15-31). Fidélité au mockup : on ne redessine rien.
+
+   Thème : clair par défaut. Sombre = `:root[data-theme="dark"]` (pétrole nuit),
+   piloté par le ThemeToggle + persistance localStorage `cw_theme` — le mockup
+   n'utilise pas prefers-color-scheme, on reproduit ce comportement.
+   =========================================================================== */
+
+:root {
+  /* ── Couleurs de thème (identiques au bloc :root des mockups) ───────────── */
+  --bg: #ffffff;
+  --bg-alt: #f7f4ee;
+  --bg-cream: #f1ece2;
+
+  --ink: #0d0d0d;
+  --ink-soft: rgba(13, 13, 13, 0.62);
+  --ink-faint: rgba(13, 13, 13, 0.42);
+
+  --card: #ffffff;
+  --card-border: rgba(13, 13, 13, 0.09);
+  --border: rgba(13, 13, 13, 0.12);
+
+  --header-bg: rgba(255, 255, 255, 0.86);
+  --header-border: rgba(13, 13, 13, 0.08);
+
+  /* ── Couleurs de marque (constantes entre thèmes) ──────────────────────── */
+  --orange: #e8612a;        /* accent principal — CTA, eyebrows, liens */
+  --orange-h: #ff7a3d;      /* hover / light */
+  --orange-pressed: #c94f1e;
+  --petrol: #1b5670;        /* couleur secondaire de marque */
+  --petrol-light: #2a7290;
+  --petrol-deep: #0f3a4d;
+  --petrol-nuit: #0a2530;   /* surfaces de marque : hero, bandes, footer */
+
+  --logo-filter: none;
+
+  /* ── Neutres (Design Foundations §02) ─────────────────────────────────── */
+  --neutral-900: #0d0d0d;
+  --neutral-800: #1e1e1e;
+  --neutral-700: #333333;
+  --neutral-600: #555555;
+  --neutral-500: #7a7a7a;
+  --neutral-400: #a0a0a0;
+  --neutral-300: #d4d4d4;
+  --neutral-200: #ebebeb;
+  --neutral-100: #f5f2ed;
+  --neutral-50: #ffffff;
+
+  /* ── Typographie (Design Foundations §03, échelle ratio 1.25) ──────────── */
+  /* --font-newsreader / --font-hanken injectées par next/font (app/layout.tsx) */
+  --font-serif: var(--font-newsreader), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-hanken), -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-h1: clamp(34px, 4.4vw, 44px); /* mockups : hero jusqu'à 60px, corps ≤ 44px */
+  --text-h2: clamp(30px, 3.4vw, 36px);
+  --text-h3: 28px;
+  --text-h4: 22px;
+  --text-body: 16px;
+  --text-body-sm: 14px;
+  --text-caption: 12px;
+  --text-eyebrow: 11px;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.2;
+  --leading-normal: 1.6;
+  --tracking-eyebrow: 0.14em;
+
+  /* ── Espacement (Design Foundations §04, base 4px) ────────────────────── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+  --space-4xl: 80px;
+  --space-5xl: 120px;
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
+  --container-max: 1280px;
+  --container-pad: 32px;      /* 24px en mobile — voir globals.css */
+  --header-height: 74px;
+  --section-rhythm: 80px;     /* 56px en mobile */
+
+  /* ── Radius — angles vifs, signature Connect Web (Design Foundations §04) */
+  --radius-0: 0;
+  --radius-round: 50%;        /* seule courbe autorisée : puces / badges d'icône */
+
+  /* ── Ombres (Design Foundations §04) ─────────────────────────────────── */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-default: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-modal: 0 16px 48px rgba(0, 0, 0, 0.16);
+
+  /* ── Motion (Design Foundations §05) ────────────────────────────────── */
+  --ease-default: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-entrance: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  --dur-instant: 100ms;   /* hovers, micro-feedback */
+  --dur-quick: 200ms;     /* toggles, accordéons */
+  --dur-standard: 350ms;  /* transitions, overlays */
+  --dur-reveal: 600ms;    /* scroll reveals, stagger */
+
+  /* ── Z-index ─────────────────────────────────────────────────────────── */
+  --z-header: 100;
+  --z-fab: 150;
+  --z-drawer-overlay: 200;
+  --z-drawer: 201;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0a2530;
+  --bg-alt: #0c2a36;
+  --bg-cream: #0e313d;
+
+  --ink: #ffffff;
+  --ink-soft: rgba(255, 255, 255, 0.72);
+  --ink-faint: rgba(255, 255, 255, 0.46);
+
+  --card: #12333f;
+  --card-border: rgba(255, 255, 255, 0.09);
+  --border: rgba(255, 255, 255, 0.14);
+
+  --header-bg: rgba(10, 37, 48, 0.9);
+  --header-border: rgba(255, 255, 255, 0.08);
+
+  --logo-filter: brightness(0) invert(1);
+}

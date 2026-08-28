@@ -1,0 +1,122 @@
+/* Méga-menu — mockup Accueil V2 lignes 149-175. */
+.mega {
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.14);
+  animation: mega-in var(--dur-quick) var(--ease-default);
+}
+
+.mega[hidden] {
+  display: none;
+}
+
+@keyframes mega-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 40px var(--container-pad);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 40px;
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  border-bottom: 1px solid var(--border);
+  transition: color var(--dur-instant) ease;
+}
+
+.list li:last-child .link {
+  border-bottom: none;
+}
+
+.link:hover {
+  color: var(--orange);
+}
+
+.arrow {
+  color: var(--ink-faint);
+}
+
+.conseil {
+  background: var(--petrol-nuit);
+  padding: 28px;
+}
+
+.conseil .eyebrow {
+  margin-bottom: 14px;
+}
+
+.conseilTitle {
+  margin: 0 0 10px;
+  font-size: 22px;
+  line-height: var(--leading-snug);
+  color: #fff;
+}
+
+.conseilBody {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: var(--leading-normal);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.conseilCta {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform var(--dur-standard) var(--ease-default);
+}
+
+.conseilCta:hover {
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 960px) {
+  /* Le méga-menu desktop est remplacé par le drawer mobile en dessous de 960px. */
+  .mega {
+    display: none !important;
+  }
+}

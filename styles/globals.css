@@ -1,0 +1,126 @@
+/* ===========================================================================
+   Connect Web — styles globaux
+   Portés du bloc <style> partagé des mockups (parties non spécifiques à une
+   page) : reset léger, base body/liens, helper conteneur, reveal au scroll,
+   respect de prefers-reduced-motion.
+   =========================================================================== */
+
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* transition de thème douce (mockup : .4s ease) */
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+a {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--orange-h);
+}
+
+button {
+  font-family: var(--font-sans);
+}
+
+img,
+picture,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+/* ── Helpers repris tels quels des mockups ──────────────────────────────── */
+
+.cw-serif {
+  font-family: var(--font-serif);
+}
+
+/* Conteneur centré standard (mockup : .cw-sec) */
+.cw-sec {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* Lien d'évitement (accessibilité — WCAG AA, non présent dans les mockups
+   statiques mais requis par la spec non-fonctionnelle P10). */
+.cw-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 12px 20px;
+  font-weight: 600;
+}
+.cw-skip-link:focus {
+  left: 0;
+}
+
+/* ── Reveal au scroll (mockup lignes 41-42) ────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s var(--ease-default),
+    transform 0.7s var(--ease-default);
+}
+[data-reveal].cw-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Responsive conteneur ──────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .cw-sec {
+    padding-inline: 20px;
+  }
+  :root {
+    --container-pad: 20px;
+    --section-rhythm: 56px;
+  }
+}
+
+/* ── Réduction de mouvement (mockup lignes 115-119) ────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

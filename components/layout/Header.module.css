@@ -1,0 +1,107 @@
+/* En-tête — mockup Accueil V2 lignes 123-176. */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: var(--header-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--header-border);
+}
+
+.bar {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.logo {
+  width: auto;
+  filter: var(--logo-filter);
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.navlink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--dur-instant) ease;
+}
+.navlink:hover {
+  color: var(--orange);
+}
+
+.chevron {
+  transition: transform var(--dur-quick) var(--ease-default);
+}
+.chevron[data-open='true'] {
+  transform: rotate(180deg);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cta {
+  background: var(--orange);
+  color: #fff;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    transform var(--dur-standard) var(--ease-default),
+    box-shadow var(--dur-standard) ease;
+}
+.cta:hover {
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(13, 13, 13, 0.16);
+}
+
+.burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+/* Breakpoint mockup : nav desktop cachée sous 960px, burger visible. */
+@media (max-width: 960px) {
+  .desktopNav,
+  .desktopOnly {
+    display: none !important;
+  }
+  .burger {
+    display: flex;
+  }
+}
