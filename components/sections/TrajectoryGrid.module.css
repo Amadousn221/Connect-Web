@@ -1,0 +1,62 @@
+.section {
+  background: var(--petrol-nuit);
+  color: #fff;
+  padding: 0 0 100px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section > :global(.cw-sec) {
+  padding-top: 100px;
+}
+
+.label {
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0 0 22px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.cell {
+  background: var(--petrol-nuit);
+  padding: 26px 24px;
+}
+
+.chain {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: #fff;
+  margin: 0;
+}
+.arrow {
+  color: var(--orange);
+}
+
+.body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 8px 0 0;
+}
+
+.link {
+  margin-top: 36px;
+}
+.link a {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 3px;
+}
+.link a:hover {
+  color: #fff;
+}

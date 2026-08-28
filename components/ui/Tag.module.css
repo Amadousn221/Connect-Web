@@ -1,0 +1,8 @@
+.tag {
+  display: inline-block;
+  font-size: 13.5px;
+  padding: 7px 13px;
+  background: var(--bg-alt);
+  color: var(--ink);
+  border: 1px solid var(--card-border);
+}

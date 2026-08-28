@@ -1,0 +1,79 @@
+/* Boutons — Design Foundations §06 + maquettes. Angles vifs (radius 0). */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  border-radius: var(--radius-0);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition:
+    background var(--dur-quick) ease,
+    color var(--dur-quick) ease,
+    border-color var(--dur-quick) ease;
+}
+
+/* Tailles (padding/typo repris des maquettes) */
+.sm {
+  padding: 10px 22px;
+  font-size: 13px;
+}
+.md {
+  padding: 12px 22px;
+  font-size: 14px;
+}
+.lg {
+  padding: 14px 32px;
+  font-size: 15px;
+}
+
+/* Variantes — fond clair */
+.primary {
+  background: var(--orange);
+  color: #fff;
+}
+.primary:hover {
+  background: var(--orange-h);
+  color: #fff;
+}
+
+.outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--border);
+}
+.outline:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.ghost {
+  background: var(--bg-alt);
+  color: var(--ink);
+}
+.ghost:hover {
+  color: var(--orange);
+}
+
+/* Sur surface sombre (hero / bandes pétrole nuit) */
+.onDark.primary {
+  background: var(--orange);
+  color: #fff;
+}
+.onDark.outline {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+}
+.onDark.outline:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.onDark.ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
