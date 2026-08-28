@@ -42,7 +42,8 @@ export function Header({ locale }: { locale: Locale }) {
   }, [megaOpen]);
 
   return (
-    <header ref={headerRef} className={styles.header}>
+    <>
+      <header ref={headerRef} className={styles.header}>
       <div className={styles.bar}>
         <Link
           href={localePath(locale, '/')}
@@ -97,7 +98,9 @@ export function Header({ locale }: { locale: Locale }) {
         </nav>
 
         <div className={styles.actions}>
-          <LangSwitcher current={locale} />
+          <span className={styles.desktopOnly}>
+            <LangSwitcher current={locale} />
+          </span>
           <ThemeToggle className={styles.desktopOnly} />
           <Link
             href={localePath(locale, primaryCta.path)}
@@ -136,12 +139,17 @@ export function Header({ locale }: { locale: Locale }) {
       <Link href={localePath(locale, servicesHubPath)} className="cw-skip-link">
         Aller à la page Services
       </Link>
+      </header>
 
+      {/* Rendu HORS du <header> : celui-ci a `backdrop-filter`, ce qui
+          contiendrait un enfant `position:fixed` à la hauteur du header
+          (menu écrasé / invisible). En frère du header, le drawer est bien
+          positionné par rapport au viewport. */}
       <MobileDrawer
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         locale={locale}
       />
-    </header>
+    </>
   );
 }
