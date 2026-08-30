@@ -1,0 +1,48 @@
+.line {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 4px;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sep {
+  color: var(--ink-faint);
+}
+
+.line[data-tone='default'] {
+  color: var(--ink-soft);
+}
+.line[data-tone='default'] .sep {
+  color: var(--ink-faint);
+}
+
+.line[data-tone='on-dark'] {
+  color: rgba(255, 255, 255, 0.82);
+}
+.line[data-tone='on-dark'] .sep {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Mobile : la ligne passe en colonne (§19.2) — on masque les séparateurs. */
+@media (max-width: 640px) {
+  .line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .sep {
+    display: none;
+  }
+}

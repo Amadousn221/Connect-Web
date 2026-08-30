@@ -1,0 +1,112 @@
+/* A1 — Hero V2.1. Fond pétrole nuit plein (pas d'image de fond). Grille
+   texte / visuel en desktop, empilée en dessous de 1024px. */
+.hero {
+  background: var(--petrol-nuit);
+  color: #fff;
+  padding-block: clamp(72px, 11vh, 132px);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.copy {
+  max-width: 620px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 24px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.14);
+    opacity: 0.82;
+  }
+}
+
+/* H1 : échelle Hero du Design Handoff §17.2 (clamp 40→64, poids 500). */
+.title {
+  margin: 0 0 22px;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+}
+
+.sub {
+  margin: 0 0 32px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 540px;
+  text-wrap: pretty;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.trust {
+  margin-top: 4px;
+}
+
+.media {
+  min-width: 0;
+}
+
+@media (max-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  /* Visuel sous le texte (§19.2) — l'ordre DOM le place déjà après. */
+  .copy {
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  /* CTA pleine largeur, cible tactile ≥ 44px (taille `lg` du bouton). */
+  .ctas a,
+  .ctas button {
+    width: 100%;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .sub {
+    font-size: 16px;
+  }
+}

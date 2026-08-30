@@ -1,9 +1,11 @@
 import type {
   AudiencePanel,
   CaseTeaser,
+  ClientLogo,
   Cta,
   FaqItem,
-  HeroSlide,
+  Hero,
+  HeroShot,
   NeedOption,
   OfferCard,
   ProcessStep,
@@ -19,33 +21,66 @@ import type {
 
 export const primaryCta: Cta = { label: 'Parlons de votre projet', href: '#contact' };
 
-// ── A1 — Hero (rotation 3 messages, données du JS _goHero) ──────────────────
-export const heroSlides: HeroSlide[] = [
+// ── A1 — Hero (V2.1 — Lot A du Design Handoff) ─────────────────────────────
+// Hero statique : la rotation 3 messages de la V2 est abandonnée (audit §01.3
+// P0/P1 : Hero descriptif + visuel de fond décoratif = problème n°1).
+// Copy : DECISION 20 (journal de décisions), formulation « Option A », validée
+// PO le 28 août 2026. Le §06.1 du Design Handoff (variante « Direction C »)
+// est une RECOMMENDATION, remplacée ici par la décision consignée.
+export const hero: Hero = {
+  eyebrow: 'Studio digital — Dakar',
+  title:
+    'Nous concevons, développons et connectons les outils numériques qui font tourner votre organisation.',
+  subtitle:
+    'Sites et applications web sur mesure, boutiques e-commerce, plateformes métier, ERP et automatisations. Studio de Dakar au standard international. Vos accès vous appartiennent.',
+  ctas: [
+    primaryCta,
+    // Ancre du carrousel Réalisations (section id="cas" — CaseTeaserCarousel).
+    { label: 'Voir les réalisations', href: '#cas' },
+  ],
+  trustLine: ['Réponse sous 24 h', 'Devis gratuit', 'Vos accès vous appartiennent'],
+};
+
+// Composite visuel du Hero — captures RÉELLES de projets, jamais de mockup
+// (§06.1, correction anti-slop n°1). Seule la capture SCOD est disponible dans
+// le dépôt ; ATTA (boutique) et « ATTA reporting automatisé OU ERP Odoo Maison
+// Peinture » sont à fournir par le PO. Les tuiles manquantes ne s'affichent
+// qu'en preview (repère « À valider »), jamais en production.
+export const heroShots: HeroShot[] = [
   {
-    eyebrow: 'Studio digital — Dakar',
-    title:
-      'Nous concevons et connectons les outils numériques qui font tourner votre organisation.',
-    subtitle:
-      'Sites, boutiques, plateformes, gestion, automatisation — reliés en un système qui vend plus, vous fait gagner du temps, et que vous possédez.',
+    src: '/assets/real/scod-vtc.jpg',
+    alt: "Capture d'écran de la plateforme de réservation SCOD VTC",
   },
   {
-    eyebrow: 'E-commerce · Cross-border',
-    title: 'Des boutiques qui vendent, du Sénégal au monde.',
-    subtitle:
-      'Paiement mobile et international sur la même boutique, vente transfrontalière, logistique — construits pour vendre au-delà des frontières.',
+    alt: "Capture d'écran de la boutique ATTA Africa",
+    missing: 'ATTA Africa — capture boutique',
   },
   {
-    eyebrow: 'Du site au système',
-    title: 'Tout connecté. Et tout à vous.',
-    subtitle:
-      'Gestion, automatisation et reporting reliés à ce qui vend déjà — un seul système, que vous possédez entièrement.',
+    alt: "Capture d'écran du reporting automatisé d'ATTA Africa ou de l'ERP Odoo Maison Peinture",
+    missing: 'ATTA — reporting automatisé, ou ERP Odoo Maison Peinture',
   },
 ];
 
-export const heroSectors = ['Commerce', 'ONG', 'Éducation', 'Industrie', 'Mobilité'];
-export const heroCtas: Cta[] = [
-  primaryCta,
-  { label: 'Voir nos réalisations', href: '#realisations' },
+// ── Bande de logos clients (V2.1 — §06.2 du Design Handoff) ───────────────
+// 11 clients approuvés. Maison Peinture Sénégal est exclu de la bande (projet
+// ERP interne, sans vitrine publique — il reste présent en cas phare).
+// Fichiers logos à fournir par le PO dans /public/assets/logos ; tant qu'ils
+// manquent, chaque entrée rend un placeholder explicite [LOGO_MANQUANT].
+export const clientsIntro =
+  "Des marques, des commerces et des organisations d'Afrique de l'Ouest et d'ailleurs.";
+
+export const clientLogos: ClientLogo[] = [
+  { name: 'ATTA Africa' },
+  { name: 'SCOD VTC' },
+  { name: 'Link Shop' },
+  { name: 'Marjan Bijouterie' },
+  { name: 'Luxury Bijouterie by KN' },
+  { name: 'ADA Voyages' },
+  { name: 'Tamou Fishing International' },
+  { name: 'DDS Medical' },
+  { name: 'WAS Africa' },
+  { name: 'Fahamu Africa' },
+  { name: 'Sunu Thiossane' },
 ];
 
 // ── A2 — Bande réassurance ─────────────────────────────────────────────────

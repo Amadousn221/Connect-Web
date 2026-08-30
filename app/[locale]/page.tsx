@@ -1,6 +1,7 @@
 import { isLocale } from '@/lib/i18n/config';
 import { notFound } from 'next/navigation';
-import { HeroRotating } from '@/components/sections/HeroRotating';
+import { Hero } from '@/components/sections/Hero';
+import { LogoStrip } from '@/components/sections/LogoStrip';
 import { TrustBar } from '@/components/sections/TrustBar';
 import { NeedSelector } from '@/components/sections/NeedSelector';
 import { AudienceTabs } from '@/components/sections/AudienceTabs';
@@ -21,10 +22,12 @@ import {
   faqOutro,
 } from '@/content/fr/accueil';
 
-// Accueil — 12 sections, dans l'ordre de la maquette
-// `Connect Web - Accueil V2.dc.html`. Copy : content/fr/accueil.ts.
-// Contenu dynamique (carrousel A8) codé en dur ici → bascule WordPress en M3.
-// Formulaire A12 : UI seule, câblage CRM en M5.
+// Accueil — base : maquette `Connect Web - Accueil V2.dc.html`, en cours de
+// refonte V2.1 (Design Handoff). Copy : content/fr/accueil.ts.
+// Lot A livré : Hero statique + Bande de logos clients + trust line.
+// Lots B/C/D à venir : Services (carte parente), Wedge/Chiffres/Méthode,
+// Cas phares. Contenu homepage HARDCODÉ (pas d'ACF/GraphQL). Formulaire : UI
+// seule, câblage CRM en M5.
 
 export default async function HomePage({
   params,
@@ -36,7 +39,8 @@ export default async function HomePage({
 
   return (
     <>
-      <HeroRotating />
+      <Hero />
+      <LogoStrip />
       <TrustBar />
       <NeedSelector locale={locale} />
       <AudienceTabs />

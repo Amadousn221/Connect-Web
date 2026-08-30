@@ -3,10 +3,31 @@
 
 export type Cta = { label: string; href: string };
 
-export interface HeroSlide {
+// ── A1 — Hero (V2.1, Lot A) ────────────────────────────────────────────────
+// Hero statique (plus de rotation) : DECISION 20 — formulation Option A.
+export interface Hero {
   eyebrow: string;
   title: string;
   subtitle: string;
+  ctas: [Cta, Cta]; // primaire + secondaire (§14 : un seul CTA principal)
+  trustLine: string[]; // « Réponse sous 24 h · Devis gratuit · … »
+}
+
+// Une tuile du composite visuel du Hero. `src` = capture réelle présente dans
+// /public ; si absente, `missing` porte le libellé du visuel à fournir (rendu
+// seulement en preview via le flag « À valider », jamais de mockup décoratif).
+export interface HeroShot {
+  src?: string;
+  alt: string;
+  missing?: string;
+}
+
+// Un logo client de la bande de confiance (§06.2). `src` = fichier détouré dans
+// /public/assets/logos ; absent = placeholder [LOGO_MANQUANT] tant que le PO ne
+// l'a pas fourni. Aucun faux logo n'est fabriqué.
+export interface ClientLogo {
+  name: string;
+  src?: string;
 }
 
 export interface TrustItem {
