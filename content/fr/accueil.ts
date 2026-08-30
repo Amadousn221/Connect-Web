@@ -7,7 +7,6 @@ import type {
   Hero,
   HeroShot,
   NeedOption,
-  OfferCard,
   ProcessStep,
   ProofItem,
   RoadNode,
@@ -253,24 +252,9 @@ export const audiencePanels: AudiencePanel[] = [
   },
 ];
 
-// ── A5 — Services (grille) ────────────────────────────────────────────────
-export const offersIntro = {
-  eyebrow: 'Services',
-  title: 'Nos services, en clair.',
-  lead: 'Vous savez déjà ce que vous cherchez ? Allez directement à la page qui vous concerne.',
-};
-
-export const offerCards: OfferCard[] = [
-  { title: 'Boutique en ligne', body: "Vendre au Sénégal et à l'international, paiement mobile compris.", href: '/services/boutiques-en-ligne' },
-  { title: "Site d'entreprise", body: 'Une présence crédible, rapide et bien référencée.', href: '/services/sites-entreprise' },
-  { title: 'Marketing', body: 'Attirer, convertir, fidéliser — au-delà de la mise en ligne.', href: '/services/marketing-acquisition' },
-  { title: 'Plateformes & applications', body: 'Réservation, portails, suivi de dossiers, PWA.', href: '/services/plateformes-applications' },
-  { title: 'ERP / CRM (Odoo)', body: 'Clients, devis, stocks et factures dans un seul système.', href: '/services/crm-erp-integrations' },
-  { title: 'Automatisation & IA', body: 'Les tâches répétitives tournent sans votre équipe.', href: '/services/ia-automatisation' },
-];
-
-export const offersToValidate =
-  "URL définitives des pages Site d'entreprise, Plateformes & applications et ERP/CRM avant publication.";
+// ── A5 — Services : voir content/fr/services.ts (Lot B — grille 5 + Conseil,
+//    DECISION 23). L'ancien modèle « 6 cartes plates » (offersIntro/offerCards)
+//    est remplacé par la hiérarchie carte parente + Niveau 2 + Conseil.
 
 // ── A6 — Du site au système (road) ───────────────────────────────────────
 export const systemIntro = {

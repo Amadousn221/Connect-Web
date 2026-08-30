@@ -59,10 +59,30 @@ export interface AudiencePanel {
   client: { name: string; note: string; toValidate?: boolean };
 }
 
-export interface OfferCard {
-  title: string;
-  body: string;
+// ── A5 — Section Services (V2.1, Lot B — DECISION 23) ──────────────────────
+// Un lien de carte de service (sous-service en tag, ou micro-CTA). `todo` =
+// page pas encore créée → rendu non cliquable + repère « À valider » (preview).
+export interface ServiceLink {
+  label: string;
   href: string;
+  todo?: boolean;
+}
+
+// `variant` pilote le rendu (ServiceCard) :
+//  - parent    : carte large « Conception et développement web » (3 sous-services)
+//  - primary   : carte Niveau 1 standard (Logiciels & applications web)
+//  - secondary : carte Niveau 2 compacte (ERP/CRM · IA · Marketing)
+//  - conseil   : porte d'entrée, pleine largeur, ton distinct
+export interface ServiceCardData {
+  num?: string;
+  variant: 'parent' | 'primary' | 'secondary' | 'conseil';
+  title: string;
+  description: string;
+  subServices?: ServiceLink[]; // max 3 (DECISION 23)
+  proof?: string; // « Preuve : … » ou « Capacité — … »
+  tech?: string; // ligne technos, ex. « Odoo · HubSpot »
+  image?: { src: string; alt: string };
+  cta: ServiceLink;
 }
 
 export interface RoadNode {

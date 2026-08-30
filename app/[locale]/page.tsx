@@ -5,7 +5,7 @@ import { LogoStrip } from '@/components/sections/LogoStrip';
 import { TrustBar } from '@/components/sections/TrustBar';
 import { NeedSelector } from '@/components/sections/NeedSelector';
 import { AudienceTabs } from '@/components/sections/AudienceTabs';
-import { OfferGrid } from '@/components/sections/OfferGrid';
+import { ServiceGrid } from '@/components/sections/ServiceGrid';
 import { SystemRoad } from '@/components/sections/SystemRoad';
 import { TrajectoryGrid } from '@/components/sections/TrajectoryGrid';
 import { CaseTeaserCarousel } from '@/components/sections/CaseTeaserCarousel';
@@ -24,10 +24,10 @@ import {
 
 // Accueil — base : maquette `Connect Web - Accueil V2.dc.html`, en cours de
 // refonte V2.1 (Design Handoff). Copy : content/fr/accueil.ts.
-// Lot A livré : Hero statique + Bande de logos clients + trust line.
-// Lots B/C/D à venir : Services (carte parente), Wedge/Chiffres/Méthode,
-// Cas phares. Contenu homepage HARDCODÉ (pas d'ACF/GraphQL). Formulaire : UI
-// seule, câblage CRM en M5.
+// Lots A-B livrés : Hero statique + bande logos + trust line ; section Services
+// (carte parente + Niveau 2 + Conseil, DECISION 23).
+// Lots C/D à venir : Vos besoins/Wedge/Chiffres/Méthode, Cas phares.
+// Contenu homepage HARDCODÉ (pas d'ACF/GraphQL). Formulaire : UI seule, M5.
 
 export default async function HomePage({
   params,
@@ -44,7 +44,7 @@ export default async function HomePage({
       <TrustBar />
       <NeedSelector locale={locale} />
       <AudienceTabs />
-      <OfferGrid locale={locale} />
+      <ServiceGrid locale={locale} />
       <SystemRoad />
       <TrajectoryGrid locale={locale} />
       <CaseTeaserCarousel
