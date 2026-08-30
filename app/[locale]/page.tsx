@@ -3,14 +3,15 @@ import { notFound } from 'next/navigation';
 import { Hero } from '@/components/sections/Hero';
 import { LogoStrip } from '@/components/sections/LogoStrip';
 import { TrustBar } from '@/components/sections/TrustBar';
-import { NeedSelector } from '@/components/sections/NeedSelector';
-import { AudienceTabs } from '@/components/sections/AudienceTabs';
+import { NeedTable } from '@/components/sections/NeedTable';
+import { Wedge } from '@/components/sections/Wedge';
 import { ServiceGrid } from '@/components/sections/ServiceGrid';
-import { SystemRoad } from '@/components/sections/SystemRoad';
-import { TrajectoryGrid } from '@/components/sections/TrajectoryGrid';
+import { AudienceTabs } from '@/components/sections/AudienceTabs';
 import { CaseTeaserCarousel } from '@/components/sections/CaseTeaserCarousel';
+import { StatsBlock } from '@/components/sections/StatsBlock';
+import { SystemNarrative } from '@/components/sections/SystemNarrative';
+import { Method } from '@/components/sections/Method';
 import { ProofGrid } from '@/components/sections/ProofGrid';
-import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { ContactSection } from '@/components/sections/ContactSection';
 import {
@@ -22,12 +23,12 @@ import {
   faqOutro,
 } from '@/content/fr/accueil';
 
-// Accueil — base : maquette `Connect Web - Accueil V2.dc.html`, en cours de
-// refonte V2.1 (Design Handoff). Copy : content/fr/accueil.ts.
-// Lots A-B livrés : Hero statique + bande logos + trust line ; section Services
-// (carte parente + Niveau 2 + Conseil, DECISION 23).
-// Lots C/D à venir : Vos besoins/Wedge/Chiffres/Méthode, Cas phares.
-// Contenu homepage HARDCODÉ (pas d'ACF/GraphQL). Formulaire : UI seule, M5.
+// Accueil — base : maquette `Connect Web - Accueil V2.dc.html`, refonte V2.1
+// (Design Handoff). Contenu HARDCODÉ (pas d'ACF/GraphQL), FR uniquement.
+// Lots livrés : A (Hero + logos + trust line) · B (Services) · C (Besoins +
+// Wedge + Chiffres + Système + Méthode). Reste Lot D : Cas phares réels, FAQ,
+// CTA final, « Pour qui » simplifiée, retrait ProofGrid, QA finale.
+// Ordre cible §04 du Design Handoff.
 
 export default async function HomePage({
   params,
@@ -42,19 +43,20 @@ export default async function HomePage({
       <Hero />
       <LogoStrip />
       <TrustBar />
-      <NeedSelector locale={locale} />
-      <AudienceTabs />
+      <NeedTable />
+      <Wedge />
       <ServiceGrid locale={locale} />
-      <SystemRoad />
-      <TrajectoryGrid locale={locale} />
+      <AudienceTabs />
       <CaseTeaserCarousel
         locale={locale}
         intro={casesIntro}
         items={caseTeasers}
         link={casesLink}
       />
+      <StatsBlock />
+      <SystemNarrative />
+      <Method />
       <ProofGrid />
-      <ProcessSteps />
       <FaqAccordion
         locale={locale}
         intro={faqIntro}

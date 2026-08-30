@@ -6,11 +6,7 @@ import type {
   FaqItem,
   Hero,
   HeroShot,
-  NeedOption,
-  ProcessStep,
   ProofItem,
-  RoadNode,
-  Trajectory,
   TrustItem,
 } from '../types';
 
@@ -102,79 +98,9 @@ export const trustItems: TrustItem[] = [
   },
 ];
 
-// ── A3 — Ce qu'on construit (sélecteur) ────────────────────────────────────
-export const needIntro = {
-  eyebrow: "Ce qu'on construit",
-  title: 'On part de votre besoin, pas de notre catalogue.',
-  lead: "Digitaliser, ce n'est pas acheter un outil. C'est régler un problème précis — être trouvé, vendre, arrêter de tout gérer à la main — puis relier les pièces entre elles.",
-};
-
-export const needOptions: NeedOption[] = [
-  {
-    key: 'visible',
-    label: 'Être visible et crédible',
-    hint: 'Sites corporate, institutionnels, ONG, écoles',
-    situation:
-      "« On existe depuis des années, mais quand quelqu'un nous cherche en ligne, il ne trouve rien de sérieux. »",
-    answer:
-      'On construit une présence qui tient la comparaison avec vos homologues internationaux : structure claire, contenu qui explique vraiment ce que vous faites, performance et référencement soignés dès le départ.',
-    delivers: ['Site corporate', 'Site institutionnel / ONG', 'Site école & formation', 'Refonte & SEO'],
-    link: { label: 'Découvrir', href: '/services/sites-entreprise' },
-  },
-  {
-    key: 'vendre',
-    label: 'Vendre et se développer',
-    hint: 'E-commerce, cross-border, paiement mobile',
-    situation:
-      "« On vend bien à Dakar. Mais la diaspora nous écrit, et on n'a aucun moyen propre de l'encaisser. »",
-    answer:
-      'On construit des boutiques faites pour vendre au-delà des frontières : catalogue, paiement mobile et international côte à côte, livraison, relances. Le cross-border est notre terrain, pas une option.',
-    delivers: ['Shopify', 'WooCommerce', 'Paiement mobile & international', 'Livraison & logistique'],
-    link: { label: 'Découvrir', href: '/services/boutiques-en-ligne' },
-  },
-  {
-    key: 'operations',
-    label: 'Digitaliser ses opérations',
-    hint: 'Plateformes métier, portails, réservation, PWA',
-    situation:
-      '« Les demandes arrivent par WhatsApp, les réservations dans un tableur, et personne ne sait où en est quoi. »',
-    answer:
-      "On construit l'outil qui remplace le tableur : réservation, portail client ou fournisseur, suivi de dossiers, application mobile installable. Un seul endroit où l'information vit.",
-    delivers: ['Plateforme de réservation', 'Portail client', 'Application / PWA', 'Espace de gestion'],
-    link: { label: 'Découvrir', href: '/services/plateformes-applications' },
-  },
-  {
-    key: 'piloter',
-    label: 'Piloter son activité',
-    hint: 'CRM, ERP / Odoo, POS, stocks, reporting',
-    capabilityBadge: true,
-    situation:
-      '« Les ventes sont dans la boutique, les stocks sur un carnet, les devis dans une boîte mail. »',
-    answer:
-      'On met en place la couche de gestion et on la relie à ce qui vend déjà : clients, devis, stocks, factures, tableaux de bord. Vous voyez votre activité en un seul endroit, à jour.',
-    delivers: ['Odoo / ERP', 'CRM', 'Stocks & POS', 'Reporting'],
-    link: { label: 'Découvrir', href: '/services/crm-erp-integrations' },
-  },
-  {
-    key: 'automatiser',
-    label: 'Automatiser & gagner du temps',
-    hint: 'Workflows, intégrations, notifications, IA appliquée',
-    capabilityBadge: true,
-    situation:
-      '« Chaque commande demande cinq copier-coller. Multipliés par trente par jour. »',
-    answer:
-      "On identifie les tâches répétitives et on les fait disparaître : traitement des commandes, relances, notifications, reporting automatique. L'IA n'intervient que là où elle règle un problème réel.",
-    delivers: ['Workflows automatisés', 'Intégrations entre outils', 'Notifications & relances', 'IA appliquée aux processus'],
-    link: { label: 'Découvrir', href: '/services/ia-automatisation' },
-  },
-];
-
-export const needCtaBand = {
-  title: 'Pas sûr par où commencer ?',
-  body: "C'est le cas le plus fréquent. On cadre votre situation, on identifie ce qui bloque, et on vous dit ce qui compte en premier — sans engagement.",
-  primary: { label: 'Conseil & audit gratuit', href: '#contact' } as Cta,
-  secondary: { label: 'Découvrir nos solutions', href: '#systeme' } as Cta,
-};
+// ── A3 — Vos besoins : voir content/fr/besoins.ts (Lot C — tableau statique
+//    « Vous voulez… / Nous construisons… », §06.3 du Design Handoff).
+//    L'ancien sélecteur interactif (needOptions/needCtaBand) est abandonné.
 
 // ── A4 — Pour qui (onglets segments) ──────────────────────────────────────
 export const audienceIntro = {
@@ -256,32 +182,9 @@ export const audiencePanels: AudiencePanel[] = [
 //    DECISION 23). L'ancien modèle « 6 cartes plates » (offersIntro/offerCards)
 //    est remplacé par la hiérarchie carte parente + Niveau 2 + Conseil.
 
-// ── A6 — Du site au système (road) ───────────────────────────────────────
-export const systemIntro = {
-  eyebrow: 'Du site au système',
-  title: "Digitaliser une organisation, ce n'est pas seulement créer un site.",
-  lead: "C'est relier ce qui vous fait exister, vendre et fonctionner. On ne suppose pas que vous avez besoin de tout : on construit ce qui compte, puis on connecte.",
-};
-
-export const systemRoadLabel = 'Six points d’entrée dans le système';
-export const systemRoad: RoadNode[] = [
-  { label: 'Présence', desc: 'On vous trouve, on vous croit' },
-  { label: 'Acquisition', desc: 'Des visiteurs qui deviennent des contacts' },
-  { label: 'Vente', desc: 'Encaisser ici et ailleurs' },
-  { label: 'Gestion', desc: 'Clients, stocks, devis au même endroit' },
-  { label: 'Automatisation', desc: 'Les tâches répétitives tournent toutes seules' },
-  { label: 'Productivité', desc: "L'IA au service de vos équipes, pas l'inverse" },
-];
-
-// ── A7 — Trajectoires ────────────────────────────────────────────────────
-export const trajectoriesLabel = 'Quatre trajectoires réelles, quatre points de départ';
-export const trajectories: Trajectory[] = [
-  { chain: ['Site', 'formulaire', 'CRM'], body: 'Les demandes arrêtent de se perdre dans les boîtes mail.' },
-  { chain: ['Boutique', 'stock', 'ERP'], body: 'Ce qui se vend se déduit, se facture et se compte automatiquement.' },
-  { chain: ['Application', 'base de données', 'automatisation'], body: "L'outil métier devient la source de vérité de l'équipe." },
-  { chain: ['Portail', 'workflow', 'reporting'], body: 'Chaque dossier suit un chemin clair, et on peut le mesurer.' },
-];
-export const trajectoriesLink: Cta = { label: 'Comprendre notre approche', href: '/agence' };
+// ── A6 — Du site au système : voir content/fr/systeme.ts (Lot C — bloc
+//    narratif 2 paragraphes, §06.8). Les composants « road » (systemRoad) et
+//    « trajectoires » interactifs sont abandonnés (audit §04 : on resserre).
 
 // ── A8 — Réalisations (carrousel, contenu figé M2 → WordPress M3) ─────────
 export const casesIntro = {
@@ -331,21 +234,8 @@ export const proofItems: ProofItem[] = [
   { title: 'On reste après', body: 'Formation, suivi et évolutions une fois le projet en ligne.' },
 ];
 
-// ── A10 — Méthode (6 étapes) ───────────────────────────────────────────
-export const processIntro = {
-  eyebrow: 'Méthode',
-  title: 'On ne commence jamais par coder.',
-  lead: 'Six étapes, un livrable concret à chacune. Vous savez toujours où on en est et ce que vous recevez ensuite.',
-};
-
-export const processSteps: ProcessStep[] = [
-  { num: '01', title: 'Comprendre', body: "On écoute votre activité avant de parler technique : ce que vous vendez, à qui, ce qui coince aujourd'hui et ce que vous voulez atteindre.", deliverable: 'compte-rendu de cadrage' },
-  { num: '02', title: 'Diagnostiquer', body: "On regarde l'existant — site, outils, process, canaux de vente — et on identifie ce qui vous fait perdre du temps ou des clients. Certaines choses n'ont pas besoin d'être refaites.", deliverable: 'diagnostic et priorités chiffrées' },
-  { num: '03', title: 'Concevoir', body: 'On dessine les parcours et les écrans, et on vous les montre avant la première ligne de code. Vous validez sur du concret, pas sur une description.', deliverable: 'maquettes et parcours validés' },
-  { num: '04', title: 'Construire', body: 'On développe par blocs visibles. À chaque étape vous avez un lien pour tester, pas un rapport d’avancement.', deliverable: 'version de recette testable' },
-  { num: '05', title: 'Connecter', body: "On relie l'outil au reste : paiement, gestion, e-mails, notifications, reporting. C'est l'étape qui transforme un site en système.", deliverable: 'intégrations et automatisations en place' },
-  { num: '06', title: 'Déployer & accompagner', body: 'Mise en ligne, transfert des accès à votre nom, formation de votre équipe. Puis on reste disponibles pour faire évoluer ce qui doit l’être.', deliverable: 'mise en ligne, accès transférés, formation' },
-];
+// ── A10 — Méthode : voir content/fr/methode.ts (Lot C — 3 étapes, <ol>,
+//    §06.9). L'ancienne version « 6 étapes + rail scroll-spy » est abandonnée.
 
 // ── A11 — FAQ ─────────────────────────────────────────────────────────
 export const faqIntro = {

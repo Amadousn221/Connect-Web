@@ -35,16 +35,11 @@ export interface TrustItem {
   body: string;
 }
 
-export interface NeedOption {
-  key: string;
-  label: string;
-  hint: string;
-  /** badge « capacité démontrée » (Odoo, automatisation) */
-  capabilityBadge?: boolean;
-  situation: string; // citation « votre situation »
-  answer: string;
-  delivers: string[];
-  link: Cta;
+// ── A3 — Vos besoins (V2.1, Lot C) — tableau « Vous voulez… / Nous construisons… »
+export interface NeedRow {
+  want: string;
+  build: string;
+  service: string; // nom d'offre en emphase (non cliquable)
 }
 
 export interface AudiencePanel {
@@ -85,14 +80,17 @@ export interface ServiceCardData {
   cta: ServiceLink;
 }
 
-export interface RoadNode {
-  label: string;
-  desc: string;
+// ── A5 (wedge) — un des 3 points « ce qui nous rend irremplaçable »
+export interface WedgePoint {
+  title: string; // sous-titre en gras
+  body: string;
 }
 
-export interface Trajectory {
-  chain: string[]; // ["Site", "formulaire", "CRM"]
-  body: string;
+// ── A8 (chiffres) — une tuile ; données FACT déclarées PO (DECISION 22)
+export interface StatTile {
+  label: string; // « EXPÉRIENCE »
+  value: string; // « 3 ans »
+  caption: string;
 }
 
 export interface CaseTeaser {
@@ -111,11 +109,11 @@ export interface ProofItem {
   toValidate?: boolean;
 }
 
-export interface ProcessStep {
+// ── A10 — Méthode (V2.1, Lot C) — 3 étapes, <ol>
+export interface MethodStep {
   num: string;
   title: string;
   body: string;
-  deliverable: string;
 }
 
 export interface FaqItem {
