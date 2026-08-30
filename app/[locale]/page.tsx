@@ -2,33 +2,23 @@ import { isLocale } from '@/lib/i18n/config';
 import { notFound } from 'next/navigation';
 import { Hero } from '@/components/sections/Hero';
 import { LogoStrip } from '@/components/sections/LogoStrip';
-import { TrustBar } from '@/components/sections/TrustBar';
 import { NeedTable } from '@/components/sections/NeedTable';
 import { Wedge } from '@/components/sections/Wedge';
 import { ServiceGrid } from '@/components/sections/ServiceGrid';
-import { AudienceTabs } from '@/components/sections/AudienceTabs';
-import { CaseTeaserCarousel } from '@/components/sections/CaseTeaserCarousel';
+import { ProjectSlider } from '@/components/sections/ProjectSlider';
 import { StatsBlock } from '@/components/sections/StatsBlock';
 import { SystemNarrative } from '@/components/sections/SystemNarrative';
 import { Method } from '@/components/sections/Method';
-import { ProofGrid } from '@/components/sections/ProofGrid';
+import { WhoForGrid } from '@/components/sections/WhoForGrid';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { ContactSection } from '@/components/sections/ContactSection';
-import {
-  casesIntro,
-  caseTeasers,
-  casesLink,
-  faqIntro,
-  faqItems,
-  faqOutro,
-} from '@/content/fr/accueil';
+import { faqIntro, faqItems, faqOutro } from '@/content/fr/accueil';
 
-// Accueil — base : maquette `Connect Web - Accueil V2.dc.html`, refonte V2.1
-// (Design Handoff). Contenu HARDCODÉ (pas d'ACF/GraphQL), FR uniquement.
-// Lots livrés : A (Hero + logos + trust line) · B (Services) · C (Besoins +
-// Wedge + Chiffres + Système + Méthode). Reste Lot D : Cas phares réels, FAQ,
-// CTA final, « Pour qui » simplifiée, retrait ProofGrid, QA finale.
-// Ordre cible §04 du Design Handoff.
+// Accueil — refonte V2.1 (Design Handoff), contenu HARDCODÉ, FR uniquement.
+// Ordre §04 : Hero · Bande logos · Vos besoins · Wedge · Services · Cas phares ·
+// Chiffres · Du site au système · Méthode · Pour qui · FAQ · CTA + contact.
+// Lots A/B/C livrés. Lot D1 : Cas phares + Pour qui + FAQ ; retrait
+// TrustBar/ProofGrid. Lot D2 (à suivre) : CTA final + formulaire + modales.
 
 export default async function HomePage({
   params,
@@ -42,21 +32,14 @@ export default async function HomePage({
     <>
       <Hero />
       <LogoStrip />
-      <TrustBar />
       <NeedTable />
       <Wedge />
       <ServiceGrid locale={locale} />
-      <AudienceTabs />
-      <CaseTeaserCarousel
-        locale={locale}
-        intro={casesIntro}
-        items={caseTeasers}
-        link={casesLink}
-      />
+      <ProjectSlider locale={locale} />
       <StatsBlock />
       <SystemNarrative />
       <Method />
-      <ProofGrid />
+      <WhoForGrid />
       <FaqAccordion
         locale={locale}
         intro={faqIntro}

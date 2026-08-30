@@ -30,11 +30,6 @@ export interface ClientLogo {
   src?: string;
 }
 
-export interface TrustItem {
-  title: string;
-  body: string;
-}
-
 // ── A3 — Vos besoins (V2.1, Lot C) — tableau « Vous voulez… / Nous construisons… »
 export interface NeedRow {
   want: string;
@@ -42,16 +37,11 @@ export interface NeedRow {
   service: string; // nom d'offre en emphase (non cliquable)
 }
 
-export interface AudiencePanel {
-  key: string;
-  tab: string;
-  title: string;
-  body: string;
-  need: string;
-  build: string;
-  cta: Cta;
-  image: { src: string; alt: string };
-  client: { name: string; note: string; toValidate?: boolean };
+// ── Pour qui (V2.1, Lot D) — case statique de la grille 6 segments
+export interface WhoForCell {
+  name: string;
+  need: string; // « Besoin »
+  build: string; // « On construit »
 }
 
 // ── A5 — Section Services (V2.1, Lot B — DECISION 23) ──────────────────────
@@ -103,10 +93,18 @@ export interface CaseTeaser {
   pending?: boolean;
 }
 
-export interface ProofItem {
-  title: string;
-  body: string;
-  toValidate?: boolean;
+// ── A7 — Cas phares (V2.1, Lot D) — carte du slider ProjectSlider (§09.2)
+export interface ProjectCardData {
+  client: string;
+  sector: string;
+  title: string; // H3
+  solutionTag: string;
+  /** ligne résultat — non rendue si absente (jamais de placeholder côté front) */
+  result?: string;
+  image?: { src: string; alt: string };
+  /** libellé de la capture à fournir (rendu en preview uniquement) */
+  imageMissing?: string;
+  cta: ServiceLink; // « Voir l'étude de cas → » ; todo = page inexistante
 }
 
 // ── A10 — Méthode (V2.1, Lot C) — 3 étapes, <ol>
