@@ -12,6 +12,14 @@ import { ProofGrid } from '@/components/sections/ProofGrid';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { ContactSection } from '@/components/sections/ContactSection';
+import {
+  casesIntro,
+  caseTeasers,
+  casesLink,
+  faqIntro,
+  faqItems,
+  faqOutro,
+} from '@/content/fr/accueil';
 
 // Accueil — 12 sections, dans l'ordre de la maquette
 // `Connect Web - Accueil V2.dc.html`. Copy : content/fr/accueil.ts.
@@ -35,10 +43,20 @@ export default async function HomePage({
       <OfferGrid locale={locale} />
       <SystemRoad />
       <TrajectoryGrid locale={locale} />
-      <CaseTeaserCarousel locale={locale} />
+      <CaseTeaserCarousel
+        locale={locale}
+        intro={casesIntro}
+        items={caseTeasers}
+        link={casesLink}
+      />
       <ProofGrid />
       <ProcessSteps />
-      <FaqAccordion locale={locale} />
+      <FaqAccordion
+        locale={locale}
+        intro={faqIntro}
+        items={faqItems}
+        outro={faqOutro}
+      />
       <ContactSection />
     </>
   );

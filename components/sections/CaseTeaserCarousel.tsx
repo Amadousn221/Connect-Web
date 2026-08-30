@@ -9,17 +9,29 @@ import { Button } from '@/components/ui/Button';
 import { ValidationNote } from '@/components/ui/ValidationNote';
 import { localePath } from '@/lib/i18n/routing';
 import type { Locale } from '@/lib/i18n/config';
-import { casesIntro, caseTeasers, casesLink } from '@/content/fr/accueil';
+import type { CaseTeaser, Cta } from '@/content/types';
 import styles from './CaseTeaserCarousel.module.css';
 
-// A8 — Carrousel Réalisations (scroll-snap natif, barre de progression +
-// compteur, flèches). Contenu codé en dur en M2 ; bascule WordPress en M3.
-// Les fiches de cas (`/realisations/[slug]`) n'existent pas encore → les cartes
-// pointent vers le hub Réalisations.
-export function CaseTeaserCarousel({ locale }: { locale: Locale }) {
+// Carrousel de teasers de cas — Accueil A8 + section « livrés » des pages
+// d'offre. Scroll-snap natif, barre de progression + compteur, flèches.
+// Les fiches de cas (`/realisations/[slug]`) n'existent pas encore (M3) → les
+// cartes pointent vers le hub Réalisations.
+export function CaseTeaserCarousel({
+  locale,
+  intro,
+  items,
+  link,
+  align = 'center',
+}: {
+  locale: Locale;
+  intro: { eyebrow: string; title: string; lead?: string };
+  items: CaseTeaser[];
+  link?: Cta;
+  align?: 'left' | 'center';
+}) {
   const railRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState({ width: 30, left: 0, index: 1 });
-  const total = caseTeasers.length;
+  const total = items.length;
 
   const sync = useCallback(() => {
     const el = railRef.current;
@@ -47,7 +59,7 @@ export function CaseTeaserCarousel({ locale }: { locale: Locale }) {
     };
   }, [sync]);
 
-  const scrollBy = (dir: number) => {
+  const scrollByCard = (dir: number) => {
     const el = railRef.current;
     if (!el) return;
     const first = el.children[0] as HTMLElement | undefined;
@@ -56,17 +68,17 @@ export function CaseTeaserCarousel({ locale }: { locale: Locale }) {
   };
 
   const pad = (n: number) => (n < 10 ? `0${n}` : `${n}`);
-  const hubHref = localePath(locale, casesLink.href);
+  const hubHref = localePath(locale, link?.href ?? '/realisations');
 
   return (
-    <section id="realisations" className={styles.section}>
+    <section id="cas" className={styles.section}>
       <div className="cw-sec">
         <RevealOnScroll>
           <SectionHeading
-            eyebrow={casesIntro.eyebrow}
-            title={casesIntro.title}
-            lead={casesIntro.lead}
-            align="center"
+            eyebrow={intro.eyebrow}
+            title={intro.title}
+            lead={intro.lead}
+            align={align}
           />
         </RevealOnScroll>
 
@@ -79,7 +91,7 @@ export function CaseTeaserCarousel({ locale }: { locale: Locale }) {
               role="region"
               aria-label="Carrousel des réalisations"
             >
-              {caseTeasers.map((c) =>
+              {items.map((c) =>
                 c.pending ? (
                   <article key={c.name} className={`${styles.card} ${styles.pending}`}>
                     <div className={styles.pendingVisual}>
@@ -125,7 +137,7 @@ export function CaseTeaserCarousel({ locale }: { locale: Locale }) {
               type="button"
               className={styles.arrow}
               aria-label="Précédent"
-              onClick={() => scrollBy(-1)}
+              onClick={() => scrollByCard(-1)}
             >
               ←
             </button>
@@ -139,7 +151,7 @@ export function CaseTeaserCarousel({ locale }: { locale: Locale }) {
               type="button"
               className={styles.arrow}
               aria-label="Suivant"
-              onClick={() => scrollBy(1)}
+              onClick={() => scrollByCard(1)}
             >
               →
             </button>
@@ -148,11 +160,13 @@ export function CaseTeaserCarousel({ locale }: { locale: Locale }) {
             </span>
           </div>
 
-          <div className={styles.cta}>
-            <Button href={hubHref} variant="outline" size="md">
-              {casesLink.label}
-            </Button>
-          </div>
+          {link ? (
+            <div className={styles.cta}>
+              <Button href={hubHref} variant="outline" size="md">
+                {link.label}
+              </Button>
+            </div>
+          ) : null}
         </RevealOnScroll>
       </div>
     </section>

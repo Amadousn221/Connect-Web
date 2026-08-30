@@ -291,6 +291,13 @@ export const caseTeasers: CaseTeaser[] = [
 ];
 export const casesLink: Cta = { label: 'Voir toutes les réalisations', href: '/realisations' };
 
+/** Sélectionne des teasers par nom (sections « livrés » des pages d'offre). */
+export function pickCaseTeasers(names: string[]): CaseTeaser[] {
+  return names
+    .map((n) => caseTeasers.find((c) => c.name === n))
+    .filter((c): c is CaseTeaser => Boolean(c));
+}
+
 // ── A9 — Preuve ─────────────────────────────────────────────────────────
 export const proofIntro = {
   eyebrow: 'Preuve',

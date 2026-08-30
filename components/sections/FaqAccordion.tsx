@@ -6,25 +6,33 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ValidationNote } from '@/components/ui/ValidationNote';
 import { localePath } from '@/lib/i18n/routing';
 import type { Locale } from '@/lib/i18n/config';
-import { faqIntro, faqItems, faqOutro } from '@/content/fr/accueil';
+import type { Cta, FaqItem } from '@/content/types';
 import styles from './FaqAccordion.module.css';
 
-// A11 — FAQ (accordéon 6 questions ; l'item prix porte un « À valider »).
-export function FaqAccordion({ locale }: { locale: Locale }) {
+// Accordéon FAQ réutilisable (Accueil A11 + chaque page d'offre).
+export function FaqAccordion({
+  locale,
+  intro,
+  items,
+  outro,
+  align = 'center',
+}: {
+  locale: Locale;
+  intro: { eyebrow: string; title: string };
+  items: FaqItem[];
+  outro?: { text: string; link: Cta };
+  align?: 'left' | 'center';
+}) {
   const [open, setOpen] = useState<number | null>(null);
   const baseId = useId();
 
   return (
     <section className={styles.section}>
       <div className={`cw-sec ${styles.inner}`}>
-        <SectionHeading
-          eyebrow={faqIntro.eyebrow}
-          title={faqIntro.title}
-          align="center"
-        />
+        <SectionHeading eyebrow={intro.eyebrow} title={intro.title} align={align} />
 
         <div className={styles.list}>
-          {faqItems.map((item, i) => {
+          {items.map((item, i) => {
             const isOpen = open === i;
             const panelId = `${baseId}-p${i}`;
             const btnId = `${baseId}-b${i}`;
@@ -63,12 +71,14 @@ export function FaqAccordion({ locale }: { locale: Locale }) {
           })}
         </div>
 
-        <p className={styles.outro}>
-          <span>{faqOutro.text}</span>{' '}
-          <Link href={localePath(locale, faqOutro.link.href)} className={styles.outroLink}>
-            {faqOutro.link.label}
-          </Link>
-        </p>
+        {outro ? (
+          <p className={styles.outro}>
+            <span>{outro.text}</span>{' '}
+            <Link href={localePath(locale, outro.link.href)} className={styles.outroLink}>
+              {outro.link.label}
+            </Link>
+          </p>
+        ) : null}
       </div>
     </section>
   );
