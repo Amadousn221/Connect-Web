@@ -5,6 +5,7 @@ import type {
   FaqItem,
   Hero,
   HeroShot,
+  NeedOption,
 } from '../types';
 
 // Copy de l'Accueil — extraite fidèlement de `Connect Web - Accueil V2.dc.html`.
@@ -79,8 +80,81 @@ export const clientLogos: ClientLogo[] = [
 //    sections de l'audit §04 ; la réassurance est distribuée (§07 : trust line
 //    du Hero, point 3 du Wedge, section CTA finale).
 
-// ── A3 — Vos besoins : voir content/fr/besoins.ts (Lot C — tableau statique
-//    « Vous voulez… / Nous construisons… », §06.3 du Design Handoff).
+// ── A3 — Ce qu'on construit (sélecteur) — RESTAURÉ (version d'avant la refonte
+//    V2.1). Rendu par components/sections/NeedSelector.tsx. La variante tableau
+//    statique du Lot C (content/fr/besoins.ts + NeedTable) est écartée.
+export const needIntro = {
+  eyebrow: "Ce qu'on construit",
+  title: 'On part de votre besoin, pas de notre catalogue.',
+  lead: "Digitaliser, ce n'est pas acheter un outil. C'est régler un problème précis — être trouvé, vendre, arrêter de tout gérer à la main — puis relier les pièces entre elles.",
+};
+
+export const needOptions: NeedOption[] = [
+  {
+    key: 'visible',
+    label: 'Être visible et crédible',
+    hint: 'Sites corporate, institutionnels, ONG, écoles',
+    situation:
+      "« On existe depuis des années, mais quand quelqu'un nous cherche en ligne, il ne trouve rien de sérieux. »",
+    answer:
+      'On construit une présence qui tient la comparaison avec vos homologues internationaux : structure claire, contenu qui explique vraiment ce que vous faites, performance et référencement soignés dès le départ.',
+    delivers: ['Site corporate', 'Site institutionnel / ONG', 'Site école & formation', 'Refonte & SEO'],
+    link: { label: 'Découvrir', href: '/services/sites-entreprise' },
+  },
+  {
+    key: 'vendre',
+    label: 'Vendre et se développer',
+    hint: 'E-commerce, cross-border, paiement mobile',
+    situation:
+      "« On vend bien à Dakar. Mais la diaspora nous écrit, et on n'a aucun moyen propre de l'encaisser. »",
+    answer:
+      'On construit des boutiques faites pour vendre au-delà des frontières : catalogue, paiement mobile et international côte à côte, livraison, relances. Le cross-border est notre terrain, pas une option.',
+    delivers: ['Shopify', 'WooCommerce', 'Paiement mobile & international', 'Livraison & logistique'],
+    link: { label: 'Découvrir', href: '/services/boutiques-en-ligne' },
+  },
+  {
+    key: 'operations',
+    label: 'Digitaliser ses opérations',
+    hint: 'Plateformes métier, portails, réservation, PWA',
+    situation:
+      '« Les demandes arrivent par WhatsApp, les réservations dans un tableur, et personne ne sait où en est quoi. »',
+    answer:
+      "On construit l'outil qui remplace le tableur : réservation, portail client ou fournisseur, suivi de dossiers, application mobile installable. Un seul endroit où l'information vit.",
+    delivers: ['Plateforme de réservation', 'Portail client', 'Application / PWA', 'Espace de gestion'],
+    link: { label: 'Découvrir', href: '/services/plateformes-applications' },
+  },
+  {
+    key: 'piloter',
+    label: 'Piloter son activité',
+    hint: 'CRM, ERP / Odoo, POS, stocks, reporting',
+    capabilityBadge: true,
+    situation:
+      '« Les ventes sont dans la boutique, les stocks sur un carnet, les devis dans une boîte mail. »',
+    answer:
+      'On met en place la couche de gestion et on la relie à ce qui vend déjà : clients, devis, stocks, factures, tableaux de bord. Vous voyez votre activité en un seul endroit, à jour.',
+    delivers: ['Odoo / ERP', 'CRM', 'Stocks & POS', 'Reporting'],
+    link: { label: 'Découvrir', href: '/services/crm-erp-integrations' },
+  },
+  {
+    key: 'automatiser',
+    label: 'Automatiser & gagner du temps',
+    hint: 'Workflows, intégrations, notifications, IA appliquée',
+    capabilityBadge: true,
+    situation:
+      '« Chaque commande demande cinq copier-coller. Multipliés par trente par jour. »',
+    answer:
+      "On identifie les tâches répétitives et on les fait disparaître : traitement des commandes, relances, notifications, reporting automatique. L'IA n'intervient que là où elle règle un problème réel.",
+    delivers: ['Workflows automatisés', 'Intégrations entre outils', 'Notifications & relances', 'IA appliquée aux processus'],
+    link: { label: 'Découvrir', href: '/services/ia-automatisation' },
+  },
+];
+
+export const needCtaBand = {
+  title: 'Pas sûr par où commencer ?',
+  body: "C'est le cas le plus fréquent. On cadre votre situation, on identifie ce qui bloque, et on vous dit ce qui compte en premier — sans engagement.",
+  primary: { label: 'Conseil & audit gratuit', href: '#contact' } as Cta,
+  secondary: { label: 'Découvrir nos solutions', href: '#systeme' } as Cta,
+};
 
 // ── A4 — Pour qui : voir content/fr/pourqui.ts (Lot D — grille statique 6
 //    cases, plus d'onglets). L'ancien AudienceTabs interactif est abandonné.

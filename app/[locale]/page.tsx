@@ -2,7 +2,7 @@ import { isLocale } from '@/lib/i18n/config';
 import { notFound } from 'next/navigation';
 import { Hero } from '@/components/sections/Hero';
 import { LogoStrip } from '@/components/sections/LogoStrip';
-import { NeedTable } from '@/components/sections/NeedTable';
+import { NeedSelector } from '@/components/sections/NeedSelector';
 import { Wedge } from '@/components/sections/Wedge';
 import { ServiceGrid } from '@/components/sections/ServiceGrid';
 import { ProjectSlider } from '@/components/sections/ProjectSlider';
@@ -31,7 +31,7 @@ export default async function HomePage({
     <>
       <Hero />
       <LogoStrip />
-      <NeedTable />
+      <NeedSelector locale={locale} />
       <Wedge />
       <ServiceGrid locale={locale} />
       <ProjectSlider locale={locale} />

@@ -30,11 +30,18 @@ export interface ClientLogo {
   src?: string;
 }
 
-// ── A3 — Vos besoins (V2.1, Lot C) — tableau « Vous voulez… / Nous construisons… »
-export interface NeedRow {
-  want: string;
-  build: string;
-  service: string; // nom d'offre en emphase (non cliquable)
+// ── A3 — « Ce qu'on construit » : sélecteur interactif (restauré — version
+//    d'avant la refonte V2.1 ; la variante tableau statique du Lot C est écartée).
+export interface NeedOption {
+  key: string;
+  label: string;
+  hint: string;
+  /** badge « capacité démontrée » (Odoo, automatisation) */
+  capabilityBadge?: boolean;
+  situation: string; // citation « votre situation »
+  answer: string;
+  delivers: string[];
+  link: Cta;
 }
 
 // ── Pour qui (V2.1, Lot D) — case statique de la grille 6 segments
