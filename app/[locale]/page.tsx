@@ -9,6 +9,7 @@ import { ProjectSlider } from '@/components/sections/ProjectSlider';
 import { StatsBlock } from '@/components/sections/StatsBlock';
 import { SystemNarrative } from '@/components/sections/SystemNarrative';
 import { Method } from '@/components/sections/Method';
+import { ProofGrid } from '@/components/sections/ProofGrid';
 import { WhoForGrid } from '@/components/sections/WhoForGrid';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { ContactSection } from '@/components/sections/ContactSection';
@@ -36,6 +37,7 @@ export default async function HomePage({
       <ProjectSlider locale={locale} />
       <StatsBlock />
       <SystemNarrative />
+      <ProofGrid />
       <Method />
       <WhoForGrid />
       <FaqAccordion

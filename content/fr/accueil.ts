@@ -6,6 +6,7 @@ import type {
   Hero,
   HeroShot,
   NeedOption,
+  ProofItem,
 } from '../types';
 
 // Copy de l'Accueil — extraite fidèlement de `Connect Web - Accueil V2.dc.html`.
@@ -201,9 +202,20 @@ export function pickCaseTeasers(names: string[]): CaseTeaser[] {
     .filter((c): c is CaseTeaser => Boolean(c));
 }
 
-// ── A9 — Preuve : SUPPRIMÉE (Lot D). Doublon avec Cas phares + « Du site au
-//    système » (audit §04). La preuve est portée par ProjectSlider, StatsBlock
-//    (chiffres FACT) et SystemNarrative.
+// ── A9 — Preuve — RESTAURÉ (« Ce que notre travail démontre »). Rendu par
+//    components/sections/ProofGrid.tsx.
+export const proofIntro = {
+  eyebrow: 'Preuve',
+  title: 'Ce que notre travail démontre.',
+  lead: "Pas de chiffres décoratifs : ce qui est affiché ici est vérifiable dans nos réalisations. Le reste attend sa source.",
+};
+
+export const proofItems: ProofItem[] = [
+  { title: 'Plusieurs secteurs', body: 'Commerce, institutions, ONG, éducation, industrie.', toValidate: true },
+  { title: 'Du site au système', body: "On ne s'arrête pas au site : gestion, automatisation, connexion des outils." },
+  { title: 'Local + international', body: 'Mobile Money comme paiement international, vente transfrontalière.' },
+  { title: 'On reste après', body: 'Formation, suivi et évolutions une fois le projet en ligne.' },
+];
 
 // ── A10 — Méthode : voir content/fr/methode.ts (Lot C — 3 étapes, <ol>,
 //    §06.9). L'ancienne version « 6 étapes + rail scroll-spy » est abandonnée.

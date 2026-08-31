@@ -114,6 +114,13 @@ export interface ProjectCardData {
   cta: ServiceLink; // « Voir l'étude de cas → » ; todo = page inexistante
 }
 
+// ── A9 — Preuve — RESTAURÉ (« Ce que notre travail démontre »).
+export interface ProofItem {
+  title: string;
+  body: string;
+  toValidate?: boolean;
+}
+
 // ── A10 — Méthode (V2.1, Lot C) — 3 étapes, <ol>
 export interface MethodStep {
   num: string;
