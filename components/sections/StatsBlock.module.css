@@ -1,6 +1,8 @@
 .section {
-  /* off-white : évite la collision avec ProjectSlider (blanc) qui précède */
-  background: var(--bg-alt);
+  /* blanc : contraste franc juste après le Hero (pétrole nuit). Reste distinct
+     de NeedSelector (off-white) même quand LogoStrip est masqué en production
+     — règle anti-fond-identique (vague 4). */
+  background: var(--bg);
   padding-block: 100px;
 }
 
@@ -14,11 +16,22 @@
 }
 
 .tile {
-  background: var(--bg);
+  background: var(--bg-alt);
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  border: 1px solid var(--border);
+  margin-bottom: 4px;
 }
 
 .label {

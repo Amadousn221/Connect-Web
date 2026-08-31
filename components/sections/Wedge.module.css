@@ -13,9 +13,8 @@
 }
 
 .lede {
+  composes: cw-prose from global;
   margin: 0;
-  font-size: 17px;
-  line-height: 1.7;
   color: rgba(255, 255, 255, 0.82);
 }
 
@@ -35,9 +34,10 @@
   padding-top: 0;
 }
 
+/* Vague 4 — hiérarchie : titre de point = corps (`--text-section`) + 2px, 600. */
 .pointTitle {
   margin: 0 0 8px;
-  font-size: 16px;
+  font-size: calc(var(--text-section) + 2px);
   font-weight: 600;
   color: #fff;
 }
@@ -48,9 +48,8 @@
 }
 
 .pointBody {
+  composes: cw-prose from global;
   margin: 0;
-  font-size: 15px;
-  line-height: 1.7;
   color: rgba(255, 255, 255, 0.9);
 }
 

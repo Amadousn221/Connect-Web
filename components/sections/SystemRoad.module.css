@@ -39,10 +39,14 @@
   color: #fff;
 }
 
+/* Colonne étroite (grille 4) : taille unifiée + césure, mais pas de justif
+   (largeur insuffisante — produirait des lézardes). */
 .solution {
   margin: 0;
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: var(--text-section);
+  line-height: 1.6;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   color: rgba(255, 255, 255, 0.78);
 }
 

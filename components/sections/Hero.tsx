@@ -32,10 +32,10 @@ export function Hero() {
           <p className={styles.sub}>{hero.subtitle}</p>
 
           <div className={styles.ctas}>
-            <Button href={hero.ctas[0].href} variant="primary" onDark size="lg">
+            <Button href={hero.ctas[0].href} variant="primary" onDark size="md">
               {hero.ctas[0].label}
             </Button>
-            <Button href={hero.ctas[1].href} variant="outline" onDark size="lg">
+            <Button href={hero.ctas[1].href} variant="outline" onDark size="md">
               {hero.ctas[1].label}
             </Button>
           </div>

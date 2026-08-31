@@ -13,15 +13,6 @@ export interface Hero {
   trustLine: string[]; // « Réponse sous 24 h · Devis gratuit · … »
 }
 
-// Une statistique de MARCHÉ (pas un chiffre Connect Web) — bande de réassurance
-// digitale sous le Hero. La `source` est affichée visiblement (règle : jamais
-// de source fabriquée).
-export interface MarketStat {
-  value: string;
-  text: string;
-  source: string;
-}
-
 // Un logo client de la bande de confiance (§06.2). `src` = fichier détouré dans
 // /public/assets/logos ; absent = placeholder [LOGO_MANQUANT] tant que le PO ne
 // l'a pas fourni. Aucun faux logo n'est fabriqué.
@@ -81,10 +72,12 @@ export interface WedgePoint {
 }
 
 // ── A8 (chiffres) — une tuile ; données FACT déclarées PO (DECISION 22)
+// `icon` (vague 4) : icône fonctionnelle en tête de tuile.
 export interface StatTile {
   label: string; // « EXPÉRIENCE »
   value: string; // « 3 ans »
   caption: string;
+  icon: 'calendar' | 'folder' | 'bolt' | 'repeat';
 }
 
 export interface CaseTeaser {
@@ -112,10 +105,11 @@ export interface ProjectCardData {
 }
 
 // ── A9 — Preuve (« On montre, on ne prétend pas »).
+// Vague 4 : 3 piliers alignés sur le chapô, une icône fonctionnelle chacun.
 export interface ProofItem {
+  icon: 'users' | 'image' | 'shield';
   title: string;
   body: string;
-  toValidate?: boolean;
 }
 
 // ── A10 — Méthode (V2.1, Lot C) — 3 étapes, <ol>

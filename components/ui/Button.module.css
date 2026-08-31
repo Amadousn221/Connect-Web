@@ -1,11 +1,12 @@
-/* Boutons — Design Foundations §06 + maquettes. Angles vifs (radius 0). */
+/* Boutons — Design Foundations §06 + maquettes. Angles vifs (radius 0).
+   Vague 4 : CTA discrets — poids 500, largeur au contenu, ~44px de haut. */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: 500;
   border-radius: var(--radius-0);
   border: 1px solid transparent;
   cursor: pointer;
@@ -17,9 +18,9 @@
     border-color var(--dur-quick) ease;
 }
 
-/* Tailles (padding/typo repris des maquettes) */
+/* Tailles — `md` est la taille de référence de la home (hauteur ~44px). */
 .sm {
-  padding: 10px 22px;
+  padding: 9px 18px;
   font-size: 13px;
 }
 .md {
@@ -27,7 +28,7 @@
   font-size: 14px;
 }
 .lg {
-  padding: 14px 32px;
+  padding: 13px 26px;
   font-size: 15px;
 }
 
@@ -57,6 +58,25 @@
 }
 .ghost:hover {
   color: var(--orange);
+}
+
+/* Tertiaire — lien texte, sans fond ni bordure, flèche fournie par l'appelant. */
+.link {
+  background: transparent;
+  border-color: transparent;
+  color: var(--ink);
+  padding-inline: 0;
+  font-weight: 600;
+}
+.link:hover {
+  color: var(--orange);
+}
+.onDark.link {
+  color: #fff;
+}
+.onDark.link:hover {
+  color: #fff;
+  opacity: 0.8;
 }
 
 /* Sur surface sombre (hero / bandes pétrole nuit) */

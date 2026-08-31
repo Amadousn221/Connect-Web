@@ -57,7 +57,8 @@ export const serviceCards: ServiceCardData[] = [
       'Centraliser vos ventes, vos stocks et vos clients dans un seul système, relié à ce qui vend déjà.',
     badges: ['Odoo', 'HubSpot', 'Gestion des stocks', 'Ventes', 'Intégrations'],
     imageMissing: 'ERP Odoo Maison Peinture Sénégal',
-    cta: { label: "Voir l'offre", href: '/services/erp-crm-integrations', todo: true },
+    // slug aligné sur site-nav.ts / méga-menu (vague 4 — cohérence d'audit).
+    cta: { label: "Voir l'offre", href: '/services/crm-erp-integrations', todo: true },
   },
   {
     title: 'IA & automatisation',
@@ -72,7 +73,8 @@ export const serviceCards: ServiceCardData[] = [
     description: 'Attirer, qualifier et convertir : campagnes, e-mail, acquisition.',
     badges: ['Mailchimp', 'Klaviyo', 'Email marketing', 'Campagnes', 'Acquisition'],
     imageMissing: 'Campagne marketing (pas encore de cas public)',
-    cta: { label: "Voir l'offre", href: '/services/marketing', todo: true },
+    // slug aligné sur site-nav.ts / méga-menu (vague 4 — cohérence d'audit).
+    cta: { label: "Voir l'offre", href: '/services/marketing-acquisition', todo: true },
   },
   {
     title: 'Conseil & stratégie',

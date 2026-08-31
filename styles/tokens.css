@@ -64,6 +64,10 @@
   --text-body-sm: 14px;
   --text-caption: 12px;
   --text-eyebrow: 11px;
+  /* Vague 4 — taille unique des sous-titres et paragraphes de section
+     (17px des `.lead` − 2). Centralisée : les paragraphes descriptifs et les
+     chapôs de section s'y alignent via la classe utilitaire `.cw-prose`. */
+  --text-section: 15px;
 
   --leading-tight: 1.1;
   --leading-snug: 1.2;

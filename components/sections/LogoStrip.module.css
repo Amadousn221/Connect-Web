@@ -1,5 +1,6 @@
 .section {
-  /* crème : évite la collision avec la bande MarketStats (blanc) qui précède */
+  /* crème : distinct de StatsBlock (off-white) qui précède et de NeedSelector
+     (off-white) qui suit — règle anti-fond-identique (vague 4). */
   background: var(--bg-cream);
   border-bottom: 1px solid var(--border);
   padding-block: clamp(28px, 4vw, 44px);

@@ -2,7 +2,10 @@ import Link from 'next/link';
 import type { MouseEventHandler, ReactNode } from 'react';
 import styles from './Button.module.css';
 
-type Variant = 'primary' | 'outline' | 'ghost';
+// `outline` = variante secondaire (bordure fine, fond transparent, texte foncé).
+// `link` = variante tertiaire (lien texte, sans fond ; la flèche → est fournie
+// par l'appelant). Vague 4 : poids 500, largeur au contenu, ~44px de haut.
+type Variant = 'primary' | 'outline' | 'ghost' | 'link';
 type Size = 'sm' | 'md' | 'lg';
 
 interface BaseProps {
@@ -10,8 +13,6 @@ interface BaseProps {
   size?: Size;
   /** posé sur une surface pétrole nuit / hero sombre */
   onDark?: boolean;
-  /** anime au survol comme `.cw-pill` des maquettes (translateY + ombre) */
-  pill?: boolean;
   className?: string;
   children: ReactNode;
 }
@@ -29,13 +30,12 @@ interface ButtonProps extends BaseProps {
 }
 
 function cx(p: BaseProps): string {
-  const { variant = 'primary', size = 'md', onDark, pill = true, className } = p;
+  const { variant = 'primary', size = 'md', onDark, className } = p;
   return [
     styles.btn,
     styles[variant],
     styles[size],
     onDark ? styles.onDark : undefined,
-    pill ? 'cw-pill' : undefined,
     className,
   ]
     .filter(Boolean)

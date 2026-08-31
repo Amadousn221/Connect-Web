@@ -4,6 +4,17 @@
 // `Connect Web - Accueil V2.dc.html` (header lignes 123-176, footer 952-980).
 // DECISION 06 : nav = Services · Réalisations · Agence · Ressources + CTA Contact.
 // Slugs = arborescence cible du plan d'implémentation Phase 24.
+//
+// TODO (audit liens, vague 4) — routes cibles PAS ENCORE CRÉÉES dans app/.
+// Seule `/` existe aujourd'hui : tous les liens ci-dessous rendent un 404 tant
+// que les pages ne sont pas construites (jalon ultérieur). On ne crée aucune
+// page ici — on documente. Routes attendues :
+//   /services · /services/boutiques-en-ligne · /services/plateformes-applications
+//   /services/sites-entreprise · /services/sites-institutionnels-ong
+//   /services/crm-erp-integrations · /services/ia-automatisation
+//   /services/marketing-acquisition · /services/conseil-strategie
+//   /realisations · /realisations/[slug] · /agence · /ressources · /contact
+//   /mentions-legales · /politique-de-confidentialite
 
 export type NavLink = { label: string; path: string };
 

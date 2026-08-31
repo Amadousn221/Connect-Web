@@ -124,17 +124,36 @@
 .field textarea {
   resize: vertical;
 }
+/* Honeypot anti-spam : retiré du flux, invisible et inaccessible au clavier. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .submit {
   background: var(--orange);
   color: #fff;
   border: none;
-  padding: 17px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 14px 22px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  align-self: flex-start;
+  transition: background var(--dur-quick) ease;
+}
+.submit:hover:not(:disabled) {
+  background: var(--orange-h);
+}
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 .reassurance,
-.notice {
+.notice,
+.error {
   font-size: 13px;
   text-align: center;
   margin: 0;
@@ -146,6 +165,13 @@
   color: var(--ink);
   background: rgba(232, 97, 42, 0.1);
   border: 1px solid rgba(232, 97, 42, 0.25);
+  padding: 12px 14px;
+  line-height: 1.5;
+}
+.error {
+  color: var(--ink);
+  background: rgba(13, 13, 13, 0.05);
+  border: 1px solid var(--border);
   padding: 12px 14px;
   line-height: 1.5;
 }

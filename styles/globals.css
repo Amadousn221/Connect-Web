@@ -64,6 +64,17 @@ video {
   font-family: var(--font-serif);
 }
 
+/* Vague 4 — paragraphes et sous-titres de section : taille unique, justifiés,
+   césure activée (utile en français pour éviter les lézardes). À réserver aux
+   blocs de texte suivi — jamais les titres, labels, éléments d'UI ou boutons. */
+.cw-prose {
+  font-size: var(--text-section);
+  line-height: 1.7;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 /* Conteneur centré standard (mockup : .cw-sec) */
 .cw-sec {
   max-width: var(--container-max);

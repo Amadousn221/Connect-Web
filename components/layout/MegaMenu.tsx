@@ -27,7 +27,7 @@ export function MegaMenu({
     <div id={id} className={styles.mega} hidden={!open}>
       <div className={styles.inner}>
         <div>
-          <p className={styles.eyebrow}>Ce qu'on construit</p>
+          <p className={styles.eyebrow}>Ce qu&apos;on construit</p>
           <ul className={styles.list}>
             {megaMenuBuild.map((item) => (
               <li key={item.path}>

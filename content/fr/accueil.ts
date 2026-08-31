@@ -21,10 +21,12 @@ export const primaryCta: Cta = { label: 'Parlons de votre projet', href: '#conta
 // Copy : DECISION 20 (journal de décisions), formulation « Option A », validée
 // PO le 28 août 2026. Le §06.1 du Design Handoff (variante « Direction C »)
 // est une RECOMMENDATION, remplacée ici par la décision consignée.
+// Vague 4 (correction post-déploiement) : titre raccourci (~30 %) sur demande
+// PO — même promesse, même rythme. Sous-titre et trust line inchangés.
 export const hero: Hero = {
   eyebrow: 'Studio digital — Dakar',
   title:
-    'Nous concevons, développons et connectons les outils numériques qui font tourner votre organisation.',
+    'Nous concevons et connectons les outils qui font tourner votre organisation.',
   subtitle:
     'Sites et applications web sur mesure, boutiques e-commerce, plateformes métier, ERP et automatisations. Studio de Dakar au standard international. Vos accès vous appartiennent.',
   ctas: [
@@ -228,11 +230,23 @@ export const proofIntro = {
   lead: "Sur cette page, tout est vérifiable : les clients sont nommés, les captures sont réelles, les chiffres sont ceux qu'on peut tenir.",
 };
 
+// Vague 4 : 3 piliers (1 phrase + 1 icône), calés sur le chapô ci-dessus.
 export const proofItems: ProofItem[] = [
-  { title: 'Des clients nommés', body: 'ATTA Africa, SCOD VTC, WAS Africa, Maison Peinture Sénégal — vous pouvez les vérifier.' },
-  { title: 'Des captures réelles', body: 'Ce que vous voyez ici, c’est du travail livré, pas des maquettes de démonstration.' },
-  { title: 'Zéro chiffre décoratif', body: "Pas de « +500 projets » invérifiable : les chiffres affichés sont ceux qu'on assume." },
-  { title: 'Un devis qui sort d’une conversation', body: 'Le prix vient du cadrage de votre projet réel, pas d’une grille figée.' },
+  {
+    icon: 'users',
+    title: 'Des clients nommés',
+    body: 'ATTA Africa, SCOD VTC, WAS Africa, Maison Peinture Sénégal — vous pouvez les vérifier.',
+  },
+  {
+    icon: 'image',
+    title: 'Des captures réelles',
+    body: "Ce que vous voyez ici, c'est du travail livré, pas des maquettes de démonstration.",
+  },
+  {
+    icon: 'shield',
+    title: 'Des chiffres qu’on peut tenir',
+    body: "Pas de « +500 projets » invérifiable : les chiffres affichés sont ceux qu'on assume.",
+  },
 ];
 
 // ── A10 — Méthode : voir content/fr/methode.ts (Lot C — 3 étapes, <ol>,
@@ -321,7 +335,12 @@ export const contactFormContent = {
     'Je ne sais pas encore',
   ],
   submitLabel: 'Envoyer ma demande',
+  submittingLabel: 'Envoi…',
   reassurance: 'Réponse sous 24 h · Devis gratuit · Sans engagement',
-  // M2 : formulaire non branché (M5). Message affiché à la soumission.
-  disabledNote: 'Le formulaire sera actif très bientôt — en attendant, appelez-nous ou écrivez sur WhatsApp.',
+  // Vague 4 : formulaire branché sur /api/contact (POST). Le stub back se
+  // contente d'accepter la requête — le vrai câblage CRM/notification est un
+  // jalon ultérieur (voir app/api/contact/route.ts).
+  successMessage: 'Reçu. On revient vers vous sous 24 h.',
+  errorMessage:
+    "L'envoi a échoué. Réessayez, ou appelez-nous / écrivez sur WhatsApp.",
 };

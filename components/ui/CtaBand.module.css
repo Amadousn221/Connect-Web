@@ -20,8 +20,7 @@
 }
 
 .body {
-  font-size: 15px;
-  line-height: 1.6;
+  composes: cw-prose from global;
   color: rgba(255, 255, 255, 0.68);
   margin: 0;
 }

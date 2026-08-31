@@ -27,8 +27,7 @@
 }
 
 .lead {
-  font-size: 17px;
-  line-height: 1.65;
+  composes: cw-prose from global;
   color: var(--ink-soft);
   margin: 0;
   max-width: 600px;
@@ -36,6 +35,7 @@
 
 .head[data-align='center'] .lead {
   margin-inline: auto;
+  text-align: center;
 }
 
 .head[data-tone='on-dark'] .lead {

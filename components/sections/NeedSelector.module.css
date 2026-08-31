@@ -113,8 +113,7 @@
 }
 
 .answer {
-  font-size: 15.5px;
-  line-height: 1.7;
+  composes: cw-prose from global;
   color: var(--ink-soft);
   margin: 0 0 28px;
 }

@@ -74,7 +74,14 @@ export function FaqAccordion({
         {outro ? (
           <p className={styles.outro}>
             <span>{outro.text}</span>{' '}
-            <Link href={localePath(locale, outro.link.href)} className={styles.outroLink}>
+            <Link
+              href={
+                outro.link.href.startsWith('#')
+                  ? outro.link.href
+                  : localePath(locale, outro.link.href)
+              }
+              className={styles.outroLink}
+            >
               {outro.link.label}
             </Link>
           </p>

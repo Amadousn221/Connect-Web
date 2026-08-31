@@ -11,8 +11,8 @@ export const chiffresIntro = {
 };
 
 export const stats: StatTile[] = [
-  { label: 'Expérience', value: '3 ans', caption: "d'expérience sur des projets réels" },
-  { label: 'Projets', value: '+20', caption: 'sites, boutiques et systèmes livrés' },
-  { label: 'Délais', value: '2 semaines', caption: 'délai moyen du premier livrable' },
-  { label: 'Fidélité', value: '90 %', caption: 'de clients qui reviennent' },
+  { label: 'Expérience', value: '3 ans', caption: "d'expérience sur des projets réels", icon: 'calendar' },
+  { label: 'Projets', value: '+20', caption: 'sites, boutiques et systèmes livrés', icon: 'folder' },
+  { label: 'Délais', value: '2 semaines', caption: 'délai moyen du premier livrable', icon: 'bolt' },
+  { label: 'Fidélité', value: '90 %', caption: 'de clients qui reviennent', icon: 'repeat' },
 ];

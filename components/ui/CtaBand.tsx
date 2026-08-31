@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button } from './Button';
 import styles from './CtaBand.module.css';
 
@@ -27,9 +28,9 @@ export function CtaBand({
           {primary.label}
         </Button>
         {secondary ? (
-          <a href={secondary.href} className={styles.secondary}>
+          <Link href={secondary.href} className={styles.secondary}>
             {secondary.label}
-          </a>
+          </Link>
         ) : null}
       </div>
     </div>
