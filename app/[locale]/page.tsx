@@ -9,17 +9,16 @@ import { ServiceGrid } from '@/components/sections/ServiceGrid';
 import { ProjectSlider } from '@/components/sections/ProjectSlider';
 import { StatsBlock } from '@/components/sections/StatsBlock';
 import { SystemRoad } from '@/components/sections/SystemRoad';
-import { TrajectoryGrid } from '@/components/sections/TrajectoryGrid';
-import { Method } from '@/components/sections/Method';
 import { ProofGrid } from '@/components/sections/ProofGrid';
-import { WhoForGrid } from '@/components/sections/WhoForGrid';
+import { Method } from '@/components/sections/Method';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { faqIntro, faqItems, faqOutro } from '@/content/fr/accueil';
 
-// Accueil — refonte V2.1 (Design Handoff), contenu HARDCODÉ, FR uniquement.
-// Sections « Vos besoins » (NeedSelector) et « Contact » (ContactSection)
-// restaurées dans leur version d'avant la refonte, à la demande du PO.
+// Accueil — contenu HARDCODÉ, FR uniquement. Fonds alternés (dark / blanc /
+// crème / off-white) — aucune section adjacente de même fond.
+// Corrections finales : « Du site au système » fusionne les anciennes sections
+// road + trajectoires ; « Pour qui » supprimée.
 
 export default async function HomePage({
   params,
@@ -40,10 +39,8 @@ export default async function HomePage({
       <ProjectSlider locale={locale} />
       <StatsBlock />
       <SystemRoad />
-      <TrajectoryGrid locale={locale} />
       <ProofGrid />
       <Method />
-      <WhoForGrid />
       <FaqAccordion
         locale={locale}
         intro={faqIntro}

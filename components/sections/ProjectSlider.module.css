@@ -3,67 +3,33 @@
   padding-block: 100px;
 }
 
-.head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.arrows {
-  display: flex;
-  gap: 8px;
-  flex-shrink: 0;
-}
-.arrow {
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--ink);
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    border-color var(--dur-instant) ease,
-    color var(--dur-instant) ease;
-}
-.arrow:hover {
-  border-color: var(--orange);
-  color: var(--orange);
-}
-
+/* Desktop : 3 cartes entièrement visibles, pas de scroll. */
 .rail {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 40px;
-  padding-bottom: 4px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-.rail::-webkit-scrollbar {
-  display: none;
 }
 
-.dots {
+/* Bande de navigation basse — masquée en desktop (tout tient). */
+.track {
   display: none;
-  gap: 8px;
-  justify-content: center;
+  position: relative;
+  height: 4px;
   margin-top: 20px;
-}
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
   background: var(--border);
 }
-.dot[data-active='true'] {
-  background: var(--orange);
+.thumb {
+  position: absolute;
+  top: -3px;
+  height: 10px;
+  min-width: 40px;
+  background: var(--ink);
+  cursor: grab;
+  touch-action: none;
+}
+.thumb:active {
+  cursor: grabbing;
 }
 
 .footer {
@@ -89,14 +55,27 @@
   display: inline-block;
 }
 
+/* Tablette / mobile : rail scroll-snap + bande basse. */
+@media (max-width: 1023px) {
+  .rail {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .track {
+    display: block;
+  }
+}
+
 @media (max-width: 640px) {
   .section {
     padding-block: 56px;
-  }
-  .arrows {
-    display: none;
-  }
-  .dots {
-    display: flex;
   }
 }

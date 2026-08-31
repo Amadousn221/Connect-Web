@@ -1,6 +1,13 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
+} from 'react';
 import Link from 'next/link';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ValidationNote } from '@/components/ui/ValidationNote';
@@ -14,46 +21,77 @@ import {
 import { ProjectCard } from './ProjectCard';
 import styles from './ProjectSlider.module.css';
 
-// A7 — Slider Cas phares (Lot D, §09.3). Scroll-snap CSS pur : desktop ~2.5
-// cartes, tablette ~1.5, mobile 1 + peek. Flèches + drag natif + nav clavier.
+// A7 — Cas phares. Desktop (≥1024px) : les 3 cartes entièrement visibles en
+// grille, pas de flèches. Tablette / mobile : rail scroll-snap (2 + peek / 1 +
+// peek) avec une bande de navigation basse — une piste dont le curseur reflète
+// la position et se drague. Nav clavier conservée (flèches).
 export function ProjectSlider({ locale }: { locale: Locale }) {
   const railRef = useRef<HTMLDivElement>(null);
-  const [page, setPage] = useState(0);
+  const [thumb, setThumb] = useState({ width: 100, left: 0 });
+  const drag = useRef<{ startX: number; startLeft: number } | null>(null);
 
-  const step = () => {
-    const el = railRef.current;
-    if (!el) return 320;
-    const card = el.querySelector('article');
-    return card ? card.getBoundingClientRect().width + 20 : el.clientWidth * 0.8;
-  };
-
-  const scrollByCard = (dir: number) => {
-    railRef.current?.scrollBy({ left: dir * step(), behavior: 'smooth' });
-  };
-
-  const onScroll = useCallback(() => {
+  const sync = useCallback(() => {
     const el = railRef.current;
     if (!el) return;
-    const card = el.querySelector('article');
-    const s = card ? card.getBoundingClientRect().width + 20 : 1;
-    setPage(Math.round(el.scrollLeft / s));
+    const max = Math.max(1, el.scrollWidth - el.clientWidth);
+    const ratio = el.clientWidth / el.scrollWidth;
+    const width = Math.min(100, ratio * 100);
+    const left = (el.scrollLeft / max) * (100 - width);
+    setThumb({ width, left });
   }, []);
 
   useEffect(() => {
     const el = railRef.current;
     if (!el) return;
-    el.addEventListener('scroll', onScroll, { passive: true });
-    return () => el.removeEventListener('scroll', onScroll);
-  }, [onScroll]);
+    sync();
+    el.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    return () => {
+      el.removeEventListener('scroll', sync);
+      window.removeEventListener('resize', sync);
+    };
+  }, [sync]);
+
+  const step = () => {
+    const el = railRef.current;
+    const card = el?.querySelector('article');
+    return card
+      ? card.getBoundingClientRect().width + 20
+      : (el?.clientWidth ?? 320) * 0.8;
+  };
 
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'ArrowRight') {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
       e.preventDefault();
-      scrollByCard(1);
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      scrollByCard(-1);
+      railRef.current?.scrollBy({
+        left: (e.key === 'ArrowRight' ? 1 : -1) * step(),
+        behavior: 'smooth',
+      });
     }
+  };
+
+  // ── drag du curseur de la bande basse ─────────────────────────────────
+  const onThumbDown = (e: ReactPointerEvent<HTMLSpanElement>) => {
+    const el = railRef.current;
+    if (!el) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    drag.current = { startX: e.clientX, startLeft: el.scrollLeft };
+  };
+  const onThumbMove = (e: ReactPointerEvent<HTMLSpanElement>) => {
+    const el = railRef.current;
+    if (!drag.current || !el) return;
+    const track = e.currentTarget.parentElement;
+    if (!track) return;
+    const dx = e.clientX - drag.current.startX;
+    const max = el.scrollWidth - el.clientWidth;
+    el.scrollLeft =
+      drag.current.startLeft + (dx / track.clientWidth) * el.scrollWidth;
+    if (el.scrollLeft < 0) el.scrollLeft = 0;
+    if (el.scrollLeft > max) el.scrollLeft = max;
+  };
+  const onThumbUp = (e: ReactPointerEvent<HTMLSpanElement>) => {
+    drag.current = null;
+    e.currentTarget.releasePointerCapture(e.pointerId);
   };
 
   const todoRoutes = [
@@ -64,31 +102,11 @@ export function ProjectSlider({ locale }: { locale: Locale }) {
   return (
     <section id="cas" className={styles.section}>
       <div className="cw-sec">
-        <div className={styles.head}>
-          <SectionHeading
-            eyebrow={casPharesIntro.eyebrow}
-            title={casPharesIntro.title}
-            lead={casPharesIntro.lead}
-          />
-          <div className={styles.arrows}>
-            <button
-              type="button"
-              className={styles.arrow}
-              aria-label="Projet précédent"
-              onClick={() => scrollByCard(-1)}
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              className={styles.arrow}
-              aria-label="Projet suivant"
-              onClick={() => scrollByCard(1)}
-            >
-              →
-            </button>
-          </div>
-        </div>
+        <SectionHeading
+          eyebrow={casPharesIntro.eyebrow}
+          title={casPharesIntro.title}
+          lead={casPharesIntro.lead}
+        />
 
         <div
           ref={railRef}
@@ -104,14 +122,15 @@ export function ProjectSlider({ locale }: { locale: Locale }) {
           ))}
         </div>
 
-        <div className={styles.dots} aria-hidden="true">
-          {casPharesCards.map((card, i) => (
-            <span
-              key={card.client}
-              data-active={i === page}
-              className={styles.dot}
-            />
-          ))}
+        <div className={styles.track} aria-hidden="true">
+          <span
+            className={styles.thumb}
+            style={{ width: `${thumb.width}%`, left: `${thumb.left}%` }}
+            onPointerDown={onThumbDown}
+            onPointerMove={onThumbMove}
+            onPointerUp={onThumbUp}
+            onPointerCancel={onThumbUp}
+          />
         </div>
 
         <div className={styles.footer}>
@@ -126,7 +145,7 @@ export function ProjectSlider({ locale }: { locale: Locale }) {
           )}
         </div>
 
-        {todoRoutes.length ? (
+        {todoRoutes.length > 0 ? (
           <div className={styles.note}>
             <ValidationNote variant="box">
               Pages à créer avant publication (liens non cliquables) :{' '}

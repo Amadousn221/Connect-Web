@@ -44,11 +44,12 @@ export interface NeedOption {
   link: Cta;
 }
 
-// ── Pour qui (V2.1, Lot D) — case statique de la grille 6 segments
-export interface WhoForCell {
-  name: string;
-  need: string; // « Besoin »
-  build: string; // « On construit »
+// ── A6 — « Du site au système » : un élément besoin → solution (multi-segment)
+export interface SystemElement {
+  icon: 'building' | 'cart' | 'gear' | 'bolt';
+  need: string;
+  solution: string;
+  example: string; // client(s) — FACT
 }
 
 // ── A5 — Section Services (V2.1, Lot B — DECISION 23) ──────────────────────
@@ -110,17 +111,7 @@ export interface ProjectCardData {
   cta: ServiceLink; // « Voir l'étude de cas → » ; todo = page inexistante
 }
 
-// ── A6/A7 — Du site au système — RESTAURÉ (road interactif + trajectoires).
-export interface RoadNode {
-  label: string;
-  desc: string;
-}
-export interface Trajectory {
-  chain: string[]; // ["Site", "formulaire", "CRM"]
-  body: string;
-}
-
-// ── A9 — Preuve — RESTAURÉ (« Ce que notre travail démontre »).
+// ── A9 — Preuve (« On montre, on ne prétend pas »).
 export interface ProofItem {
   title: string;
   body: string;

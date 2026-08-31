@@ -6,8 +6,7 @@ import type {
   Hero,
   NeedOption,
   ProofItem,
-  RoadNode,
-  Trajectory,
+  SystemElement,
 } from '../types';
 
 // Copy de l'Accueil — extraite fidèlement de `Connect Web - Accueil V2.dc.html`.
@@ -141,40 +140,51 @@ export const needCtaBand = {
   secondary: { label: 'Découvrir nos solutions', href: '#systeme' } as Cta,
 };
 
-// ── A4 — Pour qui : voir content/fr/pourqui.ts (Lot D — grille statique 6
-//    cases, plus d'onglets). L'ancien AudienceTabs interactif est abandonné.
+// ── A4 — Pour qui : SECTION SUPPRIMÉE (correction finale). La diversité des
+//    cibles est portée par « Du site au système » (multi-segment) et par les
+//    besoins (NeedSelector). Composant WhoForGrid + content/fr/pourqui.ts retirés.
 
 // ── A5 — Services : voir content/fr/services.ts (Lot B — grille 5 + Conseil,
 //    DECISION 23). L'ancien modèle « 6 cartes plates » (offersIntro/offerCards)
 //    est remplacé par la hiérarchie carte parente + Niveau 2 + Conseil.
 
-// ── A6 — Du site au système (road) — RESTAURÉ. Rendu par SystemRoad.tsx.
-//    La variante narrative du Lot C (content/fr/systeme.ts) est écartée.
+// ── A6 — Du site au système ─────────────────────────────────────────────
+// Fusion des anciennes sections « road » (6 nœuds) et « trajectoires » (4
+// chaînes) : un seul bloc, 4 éléments besoin → solution, multi-segment
+// (présenter / vendre / piloter / automatiser). Icône par élément. Clients
+// cités = FACTS (DECISION 12/13).
 export const systemIntro = {
   eyebrow: 'Du site au système',
-  title: "Digitaliser une organisation, ce n'est pas seulement créer un site.",
-  lead: "C'est relier ce qui vous fait exister, vendre et fonctionner. On ne suppose pas que vous avez besoin de tout : on construit ce qui compte, puis on connecte.",
+  title: 'On construit selon votre besoin — du site au système.',
+  lead: "Un site institutionnel, une boutique, une plateforme, des automatisations : on ne suppose pas que vous avez besoin de tout. On construit ce qui compte, puis on connecte le reste.",
 };
 
-export const systemRoadLabel = 'Six points d’entrée dans le système';
-export const systemRoad: RoadNode[] = [
-  { label: 'Présence', desc: 'On vous trouve, on vous croit' },
-  { label: 'Acquisition', desc: 'Des visiteurs qui deviennent des contacts' },
-  { label: 'Vente', desc: 'Encaisser ici et ailleurs' },
-  { label: 'Gestion', desc: 'Clients, stocks, devis au même endroit' },
-  { label: 'Automatisation', desc: 'Les tâches répétitives tournent toutes seules' },
-  { label: 'Productivité', desc: "L'IA au service de vos équipes, pas l'inverse" },
+export const systemElements: SystemElement[] = [
+  {
+    icon: 'building',
+    need: 'Présenter une institution, une administration, une ONG',
+    solution: "Un site qui tient la comparaison avec vos homologues internationaux — mission, programmes, publications.",
+    example: 'WAS Africa',
+  },
+  {
+    icon: 'cart',
+    need: 'Vendre en ligne, au Sénégal comme à l’étranger',
+    solution: 'Une boutique multi-devises, Mobile Money et carte sur la même caisse, livraison et relances.',
+    example: 'ATTA Africa',
+  },
+  {
+    icon: 'gear',
+    need: 'Piloter une opération : réservations, dossiers, stocks, ventes',
+    solution: 'Une plateforme métier ou un ERP relié à ce qui vend déjà — une seule source de vérité.',
+    example: 'SCOD VTC · Maison Peinture Sénégal',
+  },
+  {
+    icon: 'bolt',
+    need: 'Faire disparaître les tâches répétitives',
+    solution: 'Des workflows qui traitent les commandes, relancent les paniers et sortent les rapports tout seuls.',
+    example: 'ATTA Africa — reporting mensuel automatisé',
+  },
 ];
-
-// ── A7 — Trajectoires — RESTAURÉ. Rendu par TrajectoryGrid.tsx.
-export const trajectoriesLabel = 'Quatre trajectoires réelles, quatre points de départ';
-export const trajectories: Trajectory[] = [
-  { chain: ['Site', 'formulaire', 'CRM'], body: 'Les demandes arrêtent de se perdre dans les boîtes mail.' },
-  { chain: ['Boutique', 'stock', 'ERP'], body: 'Ce qui se vend se déduit, se facture et se compte automatiquement.' },
-  { chain: ['Application', 'base de données', 'automatisation'], body: "L'outil métier devient la source de vérité de l'équipe." },
-  { chain: ['Portail', 'workflow', 'reporting'], body: 'Chaque dossier suit un chemin clair, et on peut le mesurer.' },
-];
-export const trajectoriesLink: Cta = { label: 'Comprendre notre approche', href: '/agence' };
 
 // ── A8 — Réalisations (carrousel, contenu figé M2 → WordPress M3) ─────────
 export const casesIntro = {
@@ -210,19 +220,19 @@ export function pickCaseTeasers(names: string[]): CaseTeaser[] {
     .filter((c): c is CaseTeaser => Boolean(c));
 }
 
-// ── A9 — Preuve — RESTAURÉ (« Ce que notre travail démontre »). Rendu par
-//    components/sections/ProofGrid.tsx.
+// ── A9 — Preuve. Angle unique : la VÉRIFIABILITÉ (distinct de « du site au
+//    système » et de « standard international », traités ailleurs).
 export const proofIntro = {
   eyebrow: 'Preuve',
-  title: 'Ce que notre travail démontre.',
-  lead: "Pas de chiffres décoratifs : ce qui est affiché ici est vérifiable dans nos réalisations. Le reste attend sa source.",
+  title: 'On montre, on ne prétend pas.',
+  lead: "Sur cette page, tout est vérifiable : les clients sont nommés, les captures sont réelles, les chiffres sont ceux qu'on peut tenir.",
 };
 
 export const proofItems: ProofItem[] = [
-  { title: 'Plusieurs secteurs', body: 'Commerce, institutions, ONG, éducation, industrie.', toValidate: true },
-  { title: 'Du site au système', body: "On ne s'arrête pas au site : gestion, automatisation, connexion des outils." },
-  { title: 'Local + international', body: 'Mobile Money comme paiement international, vente transfrontalière.' },
-  { title: 'On reste après', body: 'Formation, suivi et évolutions une fois le projet en ligne.' },
+  { title: 'Des clients nommés', body: 'ATTA Africa, SCOD VTC, WAS Africa, Maison Peinture Sénégal — vous pouvez les vérifier.' },
+  { title: 'Des captures réelles', body: 'Ce que vous voyez ici, c’est du travail livré, pas des maquettes de démonstration.' },
+  { title: 'Zéro chiffre décoratif', body: "Pas de « +500 projets » invérifiable : les chiffres affichés sont ceux qu'on assume." },
+  { title: 'Un devis qui sort d’une conversation', body: 'Le prix vient du cadrage de votre projet réel, pas d’une grille figée.' },
 ];
 
 // ── A10 — Méthode : voir content/fr/methode.ts (Lot C — 3 étapes, <ol>,

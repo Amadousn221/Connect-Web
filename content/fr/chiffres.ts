@@ -11,27 +11,8 @@ export const chiffresIntro = {
 };
 
 export const stats: StatTile[] = [
-  {
-    label: 'Expérience',
-    value: '3 ans',
-    caption:
-      'Trois ans à concevoir des sites, boutiques, plateformes et systèmes pour des organisations avec des besoins réels.',
-  },
-  {
-    label: 'Projets',
-    value: '+20',
-    caption: 'Sites, boutiques, plateformes et systèmes livrés à ce jour.',
-  },
-  {
-    label: 'Délais',
-    value: '2 semaines',
-    caption:
-      'Délai moyen entre le coup d’envoi et la livraison du premier élément.',
-  },
-  {
-    label: 'Fidélité',
-    value: '90 %',
-    caption:
-      'Taux de clients qui reviennent pour un second projet ou une maintenance continue.',
-  },
+  { label: 'Expérience', value: '3 ans', caption: "d'expérience sur des projets réels" },
+  { label: 'Projets', value: '+20', caption: 'sites, boutiques et systèmes livrés' },
+  { label: 'Délais', value: '2 semaines', caption: 'délai moyen du premier livrable' },
+  { label: 'Fidélité', value: '90 %', caption: 'de clients qui reviennent' },
 ];
