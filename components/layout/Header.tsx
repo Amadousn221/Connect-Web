@@ -9,7 +9,6 @@ import { MegaMenu } from './MegaMenu';
 import { MobileDrawer } from './MobileDrawer';
 import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
-import { useModal } from '@/components/ui/ModalProvider';
 import { primaryNav, primaryCta, servicesHubPath } from './site-nav';
 import logo from '@/assets/logo-connect-web.webp';
 import styles from './Header.module.css';
@@ -22,7 +21,6 @@ export function Header({ locale }: { locale: Locale }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const megaId = useId();
   const headerRef = useRef<HTMLElement>(null);
-  const { open: openModal } = useModal();
 
   // Fermer le méga-menu au clic extérieur et à Échap.
   useEffect(() => {
@@ -104,28 +102,12 @@ export function Header({ locale }: { locale: Locale }) {
             <LangSwitcher current={locale} />
           </span>
           <ThemeToggle className={styles.desktopOnly} />
-          <button
-            type="button"
-            className={`${styles.quick} ${styles.desktopOnly}`}
-            onClick={() => openModal('contact')}
-            aria-label="Contact rapide"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M4 5h16v12H8l-4 4V5Z"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={() => openModal('project')}
+          <Link
+            href={localePath(locale, primaryCta.path)}
             className={`${styles.cta} ${styles.desktopOnly}`}
           >
             {primaryCta.label}
-          </button>
+          </Link>
           <button
             type="button"
             className={styles.burger}

@@ -7,8 +7,12 @@ import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/routing';
 import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
-import { useModal } from '@/components/ui/ModalProvider';
-import { servicesHubPath, primaryNav, primaryCta, contactInfo } from './site-nav';
+import {
+  servicesHubPath,
+  primaryNav,
+  primaryCta,
+  contactInfo,
+} from './site-nav';
 import logo from '@/assets/logo-connect-web.webp';
 import styles from './MobileDrawer.module.css';
 
@@ -25,7 +29,6 @@ export function MobileDrawer({
   locale: Locale;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
-  const { open: openModal } = useModal();
 
   // Fermeture à Échap + focus initial sur le bouton fermer + blocage du scroll.
   useEffect(() => {
@@ -96,16 +99,13 @@ export function MobileDrawer({
         </div>
 
         <div className={styles.actions}>
-          <button
-            type="button"
-            onClick={() => {
-              onClose();
-              openModal('project');
-            }}
+          <Link
+            href={localePath(locale, primaryCta.path)}
+            onClick={onClose}
             className={styles.cta}
           >
             {primaryCta.label}
-          </button>
+          </Link>
           <div className={styles.reach}>
             <a href={contactInfo.phones[0].href}>Appeler</a>
             <a href={contactInfo.whatsapp} target="_blank" rel="noopener noreferrer">
