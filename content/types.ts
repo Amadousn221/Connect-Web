@@ -114,6 +114,16 @@ export interface ProjectCardData {
   cta: ServiceLink; // « Voir l'étude de cas → » ; todo = page inexistante
 }
 
+// ── A6/A7 — Du site au système — RESTAURÉ (road interactif + trajectoires).
+export interface RoadNode {
+  label: string;
+  desc: string;
+}
+export interface Trajectory {
+  chain: string[]; // ["Site", "formulaire", "CRM"]
+  body: string;
+}
+
 // ── A9 — Preuve — RESTAURÉ (« Ce que notre travail démontre »).
 export interface ProofItem {
   title: string;

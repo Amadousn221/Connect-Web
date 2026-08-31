@@ -7,6 +7,8 @@ import type {
   HeroShot,
   NeedOption,
   ProofItem,
+  RoadNode,
+  Trajectory,
 } from '../types';
 
 // Copy de l'Accueil — extraite fidèlement de `Connect Web - Accueil V2.dc.html`.
@@ -164,9 +166,33 @@ export const needCtaBand = {
 //    DECISION 23). L'ancien modèle « 6 cartes plates » (offersIntro/offerCards)
 //    est remplacé par la hiérarchie carte parente + Niveau 2 + Conseil.
 
-// ── A6 — Du site au système : voir content/fr/systeme.ts (Lot C — bloc
-//    narratif 2 paragraphes, §06.8). Les composants « road » (systemRoad) et
-//    « trajectoires » interactifs sont abandonnés (audit §04 : on resserre).
+// ── A6 — Du site au système (road) — RESTAURÉ. Rendu par SystemRoad.tsx.
+//    La variante narrative du Lot C (content/fr/systeme.ts) est écartée.
+export const systemIntro = {
+  eyebrow: 'Du site au système',
+  title: "Digitaliser une organisation, ce n'est pas seulement créer un site.",
+  lead: "C'est relier ce qui vous fait exister, vendre et fonctionner. On ne suppose pas que vous avez besoin de tout : on construit ce qui compte, puis on connecte.",
+};
+
+export const systemRoadLabel = 'Six points d’entrée dans le système';
+export const systemRoad: RoadNode[] = [
+  { label: 'Présence', desc: 'On vous trouve, on vous croit' },
+  { label: 'Acquisition', desc: 'Des visiteurs qui deviennent des contacts' },
+  { label: 'Vente', desc: 'Encaisser ici et ailleurs' },
+  { label: 'Gestion', desc: 'Clients, stocks, devis au même endroit' },
+  { label: 'Automatisation', desc: 'Les tâches répétitives tournent toutes seules' },
+  { label: 'Productivité', desc: "L'IA au service de vos équipes, pas l'inverse" },
+];
+
+// ── A7 — Trajectoires — RESTAURÉ. Rendu par TrajectoryGrid.tsx.
+export const trajectoriesLabel = 'Quatre trajectoires réelles, quatre points de départ';
+export const trajectories: Trajectory[] = [
+  { chain: ['Site', 'formulaire', 'CRM'], body: 'Les demandes arrêtent de se perdre dans les boîtes mail.' },
+  { chain: ['Boutique', 'stock', 'ERP'], body: 'Ce qui se vend se déduit, se facture et se compte automatiquement.' },
+  { chain: ['Application', 'base de données', 'automatisation'], body: "L'outil métier devient la source de vérité de l'équipe." },
+  { chain: ['Portail', 'workflow', 'reporting'], body: 'Chaque dossier suit un chemin clair, et on peut le mesurer.' },
+];
+export const trajectoriesLink: Cta = { label: 'Comprendre notre approche', href: '/agence' };
 
 // ── A8 — Réalisations (carrousel, contenu figé M2 → WordPress M3) ─────────
 export const casesIntro = {

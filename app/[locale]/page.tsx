@@ -7,7 +7,8 @@ import { Wedge } from '@/components/sections/Wedge';
 import { ServiceGrid } from '@/components/sections/ServiceGrid';
 import { ProjectSlider } from '@/components/sections/ProjectSlider';
 import { StatsBlock } from '@/components/sections/StatsBlock';
-import { SystemNarrative } from '@/components/sections/SystemNarrative';
+import { SystemRoad } from '@/components/sections/SystemRoad';
+import { TrajectoryGrid } from '@/components/sections/TrajectoryGrid';
 import { Method } from '@/components/sections/Method';
 import { ProofGrid } from '@/components/sections/ProofGrid';
 import { WhoForGrid } from '@/components/sections/WhoForGrid';
@@ -36,7 +37,8 @@ export default async function HomePage({
       <ServiceGrid locale={locale} />
       <ProjectSlider locale={locale} />
       <StatsBlock />
-      <SystemNarrative />
+      <SystemRoad />
+      <TrajectoryGrid locale={locale} />
       <ProofGrid />
       <Method />
       <WhoForGrid />
