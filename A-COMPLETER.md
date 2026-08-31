@@ -19,32 +19,36 @@ Fichier : `content/fr/legal.ts`
 - [x] Directeur de la publication — *Amadou Diallo*
 - [x] Hébergeur — *Vercel Inc.*
 - [x] Durée de conservation des données — *3 ans après le dernier contact*
-- [ ] **Service d'acheminement d'e-mail** du formulaire → dépend du point 3
-      (une fois Resend/autre choisi, on inscrit le nom du prestataire)
+- [x] Prestataires tiers — *Vercel (hébergement) · Resend (e-mails) · HubSpot (CRM)*
 
-### 2. Formulaire de contact → e-mail (actuellement : n'envoie RIEN)
-Fichier : `app/api/contact/route.ts` (stub) · variable Vercel `RESEND_API_KEY`
+### 2. Formulaire de contact → Resend + HubSpot (le code est branché)
+Fichier : `app/api/contact/route.ts` (branché — dégrade proprement sans les clés)
 
+**Resend** (e-mail transactionnel vers contact@connect-web.tech) :
 - [ ] Créer un compte **resend.com** (gratuit)
-- [ ] Vérifier le domaine `connect-web.tech` (ou `send.connect-web.tech`) —
-      ajouter les 3 enregistrements DNS SPF/DKIM/DMARC fournis par Resend
-- [ ] Créer une **API Key** (`re_…`)
-- [ ] Ajouter `RESEND_API_KEY` dans **Vercel → Settings → Environment Variables**
-      (ou l'envoyer à l'implémentation)
-- [ ] E-mail de réception : **contact@connect-web.tech** ✅ (déjà connu)
+- [ ] **Domains → Add** `connect-web.tech` (ou `send.connect-web.tech`) → ajouter
+      les 3 enregistrements DNS (SPF/DKIM/DMARC) chez le registrar
+- [ ] **API Keys → Create** → récupérer `re_…`
+- [ ] Vercel → Environment Variables :
+      `RESEND_API_KEY` = `re_…`
+      `CONTACT_FROM_EMAIL` = `Connect Web <site@connect-web.tech>` (domaine vérifié)
 
-### 3. Tarifs affichés sur les pages d'offre
-Fichiers : `content/fr/offres/{boutiques-en-ligne,plateformes-applications,sites-entreprise}.ts`
+**HubSpot** (gestion des prospects) :
+- [ ] Compte HubSpot (Free CRM)
+- [ ] **Settings → Integrations → Private Apps → Create** — scope
+      `crm.objects.contacts.write` (+ `.read`)
+- [ ] Vercel → Environment Variable : `HUBSPOT_ACCESS_TOKEN` = `pat-…`
 
-Ces 3 pages affichent un bloc « Investissement » avec le placeholder
-**`[À PARTIR DE]`** (visible tel quel en production — moche).
+> Tant que les clés ne sont pas là : le formulaire affiche « Reçu » et la
+> demande est journalisée (visible dans les logs Vercel), mais rien n'est
+> envoyé. Dès que `RESEND_API_KEY` est posée, l'e-mail part.
 
-- [ ] Fournir un montant « à partir de » pour chaque (ex. « à partir de
-      1 500 000 FCFA »), **ou**
-- [ ] Décider de **masquer le bloc tarif** jusqu'à ce que les montants soient
-      fixés (l'implémentation le fait en 5 min).
-
-> Odoo, IA/automatisation et Marketing affichent déjà « Selon périmètre » — OK.
+### 3. Tarifs — fournis ✅
+Fichiers : `content/fr/offres/*.ts` + `content/fr/accueil.ts` (FAQ)
+- [x] Site vitrine → **à partir de 3 000 000 FCFA**
+- [x] Boutique e-commerce → **à partir de 500 000 FCFA**
+- [x] Plateforme métier → **« Selon les besoins »**
+- [x] Odoo / IA / Marketing → **« Selon périmètre »**
 
 ---
 
@@ -56,12 +60,11 @@ Ces 3 pages affichent un bloc « Investissement » avec le placeholder
 - [x] Endpoint GraphQL en ligne · WPGraphQL **installé et fonctionnel**
 - [ ] ⚠️ **Aucun type de contenu personnalisé** : seuls `post`/`page`/`attachment`
       existent. `case_study`, `portfolio_item`, `resource`, `team_member` **à créer**.
-- [ ] Installer **WPGraphQL for ACF** (+ ACF)
-- [ ] Enregistrer les 4 CPT + 2 taxonomies (`sector`, `offer_category`) avec
-      `show_in_graphql => true` → *l'implémentation peut fournir un mu-plugin PHP
-      prêt à déposer dans `wp-content/mu-plugins/` (demande-le)*
-- [ ] Créer les groupes de champs ACF (noms exacts dans `lib/wordpress/queries/*`
-      et `lib/wordpress/types.ts`)
+- [ ] Installer **ACF** + **WPGraphQL for ACF**
+- [ ] **Déposer `wordpress/mu-plugins/connect-web-content-model.php`** dans
+      `wp-content/mu-plugins/` sur le serveur → enregistre les 4 CPT, 2 taxonomies
+      et tous les groupes de champs ACF (voir `wordpress/README.md`)
+- [ ] Vérifier le schéma dans GraphiQL + `npm run test:wordpress`
 - [ ] Envoyer : `WORDPRESS_AUTH_USER` / `WORDPRESS_AUTH_APP_PASSWORD` si le
       contenu doit être protégé (sinon l'endpoint public suffit)
 - [ ] Saisir : les 3 fiches de cas (**ATTA Africa**, **SCOD VTC**,
@@ -118,10 +121,9 @@ Deux cartes n'ont pas de page 1:1 → renvoient vers la plus proche :
 
 - [ ] OK avec ce compromis, ou créer des pages dédiées plus tard ?
 
-### 10. FAQ accueil — montants
+### 10. FAQ accueil — montants ✅
 Fichier : `content/fr/accueil.ts` (`faqItems[0]`)
-- [ ] Fournir les montants « à partir de » (site institutionnel / boutique) ou
-      garder la réponse actuelle sans montant
+- [x] Réponse mise à jour avec les tarifs indicatifs (vitrine 3M, boutique 500k)
 
 ---
 

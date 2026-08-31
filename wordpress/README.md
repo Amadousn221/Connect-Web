@@ -1,73 +1,64 @@
-# Connect Web — WordPress headless
+# WordPress headless — mise en route
 
-Back-office de contenu uniquement (cas clients, réalisations, équipe, ressources).
-**Aucune page rendue par WordPress** — le rendu et le routage sont 100 % Next.js
-(DECISION 18). WordPress expose une API WPGraphQL, interrogée par Next au build et
-à la revalidation.
+Le frontend Next.js consomme un WordPress via **WPGraphQL**. Ce dossier contient
+le code WP-side à installer sur l'instance (`https://admin.connect-web.tech`).
 
-## Contenu de ce dossier
+## Étapes
 
+### 1. Extensions (WordPress → Extensions → Ajouter)
+| Extension | Rôle |
+|---|---|
+| **Advanced Custom Fields (ACF)** | champs personnalisés — gratuit |
+| **WPGraphQL** | expose WordPress en GraphQL |
+| **WPGraphQL for ACF** | expose les champs ACF dans le schéma (ACF ≥ 6.1) |
+
+### 2. Déposer le mu-plugin
+Copier `mu-plugins/connect-web-content-model.php` dans
+`wp-content/mu-plugins/` sur le serveur (créer le dossier s'il n'existe pas).
+Un *must-use plugin* se charge automatiquement — rien à activer.
+
+Il enregistre :
+- 4 types de contenu : **Cas clients**, **Réalisations**, **Ressources**, **Équipe**
+- 2 taxonomies : **Secteurs**, **Catégories d'offre**
+- les groupes de champs ACF correspondants (bilingues FR/EN)
+
+### 3. Vérifier le schéma
+WordPress → **GraphQL → GraphiQL**, lancer :
+
+```graphql
+{
+  caseStudies(first: 1) { nodes { id slug caseStudyFields { casClientName } } }
+  portfolioItems(first: 1) { nodes { id } }
+  resources(first: 1) { nodes { id } }
+  teamMembers(first: 1) { nodes { id } }
+  sectors { nodes { name termI18n { termLabelEn } } }
+}
 ```
-mu-plugins/
-  connect-web-content-model/
-    connect-web-content-model.php   loader mu-plugin
-    inc/
-      post-types.php                CPT : cas_client, realisation, membre_equipe, ressource
-      taxonomies.php                sector, offer_category (+ termes d'amorçage)
-      acf-field-groups.php          groupes ACF (champs FR/EN, DECISION 21) — en code
-      graphql.php                   réglages WPGraphQL
-```
 
-Tout le modèle est **en code, versionnable**. Rien à configurer à la main dans
-l'admin (exigence du plan d'implémentation) : modifier un champ = modifier
-`acf-field-groups.php`.
-
-## Installation sur l'instance Hostinger (à faire par le PO)
-
-1. **Provisionner l'hébergement Hostinger** avec assez de RAM/CPU pour l'admin WP
-   + les requêtes WPGraphQL (le trafic visiteur ne touche pas WordPress).
-2. **Installer WordPress**, puis les extensions :
-   - **Advanced Custom Fields** — **ACF PRO** requis (les champs `repeater` et
-     `gallery` de `result` / `automation` / `gallery` en dépendent ; sans PRO il
-     faudra remodeler ces 3 champs — à décider ensemble).
-   - **WPGraphQL** (1.x)
-   - **WPGraphQL for ACF** (2.x)
-3. **Déposer** le dossier `mu-plugins/connect-web-content-model/` dans
-   `wp-content/mu-plugins/` (créer le dossier `mu-plugins` s'il n'existe pas).
-   Un mu-plugin s'active tout seul, sans passer par l'écran Extensions.
-4. **Vérifier** dans l'admin : les menus « Cas clients », « Réalisations »,
-   « Équipe », « Ressources », « Secteurs », « Catégories d'offre » apparaissent.
-5. **Créer une entrée de test par type** (contenu manifestement fictif — pas de
-   faux témoignage / faux chiffre / faux logo qui ressemble à du réel).
-6. **Sécuriser** : protéger / limiter `wp-admin` et `wp-login.php` en public
-   (le front n'en a pas besoin), désactiver l'API REST publique non nécessaire,
-   garder XML-RPC fermé.
-7. **Transmettre au dev** :
-   - l'URL de l'endpoint WPGraphQL (`https://…/graphql`) → `WORDPRESS_API_URL`
-   - le hostname de la médiathèque → `WORDPRESS_IMAGE_HOSTNAME`
-   - si preview de brouillons souhaitée : un utilisateur + **application password**
-     → `WORDPRESS_AUTH_USER` / `WORDPRESS_AUTH_APP_PASSWORD`
-
-## Vérification côté dev
+Puis côté repo :
 
 ```bash
-# dans connect-web/, après avoir renseigné .env.local
-npm run test:wordpress
+npm run test:wordpress          # WORDPRESS_API_URL doit être dans .env.local
 ```
 
-Le script contrôle : endpoint joignable · les 4 types + 2 taxonomies présents
-dans le schéma · groupes ACF exposés · lecture d'une entrée de chaque type, avec
-le détail des champs optionnels à `null` (contrôle « état absent »).
+Ce script compare le schéma généré aux requêtes de `lib/wordpress/queries/*` et
+signale tout nom de champ à corriger (WPGraphQL for ACF peut nommer les champs
+image/repeater différemment selon sa version — c'est le cas connu à ajuster).
 
-## Modèle de données
+### 4. Saisir le contenu
+- **3 fiches de cas** : ATTA Africa, SCOD VTC, Maison Peinture Sénégal
+- Premiers articles **Ressources**
+- **Équipe** (optionnel — la section reste masquée tant que vide)
 
-Résumé dans `inc/acf-field-groups.php`. **À réconcilier** avec
-`connect-web-phase-10-product-specs-part1.md` §10.1 (modèle exact + états vides) —
-ce fichier n'était pas disponible au moment de l'écriture ; le schéma actuel
-dérive de l'ADR-002 et de la structure des 3 cas phares (P08 part4).
+### 5. Brancher le frontend
+Ajouter dans **Vercel → Settings → Environment Variables** :
 
-## Revalidation ISR (Milestone M3, pas M1)
+| Variable | Valeur |
+|---|---|
+| `WORDPRESS_API_URL` | `https://admin.connect-web.tech/graphql` |
+| `WORDPRESS_AUTH_USER` | *(optionnel — si contenu protégé)* |
+| `WORDPRESS_AUTH_APP_PASSWORD` | *(mot de passe d'application WP)* |
 
-Un mu-plugin dédié `connect-web-revalidate` sera ajouté en M3 : au `save_post`
-d'un contenu, il appellera `POST https://<site>/api/revalidate` signé avec
-`REVALIDATE_SECRET` (constante d'environnement WordPress, jamais en dur).
+Puis prévenir l'implémentation : on crée les routes `/realisations/[slug]` et
+`/ressources/[slug]`, on branche le hub Ressources sur `getAllResources()`, et
+on ajoute le webhook de revalidation (`/api/revalidate`).

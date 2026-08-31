@@ -259,17 +259,11 @@ export const faqIntro = {
   title: 'Ce que les organisations nous demandent avant de démarrer.',
 };
 
-// 6 questions §06.10 du Design Handoff, orientées objection. Q1 : les montants
-// « à partir de » sont des placeholders PO — tant qu'ils ne sont pas fournis,
-// la réponse affichée est la version sans montant (voir FaqAccordion + note).
+// 6 questions §06.10 du Design Handoff, orientées objection.
 export const faqItems: FaqItem[] = [
   {
     q: 'Combien coûte un projet avec vous ?',
-    // TODO PO : remplir les 2 montants « à partir de » (site institutionnel /
-    // boutique). Tant qu'ils sont vides, `a` ci-dessous est la version de repli.
-    a: 'Chaque devis est cadré selon le projet réel — pas de package figé. Contactez-nous pour un devis gratuit.',
-    toValidateNote:
-      'Montants « à partir de » (site institutionnel, boutique) à fournir par le PO avant publication.',
+    a: "À titre indicatif : un site vitrine démarre à 3 000 000 FCFA, une boutique en ligne à 500 000 FCFA, une plateforme métier se chiffre selon les besoins. Chaque devis est ensuite cadré sur le projet réel — pas de package figé. Le cadrage et le devis sont gratuits.",
   },
   {
     q: 'Pouvez-vous reprendre un projet existant ?',

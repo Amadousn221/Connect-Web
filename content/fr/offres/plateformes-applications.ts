@@ -119,9 +119,10 @@ export const plateformesApplications: OfferContent = {
   pricing: {
     eyebrow: 'Investissement',
     title: 'Combien ça coûte ?',
-    body: "Une plateforme sur-mesure démarre à [À PARTIR DE], et le prix dépend fortement du périmètre : plus il y a de fonctions et d'opérations à couvrir, plus le projet est conséquent. On cadre précisément avec vous avant de chiffrer. Souvent, un audit est la bonne première étape.",
+    body: "Une plateforme sur-mesure se chiffre selon vos besoins réels : plus il y a de fonctions et d'opérations à couvrir, plus le projet est conséquent. On cadre précisément avec vous avant de chiffrer. Souvent, un audit est la bonne première étape.",
     cardLabel: 'Plateforme sur-mesure',
-    pricePlaceholder: '[À PARTIR DE]',
+    pricePlaceholder: 'Selon les besoins',
+    priceFrom: '',
     includes: [
       'Réservation, portail et back-office',
       'Cadrage des flux inclus',

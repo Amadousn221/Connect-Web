@@ -149,7 +149,7 @@ export const politiqueConfidentialite: LegalPageContent = {
       title: 'Partage avec des tiers',
       blocks: [
         {
-          p: "Vos données ne sont partagées qu'avec les prestataires techniques strictement nécessaires au fonctionnement du site : Vercel Inc. (hébergement du site et acheminement des demandes du formulaire) et ⟦service d'acheminement d'e-mail — à préciser⟧. Ces prestataires sont tenus aux mêmes exigences de confidentialité et n'utilisent vos données que pour le compte de Connect Web.",
+          p: "Vos données ne sont partagées qu'avec les prestataires techniques strictement nécessaires au fonctionnement du site : Vercel Inc. (hébergement), Resend (acheminement des e-mails du formulaire) et HubSpot (gestion de la relation client et suivi de votre demande). Ces prestataires sont tenus aux mêmes exigences de confidentialité et n'utilisent vos données que pour le compte de Connect Web.",
         },
       ],
     },

@@ -152,9 +152,9 @@ export const boutiquesEnLigne: OfferContent = {
   pricing: {
     eyebrow: 'Investissement',
     title: 'Combien ça coûte ?',
-    body: "Nos boutiques démarrent à [À PARTIR DE]. Le prix final dépend de ce qu'on construit : nombre de produits, paiements internationaux, connexions à vos outils. On cadre la valeur avec vous avant de chiffrer — pas de devis surprise.",
+    body: "Nos boutiques démarrent à 500 000 FCFA. Le prix final dépend de la complexité : nombre de produits, paiements internationaux, connexions à vos outils. On cadre la valeur avec vous avant de chiffrer — pas de devis surprise.",
     cardLabel: 'Boutique en ligne',
-    pricePlaceholder: '[À PARTIR DE]',
+    pricePlaceholder: '500 000 FCFA',
     includes: [
       'Boutique complète, paiement local + international',
       'Formation + prise en main',

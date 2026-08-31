@@ -72,9 +72,9 @@ export const sitesEntreprise: OfferContent = {
   pricing: {
     eyebrow: 'Investissement',
     title: 'Un budget clair, cadré à votre périmètre.',
-    body: 'Pas de surprise : on cadre le nombre de pages et le contenu ensemble, puis on chiffre. Vous restez propriétaire de tout.',
-    cardLabel: "Site d'entreprise",
-    pricePlaceholder: '[À PARTIR DE]',
+    body: 'Un site vitrine démarre à 3 000 000 FCFA ; le prix final dépend des fonctionnalités (nombre de pages, bilingue, intégrations, contenu). On cadre tout ensemble avant de chiffrer — pas de devis surprise.',
+    cardLabel: "Site vitrine / d'entreprise",
+    pricePlaceholder: '3 000 000 FCFA',
     includes: [
       'Site complet, bilingue FR/EN',
       'SEO technique inclus',
