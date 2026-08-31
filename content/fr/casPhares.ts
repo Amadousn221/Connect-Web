@@ -19,7 +19,8 @@ export const casPharesIntro = {
 export const casPharesLink = {
   label: 'Voir toutes les réalisations',
   href: '/realisations',
-  todo: true,
+  // /realisations existe désormais (Lot C) — lien actif.
+  todo: false,
 };
 
 export const casPharesCards: ProjectCardData[] = [

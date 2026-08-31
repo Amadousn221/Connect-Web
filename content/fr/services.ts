@@ -32,7 +32,9 @@ export const serviceCards: ServiceCardData[] = [
       src: '/assets/real/was-africa.jpg',
       alt: "Site institutionnel de WAS Africa réalisé par Connect Web",
     },
-    cta: { label: "Voir l'offre", href: '/services/conception-developpement-web', todo: true },
+    // Pas de page « conception-developpement-web » : on renvoie vers la page
+    // d'offre la plus proche (présence / crédibilité).
+    cta: { label: "Voir l'offre", href: '/services/sites-entreprise' },
   },
   {
     title: 'Logiciels & applications web',
@@ -49,7 +51,7 @@ export const serviceCards: ServiceCardData[] = [
       src: '/assets/real/scod-vtc.jpg',
       alt: 'Plateforme de réservation SCOD VTC réalisée par Connect Web',
     },
-    cta: { label: "Voir l'offre", href: '/services/logiciels-applications-web', todo: true },
+    cta: { label: "Voir l'offre", href: '/services/plateformes-applications' },
   },
   {
     title: 'ERP / CRM',
@@ -57,8 +59,7 @@ export const serviceCards: ServiceCardData[] = [
       'Centraliser vos ventes, vos stocks et vos clients dans un seul système, relié à ce qui vend déjà.',
     badges: ['Odoo', 'HubSpot', 'Gestion des stocks', 'Ventes', 'Intégrations'],
     imageMissing: 'ERP Odoo Maison Peinture Sénégal',
-    // slug aligné sur site-nav.ts / méga-menu (vague 4 — cohérence d'audit).
-    cta: { label: "Voir l'offre", href: '/services/crm-erp-integrations', todo: true },
+    cta: { label: "Voir l'offre", href: '/services/crm-erp-integrations' },
   },
   {
     title: 'IA & automatisation',
@@ -66,15 +67,14 @@ export const serviceCards: ServiceCardData[] = [
       'Faire disparaître les tâches répétitives : traitement de commandes, relances, reporting — pour que votre équipe se concentre sur le reste.',
     badges: ['n8n', 'Automatisation', 'Reporting auto', 'Relance panier', 'API'],
     imageMissing: 'Reporting mensuel automatisé ATTA Africa',
-    cta: { label: "Voir l'offre", href: '/services/ia-automatisation', todo: true },
+    cta: { label: "Voir l'offre", href: '/services/ia-automatisation' },
   },
   {
     title: 'Marketing & génération de prospects',
     description: 'Attirer, qualifier et convertir : campagnes, e-mail, acquisition.',
     badges: ['Mailchimp', 'Klaviyo', 'Email marketing', 'Campagnes', 'Acquisition'],
     imageMissing: 'Campagne marketing (pas encore de cas public)',
-    // slug aligné sur site-nav.ts / méga-menu (vague 4 — cohérence d'audit).
-    cta: { label: "Voir l'offre", href: '/services/marketing-acquisition', todo: true },
+    cta: { label: "Voir l'offre", href: '/services/marketing-acquisition' },
   },
   {
     title: 'Conseil & stratégie',

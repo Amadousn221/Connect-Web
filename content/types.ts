@@ -88,6 +88,8 @@ export interface CaseTeaser {
   image?: { src: string; alt: string };
   /** carte sans visuel/validation en attente (ATTA) */
   pending?: boolean;
+  /** axe de filtre du hub Réalisations (Lot C). */
+  group?: 'ecommerce' | 'plateforme' | 'entreprise' | 'institutionnel';
 }
 
 // ── A7 — Cas phares (V2.1, Lot D) — carte du slider ProjectSlider (§09.2)

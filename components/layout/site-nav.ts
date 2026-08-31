@@ -5,15 +5,16 @@
 // DECISION 06 : nav = Services · Réalisations · Agence · Ressources + CTA Contact.
 // Slugs = arborescence cible du plan d'implémentation Phase 24.
 //
-// Audit liens — état des routes cibles dans app/ :
-//   ✅ créées : / · /services/boutiques-en-ligne · /services/plateformes-applications
-//      /services/sites-entreprise · /services/sites-institutionnels-ong
-//      /services/crm-erp-integrations · /services/ia-automatisation
-//      /services/marketing-acquisition · /agence · /mentions-legales
-//      /politique-de-confidentialite
-//   ⛔ TODO (rendent un 404 tant que non construites) :
-//      /services (hub) · /services/conseil-strategie · /realisations
-//      /realisations/[slug] · /ressources · /contact
+// Audit liens — état des routes cibles dans app/ (Lots A/B/C) :
+//   ✅ créées : / · /agence · /realisations · /ressources · /mentions-legales
+//      /politique-de-confidentialite · /services/boutiques-en-ligne
+//      /services/plateformes-applications · /services/sites-entreprise
+//      /services/sites-institutionnels-ong · /services/crm-erp-integrations
+//      /services/ia-automatisation · /services/marketing-acquisition
+//   ↪︎ redirigés vers l'ancre #contact de l'accueil (pas de page dédiée) :
+//      « Contact » (nav/footer), CTA « Parlons de votre projet », Conseil du méga-menu
+//   ⛔ TODO (404 tant que non construites — Lot D) :
+//      /services (hub, skip-link Header) · /realisations/[slug] (fiches WordPress)
 
 export type NavLink = { label: string; path: string };
 
@@ -22,7 +23,7 @@ export const primaryNav: NavLink[] = [
   { label: 'Réalisations', path: '/realisations' },
   { label: 'Agence', path: '/agence' },
   { label: 'Ressources', path: '/ressources' },
-  { label: 'Contact', path: '/contact' },
+  { label: 'Contact', path: '/#contact' },
 ];
 
 /** Bloc 1 du méga-menu — « Ce qu'on construit » (offres Niveau 1, DECISION 03). */
@@ -41,16 +42,21 @@ export const megaMenuSystem: NavLink[] = [
   { label: 'Marketing & acquisition', path: '/services/marketing-acquisition' },
 ];
 
-/** Bloc 3 du méga-menu — Conseil (porte d'entrée, DECISION 07/08). */
+/** Bloc 3 du méga-menu — Conseil (porte d'entrée, DECISION 07/08).
+ *  Pas de page /services/conseil-strategie → on renvoie vers le contact de
+ *  l'accueil (une demande d'audit = une prise de contact). */
 export const megaMenuConseil = {
-  path: '/services/conseil-strategie',
+  path: '/#contact',
   title: 'Pas sûr par où commencer ?',
   body: 'Un audit gratuit pour cadrer votre projet et prioriser ce qui compte.',
   cta: 'Conseil & audit gratuit',
 };
 
 export const servicesHubPath = '/services';
-export const contactPath = '/contact';
+// Pas de page /contact dédiée (jalon ultérieur) : les CTA « contact » renvoient
+// vers la section #contact de l'accueil, présente sur toutes les pages via son
+// ancre (Header, Footer, MobileDrawer).
+export const contactPath = '/#contact';
 
 /** CTA principal unique — DECISION 11 (« devis » uniformisé, DECISION 15). */
 export const primaryCta = { label: 'Parlons de votre projet', path: contactPath };
@@ -71,7 +77,7 @@ export const footerColumns: { heading: string; links: NavLink[] }[] = [
       { label: 'À propos', path: '/agence' },
       { label: 'Réalisations', path: '/realisations' },
       { label: 'Ressources', path: '/ressources' },
-      { label: 'Contact', path: '/contact' },
+      { label: 'Contact', path: '/#contact' },
     ],
   },
 ];
