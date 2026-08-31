@@ -44,17 +44,21 @@ export const mentionsLegales: LegalPageContent = {
       title: 'Éditeur du site',
       blocks: [
         {
-          p: "Le présent site est édité par Connect Web, studio digital basé à Dakar, Sénégal. Nom / raison sociale : ⟦raison sociale⟧. Forme juridique : ⟦forme juridique⟧. Numéro d'immatriculation (NINEA / RCCM) : ⟦numéro NINEA / RCCM⟧. Siège : Dakar, Sénégal. Téléphone : +221 77 900 62 82 / +221 78 343 82 49. E-mail : ⟦e-mail de contact⟧.",
+          p: 'Le présent site est édité par Connect Web, studio digital basé à Dakar, Sénégal. Nom commercial : Connect Web. Forme juridique : entreprise individuelle. NINEA : 011990604. RCCM : SN.DKR.2025.A.10391. Siège : Dakar, Sénégal. Téléphone : +221 77 900 62 82 / +221 78 343 82 49. E-mail : contact@connect-web.tech.',
         },
       ],
     },
     {
       title: 'Directeur de la publication',
-      blocks: [{ p: '⟦Prénom Nom⟧, en qualité de ⟦fonction⟧.' }],
+      blocks: [{ p: 'Amadou Diallo, fondateur de Connect Web (développeur full-stack).' }],
     },
     {
       title: 'Hébergement',
-      blocks: [{ p: "Le site est hébergé par ⟦nom de l'hébergeur⟧, ⟦adresse de l'hébergeur⟧." }],
+      blocks: [
+        {
+          p: 'Le site est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis — vercel.com.',
+        },
+      ],
     },
     {
       title: 'Liens hypertextes',
@@ -145,7 +149,7 @@ export const politiqueConfidentialite: LegalPageContent = {
       title: 'Partage avec des tiers',
       blocks: [
         {
-          p: "Vos données ne sont partagées qu'avec les prestataires techniques strictement nécessaires au fonctionnement du site (hébergement, envoi d'e-mails) : ⟦liste des prestataires réels — hébergeur, service d'envoi d'e-mail/newsletter⟧. Ces prestataires sont tenus aux mêmes exigences de confidentialité.",
+          p: "Vos données ne sont partagées qu'avec les prestataires techniques strictement nécessaires au fonctionnement du site : Vercel Inc. (hébergement du site et acheminement des demandes du formulaire) et ⟦service d'acheminement d'e-mail — à préciser⟧. Ces prestataires sont tenus aux mêmes exigences de confidentialité et n'utilisent vos données que pour le compte de Connect Web.",
         },
       ],
     },
@@ -153,7 +157,7 @@ export const politiqueConfidentialite: LegalPageContent = {
       title: 'Conservation',
       blocks: [
         {
-          p: "Vos données sont conservées le temps nécessaire au traitement de votre demande, puis archivées ou supprimées conformément à la réglementation en vigueur ⟦durée de conservation si fixée en interne, ex. 3 ans après le dernier contact⟧.",
+          p: "Vos données sont conservées le temps nécessaire au traitement de votre demande, puis pendant une durée maximale de 3 ans à compter de notre dernier contact, avant d'être supprimées ou anonymisées.",
         },
       ],
     },
@@ -177,7 +181,7 @@ export const politiqueConfidentialite: LegalPageContent = {
       title: 'Vos droits',
       blocks: [
         {
-          p: "Conformément à la loi sénégalaise n° 2008-12 du 25 janvier 2008 relative à la protection des données à caractère personnel, vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression de vos données. Vous pouvez exercer ces droits en nous contactant à ⟦e-mail de contact⟧.",
+          p: "Conformément à la loi sénégalaise n° 2008-12 du 25 janvier 2008 relative à la protection des données à caractère personnel, vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression de vos données. Vous pouvez exercer ces droits en nous contactant à contact@connect-web.tech.",
         },
         {
           p: "Vous pouvez également adresser une réclamation à la Commission de Protection des Données Personnelles (CDP), l'autorité sénégalaise compétente en la matière.",
@@ -195,7 +199,7 @@ export const politiqueConfidentialite: LegalPageContent = {
     {
       title: 'Contact',
       blocks: [
-        { p: 'Pour toute question relative à cette politique : ⟦e-mail de contact⟧ · +221 77 900 62 82 · +221 78 343 82 49.' },
+        { p: 'Pour toute question relative à cette politique : contact@connect-web.tech · +221 77 900 62 82 · +221 78 343 82 49.' },
       ],
     },
   ],
