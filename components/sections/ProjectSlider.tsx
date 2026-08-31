@@ -6,7 +6,6 @@ import {
   useRef,
   useState,
   type KeyboardEvent,
-  type PointerEvent as ReactPointerEvent,
 } from 'react';
 import Link from 'next/link';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -27,8 +26,9 @@ import styles from './ProjectSlider.module.css';
 // la position et se drague. Nav clavier conservée (flèches).
 export function ProjectSlider({ locale }: { locale: Locale }) {
   const railRef = useRef<HTMLDivElement>(null);
+  const thumbRef = useRef<HTMLSpanElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const [thumb, setThumb] = useState({ width: 100, left: 0 });
-  const drag = useRef<{ startX: number; startLeft: number } | null>(null);
 
   const sync = useCallback(() => {
     const el = railRef.current;
@@ -52,6 +52,48 @@ export function ProjectSlider({ locale }: { locale: Locale }) {
     };
   }, [sync]);
 
+  // Drag du curseur — listeners natifs (hors JSX) pour piloter le scroll du rail.
+  useEffect(() => {
+    const thumbEl = thumbRef.current;
+    const trackEl = trackRef.current;
+    const rail = railRef.current;
+    if (!thumbEl || !trackEl || !rail) return;
+
+    let start: { x: number; scrollLeft: number } | null = null;
+
+    const onMove = (e: PointerEvent) => {
+      if (!start) return;
+      const dx = e.clientX - start.x;
+      const max = rail.scrollWidth - rail.clientWidth;
+      const next =
+        start.scrollLeft + (dx / trackEl.clientWidth) * rail.scrollWidth;
+      rail.scrollLeft = Math.max(0, Math.min(max, next));
+    };
+    const onUp = (e: PointerEvent) => {
+      start = null;
+      try {
+        thumbEl.releasePointerCapture(e.pointerId);
+      } catch {
+        /* capture déjà relâchée */
+      }
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+    };
+    const onDown = (e: PointerEvent) => {
+      start = { x: e.clientX, scrollLeft: rail.scrollLeft };
+      thumbEl.setPointerCapture(e.pointerId);
+      window.addEventListener('pointermove', onMove);
+      window.addEventListener('pointerup', onUp);
+    };
+
+    thumbEl.addEventListener('pointerdown', onDown);
+    return () => {
+      thumbEl.removeEventListener('pointerdown', onDown);
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+    };
+  }, []);
+
   const step = () => {
     const el = railRef.current;
     const card = el?.querySelector('article');
@@ -68,30 +110,6 @@ export function ProjectSlider({ locale }: { locale: Locale }) {
         behavior: 'smooth',
       });
     }
-  };
-
-  // ── drag du curseur de la bande basse ─────────────────────────────────
-  const onThumbDown = (e: ReactPointerEvent<HTMLSpanElement>) => {
-    const el = railRef.current;
-    if (!el) return;
-    e.currentTarget.setPointerCapture(e.pointerId);
-    drag.current = { startX: e.clientX, startLeft: el.scrollLeft };
-  };
-  const onThumbMove = (e: ReactPointerEvent<HTMLSpanElement>) => {
-    const el = railRef.current;
-    if (!drag.current || !el) return;
-    const track = e.currentTarget.parentElement;
-    if (!track) return;
-    const dx = e.clientX - drag.current.startX;
-    const max = el.scrollWidth - el.clientWidth;
-    el.scrollLeft =
-      drag.current.startLeft + (dx / track.clientWidth) * el.scrollWidth;
-    if (el.scrollLeft < 0) el.scrollLeft = 0;
-    if (el.scrollLeft > max) el.scrollLeft = max;
-  };
-  const onThumbUp = (e: ReactPointerEvent<HTMLSpanElement>) => {
-    drag.current = null;
-    e.currentTarget.releasePointerCapture(e.pointerId);
   };
 
   const todoRoutes = [
@@ -122,14 +140,11 @@ export function ProjectSlider({ locale }: { locale: Locale }) {
           ))}
         </div>
 
-        <div className={styles.track} aria-hidden="true">
+        <div ref={trackRef} className={styles.track} aria-hidden="true">
           <span
+            ref={thumbRef}
             className={styles.thumb}
             style={{ width: `${thumb.width}%`, left: `${thumb.left}%` }}
-            onPointerDown={onThumbDown}
-            onPointerMove={onThumbMove}
-            onPointerUp={onThumbUp}
-            onPointerCancel={onThumbUp}
           />
         </div>
 

@@ -27,7 +27,7 @@ function Panel({ opt, locale }: { opt: NeedOption; locale: Locale }) {
       </div>
       <p className={`cw-serif ${styles.situation}`}>{opt.situation}</p>
       <p className={styles.answer}>{opt.answer}</p>
-      <p className={styles.deliversLabel}>Ce qu'on livre</p>
+      <p className={styles.deliversLabel}>Ce qu’on livre</p>
       <div className={styles.tags}>
         {opt.delivers.map((d) => (
           <Tag key={d}>{d}</Tag>
