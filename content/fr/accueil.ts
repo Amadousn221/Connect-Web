@@ -78,12 +78,12 @@ export const needOptions: NeedOption[] = [
   {
     key: 'visible',
     label: 'Être visible et crédible',
-    hint: 'Sites corporate, institutionnels, ONG, écoles',
+    hint: 'Administrations, institutions, ONG, entreprises, écoles',
     situation:
-      "« On existe depuis des années, mais quand quelqu'un nous cherche en ligne, il ne trouve rien de sérieux. »",
+      "« On existe depuis des années, mais quand un bailleur, un partenaire ou un client nous cherche en ligne, il ne trouve rien de sérieux. »",
     answer:
-      'On construit une présence qui tient la comparaison avec vos homologues internationaux : structure claire, contenu qui explique vraiment ce que vous faites, performance et référencement soignés dès le départ.',
-    delivers: ['Site corporate', 'Site institutionnel / ONG', 'Site école & formation', 'Refonte & SEO'],
+      "On construit une présence qui tient la comparaison avec vos homologues internationaux : structure claire, contenu qui explique vraiment ce que vous faites, publications et rapports accessibles, performance et référencement soignés dès le départ.",
+    delivers: ['Site institutionnel', "Site d'entreprise", 'Site ONG & programmes', 'Refonte & SEO'],
     link: { label: 'Découvrir', href: '/services/sites-entreprise' },
   },
   {

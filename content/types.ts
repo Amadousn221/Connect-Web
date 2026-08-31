@@ -60,21 +60,17 @@ export interface ServiceLink {
   todo?: boolean;
 }
 
-// `variant` pilote le rendu (ServiceCard) :
-//  - parent    : carte large « Conception et développement web » (3 sous-services)
-//  - primary   : carte Niveau 1 standard (Logiciels & applications web)
-//  - secondary : carte Niveau 2 compacte (ERP/CRM · IA · Marketing)
-//  - conseil   : porte d'entrée, pleine largeur, ton distinct
+// Carte de service — format « image en tête + badges » (correction post-déploiement).
+// Les badges = déclinaisons / technos du service : preuve DANS la carte, jamais
+// en carte autonome (DECISION 23). `conseil` = carte porte d'entrée, ton distinct.
 export interface ServiceCardData {
-  num?: string;
-  variant: 'parent' | 'primary' | 'secondary' | 'conseil';
   title: string;
   description: string;
-  subServices?: ServiceLink[]; // max 3 (DECISION 23)
-  proof?: string; // « Preuve : … » ou « Capacité — … »
-  tech?: string; // ligne technos, ex. « Odoo · HubSpot »
+  badges: string[]; // max 5
   image?: { src: string; alt: string };
+  imageMissing?: string; // libellé si capture réelle à fournir (repère preview)
   cta: ServiceLink;
+  variant?: 'conseil';
 }
 
 // ── A5 (wedge) — un des 3 points « ce qui nous rend irremplaçable »

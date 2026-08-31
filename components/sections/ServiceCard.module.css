@@ -1,36 +1,70 @@
 .card {
-  background: var(--card);
-  color: var(--ink);
   min-width: 0;
-  padding: var(--space-2xl); /* 32 — uniforme sur toutes les cartes */
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
   transition:
-    transform var(--dur-instant) ease,
-    background var(--dur-instant) ease;
+    transform 150ms ease,
+    border-color 150ms ease;
 }
 .card:hover {
   transform: translateY(-2px);
-  background: var(--bg-alt);
+  border-color: var(--border);
   position: relative;
   z-index: 1;
 }
-
-/* Conseil = porte d'entrée : fond légèrement distinct, pas de lift au survol. */
 .card[data-variant='conseil'] {
   background: var(--bg-alt);
 }
 .card[data-variant='conseil']:hover {
   transform: none;
-  background: var(--bg-alt);
 }
 
-.num {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--ink-faint);
+/* ── image en tête ─────────────────────────────────────────────────────── */
+.media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--petrol-nuit);
+}
+.img {
+  object-fit: cover;
+  object-position: top;
+}
+.missing {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px;
+  text-align: center;
+  border: 1px dashed rgba(255, 255, 255, 0.32);
+}
+.missingTag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.66);
+}
+.missingLabel {
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 22ch;
+}
+
+/* ── corps ─────────────────────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--space-2xl);
 }
 
 .title {
@@ -41,78 +75,38 @@
   color: var(--ink);
   text-wrap: pretty;
 }
-.card[data-variant='secondary'] .title {
-  font-size: 19px;
-}
 
 .desc {
   margin: 0;
   font-size: 14.5px;
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--ink-soft);
   text-wrap: pretty;
 }
-.card[data-variant='conseil'] .desc {
-  max-width: 64ch;
-}
 
-.tags {
+.badges {
   list-style: none;
-  margin: 2px 0 0;
+  margin: 4px 0 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
-.tag {
-  display: inline-block;
-  font-size: 13px;
-  padding: 6px 12px;
-  background: var(--bg-alt);
+.badge {
+  font-size: 12px;
+  line-height: 1.3;
+  padding: 4px 10px;
   color: var(--ink);
+  background: var(--bg-alt);
   border: 1px solid var(--card-border);
-  transition:
-    border-color var(--dur-instant) ease,
-    color var(--dur-instant) ease;
 }
-a.tag:hover {
-  border-color: var(--orange);
-  color: var(--orange);
-}
-.tag[data-todo='true'] {
-  color: var(--ink-soft);
-  cursor: default;
-}
-
-.proof {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--ink-faint);
-}
-
-.media {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border: 1px solid var(--card-border);
-  margin-top: 2px;
-}
-.img {
-  object-fit: cover;
-  object-position: top;
-}
-
-.tech {
-  margin: 0;
-  font-size: 12.5px;
-  line-height: 1.5;
-  color: var(--ink-faint);
+.card[data-variant='conseil'] .badge {
+  background: var(--card);
 }
 
 .cta {
   margin-top: auto;
-  padding-top: 14px;
+  padding-top: 16px;
   align-self: flex-start;
   font-size: 14px;
   font-weight: 600;
@@ -124,7 +118,4 @@ a.cta:hover {
 .cta[data-todo='true'] {
   color: var(--ink-faint);
   cursor: default;
-}
-.card[data-variant='conseil'] .cta {
-  margin-top: 4px;
 }

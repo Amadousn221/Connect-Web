@@ -2,25 +2,16 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { ValidationNote } from '@/components/ui/ValidationNote';
 import type { Locale } from '@/lib/i18n/config';
-import {
-  servicesIntro,
-  servicesN1,
-  servicesN2,
-  serviceConseil,
-} from '@/content/fr/services';
+import { servicesIntro, serviceCards } from '@/content/fr/services';
 import { ServiceCard } from './ServiceCard';
 import styles from './ServiceGrid.module.css';
 
-// A5 — Section Services. Grille uniforme 6 cartes en 3 colonnes (2 rangées).
-// Le contenu DECISION 23 est conservé (carte parente à sous-services, Conseil),
-// mais toutes les cartes sont de taille égale.
+// A5 — Section Services. Grille uniforme 6 cartes en 3 colonnes (2 rangées),
+// format « image en tête + badges ».
 export function ServiceGrid({ locale }: { locale: Locale }) {
-  const cards = [...servicesN1, ...servicesN2, serviceConseil];
-  const todoRoutes = cards
-    .flatMap((c) => [...(c.subServices ?? []), c.cta])
-    .filter((l) => l.todo)
-    .map((l) => l.href);
-  const uniqueTodo = Array.from(new Set(todoRoutes));
+  const todoRoutes = Array.from(
+    new Set(serviceCards.filter((c) => c.cta.todo).map((c) => c.cta.href)),
+  );
 
   return (
     <section id="services" className={styles.section}>
@@ -34,16 +25,16 @@ export function ServiceGrid({ locale }: { locale: Locale }) {
         </RevealOnScroll>
 
         <RevealOnScroll className={styles.grid}>
-          {cards.map((card) => (
+          {serviceCards.map((card) => (
             <ServiceCard key={card.title} card={card} locale={locale} />
           ))}
         </RevealOnScroll>
 
-        {uniqueTodo.length ? (
+        {todoRoutes.length > 0 ? (
           <div className={styles.note}>
             <ValidationNote variant="box">
-              Pages à créer avant publication (liens non cliquables pour l’instant) :{' '}
-              {uniqueTodo.join(' · ')}
+              Pages à créer avant publication (liens non cliquables pour
+              l’instant) : {todoRoutes.join(' · ')}
             </ValidationNote>
           </div>
         ) : null}

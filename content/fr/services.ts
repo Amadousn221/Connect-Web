@@ -1,91 +1,85 @@
 import type { ServiceCardData } from '../types';
 
-// ── A5 — Section Services (V2.1, Lot B) ────────────────────────────────────
-// Architecture DECISION 23 : 2 cartes Niveau 1 (dont 1 carte parente à
-// sous-services) + 3 cartes Niveau 2 + Conseil = 6 cartes. Technologies en
-// ligne de preuve sous leur carte, jamais en carte autonome (§08.4).
-// Copy : §06.5 du Design Handoff + brief Lot B.
+// ── A5 — Section Services ────────────────────────────────────────────────
+// 6 cartes, format « image en tête + badges ». Les badges portent les
+// déclinaisons et technos du service (preuve dans la carte, jamais en carte
+// autonome — DECISION 23). Grille uniforme 3 colonnes.
 //
-// Les pages /services/* et /conseil n'existent pas encore (lot ultérieur) :
-// les liens `todo: true` sont rendus non cliquables + listés dans un repère
-// « À valider » visible en preview. Aucune page n'est créée dans le Lot B.
+// Images : captures réelles de projets clients approuvés (DECISION 12) quand
+// elles existent. Manquantes → repère `[IMAGE_MANQUANTE]` visible en preview,
+// panneau pétrole en production. À fournir par le PO : ERP/CRM (Maison
+// Peinture Odoo), IA & automatisation (ATTA reporting), Marketing.
 
 export const servicesIntro = {
   eyebrow: 'Nos capacités',
   title: 'Cinq expertises, une équipe, un système.',
-  lead: 'Deux offres qui prouvent, trois qui connectent, un conseil pour cadrer avant de commencer. Vous ne choisissez pas des outils — vous choisissez un résultat.',
+  lead: "On construit selon votre besoin : une présence qui crédibilise, une boutique qui vend, une plateforme qui fait tourner l'opération, des automatisations qui font gagner du temps.",
 };
 
-export const servicesN1: ServiceCardData[] = [
+export const serviceCards: ServiceCardData[] = [
   {
-    num: '01',
-    variant: 'parent',
     title: 'Conception et développement web',
     description:
       "Sites institutionnels, sites d'entreprise, boutiques en ligne : une présence qui vous représente et qui, quand il le faut, vend.",
-    subServices: [
-      { label: 'Sites institutionnels & ONG', href: '/services/sites-institutionnels-ong', todo: true },
-      { label: "Sites d'entreprise", href: '/services/sites-entreprise', todo: true },
-      { label: 'E-commerce', href: '/services/boutiques-en-ligne', todo: true },
+    badges: [
+      'Site vitrine',
+      'Site institutionnel',
+      'E-commerce Shopify',
+      'E-commerce WooCommerce',
+      'Sur-mesure',
     ],
-    tech: 'E-commerce : Shopify · WooCommerce · sur-mesure',
     image: {
       src: '/assets/real/was-africa.jpg',
-      alt: "Capture d'écran du site institutionnel WAS Africa",
+      alt: "Site institutionnel de WAS Africa réalisé par Connect Web",
     },
-    cta: { label: 'Voir nos réalisations web', href: '/realisations', todo: true },
+    cta: { label: "Voir l'offre", href: '/services/conception-developpement-web', todo: true },
   },
   {
-    num: '02',
-    variant: 'primary',
     title: 'Logiciels & applications web',
     description:
-      "Plateformes métier, applications web sur mesure, PWA : des outils qui s'adaptent à votre opération, pas l'inverse.",
-    proof: 'Preuve : SCOD VTC',
+      "Plateformes métier, applications web sur mesure, PWA : l'outil s'adapte à votre opération, pas l'inverse.",
+    badges: [
+      'Plateforme métier',
+      'Application web',
+      'PWA',
+      'Espace client',
+      'Tableau de bord',
+    ],
     image: {
       src: '/assets/real/scod-vtc.jpg',
-      alt: "Capture d'écran de la plateforme de réservation SCOD VTC",
+      alt: 'Plateforme de réservation SCOD VTC réalisée par Connect Web',
     },
     cta: { label: "Voir l'offre", href: '/services/logiciels-applications-web', todo: true },
   },
-];
-
-export const servicesN2: ServiceCardData[] = [
   {
-    num: '03',
-    variant: 'secondary',
     title: 'ERP / CRM',
     description:
-      'Centraliser vos ventes, vos stocks et vos clients dans un seul système.',
-    proof: 'Preuve : Maison Peinture Sénégal (Odoo)',
-    tech: 'Odoo · HubSpot',
+      'Centraliser vos ventes, vos stocks et vos clients dans un seul système, relié à ce qui vend déjà.',
+    badges: ['Odoo', 'HubSpot', 'Gestion des stocks', 'Ventes', 'Intégrations'],
+    imageMissing: 'ERP Odoo Maison Peinture Sénégal',
     cta: { label: "Voir l'offre", href: '/services/erp-crm-integrations', todo: true },
   },
   {
-    num: '04',
-    variant: 'secondary',
     title: 'IA & automatisation',
     description:
-      "Automatiser les tâches répétitives pour que votre équipe se concentre sur ce qui compte.",
-    proof: 'Preuve : ATTA Africa — reporting mensuel automatisé, relance panier',
+      'Faire disparaître les tâches répétitives : traitement de commandes, relances, reporting — pour que votre équipe se concentre sur le reste.',
+    badges: ['n8n', 'Automatisation', 'Reporting auto', 'Relance panier', 'API'],
+    imageMissing: 'Reporting mensuel automatisé ATTA Africa',
     cta: { label: "Voir l'offre", href: '/services/ia-automatisation', todo: true },
   },
   {
-    num: '05',
-    variant: 'secondary',
     title: 'Marketing & génération de prospects',
-    description:
-      'Attirer, qualifier et convertir — campagnes, e-mail, acquisition.',
-    proof: 'Capacité — pas encore de cas public à montrer',
-    tech: 'Mailchimp · Klaviyo',
+    description: 'Attirer, qualifier et convertir : campagnes, e-mail, acquisition.',
+    badges: ['Mailchimp', 'Klaviyo', 'Email marketing', 'Campagnes', 'Acquisition'],
+    imageMissing: 'Campagne marketing (pas encore de cas public)',
     cta: { label: "Voir l'offre", href: '/services/marketing', todo: true },
   },
+  {
+    title: 'Conseil & stratégie',
+    description:
+      "Avant de construire, comprendre. Audit, cadrage, choix d'architecture, priorisation : on part de votre problème, pas de notre catalogue.",
+    badges: ['Audit', 'Cadrage', 'Architecture', 'Choix techno', 'Priorisation'],
+    variant: 'conseil',
+    cta: { label: 'Parlons de votre projet', href: '#contact' },
+  },
 ];
-
-export const serviceConseil: ServiceCardData = {
-  variant: 'conseil',
-  title: 'Conseil & stratégie',
-  description:
-    "Avant de construire, comprendre. Audit, cadrage, choix d'architecture, priorisation : on part de votre problème, pas de notre catalogue.",
-  cta: { label: 'Parlons de votre projet', href: '#contact' },
-};

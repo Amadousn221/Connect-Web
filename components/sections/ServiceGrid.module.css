@@ -3,14 +3,12 @@
   padding-block: 100px;
 }
 
-/* Grille uniforme : 6 cartes, 3 colonnes (2 rangées). Filet 1px continu —
-   le conteneur porte le fond `--border`, les cartes peignent `--card`. */
+/* Grille uniforme : 6 cartes, 3 colonnes (2 rangées). Chaque carte porte sa
+   propre bordure — pas de filet de grille. */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
+  gap: 20px;
   margin-top: 48px;
 }
 
