@@ -11,10 +11,12 @@ import {
 import { ServiceCard } from './ServiceCard';
 import styles from './ServiceGrid.module.css';
 
-// A5 — Section Services (Lot B). Hiérarchie DECISION 23 : carte parente + carte
-// Niveau 1 (rangée 3fr/2fr), 3 cartes Niveau 2, puis Conseil pleine largeur.
+// A5 — Section Services. Grille uniforme 6 cartes en 3 colonnes (2 rangées).
+// Le contenu DECISION 23 est conservé (carte parente à sous-services, Conseil),
+// mais toutes les cartes sont de taille égale.
 export function ServiceGrid({ locale }: { locale: Locale }) {
-  const todoRoutes = [...servicesN1, ...servicesN2, serviceConseil]
+  const cards = [...servicesN1, ...servicesN2, serviceConseil];
+  const todoRoutes = cards
     .flatMap((c) => [...(c.subServices ?? []), c.cta])
     .filter((l) => l.todo)
     .map((l) => l.href);
@@ -31,18 +33,10 @@ export function ServiceGrid({ locale }: { locale: Locale }) {
           />
         </RevealOnScroll>
 
-        <RevealOnScroll className={styles.groups}>
-          <div className={styles.n1}>
-            {servicesN1.map((card) => (
-              <ServiceCard key={card.title} card={card} locale={locale} />
-            ))}
-          </div>
-          <div className={styles.n2}>
-            {servicesN2.map((card) => (
-              <ServiceCard key={card.title} card={card} locale={locale} />
-            ))}
-          </div>
-          <ServiceCard card={serviceConseil} locale={locale} />
+        <RevealOnScroll className={styles.grid}>
+          {cards.map((card) => (
+            <ServiceCard key={card.title} card={card} locale={locale} />
+          ))}
         </RevealOnScroll>
 
         {uniqueTodo.length ? (
