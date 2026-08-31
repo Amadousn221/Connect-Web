@@ -1,5 +1,6 @@
 .section {
-  background: var(--bg);
+  /* crème : évite la collision avec FaqAccordion (blanc) qui suit */
+  background: var(--bg-cream);
   padding-block: 100px;
 }
 

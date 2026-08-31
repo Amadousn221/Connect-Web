@@ -1,5 +1,6 @@
 .section {
-  background: var(--bg);
+  /* off-white : évite la collision avec ProjectSlider (blanc) qui précède */
+  background: var(--bg-alt);
   padding-block: 100px;
 }
 

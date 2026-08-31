@@ -13,13 +13,13 @@ export interface Hero {
   trustLine: string[]; // « Réponse sous 24 h · Devis gratuit · … »
 }
 
-// Une tuile du composite visuel du Hero. `src` = capture réelle présente dans
-// /public ; si absente, `missing` porte le libellé du visuel à fournir (rendu
-// seulement en preview via le flag « À valider », jamais de mockup décoratif).
-export interface HeroShot {
-  src?: string;
-  alt: string;
-  missing?: string;
+// Une statistique de MARCHÉ (pas un chiffre Connect Web) — bande de réassurance
+// digitale sous le Hero. La `source` est affichée visiblement (règle : jamais
+// de source fabriquée).
+export interface MarketStat {
+  value: string;
+  text: string;
+  source: string;
 }
 
 // Un logo client de la bande de confiance (§06.2). `src` = fichier détouré dans

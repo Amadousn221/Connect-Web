@@ -1,6 +1,7 @@
 import { isLocale } from '@/lib/i18n/config';
 import { notFound } from 'next/navigation';
 import { Hero } from '@/components/sections/Hero';
+import { MarketStats } from '@/components/sections/MarketStats';
 import { LogoStrip } from '@/components/sections/LogoStrip';
 import { NeedSelector } from '@/components/sections/NeedSelector';
 import { Wedge } from '@/components/sections/Wedge';
@@ -31,6 +32,7 @@ export default async function HomePage({
   return (
     <>
       <Hero />
+      <MarketStats />
       <LogoStrip />
       <NeedSelector locale={locale} />
       <Wedge />

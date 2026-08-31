@@ -4,7 +4,6 @@ import type {
   Cta,
   FaqItem,
   Hero,
-  HeroShot,
   NeedOption,
   ProofItem,
   RoadNode,
@@ -37,25 +36,8 @@ export const hero: Hero = {
   trustLine: ['Réponse sous 24 h', 'Devis gratuit', 'Vos accès vous appartiennent'],
 };
 
-// Composite visuel du Hero — captures RÉELLES de projets, jamais de mockup
-// (§06.1, correction anti-slop n°1). Seule la capture SCOD est disponible dans
-// le dépôt ; ATTA (boutique) et « ATTA reporting automatisé OU ERP Odoo Maison
-// Peinture » sont à fournir par le PO. Les tuiles manquantes ne s'affichent
-// qu'en preview (repère « À valider »), jamais en production.
-export const heroShots: HeroShot[] = [
-  {
-    src: '/assets/real/scod-vtc.jpg',
-    alt: "Capture d'écran de la plateforme de réservation SCOD VTC",
-  },
-  {
-    alt: "Capture d'écran de la boutique ATTA Africa",
-    missing: 'ATTA Africa — capture boutique',
-  },
-  {
-    alt: "Capture d'écran du reporting automatisé d'ATTA Africa ou de l'ERP Odoo Maison Peinture",
-    missing: 'ATTA — reporting automatisé, ou ERP Odoo Maison Peinture',
-  },
-];
+// Composite visuel du Hero : ABANDONNÉ (correction post-déploiement). Le Hero
+// passe à une image de fond en cover + overlay pétrole. Voir Hero.tsx.
 
 // ── Bande de logos clients (V2.1 — §06.2 du Design Handoff) ───────────────
 // 11 clients approuvés. Maison Peinture Sénégal est exclu de la bande (projet
