@@ -1,0 +1,85 @@
+.section {
+  background: var(--petrol-nuit);
+  color: #fff;
+  padding: 80px 0;
+}
+.grid {
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.eyebrowWrap {
+  margin-bottom: 16px;
+}
+.title {
+  font-size: clamp(28px, 3.2vw, 38px);
+  line-height: 1.12;
+  font-weight: 500;
+  margin: 0 0 14px;
+  color: #fff;
+}
+.body {
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 16px;
+}
+.note {
+  display: inline-block;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 34px 32px;
+}
+.cardLabel {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 8px;
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+.priceFrom {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.priceValue {
+  font-size: 40px;
+  color: #fff;
+}
+.includes {
+  list-style: none;
+  margin: 0 0 26px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.includes li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .section {
+    padding: 56px 0;
+  }
+}

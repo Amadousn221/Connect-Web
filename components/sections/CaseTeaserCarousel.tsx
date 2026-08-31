@@ -22,12 +22,16 @@ export function CaseTeaserCarousel({
   items,
   link,
   align = 'center',
+  anchorId = 'cas',
 }: {
   locale: Locale;
   intro: { eyebrow: string; title: string; lead?: string };
   items: CaseTeaser[];
   link?: Cta;
   align?: 'left' | 'center';
+  /** ancre de section ; chaîne vide sur une page d'offre où `FeaturedCase`
+      porte déjà `#cas`. */
+  anchorId?: string;
 }) {
   const railRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState({ width: 30, left: 0, index: 1 });
@@ -71,7 +75,7 @@ export function CaseTeaserCarousel({
   const hubHref = localePath(locale, link?.href ?? '/realisations');
 
   return (
-    <section id="cas" className={styles.section}>
+    <section id={anchorId || undefined} className={styles.section}>
       <div className="cw-sec">
         <RevealOnScroll>
           <SectionHeading

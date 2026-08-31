@@ -1,7 +1,9 @@
 // Modèle de contenu commun aux 7 pages d'offre (archétype P07 B1–B11).
-// Chaque page compose les sections qui la concernent (DECISION 04) : toutes les
-// clés sauf hero/pain/deliverables/why/process/faq/finalCta sont optionnelles.
-// Marketing : `featuredCase` et `pricing` absents (P08 — asymétrie de preuve).
+// Chaque page compose les sections qui la concernent (DECISION 04) : seules
+// hero/pain/deliverables/process/faq/finalCta sont universelles ; le reste est
+// optionnel (`why`, `benefits`, `editorial`, `featuredCase`, `relatedCase*`,
+// `pricing`, `systemBridge`). Marketing : `featuredCase` et `pricing` absents
+// (P08 — asymétrie de preuve) ; Sites d'entreprise : ni `why` ni `benefits`.
 
 import type { Cta } from './types';
 
@@ -12,7 +14,8 @@ export interface OfferHeroContent {
   subtitle: string;
   ctas: [Cta, Cta];
   features: string[]; // 3 puces à coche
-  image: string; // /assets/svc-*.jpg
+  /** image de fond `/assets/svc-*.jpg` ; absente = fond dégradé pétrole */
+  image?: string;
 }
 
 export interface NumberedItem {
@@ -31,8 +34,9 @@ export interface EditorialContent {
   /** paragraphes ; un objet {h3} insère un sous-titre */
   blocks: Array<string | { h3: string }>;
   link?: Cta;
-  sideLabel: string;
-  sideFacts: string[]; // le **gras** est rendu tel quel (markdown minimal **…**)
+  /** panneau latéral de faits (bordure orange) — optionnel */
+  sideLabel?: string;
+  sideFacts?: string[]; // le **gras** est rendu tel quel (markdown minimal **…**)
 }
 
 export interface FeaturedCaseContent {
@@ -41,8 +45,10 @@ export interface FeaturedCaseContent {
   category: string;
   body: string;
   quote: string;
-  primaryCta: Cta;
+  primaryCta?: Cta;
   externalUrl?: { label: string; href: string };
+  /** capture réelle du projet (prioritaire sur le placeholder) */
+  image?: { src: string; alt: string };
   /** visuel réel non fourni → placeholder « À valider » */
   visualPending?: boolean;
   visualNote?: string;
@@ -54,6 +60,8 @@ export interface PricingContent {
   body: string; // contient le placeholder [À PARTIR DE]
   cardLabel: string;
   pricePlaceholder: string; // « [À PARTIR DE] » — jamais un montant inventé (DECISION 10)
+  /** préfixe devant le montant (défaut « à partir de ») ; '' = masqué */
+  priceFrom?: string;
   includes: string[];
   cta: Cta;
 }
@@ -73,14 +81,14 @@ export interface OfferContent {
   pain: SectionIntro & { items: NumberedItem[] };
   deliverables: SectionIntro & { items: DeliverableItem[]; toolsLabel?: string; tools?: string[] };
   editorial?: EditorialContent;
-  why: SectionIntro & { items: NumberedItem[] };
+  why?: SectionIntro & { items: NumberedItem[] };
 
   featuredCase?: FeaturedCaseContent;
-  /** slugs des réalisations à montrer dans le carrousel (réutilise les teasers Accueil) */
+  /** noms des réalisations à montrer dans le carrousel (réutilise les teasers Accueil) */
   relatedCaseNames?: string[];
   relatedIntro?: SectionIntro;
 
-  benefits: SectionIntro & { items: NumberedItem[] };
+  benefits?: SectionIntro & { items: NumberedItem[] };
   process: SectionIntro & { steps: Array<NumberedItem & { deliverable: string }> };
 
   pricing?: PricingContent;
@@ -91,7 +99,7 @@ export interface OfferContent {
     eyebrow: string;
     title: string;
     body: string;
-    link: Cta;
+    link?: Cta;
   };
 
   finalCta: {
