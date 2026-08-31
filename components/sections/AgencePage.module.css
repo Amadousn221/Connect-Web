@@ -1,0 +1,275 @@
+/* ── Hero ───────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  background: var(--petrol-nuit);
+  padding-block: clamp(72px, 12vh, 120px);
+}
+.heroBg {
+  object-fit: cover;
+  opacity: 0.5;
+  z-index: 0;
+}
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 37, 48, 0.95) 0%,
+    rgba(10, 37, 48, 0.78) 55%,
+    rgba(10, 37, 48, 0.5) 100%
+  );
+}
+.heroInner {
+  position: relative;
+  z-index: 2;
+}
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 22px;
+}
+.crumb a {
+  color: rgba(255, 255, 255, 0.55);
+}
+.crumb a:hover {
+  color: #fff;
+}
+.crumb [aria-current] {
+  color: #fff;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+.heroTitle {
+  font-size: clamp(32px, 3.8vw, 46px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 0 0 18px;
+  max-width: 640px;
+  text-wrap: pretty;
+}
+.heroSub {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 540px;
+  margin: 0 0 28px;
+}
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+/* ── Mission & valeurs ──────────────────────────────────────────────────── */
+.mission {
+  background: var(--bg);
+  padding-block: 92px;
+}
+.missionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 64px;
+}
+.missionP {
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+.missionP:last-child {
+  margin-bottom: 0;
+}
+.missionMedia {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.valueCard {
+  background: var(--bg-alt);
+  border: 1px solid var(--card-border);
+  padding: 30px 26px;
+}
+.valueIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(232, 97, 42, 0.1);
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.valueTitle {
+  font-size: 20px;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.valueBody {
+  font-size: var(--text-section);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ── Stats ─────────────────────────────────────────────────────────────── */
+.stats {
+  background: var(--petrol-nuit);
+  color: #fff;
+  padding-block: 64px;
+}
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+.statValue {
+  font-size: clamp(28px, 3.4vw, 40px);
+  color: var(--orange);
+  margin: 0 0 6px;
+  line-height: 1;
+}
+.statLabel {
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* ── Équipe (preview uniquement) ───────────────────────────────────────── */
+.team {
+  background: var(--bg-alt);
+  padding-block: 92px;
+}
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+  margin-top: 48px;
+}
+.teamCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.teamPhoto {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px dashed var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.teamNote {
+  margin: 32px 0 0;
+  text-align: center;
+}
+
+/* ── Comment on travaille ──────────────────────────────────────────────── */
+.method {
+  background: var(--bg-cream);
+  padding-block: 92px;
+}
+.methodGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+.methodStep {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.methodNum {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  font-size: 20px;
+  color: var(--orange);
+}
+.methodTitle {
+  font-size: calc(var(--text-section) + 3px);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+.methodBody {
+  font-size: var(--text-section);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .missionGrid,
+  .values,
+  .statsGrid,
+  .teamGrid,
+  .methodGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .missionMedia {
+    order: -1;
+  }
+}
+@media (max-width: 560px) {
+  .missionGrid,
+  .values,
+  .statsGrid,
+  .teamGrid,
+  .methodGrid {
+    grid-template-columns: 1fr;
+  }
+  .mission,
+  .team,
+  .method {
+    padding-block: 56px;
+  }
+  .heroCtas a,
+  .heroCtas button {
+    width: 100%;
+  }
+}
