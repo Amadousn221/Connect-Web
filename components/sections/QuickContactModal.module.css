@@ -1,0 +1,36 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.channel {
+  display: block;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+}
+.channel:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.formLink {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: none;
+  color: var(--orange);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.formLink:hover {
+  color: var(--orange-h);
+}

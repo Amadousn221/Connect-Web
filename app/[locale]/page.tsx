@@ -11,14 +11,13 @@ import { SystemNarrative } from '@/components/sections/SystemNarrative';
 import { Method } from '@/components/sections/Method';
 import { WhoForGrid } from '@/components/sections/WhoForGrid';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
-import { ContactSection } from '@/components/sections/ContactSection';
+import { FinalCta } from '@/components/sections/FinalCta';
 import { faqIntro, faqItems, faqOutro } from '@/content/fr/accueil';
 
 // Accueil — refonte V2.1 (Design Handoff), contenu HARDCODÉ, FR uniquement.
 // Ordre §04 : Hero · Bande logos · Vos besoins · Wedge · Services · Cas phares ·
 // Chiffres · Du site au système · Méthode · Pour qui · FAQ · CTA + contact.
-// Lots A/B/C livrés. Lot D1 : Cas phares + Pour qui + FAQ ; retrait
-// TrustBar/ProofGrid. Lot D2 (à suivre) : CTA final + formulaire + modales.
+// Lots A/B/C/D livrés. Homepage V2.1 complète.
 
 export default async function HomePage({
   params,
@@ -46,7 +45,7 @@ export default async function HomePage({
         items={faqItems}
         outro={faqOutro}
       />
-      <ContactSection />
+      <FinalCta />
     </>
   );
 }

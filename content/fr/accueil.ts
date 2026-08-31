@@ -176,45 +176,6 @@ export const faqItems: FaqItem[] = [
 
 export const faqOutro = { text: 'Une autre question ?', link: { label: 'Parlons-en', href: '#contact' } as Cta };
 
-// ── A12 — Contact (UI seule en M2 ; câblage CRM = M5) ────────────────
-export const contactIntro = {
-  eyebrow: 'Contact',
-  title: 'Décrivez-nous votre projet, on revient vers vous sous 24 h.',
-  lead: "Même si vous ne savez pas encore ce dont vous avez besoin. Un échange suffit souvent à y voir clair — et il est gratuit.",
-};
-
-export const contactPoints = [
-  { label: '+221 77 900 62 82', href: 'tel:+221779006282' },
-  { label: '+221 78 343 82 49', href: 'tel:+221783438249' },
-  { label: 'WhatsApp', href: 'https://wa.me/221783438249' },
-];
-
-export const contactPerson = {
-  role: 'Votre interlocuteur',
-  body: 'Une personne dédiée, du premier échange à la mise en ligne.',
-  // nom + photo : à valider (jamais de placeholder visible côté public — géré par le flag)
-};
-
-export const contactFormContent = {
-  title: 'Parlez-nous de votre projet',
-  orgTypes: [
-    'Entreprise / PME',
-    'Commerce ou marque',
-    'ONG / institution',
-    'École / organisme de formation',
-    'Industrie / filière',
-    'Entrepreneur / porteur de projet',
-  ],
-  goals: [
-    'Être visible et crédible',
-    'Vendre et me développer',
-    'Digitaliser mes opérations',
-    'Piloter mon activité',
-    'Automatiser et gagner du temps',
-    'Je ne sais pas encore',
-  ],
-  submitLabel: 'Envoyer ma demande',
-  reassurance: 'Réponse sous 24 h · Devis gratuit · Sans engagement',
-  // M2 : formulaire non branché (M5). Message affiché à la soumission.
-  disabledNote: 'Le formulaire sera actif très bientôt — en attendant, appelez-nous ou écrivez sur WhatsApp.',
-};
+// ── A12 — CTA final + contact : voir content/fr/contact.ts (Lot D2 —
+//    FinalCta + ProjectForm partagé + modales). L'ancienne section « UI seule »
+//    est remplacée ; le formulaire poste vers /api/contact (no-op jusqu'à M5).

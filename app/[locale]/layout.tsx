@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { ModalProvider } from '@/components/ui/ModalProvider';
+import { ProjectModal } from '@/components/sections/ProjectModal';
+import { QuickContactModal } from '@/components/sections/QuickContactModal';
 import { locales, isLocale } from '@/lib/i18n/config';
 
 export function generateStaticParams() {
@@ -21,13 +24,15 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
 
   return (
-    <>
+    <ModalProvider>
       <a href="#contenu" className="cw-skip-link">
         Aller au contenu
       </a>
       <Header locale={locale} />
       <main id="contenu">{children}</main>
       <Footer locale={locale} />
-    </>
+      <ProjectModal />
+      <QuickContactModal />
+    </ModalProvider>
   );
 }

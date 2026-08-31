@@ -87,12 +87,17 @@
 }
 
 .cta {
+  display: block;
+  width: 100%;
   text-align: center;
   background: var(--orange);
   color: #fff;
   padding: 16px;
   font-size: 15px;
   font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 .cta:hover {
   color: #fff;
