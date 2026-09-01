@@ -4,6 +4,7 @@ import { visionTool } from '@sanity/vision';
 
 import { apiVersion, dataset, projectId } from './sanity/env';
 import { schemaTypes } from './sanity/schemas';
+import { deskStructure } from './sanity/lib/deskStructure';
 
 // Config du Sanity Studio embarqué dans Next.js à /studio.
 // L'authentification est celle, native, de Sanity (login sur le Studio) —
@@ -14,7 +15,7 @@ export default defineConfig({
   projectId,
   dataset,
   plugins: [
-    structureTool(),
+    structureTool({ structure: deskStructure }),
     visionTool({ defaultApiVersion: apiVersion }),
   ],
   schema: {
