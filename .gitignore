@@ -29,6 +29,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# sanity (Studio embarqué) — cache runtime + build local du studio
+.sanity/
+/dist
+
 # typescript
 *.tsbuildinfo
 

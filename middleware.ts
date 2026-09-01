@@ -22,7 +22,8 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // Exclut : fichiers Next internes, routes API, et tout ce qui a une extension
-  // (assets de /public). Le reste passe par le middleware.
-  matcher: ['/((?!_next/|api/|.*\\.).*)'],
+  // Exclut : fichiers Next internes, routes API, le Sanity Studio embarqué
+  // (`/studio`, hors [locale]) et la page de test `/debug-sanity`, et tout ce
+  // qui a une extension (assets de /public). Le reste passe par le middleware.
+  matcher: ['/((?!_next/|api/|studio|debug-sanity|.*\\.).*)'],
 };

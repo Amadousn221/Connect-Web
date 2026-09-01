@@ -2,7 +2,7 @@
   "name": "connect-web",
   "version": "0.1.0",
   "private": true,
-  "description": "Connect Web — frontend Next.js (App Router, SSG + ISR) alimenté par un WordPress headless. Reconstruction propre, DECISION 19.",
+  "description": "Connect Web — frontend Next.js (App Router, SSG + ISR) alimenté par Sanity (Headless CMS, DÉCISION 25). Reconstruction propre, DECISION 19.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,9 +12,15 @@
     "test:wordpress": "node scripts/test-wordpress.mjs"
   },
   "dependencies": {
+    "@portabletext/react": "8.0.1",
+    "@sanity/image-url": "2.1.1",
+    "@sanity/vision": "4.22.1",
     "next": "^15.1.7",
+    "next-sanity": "11.6.13",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "sanity": "4.22.1",
+    "styled-components": "6.5.3"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",
