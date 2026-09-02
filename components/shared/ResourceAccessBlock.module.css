@@ -1,0 +1,131 @@
+.block {
+  margin: var(--space-3xl) 0;
+  padding: var(--space-2xl);
+  background: var(--petrol-nuit);
+  color: #fff;
+}
+
+.title {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-serif);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: #fff;
+}
+
+.lead {
+  margin: 0 0 var(--space-xl);
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.pending,
+.pendingInline {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+.pendingInline {
+  margin-bottom: var(--space-lg);
+}
+
+/* ── Formulaire ──────────────────────────────────────────────────────── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.field input {
+  padding: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.field input:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 1px;
+}
+
+.consent {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  font-size: var(--text-body-sm);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+}
+.consent input {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.submit {
+  align-self: flex-start;
+  padding: 12px 24px;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  background: var(--orange);
+  border: 1px solid var(--orange);
+  color: #fff;
+  cursor: pointer;
+}
+.submit:hover:not(:disabled) {
+  background: var(--orange-h);
+  border-color: var(--orange-h);
+}
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.confirmation {
+  margin: 0;
+  padding: var(--space-lg);
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--orange);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: #fff;
+}
+
+.formStatus {
+  margin: 0;
+  min-height: 1.2em;
+  font-size: var(--text-body-sm);
+  color: #ffb4a2;
+}
+.formStatus:empty {
+  min-height: 0;
+}
+
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
