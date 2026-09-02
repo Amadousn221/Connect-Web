@@ -72,9 +72,13 @@ export function Sidebar({
 
         {context === 'blog-post' && data.recommendedResource ? (
           <Block title="Ressource recommandée">
-            <LinkList
-              items={[resourceRow(data.recommendedResource, locale)]}
-            />
+            <LinkList items={[resourceRow(data.recommendedResource, locale)]} />
+          </Block>
+        ) : null}
+
+        {context === 'blog-post' && data.recentResources && data.recentResources.length > 0 ? (
+          <Block title="Ressources à consulter">
+            <LinkList items={data.recentResources.map((r) => resourceRow(r, locale))} />
           </Block>
         ) : null}
 
@@ -142,6 +146,11 @@ export function Sidebar({
             {data.relatedPosts && data.relatedPosts.length > 0 ? (
               <Block title="Articles liés">
                 <LinkList items={data.relatedPosts.map((p) => postRow(p, locale))} />
+              </Block>
+            ) : null}
+            {data.recentPosts && data.recentPosts.length > 0 ? (
+              <Block title="Articles récents">
+                <LinkList items={data.recentPosts.map((p) => postRow(p, locale))} />
               </Block>
             ) : null}
           </>

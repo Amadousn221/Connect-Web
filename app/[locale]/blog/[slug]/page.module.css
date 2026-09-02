@@ -1,0 +1,67 @@
+.crumbWrap {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-lg);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+}
+
+.article {
+  min-width: 0;
+  max-width: 720px;
+}
+
+/* ── Cas d'étude associé (Zone 7) ────────────────────────────────────── */
+.caseStudy {
+  margin: var(--space-3xl) 0;
+  padding: var(--space-xl);
+  border: 1px solid var(--card-border);
+  background: var(--card);
+}
+.caseStudyLabel {
+  margin: 0 0 var(--space-sm);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.caseStudyTitle {
+  margin: 0;
+  font-size: var(--text-h4);
+  font-weight: 600;
+  color: var(--ink);
+}
+.caseStudyClient {
+  margin: var(--space-xs) 0 0;
+  font-size: var(--text-body-sm);
+  color: var(--ink-soft);
+}
+.caseStudyLink {
+  display: inline-block;
+  margin-top: var(--space-md);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: var(--orange);
+}
+.caseStudyLink:hover {
+  color: var(--orange-h);
+}
+
+.ctaBand {
+  padding-bottom: var(--space-4xl);
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+  .article {
+    max-width: none;
+  }
+}

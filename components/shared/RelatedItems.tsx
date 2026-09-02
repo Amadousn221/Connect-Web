@@ -7,17 +7,20 @@ import { ResourceCard } from './ResourceCard';
 import styles from './RelatedItems.module.css';
 
 type Props =
-  | { type: 'posts'; items: BlogPostCardData[]; locale: Locale; title?: string }
-  | { type: 'resources'; items: ResourceCardData[]; locale: Locale; title?: string };
+  | { type: 'posts'; items: BlogPostCardData[]; locale: Locale; title?: string; minItems?: number }
+  | { type: 'resources'; items: ResourceCardData[]; locale: Locale; title?: string; minItems?: number };
 
 /**
  * « Articles similaires » / « Ressources similaires » (spec §7, §9).
  * Réutilise `SliderRail` (mécanique des carrousels homepage).
- * Ne rend rien si moins de 3 items — mieux vaut rien que du bruit (spec §7.2).
+ *
+ * `minItems` : seuil en-dessous duquel la section n'est pas rendue. Défaut 3
+ * pour les listes algorithmiques (spec §7.2 — « mieux vaut rien que du bruit »).
+ * Passer `minItems={1}` pour une liste choisie manuellement par l'éditeur.
  */
 export function RelatedItems(props: Props) {
-  const { type, items, locale } = props;
-  if (!items || items.length < 3) return null;
+  const { type, items, locale, minItems = 3 } = props;
+  if (!items || items.length < minItems) return null;
 
   const heading = props.title ?? (type === 'posts' ? 'À lire aussi' : 'Ressources similaires');
   const ariaLabel = type === 'posts' ? 'Articles similaires' : 'Ressources similaires';

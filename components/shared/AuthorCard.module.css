@@ -1,0 +1,74 @@
+.card {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: flex-start;
+  margin-top: var(--space-4xl);
+  padding: var(--space-2xl);
+  background: var(--bg-alt);
+  border: 1px solid var(--card-border);
+}
+
+.avatar {
+  flex-shrink: 0;
+  object-fit: cover;
+  border: 1px solid var(--card-border);
+}
+
+.avatarFallback {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--petrol-nuit);
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: var(--text-h3);
+}
+
+.body {
+  min-width: 0;
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.role {
+  margin: 2px 0 var(--space-md);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.bio {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.social {
+  display: inline-block;
+  margin-top: var(--space-md);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: var(--orange);
+}
+.social:hover {
+  color: var(--orange-h);
+}
+
+@media (max-width: 640px) {
+  .card {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+}

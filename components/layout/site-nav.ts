@@ -19,6 +19,7 @@ export type NavLink = { label: string; path: string };
 export const primaryNav: NavLink[] = [
   { label: 'Réalisations', path: '/realisations' },
   { label: 'Agence', path: '/agence' },
+  { label: 'Blog', path: '/blog' },
   { label: 'Ressources', path: '/ressources' },
   { label: 'Contact', path: '/contact' },
 ];
@@ -68,6 +69,7 @@ export const footerColumns: { heading: string; links: NavLink[] }[] = [
     links: [
       { label: 'À propos', path: '/agence' },
       { label: 'Réalisations', path: '/realisations' },
+      { label: 'Blog', path: '/blog' },
       { label: 'Ressources', path: '/ressources' },
       { label: 'Contact', path: '/contact' },
     ],

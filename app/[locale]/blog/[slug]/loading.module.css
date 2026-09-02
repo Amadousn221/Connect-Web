@@ -1,0 +1,49 @@
+.wrap {
+  max-width: 720px;
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-5xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.line,
+.title,
+.cover {
+  background: var(--bg-alt);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.line {
+  height: 16px;
+}
+
+.title {
+  height: 44px;
+  width: 85%;
+  margin: var(--space-sm) 0;
+}
+
+.cover {
+  height: 380px;
+  margin: var(--space-lg) 0;
+  border: 1px solid var(--card-border);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line,
+  .title,
+  .cover {
+    animation: none;
+  }
+}
