@@ -43,23 +43,24 @@ export const hero: Hero = {
 // ── Bande de logos clients (V2.1 — §06.2 du Design Handoff) ───────────────
 // 11 clients approuvés. Maison Peinture Sénégal est exclu de la bande (projet
 // ERP interne, sans vitrine publique — il reste présent en cas phare).
-// Fichiers logos à fournir par le PO dans /public/assets/logos ; tant qu'ils
-// manquent, chaque entrée rend un placeholder explicite [LOGO_MANQUANT].
+// Logos fournis par le PO dans /public/assets/logos (PNG détourés, fond
+// transparent). 3 encore à fournir : ATTA Africa, SCOD VTC, DDS Medical —
+// entrées sans `src`, masquées en prod, signalées [LOGO_MANQUANT] en preview.
 export const clientsIntro =
   "Des marques, des commerces et des organisations d'Afrique de l'Ouest et d'ailleurs.";
 
 export const clientLogos: ClientLogo[] = [
   { name: 'ATTA Africa' },
   { name: 'SCOD VTC' },
-  { name: 'Link Shop' },
-  { name: 'Marjan Bijouterie' },
-  { name: 'Luxury Bijouterie by KN' },
-  { name: 'ADA Voyages' },
-  { name: 'Tamou Fishing International' },
+  { name: 'Link Shop', src: '/assets/logos/link-shop.png' },
+  { name: 'Marjan Bijouterie', src: '/assets/logos/marjan-bijouterie.png' },
+  { name: 'Luxury Bijouterie by KN', src: '/assets/logos/luxury-bijouterie.png' },
+  { name: 'ADA Voyages', src: '/assets/logos/ada-voyages.png' },
+  { name: 'Tamou Fishing International', src: '/assets/logos/tamou-fishing.png' },
   { name: 'DDS Medical' },
-  { name: 'WAS Africa' },
-  { name: 'Fahamu Africa' },
-  { name: 'Sunu Thiossane' },
+  { name: 'WAS Africa', src: '/assets/logos/was-africa.png' },
+  { name: 'Fahamu Africa', src: '/assets/logos/fahamu-africa.png' },
+  { name: 'Sunu Thiossane', src: '/assets/logos/sunu-thiossane.png' },
 ];
 
 // ── A2 — Bande réassurance : SUPPRIMÉE (Lot D). Hors de l'architecture 13

@@ -12,7 +12,12 @@ import styles from './LogoStrip.module.css';
 // statique de placeholders [LOGO_MANQUANT], visible en preview uniquement.
 export function LogoStrip() {
   const hasLogos = clientLogos.some((c) => c.src);
-  if (!hasLogos && !showValidationNotes()) return null;
+  const showNotes = showValidationNotes();
+  if (!hasLogos && !showNotes) return null;
+
+  // En prod : uniquement les logos réellement fournis (pas de trou dans le
+  // défilement). En preview : toute la liste, avec les repères [LOGO_MANQUANT].
+  const logos = hasLogos && !showNotes ? clientLogos.filter((c) => c.src) : clientLogos;
 
   return (
     <section
@@ -27,13 +32,13 @@ export function LogoStrip() {
 
         <div className={styles.viewport}>
           <ul className={styles.track}>
-            {clientLogos.map((logo) => (
+            {logos.map((logo) => (
               <LogoItem key={logo.name} logo={logo} />
             ))}
           </ul>
           {hasLogos ? (
             <ul className={styles.track} aria-hidden="true">
-              {clientLogos.map((logo) => (
+              {logos.map((logo) => (
                 <LogoItem key={`dup-${logo.name}`} logo={logo} />
               ))}
             </ul>
