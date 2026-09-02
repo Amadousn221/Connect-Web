@@ -65,9 +65,11 @@ export function Sidebar({
         <AboutBlock locale={locale} />
 
         {context === 'blog-post' && data.tocHeadings && data.tocHeadings.length >= 2 ? (
-          <Block title="">
-            <TableOfContents headings={data.tocHeadings} />
-          </Block>
+          <div className={styles.desktopToc}>
+            <Block title="">
+              <TableOfContents headings={data.tocHeadings} />
+            </Block>
+          </div>
         ) : null}
 
         {context === 'blog-post' && data.recommendedResource ? (

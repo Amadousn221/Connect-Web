@@ -19,6 +19,7 @@ import { AuthorCard } from '@/components/shared/AuthorCard';
 import { CtaBlockRender } from '@/components/shared/CtaBlockRender';
 import { RelatedResourceTeaser } from '@/components/shared/RelatedResourceTeaser';
 import { RelatedItems } from '@/components/shared/RelatedItems';
+import { TableOfContents } from '@/components/shared/TableOfContents';
 import { Sidebar } from '@/components/shared/Sidebar';
 import { JsonLd } from '@/components/shared/JsonLd';
 import { CtaBand } from '@/components/ui/CtaBand';
@@ -141,6 +142,12 @@ export default async function BlogPostPage({
         <article className={styles.article}>
           <ArticleHeader post={post} />
           <KeyPoints points={post.keyPoints} />
+
+          {headings.length >= 2 ? (
+            <div className={styles.mobileToc}>
+              <TableOfContents headings={headings} />
+            </div>
+          ) : null}
 
           <div data-pt-content>
             <PortableTextRenderer value={post.body} />

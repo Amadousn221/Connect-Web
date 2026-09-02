@@ -135,3 +135,12 @@
     order: -1;
   }
 }
+
+/* La table des matières de la sidebar n'apparaît qu'en desktop : sur
+   tablette/mobile la sidebar passe en bas, une TOC y serait inutile —
+   elle est rendue en tête d'article à la place (`.mobileToc`). */
+@media (max-width: 1023px) {
+  .desktopToc {
+    display: none;
+  }
+}

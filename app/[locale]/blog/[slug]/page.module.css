@@ -15,6 +15,20 @@
   max-width: 720px;
 }
 
+/* TOC en tête d'article — mobile / tablette uniquement (en desktop elle est
+   dans la sidebar sticky). */
+.mobileToc {
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg);
+  border: 1px solid var(--card-border);
+  background: var(--bg-alt);
+}
+@media (min-width: 1024px) {
+  .mobileToc {
+    display: none;
+  }
+}
+
 /* ── Cas d'étude associé (Zone 7) ────────────────────────────────────── */
 .caseStudy {
   margin: var(--space-3xl) 0;
