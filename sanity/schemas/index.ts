@@ -8,6 +8,7 @@ import { blogPost } from './documents/blogPost';
 import { resourceCategory } from './documents/resourceCategory';
 import { resource } from './documents/resource';
 import { realisation } from './documents/realisation';
+import { lead } from './documents/lead';
 
 // Objects réutilisables
 import { seoFields } from './objects/seoFields';
@@ -28,6 +29,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   resourceCategory,
   resource,
   realisation,
+  lead,
   // Objects
   seoFields,
   ctaBlock,

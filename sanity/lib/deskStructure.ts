@@ -36,4 +36,6 @@ export const deskStructure: StructureResolver = (S) =>
       S.divider(),
       S.documentTypeListItem('realisation').title('Réalisations'),
       S.documentTypeListItem('author').title('Auteur'),
+      S.divider(),
+      S.documentTypeListItem('lead').title('Leads (téléchargements)'),
     ]);

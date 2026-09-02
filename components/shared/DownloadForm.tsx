@@ -28,6 +28,7 @@ export function DownloadForm({
   const [status, setStatus] = useState<Status>('idle');
   const [consent, setConsent] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -57,6 +58,8 @@ export function DownloadForm({
         }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = (await res.json().catch(() => null)) as { message?: string } | null;
+      setSuccessMessage(json?.message ?? null);
       setStatus('success');
     } catch {
       setStatus('error');
@@ -66,7 +69,7 @@ export function DownloadForm({
   if (status === 'success') {
     return (
       <p className={styles.confirmation} role="status">
-        {confirmationMessage || f.successFallback}
+        {successMessage || confirmationMessage || f.successFallback}
       </p>
     );
   }

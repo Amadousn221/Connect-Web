@@ -55,3 +55,43 @@ export function breadcrumbJsonLd(items: { name: string; url: string }[]): JsonLd
     })),
   };
 }
+
+/** Schéma racine, injecté une fois dans le layout (spec §12.2). */
+export function organizationJsonLd(opts: {
+  siteUrl: string;
+  logoUrl?: string;
+  sameAs?: string[];
+  phones?: string[];
+  email?: string;
+}): JsonLdObject {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Connect Web',
+    url: opts.siteUrl,
+    ...(opts.logoUrl ? { logo: opts.logoUrl } : {}),
+    ...(opts.sameAs && opts.sameAs.length ? { sameAs: opts.sameAs } : {}),
+    ...(opts.phones?.length || opts.email
+      ? {
+          contactPoint: {
+            '@type': 'ContactPoint',
+            contactType: 'customer support',
+            ...(opts.phones?.length ? { telephone: opts.phones } : {}),
+            ...(opts.email ? { email: opts.email } : {}),
+            areaServed: 'SN',
+            availableLanguage: ['fr'],
+          },
+        }
+      : {}),
+  };
+}
+
+export function websiteJsonLd(siteUrl: string): JsonLdObject {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Connect Web',
+    url: siteUrl,
+    inLanguage: 'fr',
+  };
+}

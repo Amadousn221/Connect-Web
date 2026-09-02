@@ -98,6 +98,22 @@ export type Realisation = {
   client?: string;
 };
 
+export type Lead = {
+  _id: string;
+  _type: 'lead';
+  nom: string;
+  email: string;
+  organisation?: string;
+  resourceRef: { _type: 'reference'; _ref: string };
+  resourceSnapshot?: { title?: string; slug?: string; resourceType?: string };
+  consentRgpd: boolean;
+  submittedAt: string;
+  source: string;
+  emailSent: boolean;
+  emailSentAt?: string;
+  notes?: string;
+};
+
 export type ResourceDeliveryMode = 'download' | 'online';
 
 export type ResourceType =

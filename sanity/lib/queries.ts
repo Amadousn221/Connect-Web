@@ -23,6 +23,7 @@ import type {
   BlogPostFull,
   CategoryWithCount,
   ResourceCardData,
+  ResourceDeliveryMode,
   ResourceFull,
   ResourceIndexResult,
   ResourceOrderBy,
@@ -298,6 +299,14 @@ export async function getBlogSlugs(): Promise<string[]> {
   });
 }
 
+/** Slug + date de mise à jour de chaque article publié — pour le sitemap. */
+export async function getBlogSitemapEntries(): Promise<{ slug: string; updatedAt: string }[]> {
+  return sanityFetch<{ slug: string; updatedAt: string }[]>({
+    query: /* groq */ `*[${PUBLISHED_BLOG}]{ "slug": slug.current, "updatedAt": _updatedAt }`,
+    tags: ['blogPost'],
+  });
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // RESSOURCES
 // ═══════════════════════════════════════════════════════════════════════════
@@ -385,6 +394,36 @@ export async function getResource(slug: string, preview?: boolean): Promise<Reso
 export async function getResourceDownloadUrl(slug: string): Promise<string | null> {
   return sanityFetch<string | null>({
     query: /* groq */ `*[_type == "resource" && slug.current == $slug][0].downloadFile.asset->url`,
+    params: { slug },
+    tags: [`resource:${slug}`],
+  });
+}
+
+export type ResourceForLead = {
+  _id: string;
+  title: string;
+  slug: string;
+  resourceType: ResourceType;
+  deliveryMode: ResourceDeliveryMode;
+  confirmationMessage: string | null;
+  file: { url: string; originalFilename: string | null } | null;
+};
+
+/**
+ * Données minimales d'une ressource pour l'endpoint `/api/download-resource`
+ * (serveur uniquement — contient l'URL du fichier).
+ */
+export async function getResourceForLead(slug: string): Promise<ResourceForLead | null> {
+  return sanityFetch<ResourceForLead | null>({
+    query: /* groq */ `*[_type == "resource" && slug.current == $slug && publishedAt <= now()][0]{
+      _id,
+      title,
+      "slug": slug.current,
+      resourceType,
+      deliveryMode,
+      "confirmationMessage": confirmationMessage,
+      "file": downloadFile.asset->{ url, "originalFilename": originalFilename }
+    }`,
     params: { slug },
     tags: [`resource:${slug}`],
   });
@@ -494,6 +533,44 @@ export async function getResourceTypeCounts(
 export async function getResourceSlugs(): Promise<string[]> {
   return sanityFetch<string[]>({
     query: /* groq */ `*[${PUBLISHED_RESOURCE}].slug.current`,
+    tags: ['resource'],
+  });
+}
+
+/** Slug + date de mise à jour de chaque ressource publiée — pour le sitemap. */
+export async function getResourceSitemapEntries(): Promise<{ slug: string; updatedAt: string }[]> {
+  return sanityFetch<{ slug: string; updatedAt: string }[]>({
+    query: /* groq */ `*[${PUBLISHED_RESOURCE}]{ "slug": slug.current, "updatedAt": _updatedAt }`,
+    tags: ['resource'],
+  });
+}
+
+export type FeedItem = {
+  title: string;
+  slug: string;
+  excerpt: string;
+  publishedAt: string;
+  updatedAt: string;
+};
+
+/** Derniers articles publiés, projection RSS. */
+export async function getBlogFeedItems(limit = 20): Promise<FeedItem[]> {
+  return sanityFetch<FeedItem[]>({
+    query: /* groq */ `*[${PUBLISHED_BLOG}] | order(publishedAt desc)[0...$limit]{
+      title, "slug": slug.current, excerpt, publishedAt, "updatedAt": _updatedAt
+    }`,
+    params: { limit },
+    tags: ['blogPost'],
+  });
+}
+
+/** Dernières ressources publiées, projection RSS. */
+export async function getResourceFeedItems(limit = 20): Promise<FeedItem[]> {
+  return sanityFetch<FeedItem[]>({
+    query: /* groq */ `*[${PUBLISHED_RESOURCE}] | order(publishedAt desc)[0...$limit]{
+      title, "slug": slug.current, excerpt, publishedAt, "updatedAt": _updatedAt
+    }`,
+    params: { limit },
     tags: ['resource'],
   });
 }
