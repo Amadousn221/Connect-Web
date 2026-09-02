@@ -60,13 +60,12 @@ app/
     layout.tsx           Header + Footer
     page.tsx             Accueil (coquille M0, contenu en M2)
   studio/[[...tool]]/    Sanity Studio embarqué (/studio, hors [locale])
-  debug-sanity/          ⟵ page TEMPORAIRE de test connexion (Étape 0, à supprimer)
   not-found.tsx
 components/layout/        Header, Footer, MegaMenu, MobileDrawer, ThemeToggle, LangSwitcher
 sanity/
   env.ts                 variables env Sanity, typées + validées
-  schemas/               schemaTypes (vide — Étape 2) + documents/ objects/ blocks/
-  lib/                    client.ts (public + preview), image.ts (urlFor), queries.ts
+  schemas/               schemaTypes (7 documents + 4 objects — Étape 2) + documents/ objects/ blocks/
+  lib/                    client.ts (public + preview), image.ts (urlFor)
 sanity.config.ts          config du Studio embarqué
 sanity.cli.ts             config de la CLI Sanity
 lib/

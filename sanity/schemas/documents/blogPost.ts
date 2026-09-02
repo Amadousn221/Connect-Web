@@ -32,8 +32,10 @@ export const blogPost = defineType({
       type: 'string',
       group: 'content',
       description: 'Idéalement sous 70 caractères.',
-      validation: (Rule) =>
-        Rule.required().max(70).warning('Au-delà de 70 caractères, le titre risque d\'être tronqué.'),
+      validation: (Rule) => [
+        Rule.required(),
+        Rule.max(70).warning('Au-delà de 70 caractères, le titre risque d\'être tronqué.'),
+      ],
     }),
     defineField({
       name: 'slug',
@@ -83,12 +85,11 @@ export const blogPost = defineType({
       rows: 3,
       group: 'content',
       description: 'Affiché sur les cartes catalogue et comme meta description par défaut.',
-      validation: (Rule) =>
-        Rule.required()
-          .min(100)
-          .warning('Un extrait trop court passe mal sur les cartes.')
-          .max(200)
-          .warning('Au-delà de 200 caractères, l\'extrait est tronqué.'),
+      validation: (Rule) => [
+        Rule.required(),
+        Rule.min(100).warning('Un extrait trop court passe mal sur les cartes.'),
+        Rule.max(200).warning('Au-delà de 200 caractères, l\'extrait est tronqué.'),
+      ],
     }),
     defineField({
       name: 'readingTime',

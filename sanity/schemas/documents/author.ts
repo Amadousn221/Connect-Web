@@ -47,7 +47,10 @@ export const author = defineType({
       type: 'text',
       rows: 3,
       description: '2-3 lignes affichées sous les articles. Max ~300 caractères.',
-      validation: (Rule) => Rule.required().max(300).warning('Idéalement sous 300 caractères.'),
+      validation: (Rule) => [
+        Rule.required(),
+        Rule.max(300).warning('Idéalement sous 300 caractères.'),
+      ],
     }),
     simpleTextField('longBio', 'Bio longue (optionnelle)'),
     defineField({
