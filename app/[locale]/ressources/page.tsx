@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -134,33 +135,35 @@ export default async function ResourcesIndexPage({
       />
 
       {index.total > 0 || hasFilters ? (
-        <FilterBar
-          resultCount={index.total}
-          resultNoun="ressource"
-          sort={{
-            param: 'tri',
-            defaultValue: 'recentes',
-            options: RESOURCE_SORTS.map((s) => ({ value: s.param, label: s.label })),
-          }}
-          groups={[
-            {
-              param: 'thematique',
-              label: 'Thématique',
-              allLabel: 'Toutes',
-              options: categories.map((c) => ({ value: c.slug, label: c.title, count: c.count })),
-            },
-            {
-              param: 'type',
-              label: 'Type',
-              allLabel: 'Tous',
-              options: RESOURCE_TYPE_ORDER.map((t) => ({
-                value: t,
-                label: RESOURCE_TYPE_LABELS[t],
-                count: countByType.get(t) ?? 0,
-              })),
-            },
-          ]}
-        />
+        <Suspense fallback={null}>
+          <FilterBar
+            resultCount={index.total}
+            resultNoun="ressource"
+            sort={{
+              param: 'tri',
+              defaultValue: 'recentes',
+              options: RESOURCE_SORTS.map((s) => ({ value: s.param, label: s.label })),
+            }}
+            groups={[
+              {
+                param: 'thematique',
+                label: 'Thématique',
+                allLabel: 'Toutes',
+                options: categories.map((c) => ({ value: c.slug, label: c.title, count: c.count })),
+              },
+              {
+                param: 'type',
+                label: 'Type',
+                allLabel: 'Tous',
+                options: RESOURCE_TYPE_ORDER.map((t) => ({
+                  value: t,
+                  label: RESOURCE_TYPE_LABELS[t],
+                  count: countByType.get(t) ?? 0,
+                })),
+              },
+            ]}
+          />
+        </Suspense>
       ) : null}
 
       <div className={`cw-sec ${styles.layout}`}>

@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -122,30 +123,32 @@ export default async function BlogIndexPage({
       <CatalogHero eyebrow={blogHero.eyebrow} title={blogHero.title} subtitle={blogHero.subtitle} />
 
       {hasAnyContent ? (
-        <FilterBar
-          resultCount={index.total}
-          resultNoun="article"
-          sort={{
-            param: 'tri',
-            defaultValue: 'recents',
-            options: BLOG_SORTS.map((s) => ({ value: s.param, label: s.label })),
-          }}
-          groups={[
-            {
-              param: 'categorie',
-              label: 'Catégorie',
-              allLabel: 'Toutes',
-              options: categories.map((c) => ({ value: c.slug, label: c.title, count: c.count })),
-            },
-            {
-              param: 'tag',
-              label: 'Tag',
-              allLabel: 'Tous',
-              collapseAfter: 12,
-              options: tags.map((t) => ({ value: t.slug, label: t.title })),
-            },
-          ]}
-        />
+        <Suspense fallback={null}>
+          <FilterBar
+            resultCount={index.total}
+            resultNoun="article"
+            sort={{
+              param: 'tri',
+              defaultValue: 'recents',
+              options: BLOG_SORTS.map((s) => ({ value: s.param, label: s.label })),
+            }}
+            groups={[
+              {
+                param: 'categorie',
+                label: 'Catégorie',
+                allLabel: 'Toutes',
+                options: categories.map((c) => ({ value: c.slug, label: c.title, count: c.count })),
+              },
+              {
+                param: 'tag',
+                label: 'Tag',
+                allLabel: 'Tous',
+                collapseAfter: 12,
+                options: tags.map((t) => ({ value: t.slug, label: t.title })),
+              },
+            ]}
+          />
+        </Suspense>
       ) : null}
 
       <div className={`cw-sec ${styles.layout}`}>
