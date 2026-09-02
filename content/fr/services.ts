@@ -5,10 +5,10 @@ import type { ServiceCardData } from '../types';
 // déclinaisons et technos du service (preuve dans la carte, jamais en carte
 // autonome — DECISION 23). Grille uniforme 3 colonnes.
 //
-// Images : captures réelles de projets clients approuvés (DECISION 12) quand
-// elles existent. Manquantes → repère `[IMAGE_MANQUANTE]` visible en preview,
-// panneau pétrole en production. À fournir par le PO : ERP/CRM (Maison
-// Peinture Odoo), IA & automatisation (ATTA reporting), Marketing.
+// Images : visuels d'illustration des expertises (fournis par le PO,
+// `public/assets/images/service-*.jpg`). Ce ne sont PAS des captures de
+// projets clients — les vraies réalisations vivent sur /realisations et dans
+// les sliders de cas.
 
 export const servicesIntro = {
   eyebrow: 'Nos capacités',
@@ -29,8 +29,8 @@ export const serviceCards: ServiceCardData[] = [
       'Sur-mesure',
     ],
     image: {
-      src: '/assets/real/was-africa.jpg',
-      alt: "Site institutionnel de WAS Africa réalisé par Connect Web",
+      src: '/assets/images/service-conception-web.jpg',
+      alt: 'Développeuse au travail sur un projet web',
     },
     // Pas de page « conception-developpement-web » : on renvoie vers la page
     // d'offre la plus proche (présence / crédibilité).
@@ -48,8 +48,8 @@ export const serviceCards: ServiceCardData[] = [
       'Tableau de bord',
     ],
     image: {
-      src: '/assets/real/scod-vtc.jpg',
-      alt: 'Plateforme de réservation SCOD VTC réalisée par Connect Web',
+      src: '/assets/images/service-logiciels-apps.jpg',
+      alt: "Développement d'une application web sur mesure",
     },
     cta: { label: "Voir l'offre", href: '/services/plateformes-applications' },
   },
@@ -58,7 +58,10 @@ export const serviceCards: ServiceCardData[] = [
     description:
       'Centraliser vos ventes, vos stocks et vos clients dans un seul système, relié à ce qui vend déjà.',
     badges: ['Odoo', 'HubSpot', 'Gestion des stocks', 'Ventes', 'Intégrations'],
-    imageMissing: 'ERP Odoo Maison Peinture Sénégal',
+    image: {
+      src: '/assets/images/service-erp-crm.jpg',
+      alt: 'Pilotage des ventes et des stocks sur un tableau de bord',
+    },
     cta: { label: "Voir l'offre", href: '/services/crm-erp-integrations' },
   },
   {
@@ -66,14 +69,20 @@ export const serviceCards: ServiceCardData[] = [
     description:
       'Faire disparaître les tâches répétitives : traitement de commandes, relances, reporting — pour que votre équipe se concentre sur le reste.',
     badges: ['n8n', 'Automatisation', 'Reporting auto', 'Relance panier', 'API'],
-    imageMissing: 'Reporting mensuel automatisé ATTA Africa',
+    image: {
+      src: '/assets/images/service-ia-automatisation.jpg',
+      alt: 'Automatisation et intelligence artificielle appliquées aux flux métier',
+    },
     cta: { label: "Voir l'offre", href: '/services/ia-automatisation' },
   },
   {
     title: 'Marketing & génération de prospects',
     description: 'Attirer, qualifier et convertir : campagnes, e-mail, acquisition.',
     badges: ['Mailchimp', 'Klaviyo', 'Email marketing', 'Campagnes', 'Acquisition'],
-    imageMissing: 'Campagne marketing (pas encore de cas public)',
+    image: {
+      src: '/assets/images/service-marketing.jpg',
+      alt: 'Campagnes marketing digitales et suivi des performances',
+    },
     cta: { label: "Voir l'offre", href: '/services/marketing-acquisition' },
   },
   {
