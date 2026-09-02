@@ -1,0 +1,37 @@
+import { SliderRail } from '@/components/ui/SliderRail';
+import type { BlogPostCard as BlogPostCardData, ResourceCardData } from '@/sanity/lib/types';
+import type { Locale } from '@/lib/i18n/config';
+
+import { BlogCard } from './BlogCard';
+import { ResourceCard } from './ResourceCard';
+import styles from './RelatedItems.module.css';
+
+type Props =
+  | { type: 'posts'; items: BlogPostCardData[]; locale: Locale; title?: string }
+  | { type: 'resources'; items: ResourceCardData[]; locale: Locale; title?: string };
+
+/**
+ * « Articles similaires » / « Ressources similaires » (spec §7, §9).
+ * Réutilise `SliderRail` (mécanique des carrousels homepage).
+ * Ne rend rien si moins de 3 items — mieux vaut rien que du bruit (spec §7.2).
+ */
+export function RelatedItems(props: Props) {
+  const { type, items, locale } = props;
+  if (!items || items.length < 3) return null;
+
+  const heading = props.title ?? (type === 'posts' ? 'À lire aussi' : 'Ressources similaires');
+  const ariaLabel = type === 'posts' ? 'Articles similaires' : 'Ressources similaires';
+
+  return (
+    <section className={styles.section}>
+      <h2 className={`cw-serif ${styles.heading}`}>{heading}</h2>
+      <SliderRail ariaLabel={ariaLabel}>
+        {type === 'posts'
+          ? items.map((post) => <BlogCard key={post._id} post={post} locale={locale} />)
+          : items.map((resource) => (
+              <ResourceCard key={resource._id} resource={resource} locale={locale} />
+            ))}
+      </SliderRail>
+    </section>
+  );
+}

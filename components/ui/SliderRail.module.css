@@ -1,0 +1,89 @@
+/* Rail générique — cf. ProjectSlider.module.css (même comportement). */
+
+.wrap {
+  margin-top: var(--space-2xl);
+}
+
+/* Desktop : N slides visibles en grille, aucun scroll. */
+.rail {
+  display: grid;
+  gap: 20px;
+}
+.wrap[data-per-view='2'] .rail {
+  grid-template-columns: repeat(2, 1fr);
+}
+.wrap[data-per-view='3'] .rail {
+  grid-template-columns: repeat(3, 1fr);
+}
+.wrap[data-per-view='4'] .rail {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.slide {
+  min-width: 0;
+  display: flex;
+}
+.slide > * {
+  width: 100%;
+}
+
+.rail:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+
+/* Bande de navigation basse — masquée en desktop (tout tient). */
+.track {
+  display: none;
+  position: relative;
+  height: 4px;
+  margin-top: 20px;
+  background: var(--border);
+}
+.thumb {
+  position: absolute;
+  top: -3px;
+  height: 10px;
+  min-width: 40px;
+  background: var(--ink);
+  cursor: grab;
+  touch-action: none;
+}
+.thumb:active {
+  cursor: grabbing;
+}
+
+/* Tablette / mobile : rail scroll-snap + bande basse. */
+@media (max-width: 1023px) {
+  .rail {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .slide {
+    flex: 0 0 66%;
+    scroll-snap-align: start;
+  }
+  .track {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .slide {
+    flex-basis: 86%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail {
+    scroll-behavior: auto;
+  }
+}

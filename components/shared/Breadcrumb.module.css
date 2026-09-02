@@ -1,0 +1,38 @@
+.nav {
+  font-size: var(--text-body-sm);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.link {
+  color: var(--ink-soft);
+}
+.link:hover {
+  color: var(--orange);
+}
+
+.current {
+  color: var(--ink-faint);
+  max-width: 42ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sep {
+  color: var(--ink-faint);
+}
