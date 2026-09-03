@@ -1,15 +1,18 @@
+/* P-HERO-T : hauteur réduite (P26 §11), alignée sur l'esprit du Hero
+   Accueil sans en reprendre le format pur-typo (le fil d'Ariane + le
+   visuel optionnel restent propres au gabarit service). */
 .hero {
   position: relative;
   overflow: hidden;
   color: var(--on-ink);
-  min-height: 560px;
+  min-height: clamp(420px, 60vh, 620px);
   display: flex;
   flex-direction: column;
   background: var(--ink);
 }
 /* Sans image de fond : même recette de dégradé que le Hero Accueil (P25). */
 .hero[data-plain='true'] {
-  min-height: 520px;
+  min-height: clamp(380px, 54vh, 560px);
   background: linear-gradient(135deg, var(--ink) 0%, #0c2f3e 100%);
 }
 
@@ -57,7 +60,7 @@
   flex: 1;
   display: flex;
   align-items: center;
-  padding-block: 64px 96px;
+  padding-block: 48px 64px;
 }
 .copy {
   max-width: 620px;

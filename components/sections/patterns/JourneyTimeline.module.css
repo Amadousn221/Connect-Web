@@ -1,0 +1,140 @@
+.section {
+  background: var(--ink);
+  color: var(--on-ink);
+  padding-block: 100px;
+}
+
+.chain {
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 20px 0;
+}
+
+/* `<li>` disparaît en tant que boîte : `.stepWrap` et `.highlightWrap`
+   deviennent des items directs de `.chain`, ce qui permet au highlight de
+   forcer un retour à la ligne pleine largeur (flex-basis: 100%) sans casser
+   la structure sémantique <ol><li>. */
+.stepGroup {
+  display: contents;
+}
+
+.stepWrap {
+  display: flex;
+  align-items: center;
+  flex: 0 1 auto;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 148px;
+  padding: 20px 20px 18px;
+  border: 1px solid rgba(240, 238, 233, 0.24);
+  border-radius: var(--radius-card);
+}
+
+.stepNum {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.stepIcon {
+  display: flex;
+  color: var(--accent);
+}
+
+.stepLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--on-ink);
+  line-height: 1.3;
+}
+
+.stepDetail {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: rgba(240, 238, 233, 0.65);
+}
+
+.arrow {
+  flex-shrink: 0;
+  width: 40px;
+  text-align: center;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.highlightWrap {
+  flex-basis: 100%;
+  margin: 4px 0;
+}
+
+.highlight {
+  padding: 22px 26px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-card);
+  background: rgba(232, 97, 42, 0.08);
+  max-width: 640px;
+}
+
+.highlightLabel {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.highlightBody {
+  margin: 0;
+  font-size: var(--text-section);
+  line-height: 1.6;
+  color: var(--on-ink);
+}
+
+@media (max-width: 860px) {
+  .chain {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .stepGroup {
+    display: block;
+    width: 100%;
+  }
+  .stepWrap {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .step {
+    width: 100%;
+    min-width: 0;
+  }
+  .arrow {
+    width: auto;
+    padding: 6px 0 6px 22px;
+    transform: rotate(90deg);
+    transform-origin: left center;
+  }
+  .highlightWrap {
+    margin: 8px 0 12px;
+  }
+  .highlight {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-block: 56px;
+  }
+}

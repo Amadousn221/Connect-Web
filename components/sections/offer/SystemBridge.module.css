@@ -8,6 +8,18 @@
   padding-inline: var(--container-pad);
   text-align: center;
 }
+.iconBox {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-card);
+  color: var(--accent);
+}
+
 .eyebrowWrap {
   margin-bottom: 12px;
   display: flex;

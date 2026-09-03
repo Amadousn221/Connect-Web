@@ -88,7 +88,9 @@ export const plateformesApplications: OfferContent = {
     eyebrow: 'Cas plein',
     name: 'SCOD VTC',
     category: 'Mobilité · Réservation & paiement',
-    body: 'SCOD VTC — une plateforme de réservation et de paiement pour un service de transport, à la place de la gestion manuelle.',
+    context: 'SCOD VTC, service de transport (VTC) à Dakar.',
+    problem: 'Réservations et paiements gérés manuellement, sans outil dédié.',
+    solution: 'Une plateforme de réservation et de paiement pensée pour le transport.',
     quote: '« Réservation VTC premium à Dakar, tarif fixe garanti et suivi en temps réel. »',
     primaryCta: { label: 'Voir le cas complet →', href: '/realisations' },
     image: { src: '/assets/real/scod-vtc.jpg', alt: "Plateforme de réservation SCOD VTC réalisée par Connect Web" },
@@ -128,7 +130,6 @@ export const plateformesApplications: OfferContent = {
       'Cadrage des flux inclus',
       'Accès et domaine à votre nom',
     ],
-    cta: { label: 'Demander un audit →', href: '#contact' },
   },
 
   faq: {

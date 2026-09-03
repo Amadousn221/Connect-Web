@@ -5,17 +5,25 @@ import { Button } from '@/components/ui/Button';
 import { ValidationNote } from '@/components/ui/ValidationNote';
 import { localePath } from '@/lib/i18n/routing';
 import type { Locale } from '@/lib/i18n/config';
-import type { FeaturedCaseContent } from '@/content/offres';
+import type { ProofCaseContent } from '@/content/offres';
 import styles from './FeaturedCase.module.css';
 
-// Section 06a — « Cas plein » : bloc pétrole nuit, visuel (placeholder « à
-// valider » tant que le vrai n'est pas fourni) + texte + citation + CTA.
+const PHASES: { key: keyof Pick<ProofCaseContent, 'context' | 'problem' | 'solution'>; label: string }[] = [
+  { key: 'context', label: 'Contexte' },
+  { key: 'problem', label: 'Problème' },
+  { key: 'solution', label: 'Solution' },
+];
+
+// P-PROOF-CASE (P26 §11) — fond blanc (n'est plus une des 3 sections
+// encre). Contenu structuré Contexte → Problème → Solution → Résultat
+// (remplace l'ancien paragraphe unique `body`) ; résultat absent →
+// `[RÉSULTAT — à confirmer]` explicite, jamais un chiffre inventé.
 export function FeaturedCase({
   locale,
   content,
 }: {
   locale: Locale;
-  content: FeaturedCaseContent;
+  content: ProofCaseContent;
 }) {
   const primaryHref = content.primaryCta
     ? /^https?:\/\//.test(content.primaryCta.href)
@@ -54,11 +62,25 @@ export function FeaturedCase({
             <div className={styles.text}>
               <p className={`cw-serif ${styles.name}`}>{content.name}</p>
               <p className={styles.category}>{content.category}</p>
-              <p className={styles.body}>{content.body}</p>
-              <blockquote className={styles.quote}>{content.quote}</blockquote>
+
+              <dl className={styles.phases}>
+                {PHASES.map((p) => (
+                  <div key={p.key} className={styles.phase}>
+                    <dt>{p.label}</dt>
+                    <dd>{content[p.key]}</dd>
+                  </div>
+                ))}
+                <div className={styles.phase} data-result>
+                  <dt>Résultat</dt>
+                  <dd>{content.result ?? '[RÉSULTAT — à confirmer]'}</dd>
+                </div>
+              </dl>
+
+              {content.quote ? <blockquote className={styles.quote}>{content.quote}</blockquote> : null}
+
               <div className={styles.ctas}>
                 {content.primaryCta && primaryHref ? (
-                  <Button href={primaryHref} variant="primary" onDark size="md">
+                  <Button href={primaryHref} variant="primary" size="md">
                     {content.primaryCta.label}
                   </Button>
                 ) : null}

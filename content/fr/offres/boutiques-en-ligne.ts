@@ -109,7 +109,9 @@ export const boutiquesEnLigne: OfferContent = {
     eyebrow: 'Cas plein',
     name: 'ATTA Africa',
     category: 'Marque de mode · Vente directe',
-    body: "Une boutique qui vend du Sénégal au monde — paiement mobile et international sur la même caisse — et un système qui gère le reste tout seul.",
+    context: 'ATTA Africa, marque de mode DTC qui vend du Sénégal vers l’international.',
+    problem: '[Problème initial — à confirmer]',
+    solution: 'Une boutique qui vend du Sénégal au monde — paiement mobile et international sur la même caisse — et un système qui gère le reste tout seul.',
     quote: '« Une boutique cross-border en ligne, avec reporting mensuel automatisé et relances panier. »',
     primaryCta: { label: 'Voir le cas complet →', href: '/realisations' },
     externalUrl: { label: 'atta-africa.com', href: 'https://atta-africa.com' },
@@ -160,7 +162,6 @@ export const boutiquesEnLigne: OfferContent = {
       'Formation + prise en main',
       'Accès et domaine à votre nom',
     ],
-    cta: { label: 'Demander un devis gratuit', href: '#contact' },
   },
 
   faq: {

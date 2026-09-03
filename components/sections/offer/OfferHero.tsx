@@ -6,8 +6,9 @@ import type { Locale } from '@/lib/i18n/config';
 import type { OfferHeroContent } from '@/content/offres';
 import styles from './OfferHero.module.css';
 
-// Section 01 — Hero d'offre : image + dégradé, fil d'Ariane, eyebrow, h1, sous-
-// titre, 2 CTA, 3 puces à coche.
+// P-HERO-T (P26 §11) — Hero d'offre : hauteur réduite, typo-first, CTA
+// compacts (primaire + lien discret), visuel réel optionnel et discret
+// (jamais un mockup). Fil d'Ariane, eyebrow, h1, sous-titre, 3 puces à coche.
 export function OfferHero({
   locale,
   content,
@@ -57,8 +58,8 @@ export function OfferHero({
             <Button href={content.ctas[0].href} variant="primary" onDark size="md">
               {content.ctas[0].label}
             </Button>
-            <Button href={content.ctas[1].href} variant="outline" onDark size="md">
-              {content.ctas[1].label}
+            <Button href={content.ctas[1].href} variant="link" onDark size="md">
+              {content.ctas[1].label} →
             </Button>
           </div>
 

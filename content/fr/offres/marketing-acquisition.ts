@@ -89,7 +89,6 @@ export const marketingAcquisition: OfferContent = {
       'Rapport de performance mensuel',
       'Aucun engagement long terme imposé',
     ],
-    cta: { label: 'Demander un devis gratuit', href: '#contact' },
   },
 
   faq: {

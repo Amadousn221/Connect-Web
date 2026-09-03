@@ -8,12 +8,17 @@
   margin-bottom: 16px;
 }
 
+/* P-PROOF-CASE (P26 §11) — carte claire bordée (n'est plus une ponctuation
+   encre). */
 .grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 44px;
   align-items: center;
-  background: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
 }
 
 .visual {
@@ -31,7 +36,7 @@
 .visual span {
   font-size: 13px;
   line-height: 1.5;
-  color: rgba(240, 238, 233, 0.6);
+  color: var(--text-soft);
   max-width: 260px;
 }
 
@@ -50,7 +55,7 @@
 }
 .name {
   font-size: 32px;
-  color: var(--on-ink);
+  color: var(--text);
   margin: 0 0 10px;
 }
 .category {
@@ -59,21 +64,52 @@
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 600;
-  margin: 0 0 14px;
-}
-.body {
-  font-size: 16px;
-  line-height: 1.65;
-  color: rgba(240, 238, 233, 0.75);
   margin: 0 0 20px;
 }
+
+/* Contexte → Problème → Solution → Résultat */
+.phases {
+  margin: 0 0 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.phase {
+  padding-left: 14px;
+  border-left: 2px solid var(--card-border);
+}
+.phase[data-result] {
+  border-left-color: var(--accent);
+}
+.phase dt {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 3px;
+}
+.phase[data-result] dt {
+  color: var(--accent);
+}
+.phase dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-soft);
+}
+.phase[data-result] dd {
+  color: var(--text);
+  font-weight: 500;
+}
+
 .quote {
   border-left: 2px solid var(--accent);
   padding-left: 16px;
   margin: 0 0 24px;
   font-size: 15px;
   line-height: 1.6;
-  color: rgba(240, 238, 233, 0.85);
+  color: var(--text-soft);
   font-style: italic;
 }
 .ctas {
@@ -85,13 +121,13 @@
 .extern {
   display: inline-flex;
   align-items: center;
-  color: rgba(240, 238, 233, 0.7);
+  color: var(--text-soft);
   font-size: 14px;
   font-weight: 500;
   padding: 12px 4px;
 }
 .extern:hover {
-  color: var(--on-ink);
+  color: var(--text);
 }
 
 @media (max-width: 860px) {

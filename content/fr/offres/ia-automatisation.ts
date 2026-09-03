@@ -57,7 +57,9 @@ export const iaAutomatisation: OfferContent = {
     eyebrow: 'Cas plein',
     name: 'ATTA Africa',
     category: 'Mode DTC · Automatisations',
-    body: "Une fois la boutique ATTA lancée, on a automatisé ce qui prenait du temps chaque mois : le rapport de ventes mensuel (par taille, produit, zone ; chiffre d'affaires, unités, meilleures ventes ; analyse et envoi sans intervention), le traitement des commandes et les relances de panier abandonné. C'est le même client dont on a d'abord construit la boutique : du site au système, pour de vrai.",
+    context: 'ATTA Africa — le même client dont on a d’abord construit la boutique : du site au système, pour de vrai.',
+    problem: 'Le rapport de ventes mensuel, le traitement des commandes et les relances de panier abandonné prenaient du temps chaque mois, à la main.',
+    solution: "Automatisation du reporting mensuel (par taille, produit, zone ; chiffre d'affaires, unités, meilleures ventes ; analyse et envoi sans intervention), du traitement des commandes et des relances de panier.",
     quote: '« Un reporting mensuel automatisé, un traitement de commande simplifié, des relances panier actives. »',
     primaryCta: { label: 'Voir le cas complet →', href: '/realisations' },
     visualPending: true,
@@ -98,7 +100,6 @@ export const iaAutomatisation: OfferContent = {
       'Connexion à vos outils existants',
       'Ajustements inclus le premier mois',
     ],
-    cta: { label: 'Demander un devis gratuit', href: '#contact' },
   },
 
   faq: {

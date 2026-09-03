@@ -80,7 +80,6 @@ export const sitesEntreprise: OfferContent = {
       'SEO technique inclus',
       'Accès et domaine à votre nom',
     ],
-    cta: { label: 'Demander un devis gratuit', href: '#contact' },
   },
 
   faq: {

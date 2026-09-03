@@ -1,0 +1,72 @@
+.section {
+  background: var(--bg);
+  padding: 92px 0;
+}
+
+.scroller {
+  margin-top: 48px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.grid {
+  display: grid;
+  min-width: 560px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.headCell {
+  padding: 16px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.rowLabel {
+  padding: 16px 20px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+
+.cell {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+
+.textCell {
+  font-size: 14.5px;
+  color: var(--text-soft);
+}
+
+.boolCell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: var(--text-faint);
+}
+.boolCell[data-yes='true'] {
+  color: var(--accent);
+  background: rgba(232, 97, 42, 0.1);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 56px 0;
+  }
+}

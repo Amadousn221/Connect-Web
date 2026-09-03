@@ -70,7 +70,9 @@ export const crmErpIntegrations: OfferContent = {
     eyebrow: 'Cas plein',
     name: 'Maison Peinture Sénégal',
     category: 'Quincaillerie · Gestion intégrée',
-    body: 'Maison Peinture Sénégal — une quincaillerie qui gérait stock et ventes dans des outils séparés. On a mis en place un ERP Odoo pour tout piloter depuis un seul endroit.',
+    context: 'Maison Peinture Sénégal, quincaillerie / distribution de peinture.',
+    problem: 'Stock et ventes gérés dans des outils séparés, sans vue d’ensemble.',
+    solution: 'Mise en place d’un ERP Odoo pour tout piloter depuis un seul endroit.',
     quote: '« Stock et ventes pilotés depuis un seul système, sans ressaisie. »',
     visualPending: true,
     visualNote: "Visuel de l'instance Odoo configurée à fournir",
@@ -99,7 +101,6 @@ export const crmErpIntegrations: OfferContent = {
       'Migration de vos données existantes',
       'Formation de votre équipe incluse',
     ],
-    cta: { label: 'Demander un devis gratuit', href: '#contact' },
   },
 
   faq: {
