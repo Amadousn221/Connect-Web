@@ -14,7 +14,7 @@
   line-height: var(--leading-tight);
   font-weight: 600;
   letter-spacing: -0.015em;
-  color: var(--ink);
+  color: var(--text);
   max-width: 18ch;
   text-wrap: pretty;
 }
@@ -23,7 +23,7 @@
   margin: 0;
   font-size: var(--text-section);
   line-height: 1.6;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   max-width: 52ch;
 }
 

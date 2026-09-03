@@ -18,21 +18,23 @@
 }
 
 .sep {
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 .line[data-tone='default'] {
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 .line[data-tone='default'] .sep {
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 .line[data-tone='on-dark'] {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--on-ink);
+  opacity: 0.85;
 }
 .line[data-tone='on-dark'] .sep {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--on-ink);
+  opacity: 0.4;
 }
 
 /* Mobile : la ligne passe en colonne (§19.2) — on masque les séparateurs. */

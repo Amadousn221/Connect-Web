@@ -68,7 +68,7 @@ export function OfferHero({
                 <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path
                     d="M3 8.5l3.2 3.2L13 5"
-                    stroke="var(--orange)"
+                    stroke="var(--accent)"
                     strokeWidth="1.7"
                     strokeLinecap="round"
                     strokeLinejoin="round"

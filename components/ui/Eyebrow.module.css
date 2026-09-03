@@ -6,19 +6,19 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
 }
 
 .dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--orange);
+  background: var(--accent);
   flex-shrink: 0;
 }
 
 /* Sur pétrole nuit l'orange garde un bon contraste — pas de changement de
-   couleur, le token reste var(--orange). data-tone réservé pour ajustements. */
+   couleur, le token reste var(--accent). data-tone réservé pour ajustements. */
 .eyebrow[data-tone='on-dark'] {
-  color: var(--orange);
+  color: var(--accent);
 }

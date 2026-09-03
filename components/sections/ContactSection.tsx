@@ -12,7 +12,7 @@ const PhoneIcon = (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path
       d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.2.2 2.4.56 3.5a1 1 0 0 1-.24 1L6.6 10.8Z"
-      stroke="var(--orange)"
+      stroke="var(--accent)"
       strokeWidth="1.6"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -23,13 +23,13 @@ const WhatsAppIcon = (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path
       d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3Z"
-      stroke="var(--orange)"
+      stroke="var(--accent)"
       strokeWidth="1.6"
       strokeLinejoin="round"
     />
     <path
       d="M9 8.5c0 4 2.5 6.5 6.5 6.5.6 0 1-.5 1-1l-.2-1.2-1.9-.6-1 1a5.4 5.4 0 0 1-2.4-2.4l1-1L10.2 8 9 7.8c-.5 0-1 .4-1 .7Z"
-      fill="var(--orange)"
+      fill="var(--accent)"
     />
   </svg>
 );

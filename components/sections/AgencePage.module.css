@@ -6,7 +6,7 @@
   min-height: 480px;
   display: flex;
   align-items: center;
-  background: var(--petrol-nuit);
+  background: var(--ink);
   padding-block: clamp(72px, 12vh, 120px);
 }
 .heroBg {
@@ -55,13 +55,13 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
 }
 .dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--orange);
+  background: var(--accent);
 }
 .heroTitle {
   font-size: clamp(32px, 3.8vw, 46px);
@@ -98,7 +98,7 @@
   margin-bottom: 64px;
 }
 .missionP {
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0 0 16px;
 }
 .missionP:last-child {
@@ -128,7 +128,7 @@
   height: 48px;
   border-radius: 50%;
   background: rgba(232, 97, 42, 0.1);
-  color: var(--orange);
+  color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,19 +136,19 @@
 }
 .valueTitle {
   font-size: 20px;
-  color: var(--ink);
+  color: var(--text);
   margin: 0 0 8px;
 }
 .valueBody {
   font-size: var(--text-section);
   line-height: 1.6;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0;
 }
 
 /* ── Stats ─────────────────────────────────────────────────────────────── */
 .stats {
-  background: var(--petrol-nuit);
+  background: var(--ink);
   color: #fff;
   padding-block: 64px;
 }
@@ -160,7 +160,7 @@
 }
 .statValue {
   font-size: clamp(28px, 3.4vw, 40px);
-  color: var(--orange);
+  color: var(--accent);
   margin: 0 0 6px;
   line-height: 1;
 }
@@ -193,7 +193,7 @@
   width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 1px dashed var(--orange);
+  border: 1px dashed var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -227,18 +227,18 @@
   justify-content: center;
   border: 1px solid var(--border);
   font-size: 20px;
-  color: var(--orange);
+  color: var(--accent);
 }
 .methodTitle {
   font-size: calc(var(--text-section) + 3px);
   font-weight: 600;
-  color: var(--ink);
+  color: var(--text);
   margin: 0;
 }
 .methodBody {
   font-size: var(--text-section);
   line-height: 1.6;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0;
 }
 

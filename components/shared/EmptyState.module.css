@@ -23,12 +23,12 @@
   font-size: var(--text-h3);
   line-height: 1.2;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--text);
 }
 
 .body {
   margin: 0;
   font-size: var(--text-body-sm);
   line-height: 1.65;
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }

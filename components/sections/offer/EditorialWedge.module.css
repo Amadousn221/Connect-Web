@@ -21,7 +21,7 @@
   letter-spacing: -0.01em;
   margin: 0;
   max-width: 760px;
-  color: var(--ink);
+  color: var(--text);
 }
 
 .grid {
@@ -36,7 +36,7 @@
 .para {
   font-size: 17px;
   line-height: 1.75;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0 0 20px;
 }
 .bodyCol .para:first-of-type::first-letter {
@@ -46,13 +46,13 @@
   float: left;
   padding-right: 10px;
   padding-top: 6px;
-  color: var(--orange);
+  color: var(--accent);
   font-weight: 500;
 }
 .h3 {
   font-weight: 500;
   font-size: 20px;
-  color: var(--ink);
+  color: var(--text);
   margin: 28px 0 8px;
 }
 .link {
@@ -60,13 +60,13 @@
   margin-top: 8px;
   font-size: 15px;
   font-weight: 600;
-  color: var(--orange);
-  border-bottom: 1px solid var(--orange);
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
   padding-bottom: 2px;
 }
 
 .side {
-  border-left: 2px solid var(--orange);
+  border-left: 2px solid var(--accent);
   padding-left: 22px;
 }
 .sideLabel {
@@ -74,20 +74,20 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
   margin: 0 0 16px;
 }
 .fact {
   font-size: 14px;
   line-height: 1.55;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0 0 18px;
 }
 .fact:last-child {
   margin-bottom: 0;
 }
 .fact b {
-  color: var(--ink);
+  color: var(--text);
   font-weight: 600;
 }
 
@@ -97,7 +97,7 @@
   }
   .side {
     border-left: none;
-    border-top: 2px solid var(--orange);
+    border-top: 2px solid var(--accent);
     padding-left: 0;
     padding-top: 18px;
   }

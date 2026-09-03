@@ -40,7 +40,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
 }
 
 .list {
@@ -59,7 +59,7 @@
   padding: 11px 0;
   font-size: 15px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--text);
   border-bottom: 1px solid var(--border);
   transition: color var(--dur-instant) ease;
 }
@@ -69,15 +69,15 @@
 }
 
 .link:hover {
-  color: var(--orange);
+  color: var(--accent);
 }
 
 .arrow {
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 .conseil {
-  background: var(--petrol-nuit);
+  background: var(--ink);
   padding: 28px;
 }
 
@@ -101,7 +101,7 @@
 
 .conseilCta {
   display: inline-block;
-  background: var(--orange);
+  background: var(--accent);
   color: #fff;
   padding: 11px 22px;
   font-size: 14px;

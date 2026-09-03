@@ -20,7 +20,7 @@ export default function NotFound() {
       <h1 className="cw-serif" style={{ fontSize: 'var(--text-h2)', margin: 0 }}>
         Page introuvable
       </h1>
-      <p style={{ margin: 0, color: 'var(--ink-soft)' }}>
+      <p style={{ margin: 0, color: 'var(--text-soft)' }}>
         Cette page n&apos;existe pas ou a été déplacée.
       </p>
       <Link href="/fr" style={{ fontWeight: 600, marginTop: '8px' }}>

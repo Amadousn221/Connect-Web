@@ -1,96 +1,100 @@
-import type { ServiceCardData } from '../types';
+import type { ServiceCardData, ServiceConseilCard } from '../types';
 
-// ── A5 — Section Services ────────────────────────────────────────────────
-// 6 cartes, format « image en tête + badges ». Les badges portent les
-// déclinaisons et technos du service (preuve dans la carte, jamais en carte
-// autonome — DECISION 23). Grille uniforme 3 colonnes.
+// ── P25 S06 — Nos services / expertises ────────────────────────────────────
+// Taxonomie verrouillée DECISION 03 (journal de décisions) : Niveau 1 = 4
+// offres dominantes (preuve forte) + Système = 3 offres secondaires + Conseil
+// = porte d'entrée. 8 cartes au total — confirmé par recoupement avec
+// components/layout/site-nav.ts (megaMenuBuild ×4 + megaMenuSystem ×3) et les
+// 8 routes réelles sous app/[locale]/services/*. (Le texte du brief P25 §S06
+// mentionne « 5 offres + Conseil » dans une phrase et « 4 Niveau 1 + 3 Système »
+// dans la suivante — DECISION 03 est la source la plus autoritaire, tranchée
+// ici en faveur des 8 cartes.)
 //
-// Images : visuels d'illustration des expertises (fournis par le PO,
-// `public/assets/images/service-*.jpg`). Ce ne sont PAS des captures de
-// projets clients — les vraies réalisations vivent sur /realisations et dans
-// les sliders de cas.
+// Icônes sur-mesure (IconSet, pas de capture) — override PO C1 (brief P25).
+// Preuve nommée DANS la carte (DECISION 23), jamais inventée : clients réels
+// sourcés depuis content/fr/accueil.ts (caseTeasers) et content/fr/casPhares.ts.
+// IA & Marketing = asymétrie de preuve (DECISION log) — capabilityNote
+// honnête, aucun cas ni chiffre.
 
 export const servicesIntro = {
   eyebrow: 'Nos capacités',
   title: 'Cinq expertises, une équipe, un système.',
-  lead: "On construit selon votre besoin : une présence qui crédibilise, une boutique qui vend, une plateforme qui fait tourner l'opération, des automatisations qui font gagner du temps.",
+  lead: "On construit selon votre besoin : une présence qui crédibilise, une boutique qui vend, une plateforme qui fait tourner l'opération, un système qui connecte le reste.",
 };
 
-export const serviceCards: ServiceCardData[] = [
+// Niveau 1 — CE QU'ON PROUVE (dominant, ordre = megaMenuBuild).
+export const servicesL1: ServiceCardData[] = [
   {
-    title: 'Conception et développement web',
+    title: 'Boutiques en ligne',
     description:
-      "Sites institutionnels, sites d'entreprise, boutiques en ligne : une présence qui vous représente et qui, quand il le faut, vend.",
-    badges: [
-      'Site vitrine',
-      'Site institutionnel',
-      'E-commerce Shopify',
-      'E-commerce WooCommerce',
-      'Sur-mesure',
-    ],
-    image: {
-      src: '/assets/images/service-conception-web.jpg',
-      alt: 'Développeuse au travail sur un projet web',
+      "On construit des boutiques qui vendent, du Sénégal au monde : paiement Mobile Money et international sur la même caisse, vente transfrontalière, catalogue et logistique.",
+    icon: 'boutiques',
+    proof: {
+      clients: ['ATTA Africa', 'Link Shop', 'Marjan Bijouterie'],
+      tools: ['Shopify', 'WooCommerce'],
     },
-    // Pas de page « conception-developpement-web » : on renvoie vers la page
-    // d'offre la plus proche (présence / crédibilité).
-    cta: { label: "Voir l'offre", href: '/services/sites-entreprise' },
+    cta: { label: "Voir l'offre", href: '/services/boutiques-en-ligne' },
   },
   {
-    title: 'Logiciels & applications web',
+    title: 'Plateformes & applications',
     description:
-      "Plateformes métier, applications web sur mesure, PWA : l'outil s'adapte à votre opération, pas l'inverse.",
-    badges: [
-      'Plateforme métier',
-      'Application web',
-      'PWA',
-      'Espace client',
-      'Tableau de bord',
-    ],
-    image: {
-      src: '/assets/images/service-logiciels-apps.jpg',
-      alt: "Développement d'une application web sur mesure",
-    },
+      "Réservation, portails clients, gestion sur-mesure : on construit la plateforme qui remplace le suivi manuel et donne à votre équipe une vue claire, en temps réel.",
+    icon: 'plateformes',
+    proof: { clients: ['SCOD VTC'] },
     cta: { label: "Voir l'offre", href: '/services/plateformes-applications' },
   },
   {
-    title: 'ERP / CRM',
+    title: "Sites d'entreprise",
     description:
-      'Centraliser vos ventes, vos stocks et vos clients dans un seul système, relié à ce qui vend déjà.',
-    badges: ['Odoo', 'HubSpot', 'Gestion des stocks', 'Ventes', 'Intégrations'],
-    image: {
-      src: '/assets/images/service-erp-crm.jpg',
-      alt: 'Pilotage des ventes et des stocks sur un tableau de bord',
-    },
+      "Présentation d'entreprise, offre, preuve et contact — un site au standard international, bilingue FR/EN, qui rassure vos clients, partenaires et investisseurs.",
+    icon: 'entreprise',
+    proof: { clients: ['ADA Voyages', 'Tamou Fishing', 'DDS Medical'] },
+    cta: { label: "Voir l'offre", href: '/services/sites-entreprise' },
+  },
+  {
+    title: 'Sites institutionnels & ONG',
+    description:
+      "Crédibilité auprès des bailleurs, clarté du plaidoyer, autonomie éditoriale de votre équipe — un site conçu pour les organisations qui portent une mission au long cours.",
+    icon: 'ong',
+    proof: { clients: ['WAS Africa', 'Sunu Thiossane', 'Fahamu Africa'] },
+    cta: { label: "Voir l'offre", href: '/services/sites-institutionnels-ong' },
+  },
+];
+
+// Niveau 2 — LE SYSTÈME (secondaire, ordre = megaMenuSystem).
+export const servicesSystem: ServiceCardData[] = [
+  {
+    title: 'Odoo / ERP-CRM',
+    description:
+      "Stock, ventes, clients, achats : quand tout vit dans des fichiers séparés, personne ne voit l'ensemble. On configure Odoo pour vos process réels.",
+    icon: 'odoo',
+    proof: { clients: ['Maison Peinture Sénégal'], tools: ['Odoo'] },
     cta: { label: "Voir l'offre", href: '/services/crm-erp-integrations' },
   },
   {
     title: 'IA & automatisation',
     description:
-      'Faire disparaître les tâches répétitives : traitement de commandes, relances, reporting — pour que votre équipe se concentre sur le reste.',
-    badges: ['n8n', 'Automatisation', 'Reporting auto', 'Relance panier', 'API'],
-    image: {
-      src: '/assets/images/service-ia-automatisation.jpg',
-      alt: 'Automatisation et intelligence artificielle appliquées aux flux métier',
-    },
+      'Rapports, commandes, relances : ce qui vous prend des heures chaque semaine peut tourner sans vous.',
+    icon: 'automatisation',
+    capabilityNote:
+      "Capacité, pas une étude de cas chiffrée sur cette page — on n'affiche jamais de résultat qu'on ne peut pas tenir.",
     cta: { label: "Voir l'offre", href: '/services/ia-automatisation' },
   },
   {
-    title: 'Marketing & génération de prospects',
-    description: 'Attirer, qualifier et convertir : campagnes, e-mail, acquisition.',
-    badges: ['Mailchimp', 'Klaviyo', 'Email marketing', 'Campagnes', 'Acquisition'],
-    image: {
-      src: '/assets/images/service-marketing.jpg',
-      alt: 'Campagnes marketing digitales et suivi des performances',
-    },
+    title: 'Marketing & acquisition',
+    description:
+      "Faire venir les bons visiteurs, ceux qui achètent — pas juste du trafic pour le chiffre.",
+    icon: 'marketing',
+    capabilityNote:
+      "Offre sans cas chiffré à ce jour — on préfère le dire plutôt que d'inventer une preuve.",
     cta: { label: "Voir l'offre", href: '/services/marketing-acquisition' },
   },
-  {
-    title: 'Conseil & stratégie',
-    description:
-      "Avant de construire, comprendre. Audit, cadrage, choix d'architecture, priorisation : on part de votre problème, pas de notre catalogue.",
-    badges: ['Audit', 'Cadrage', 'Architecture', 'Choix techno', 'Priorisation'],
-    variant: 'conseil',
-    cta: { label: 'Parlons de votre projet', href: '#contact' },
-  },
 ];
+
+// Conseil — porte d'entrée, 1 ligne CTA, pas une carte (réutilise
+// servicesHubConseil, content/fr/servicesHub.ts).
+export const servicesConseil: ServiceConseilCard = {
+  title: 'Pas sûr par où commencer ?',
+  body: "C'est le cas le plus fréquent. Un audit gratuit pour cadrer votre situation, prioriser ce qui compte et repartir avec un plan.",
+  cta: { label: 'Conseil & audit gratuit', href: '/services/conseil-strategie' },
+};

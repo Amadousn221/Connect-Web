@@ -1,5 +1,5 @@
 .hero {
-  background: var(--petrol-nuit);
+  background: var(--ink);
   color: #fff;
   padding: 26px 0 72px;
 }
@@ -59,17 +59,17 @@
 .statValue {
   font-size: clamp(38px, 5vw, 52px);
   line-height: 1;
-  color: var(--orange);
+  color: var(--accent);
   margin: 0 0 8px;
 }
 .statLabel {
   font-size: 14.5px;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0;
 }
 
 .finalCta {
-  background: var(--petrol-nuit);
+  background: var(--ink);
   color: #fff;
   padding: 92px 0;
 }

@@ -1,13 +1,4 @@
-import type {
-  CaseTeaser,
-  ClientLogo,
-  Cta,
-  FaqItem,
-  Hero,
-  NeedOption,
-  ProofItem,
-  SystemElement,
-} from '../types';
+import type { CaseTeaser, ClientLogo, Cta, FaqItem, Hero } from '../types';
 
 // Copy de l'Accueil — extraite fidèlement de `Connect Web - Accueil V2.dc.html`.
 // Tout élément « À valider » de la maquette est signalé ici (toValidate / note)
@@ -65,129 +56,22 @@ export const clientLogos: ClientLogo[] = [
 
 // ── A2 — Bande réassurance : SUPPRIMÉE (Lot D). Hors de l'architecture 13
 //    sections de l'audit §04 ; la réassurance est distribuée (§07 : trust line
-//    du Hero, point 3 du Wedge, section CTA finale).
+//    du Hero, point 3 des différenciateurs, section CTA finale).
 
-// ── A3 — Ce qu'on construit (sélecteur) — RESTAURÉ (version d'avant la refonte
-//    V2.1). Rendu par components/sections/NeedSelector.tsx. La variante tableau
-//    statique du Lot C (content/fr/besoins.ts + NeedTable) est écartée.
-export const needIntro = {
-  eyebrow: "Ce qu'on construit",
-  title: 'On part de votre besoin, pas de notre catalogue.',
-  lead: "Digitaliser, ce n'est pas acheter un outil. C'est régler un problème précis — être trouvé, vendre, arrêter de tout gérer à la main — puis relier les pièces entre elles.",
-};
-
-export const needOptions: NeedOption[] = [
-  {
-    key: 'visible',
-    label: 'Être visible et crédible',
-    hint: 'Administrations, institutions, ONG, entreprises, écoles',
-    situation:
-      "« On existe depuis des années, mais quand un bailleur, un partenaire ou un client nous cherche en ligne, il ne trouve rien de sérieux. »",
-    answer:
-      "On construit une présence qui tient la comparaison avec vos homologues internationaux : structure claire, contenu qui explique vraiment ce que vous faites, publications et rapports accessibles, performance et référencement soignés dès le départ.",
-    delivers: ['Site institutionnel', "Site d'entreprise", 'Site ONG & programmes', 'Refonte & SEO'],
-    link: { label: 'Découvrir', href: '/services/sites-entreprise' },
-  },
-  {
-    key: 'vendre',
-    label: 'Vendre et se développer',
-    hint: 'E-commerce, cross-border, paiement mobile',
-    situation:
-      "« On vend bien à Dakar. Mais la diaspora nous écrit, et on n'a aucun moyen propre de l'encaisser. »",
-    answer:
-      'On construit des boutiques faites pour vendre au-delà des frontières : catalogue, paiement mobile et international côte à côte, livraison, relances. Le cross-border est notre terrain, pas une option.',
-    delivers: ['Shopify', 'WooCommerce', 'Paiement mobile & international', 'Livraison & logistique'],
-    link: { label: 'Découvrir', href: '/services/boutiques-en-ligne' },
-  },
-  {
-    key: 'operations',
-    label: 'Digitaliser ses opérations',
-    hint: 'Plateformes métier, portails, réservation, PWA',
-    situation:
-      '« Les demandes arrivent par WhatsApp, les réservations dans un tableur, et personne ne sait où en est quoi. »',
-    answer:
-      "On construit l'outil qui remplace le tableur : réservation, portail client ou fournisseur, suivi de dossiers, application mobile installable. Un seul endroit où l'information vit.",
-    delivers: ['Plateforme de réservation', 'Portail client', 'Application / PWA', 'Espace de gestion'],
-    link: { label: 'Découvrir', href: '/services/plateformes-applications' },
-  },
-  {
-    key: 'piloter',
-    label: 'Piloter son activité',
-    hint: 'CRM, ERP / Odoo, POS, stocks, reporting',
-    capabilityBadge: true,
-    situation:
-      '« Les ventes sont dans la boutique, les stocks sur un carnet, les devis dans une boîte mail. »',
-    answer:
-      'On met en place la couche de gestion et on la relie à ce qui vend déjà : clients, devis, stocks, factures, tableaux de bord. Vous voyez votre activité en un seul endroit, à jour.',
-    delivers: ['Odoo / ERP', 'CRM', 'Stocks & POS', 'Reporting'],
-    link: { label: 'Découvrir', href: '/services/crm-erp-integrations' },
-  },
-  {
-    key: 'automatiser',
-    label: 'Automatiser & gagner du temps',
-    hint: 'Workflows, intégrations, notifications, IA appliquée',
-    capabilityBadge: true,
-    situation:
-      '« Chaque commande demande cinq copier-coller. Multipliés par trente par jour. »',
-    answer:
-      "On identifie les tâches répétitives et on les fait disparaître : traitement des commandes, relances, notifications, reporting automatique. L'IA n'intervient que là où elle règle un problème réel.",
-    delivers: ['Workflows automatisés', 'Intégrations entre outils', 'Notifications & relances', 'IA appliquée aux processus'],
-    link: { label: 'Découvrir', href: '/services/ia-automatisation' },
-  },
-];
-
-export const needCtaBand = {
-  title: 'Pas sûr par où commencer ?',
-  body: "C'est le cas le plus fréquent. On cadre votre situation, on identifie ce qui bloque, et on vous dit ce qui compte en premier — sans engagement.",
-  primary: { label: 'Conseil & audit gratuit', href: '#contact' } as Cta,
-  secondary: { label: 'Découvrir nos solutions', href: '#systeme' } as Cta,
-};
+// ── A3 — Ce qu'on construit (sélecteur besoin) : SUPPRIMÉ (P25). Remplacé par
+//    l'AudienceRouter (framing audience/organisation), voir
+//    content/fr/audienceRouter.ts + components/sections/AudienceRouter.tsx.
 
 // ── A4 — Pour qui : SECTION SUPPRIMÉE (correction finale). La diversité des
-//    cibles est portée par « Du site au système » (multi-segment) et par les
-//    besoins (NeedSelector). Composant WhoForGrid + content/fr/pourqui.ts retirés.
+//    cibles est portée par « Du site au système » (multi-segment) et par
+//    l'AudienceRouter. Composant WhoForGrid + content/fr/pourqui.ts retirés.
 
-// ── A5 — Services : voir content/fr/services.ts (Lot B — grille 5 + Conseil,
-//    DECISION 23). L'ancien modèle « 6 cartes plates » (offersIntro/offerCards)
-//    est remplacé par la hiérarchie carte parente + Niveau 2 + Conseil.
+// ── A5 — Services : voir content/fr/services.ts (P25 — 4 Niveau 1 + 3 Système
+//    + Conseil, DECISION 03).
 
-// ── A6 — Du site au système ─────────────────────────────────────────────
-// Fusion des anciennes sections « road » (6 nœuds) et « trajectoires » (4
-// chaînes) : un seul bloc, 4 éléments besoin → solution, multi-segment
-// (présenter / vendre / piloter / automatiser). Icône par élément. Clients
-// cités = FACTS (DECISION 12/13).
-export const systemIntro = {
-  eyebrow: 'Du site au système',
-  title: 'On construit selon votre besoin — du site au système.',
-  lead: "Un site institutionnel, une boutique, une plateforme, des automatisations : on ne suppose pas que vous avez besoin de tout. On construit ce qui compte, puis on connecte le reste.",
-};
-
-export const systemElements: SystemElement[] = [
-  {
-    icon: 'building',
-    need: 'Présenter une institution, une administration, une ONG',
-    solution: "Un site qui tient la comparaison avec vos homologues internationaux — mission, programmes, publications.",
-    example: 'WAS Africa',
-  },
-  {
-    icon: 'cart',
-    need: 'Vendre en ligne, au Sénégal comme à l’étranger',
-    solution: 'Une boutique multi-devises, Mobile Money et carte sur la même caisse, livraison et relances.',
-    example: 'ATTA Africa',
-  },
-  {
-    icon: 'gear',
-    need: 'Piloter une opération : réservations, dossiers, stocks, ventes',
-    solution: 'Une plateforme métier ou un ERP relié à ce qui vend déjà — une seule source de vérité.',
-    example: 'SCOD VTC · Maison Peinture Sénégal',
-  },
-  {
-    icon: 'bolt',
-    need: 'Faire disparaître les tâches répétitives',
-    solution: 'Des workflows qui traitent les commandes, relancent les paniers et sortent les rapports tout seuls.',
-    example: 'ATTA Africa — reporting mensuel automatisé',
-  },
-];
+// ── A6 — Du site au système : SUPPRIMÉ (P25). Remplacé par une chaîne de
+//    modules reliés, voir content/fr/systemRoad.ts +
+//    components/sections/SystemRoad.tsx.
 
 // ── A8 — Réalisations (carrousel, contenu figé M2 → WordPress M3) ─────────
 export const casesIntro = {
@@ -224,40 +108,18 @@ export function pickCaseTeasers(names: string[]): CaseTeaser[] {
     .filter((c): c is CaseTeaser => Boolean(c));
 }
 
-// ── A9 — Preuve. Angle unique : la VÉRIFIABILITÉ (distinct de « du site au
-//    système » et de « standard international », traités ailleurs).
-export const proofIntro = {
-  eyebrow: 'Preuve',
-  title: 'On montre, on ne prétend pas.',
-  lead: "Sur cette page, tout est vérifiable : les clients sont nommés, les captures sont réelles, les chiffres sont ceux qu'on peut tenir.",
-};
+// ── A9 — Preuve (« On montre, on ne prétend pas ») : SUPPRIMÉE (P25 — méta-
+//    discours redondant avec Réalisations, cf. brief P25 §S08/§4 suppressions).
 
-// Vague 4 : 3 piliers (1 phrase + 1 icône), calés sur le chapô ci-dessus.
-export const proofItems: ProofItem[] = [
-  {
-    icon: 'users',
-    title: 'Des clients nommés',
-    body: 'ATTA Africa, SCOD VTC, WAS Africa, Maison Peinture Sénégal — vous pouvez les vérifier.',
-  },
-  {
-    icon: 'image',
-    title: 'Des captures réelles',
-    body: "Ce que vous voyez ici, c'est du travail livré, pas des maquettes de démonstration.",
-  },
-  {
-    icon: 'shield',
-    title: 'Des chiffres qu’on peut tenir',
-    body: "Pas de « +500 projets » invérifiable : les chiffres affichés sont ceux qu'on assume.",
-  },
-];
-
-// ── A10 — Méthode : voir content/fr/methode.ts (Lot C — 3 étapes, <ol>,
-//    §06.9). L'ancienne version « 6 étapes + rail scroll-spy » est abandonnée.
+// ── A10 — Méthode : voir content/fr/methode.ts (P25 — 4 phases, MethodStepper).
 
 // ── A11 — FAQ ─────────────────────────────────────────────────────────
+// P25 §S11 : titre changé (« Les questions qu'on nous pose vraiment. »),
+// contenu/comportement de FaqAccordion inchangés (partagé avec les pages
+// d'offre via OfferPage.tsx — ne pas y toucher).
 export const faqIntro = {
   eyebrow: 'Questions fréquentes',
-  title: 'Ce que les organisations nous demandent avant de démarrer.',
+  title: 'Les questions qu’on nous pose vraiment.',
 };
 
 // 6 questions §06.10 du Design Handoff, orientées objection.

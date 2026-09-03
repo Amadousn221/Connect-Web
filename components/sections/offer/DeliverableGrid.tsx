@@ -35,7 +35,7 @@ export function DeliverableGrid({
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M4 7l8-4 8 4-8 4-8-4zM4 7v10l8 4 8-4V7"
-                    stroke="var(--orange)"
+                    stroke="var(--accent)"
                     strokeWidth="1.6"
                     strokeLinejoin="round"
                   />

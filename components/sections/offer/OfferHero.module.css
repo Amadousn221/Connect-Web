@@ -5,12 +5,12 @@
   min-height: 560px;
   display: flex;
   flex-direction: column;
-  background: var(--petrol-nuit);
+  background: var(--ink);
 }
 /* Sans image de fond : dégradé diagonal pétrole (variante « Le système »). */
 .hero[data-plain='true'] {
   min-height: 520px;
-  background: linear-gradient(135deg, var(--petrol-nuit) 0%, #0d3547 100%);
+  background: linear-gradient(135deg, var(--ink) 0%, #0d3547 100%);
 }
 
 .bg {
@@ -72,13 +72,13 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
 }
 .pulse {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--orange);
+  background: var(--accent);
   animation: pulse 2.4s ease-in-out infinite;
 }
 @keyframes pulse {

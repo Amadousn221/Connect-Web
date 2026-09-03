@@ -8,7 +8,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 .list {
@@ -30,15 +30,15 @@
   padding: var(--space-sm) var(--space-lg);
   margin-left: -1px;
   border-left: 2px solid transparent;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   line-height: 1.4;
 }
 .link:hover {
-  color: var(--ink);
+  color: var(--text);
 }
 
 .item[data-active='true'] .link {
-  border-left-color: var(--orange);
-  color: var(--orange);
+  border-left-color: var(--accent);
+  color: var(--accent);
   font-weight: 500;
 }

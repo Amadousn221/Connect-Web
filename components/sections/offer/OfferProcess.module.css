@@ -42,28 +42,28 @@
 }
 .num {
   font-size: 15px;
-  color: var(--orange);
+  color: var(--accent);
 }
 .icon {
   font-size: 20px;
-  color: var(--orange);
+  color: var(--accent);
   line-height: 1;
 }
 .cardTitle {
   font-size: 19px;
-  color: var(--ink);
+  color: var(--text);
 }
 .cardBody {
   font-size: 14px;
   line-height: 1.55;
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 
 .deliverable {
   padding: 0 24px 22px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--text);
 }
 .deliverable[hidden] {
   display: none;

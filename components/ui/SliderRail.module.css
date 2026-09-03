@@ -28,7 +28,7 @@
 }
 
 .rail:focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
 
@@ -45,7 +45,7 @@
   top: -3px;
   height: 10px;
   min-width: 40px;
-  background: var(--ink);
+  background: var(--text);
   cursor: grab;
   touch-action: none;
 }

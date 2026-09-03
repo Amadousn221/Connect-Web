@@ -1,7 +1,7 @@
 .block {
   margin: var(--space-4xl) 0;
   padding: var(--space-3xl) var(--space-2xl);
-  background: var(--petrol-nuit);
+  background: var(--ink);
   display: flex;
   justify-content: center;
 }

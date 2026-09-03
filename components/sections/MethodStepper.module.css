@@ -1,0 +1,193 @@
+/* P25 S09 — fond crème (2e et dernier moment de repos, cf. tokens.css). */
+.section {
+  background: var(--cream);
+  padding: 100px 0 96px;
+}
+
+/* ── Tabs (desktop) ─────────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 4px 18px;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color var(--dur-quick) ease,
+    opacity var(--dur-quick) ease;
+}
+.tab[data-active='true'] {
+  border-bottom-color: var(--accent);
+}
+
+.tabNum {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.tabTitle {
+  font-size: 19px;
+  color: var(--text-soft);
+}
+.tab[data-active='true'] .tabTitle {
+  color: var(--text);
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-card);
+  padding: 40px 38px;
+  margin-top: 32px;
+  animation: fade 0.45s var(--ease-default);
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.intention {
+  font-size: 21px;
+  line-height: 1.4;
+  color: var(--text);
+  margin: 0 0 22px;
+  font-family: var(--font-serif);
+}
+
+.actions {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.actions li {
+  font-size: var(--text-section);
+  line-height: 1.6;
+  color: var(--text-soft);
+  padding-left: 18px;
+  position: relative;
+  text-align: left;
+}
+.actions li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 1.6px;
+  background: var(--accent);
+}
+
+.deliversLabel {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 10px;
+}
+
+.deliverables {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ── Accordéon (mobile / tablette) ─────────────────────────────────────── */
+.accordion {
+  display: none;
+}
+
+.accItem {
+  border-top: 1px solid var(--border);
+}
+.accItem:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.accHead {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 18px 4px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.accPanel {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 200ms ease;
+}
+.accPanel[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+.accPanelInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Le padding vit sur un wrapper imbriqué, jamais sur l'item de grille direct
+   (accPanelInner) : sinon son padding fixe un plancher de hauteur non nul et
+   la ligne 0fr ne collapse jamais vraiment à 0. */
+.accPanelContent {
+  padding: 0 4px 22px 34px;
+}
+
+@media (max-width: 1023px) {
+  .tabs,
+  .panel {
+    display: none;
+  }
+  .accordion {
+    display: block;
+    margin-top: 40px;
+  }
+  .intention {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 56px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+  .accPanel {
+    transition: none;
+  }
+}

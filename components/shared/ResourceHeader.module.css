@@ -12,7 +12,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
 }
 
 .title {
@@ -21,7 +21,7 @@
   line-height: var(--leading-tight);
   font-weight: 600;
   letter-spacing: -0.015em;
-  color: var(--ink);
+  color: var(--text);
   text-wrap: pretty;
 }
 
@@ -29,7 +29,7 @@
   margin: 0 0 var(--space-xl);
   font-size: var(--text-section);
   line-height: 1.65;
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 
 .meta {
@@ -38,7 +38,7 @@
   align-items: center;
   gap: var(--space-md);
   font-size: var(--text-body-sm);
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 .meta > time,
 .meta > span:not(.share) {

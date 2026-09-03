@@ -24,20 +24,20 @@
 .num {
   font-size: 44px;
   font-weight: 300;
-  color: var(--orange);
+  color: var(--accent);
   opacity: 0.4;
   line-height: 1;
   margin-bottom: 14px;
 }
 .itemTitle {
   font-size: 19px;
-  color: var(--ink);
+  color: var(--text);
   margin: 0 0 8px;
 }
 .itemBody {
   font-size: 14.5px;
   line-height: 1.6;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0;
 }
 

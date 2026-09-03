@@ -22,7 +22,7 @@ export function ResourceProgram({
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                     <path
                       d="m3 8.5 3 3 7-7"
-                      stroke="var(--orange)"
+                      stroke="var(--accent)"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"

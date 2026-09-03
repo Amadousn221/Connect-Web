@@ -24,7 +24,7 @@
 .num {
   font-weight: 300;
   font-size: 38px;
-  color: var(--orange);
+  color: var(--accent);
   line-height: 1;
   flex-shrink: 0;
   width: 46px;
@@ -40,13 +40,13 @@
 
 .rowTitle {
   font-size: 21px;
-  color: var(--ink);
+  color: var(--text);
   margin: 0 0 8px;
 }
 .rowText {
   font-size: 15.5px;
   line-height: 1.65;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0;
 }
 

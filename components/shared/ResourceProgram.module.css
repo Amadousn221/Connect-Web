@@ -16,7 +16,7 @@
   font-family: var(--font-serif);
   font-size: var(--text-h4);
   font-weight: 600;
-  color: var(--ink);
+  color: var(--text);
 }
 
 .list {
@@ -34,7 +34,7 @@
   align-items: flex-start;
   font-size: var(--text-body-sm);
   line-height: 1.55;
-  color: var(--ink);
+  color: var(--text);
 }
 
 .check {
@@ -53,5 +53,5 @@
   margin: 0;
   font-size: var(--text-body-sm);
   line-height: 1.65;
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }

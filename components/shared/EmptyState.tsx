@@ -21,7 +21,7 @@ export function EmptyState({
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
           <path
             d="M4 5.5A1.5 1.5 0 0 1 5.5 4H12v16H5.5A1.5 1.5 0 0 1 4 18.5V5.5ZM12 4h6.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H12"
-            stroke="var(--orange)"
+            stroke="var(--accent)"
             strokeWidth="1.6"
             strokeLinecap="round"
             strokeLinejoin="round"
