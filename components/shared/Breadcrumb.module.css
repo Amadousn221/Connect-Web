@@ -19,14 +19,14 @@
 }
 
 .link {
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 .link:hover {
-  color: var(--orange);
+  color: var(--accent);
 }
 
 .current {
-  color: var(--ink-faint);
+  color: var(--text-faint);
   max-width: 42ch;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -34,5 +34,5 @@
 }
 
 .sep {
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }

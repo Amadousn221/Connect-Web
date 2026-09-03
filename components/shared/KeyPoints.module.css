@@ -2,7 +2,7 @@
   margin: var(--space-2xl) 0;
   padding: var(--space-xl);
   background: var(--bg-alt);
-  border-left: 3px solid var(--orange);
+  border-left: 3px solid var(--accent);
 }
 
 .label {
@@ -11,7 +11,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 .list {
@@ -25,8 +25,8 @@
 .item {
   font-size: var(--text-body-sm);
   line-height: 1.55;
-  color: var(--ink);
+  color: var(--text);
 }
 .item::marker {
-  color: var(--orange);
+  color: var(--accent);
 }

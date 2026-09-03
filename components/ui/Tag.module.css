@@ -3,6 +3,10 @@
   font-size: 13.5px;
   padding: 7px 13px;
   background: var(--bg-alt);
-  color: var(--ink);
+  color: var(--text);
   border: 1px solid var(--card-border);
+}
+
+.pill {
+  border-radius: var(--radius-pill);
 }

@@ -15,17 +15,17 @@
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   margin-bottom: 22px;
 }
 .crumb a {
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 .crumb a:hover {
-  color: var(--orange);
+  color: var(--accent);
 }
 .crumb [aria-current] {
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 
 .eyebrow {
@@ -37,13 +37,13 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
 }
 .dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--orange);
+  background: var(--accent);
 }
 
 .title {
@@ -52,18 +52,18 @@
   font-weight: 500;
   letter-spacing: -0.015em;
   margin: 0 0 12px;
-  color: var(--ink);
+  color: var(--text);
 }
 .lead {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0 0 14px;
   max-width: 560px;
 }
 .updated {
   font-size: 13.5px;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   margin: 0;
 }
 
@@ -75,7 +75,7 @@
 .h2 {
   font-size: 22px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--text);
   margin: 36px 0 12px;
 }
 .h2:first-child {
@@ -86,7 +86,7 @@
 .list {
   font-size: var(--text-section);
   line-height: 1.75;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0 0 14px;
 }
 .list {
@@ -97,18 +97,18 @@
 }
 
 .inlineLink {
-  color: var(--orange);
-  border-bottom: 1px solid var(--orange);
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
 }
 
 .todo {
   background: rgba(232, 97, 42, 0.12);
-  color: var(--orange-pressed);
+  color: var(--accent-600);
   font-style: italic;
   font-weight: 600;
   padding: 1px 6px;
-  border: 1px dashed var(--orange);
+  border: 1px dashed var(--accent);
 }
 :global(:root[data-theme='dark']) .todo {
-  color: var(--orange-h);
+  color: var(--accent-600);
 }

@@ -8,11 +8,11 @@
   font-weight: 500;
   background: var(--bg-alt);
   border: 1px solid var(--card-border);
-  color: var(--ink-soft);
+  color: var(--text-soft);
   cursor: pointer;
   transition: color var(--dur-instant) ease, border-color var(--dur-instant) ease;
 }
 .btn:hover {
-  color: var(--orange);
-  border-color: var(--orange);
+  color: var(--accent);
+  border-color: var(--accent);
 }

@@ -41,7 +41,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   flex-shrink: 0;
 }
 
@@ -59,17 +59,17 @@
   font-size: var(--text-body-sm);
   background: var(--bg-alt);
   border: 1px solid var(--card-border);
-  color: var(--ink-soft);
+  color: var(--text-soft);
   cursor: pointer;
   transition: border-color var(--dur-instant) ease, color var(--dur-instant) ease;
 }
 .pill:hover {
-  color: var(--ink);
+  color: var(--text);
   border-color: var(--border);
 }
 .pill[data-active='true'] {
-  background: var(--ink);
-  border-color: var(--ink);
+  background: var(--text);
+  border-color: var(--text);
   color: var(--bg);
 }
 
@@ -84,11 +84,11 @@
   font-size: var(--text-body-sm);
   background: none;
   border: none;
-  color: var(--orange);
+  color: var(--accent);
   cursor: pointer;
 }
 .more:hover {
-  color: var(--orange-h);
+  color: var(--accent-600);
 }
 
 .tail {
@@ -110,14 +110,14 @@
   font-size: var(--text-body-sm);
   background: var(--bg);
   border: 1px solid var(--card-border);
-  color: var(--ink);
+  color: var(--text);
   cursor: pointer;
 }
 
 .count {
   margin: 0;
   font-size: var(--text-body-sm);
-  color: var(--ink-faint);
+  color: var(--text-faint);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -128,12 +128,12 @@
   font-weight: 500;
   background: none;
   border: 1px solid var(--card-border);
-  color: var(--ink-soft);
+  color: var(--text-soft);
   cursor: pointer;
 }
 .reset:hover {
-  color: var(--orange);
-  border-color: var(--orange);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 @media (max-width: 1023px) {

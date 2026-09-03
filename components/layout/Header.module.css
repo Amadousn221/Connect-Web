@@ -43,14 +43,14 @@
   padding: 10px 14px;
   font-size: 15px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--text);
   background: none;
   border: none;
   cursor: pointer;
   transition: color var(--dur-instant) ease;
 }
 .navlink:hover {
-  color: var(--orange);
+  color: var(--accent);
 }
 
 .chevron {
@@ -68,7 +68,7 @@
 }
 
 .cta {
-  background: var(--orange);
+  background: var(--accent);
   color: #fff;
   padding: 12px 22px;
   font-size: 14px;
@@ -91,7 +91,7 @@
   justify-content: center;
   background: none;
   border: 1px solid var(--border);
-  color: var(--ink);
+  color: var(--text);
   cursor: pointer;
 }
 

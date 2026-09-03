@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { SectionHeading } from '@/components/ui/SectionHeading';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import {
   CalendarIcon,
@@ -11,9 +10,9 @@ import { chiffresIntro, stats } from '@/content/fr/chiffres';
 import type { StatTile } from '@/content/types';
 import styles from './StatsBlock.module.css';
 
-// A8 — Chiffres (Lot C). 4 tuiles statiques, données FACT (DECISION 22).
-// Vague 4 : remonté juste après le Hero (remplace l'ancienne bande de stats de
-// marché) + une icône fonctionnelle par tuile. AUCUN compteur animé.
+// P25 S02 — Réassurance. 4 chiffres réels, AUCUN compteur animé. Pas de
+// titre visible (brief P25 §S02) — un <h2> masqué visuellement garde un
+// repère de landmark accessible.
 const ICON: Record<StatTile['icon'], ReactNode> = {
   calendar: <CalendarIcon />,
   folder: <FolderStackIcon />,
@@ -23,14 +22,11 @@ const ICON: Record<StatTile['icon'], ReactNode> = {
 
 export function StatsBlock() {
   return (
-    <section id="chiffres" className={styles.section}>
+    <section id="chiffres" className={styles.section} aria-labelledby="chiffres-h">
       <div className="cw-sec">
-        <RevealOnScroll>
-          <SectionHeading
-            eyebrow={chiffresIntro.eyebrow}
-            title={chiffresIntro.title}
-          />
-        </RevealOnScroll>
+        <h2 id="chiffres-h" className="cw-sr-only">
+          {chiffresIntro.eyebrow}
+        </h2>
 
         <RevealOnScroll className={styles.grid}>
           {stats.map((stat) => (

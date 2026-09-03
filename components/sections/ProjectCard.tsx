@@ -7,9 +7,11 @@ import type { ProjectCardData } from '@/content/types';
 import styles from './ProjectCard.module.css';
 
 // A7 — Carte de cas phare (Lot D, §09.2). Image 16:10 sur fond sombre, client
-// en label, titre H3 serif, secteur, tag solution, ligne résultat (rendue
-// seulement si fournie), CTA tertiaire. Slug de page inexistant → CTA non
-// cliquable.
+// en label, titre H3 serif, secteur, tag solution, ligne résultat — TOUJOURS
+// rendue, en placeholder balisé `[RÉSULTAT — à confirmer]` si absente (P25
+// §S08 : jamais silencieusement omise, jamais un chiffre inventé), CTA
+// tertiaire au nom accessible « Voir le projet [Client] ». Slug de page
+// inexistant → CTA non cliquable.
 export function ProjectCard({
   card,
   locale,
@@ -44,14 +46,22 @@ export function ProjectCard({
         <p className={styles.sector}>{card.sector}</p>
         <span className={styles.tag}>{card.solutionTag}</span>
 
-        {card.result ? <p className={styles.result}>{card.result}</p> : null}
+        {card.result ? (
+          <p className={styles.result}>{card.result}</p>
+        ) : (
+          <p className={styles.resultPlaceholder}>[RÉSULTAT — à confirmer]</p>
+        )}
 
         {card.cta.todo ? (
           <span className={styles.cta} data-todo="true">
             {card.cta.label} <span aria-hidden="true">→</span>
           </span>
         ) : (
-          <Link href={localePath(locale, card.cta.href)} className={styles.cta}>
+          <Link
+            href={localePath(locale, card.cta.href)}
+            className={styles.cta}
+            aria-label={`Voir le projet ${card.client}`}
+          >
             {card.cta.label} <span aria-hidden="true">→</span>
           </Link>
         )}

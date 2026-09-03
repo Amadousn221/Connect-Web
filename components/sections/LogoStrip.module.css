@@ -1,17 +1,17 @@
 .section {
-  /* crème : distinct de StatsBlock (off-white) qui précède et de NeedSelector
-     (off-white) qui suit — règle anti-fond-identique (vague 4). */
-  background: var(--bg-cream);
+  /* P25 S03 : blanc, collée à la réassurance (StatsBlock) au-dessus — pas de
+     padding-top, se lit comme une bande continue. */
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
-  padding-block: clamp(28px, 4vw, 44px);
+  padding-block: 0 clamp(40px, 5vw, 56px);
   overflow: hidden;
 }
 
 .intro {
-  margin: 0 0 20px;
+  margin: 0 0 28px;
   text-align: center;
-  font-size: 13px;
-  color: var(--ink-faint);
+  font-size: 14.5px;
+  color: var(--text-muted);
   letter-spacing: 0.01em;
 }
 
@@ -34,11 +34,11 @@
 }
 
 .logo {
-  height: 30px;
+  height: 38px;
   width: auto;
   object-fit: contain;
   filter: grayscale(1);
-  opacity: 0.7;
+  opacity: 0.82;
   transition: opacity var(--dur-quick) ease;
 }
 .item:hover .logo {
@@ -46,7 +46,7 @@
 }
 :global(:root[data-theme='dark']) .logo {
   filter: grayscale(1) brightness(0) invert(1);
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* ── Aucun logo réel : grille statique de placeholders (preview) ─────────── */

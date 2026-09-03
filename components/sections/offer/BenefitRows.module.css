@@ -24,18 +24,18 @@
 .num {
   font-size: 48px;
   font-weight: 300;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   line-height: 1;
 }
 .rowTitle {
   font-size: 20px;
-  color: var(--ink);
+  color: var(--text);
   margin: 0 0 8px;
 }
 .rowText {
   font-size: 15.5px;
   line-height: 1.7;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0;
 }
 

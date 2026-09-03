@@ -22,12 +22,12 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  color: var(--ink);
+  color: var(--text);
   font-size: 16px;
   font-weight: 500;
 }
 .points a:hover {
-  color: var(--orange);
+  color: var(--accent);
 }
 .pointIcon {
   width: 46px;
@@ -57,7 +57,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  border: 1px dashed var(--orange);
+  border: 1px dashed var(--accent);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -70,13 +70,13 @@
   flex-wrap: wrap;
   font-size: 15px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--text);
   margin-bottom: 4px;
 }
 .personBody {
   font-size: 13.5px;
   line-height: 1.5;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0;
 }
 
@@ -91,7 +91,7 @@
 }
 .formTitle {
   font-size: 24px;
-  color: var(--ink);
+  color: var(--text);
   margin: 0;
 }
 .row {
@@ -105,7 +105,7 @@
   gap: 6px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--text);
 }
 .field input,
 .field select,
@@ -115,7 +115,7 @@
   font-size: 15px;
   font-family: inherit;
   background: var(--bg-alt);
-  color: var(--ink);
+  color: var(--text);
 }
 .field input,
 .field select {
@@ -134,7 +134,7 @@
 }
 
 .submit {
-  background: var(--orange);
+  background: var(--accent);
   color: #fff;
   border: none;
   padding: 14px 22px;
@@ -145,7 +145,7 @@
   transition: background var(--dur-quick) ease;
 }
 .submit:hover:not(:disabled) {
-  background: var(--orange-h);
+  background: var(--accent-600);
 }
 .submit:disabled {
   opacity: 0.6;
@@ -159,17 +159,17 @@
   margin: 0;
 }
 .reassurance {
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 .notice {
-  color: var(--ink);
+  color: var(--text);
   background: rgba(232, 97, 42, 0.1);
   border: 1px solid rgba(232, 97, 42, 0.25);
   padding: 12px 14px;
   line-height: 1.5;
 }
 .error {
-  color: var(--ink);
+  color: var(--text);
   background: rgba(13, 13, 13, 0.05);
   border: 1px solid var(--border);
   padding: 12px 14px;

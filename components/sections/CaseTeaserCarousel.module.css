@@ -29,13 +29,13 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  color: var(--ink);
+  color: var(--text);
 }
 .card:hover {
-  color: var(--ink);
+  color: var(--text);
 }
 .pending {
-  border: 1px dashed var(--orange);
+  border: 1px dashed var(--accent);
 }
 
 .imageWrap {
@@ -54,7 +54,7 @@
 
 .pendingVisual {
   aspect-ratio: 16 / 10;
-  background: var(--petrol-nuit);
+  background: var(--ink);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,31 +82,31 @@
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
   font-weight: 600;
 }
 .name {
   font-size: 22px;
-  color: var(--ink);
+  color: var(--text);
 }
 .desc {
   font-size: 14px;
   line-height: 1.5;
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 .more {
   margin-top: auto;
   padding-top: 8px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--orange);
+  color: var(--accent);
 }
 .pendingNote {
   margin-top: auto;
   padding-top: 10px;
   font-size: 13px;
   line-height: 1.5;
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 .controls {
@@ -121,13 +121,13 @@
   flex-shrink: 0;
   border: 1px solid var(--border);
   background: transparent;
-  color: var(--ink);
+  color: var(--text);
   cursor: pointer;
   font-size: 16px;
 }
 .arrow:hover {
-  color: var(--orange);
-  border-color: var(--orange);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 .progressTrack {
   flex: 1;
@@ -140,7 +140,7 @@
   position: absolute;
   top: 0;
   height: 100%;
-  background: var(--orange);
+  background: var(--accent);
   transition:
     left 0.2s ease,
     width 0.2s ease;
@@ -149,7 +149,7 @@
   font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   white-space: nowrap;
 }
 

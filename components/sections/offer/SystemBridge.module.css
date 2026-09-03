@@ -18,18 +18,18 @@
   line-height: 1.2;
   font-weight: 500;
   margin: 0 0 10px;
-  color: var(--ink);
+  color: var(--text);
 }
 .body {
   font-size: 15px;
   line-height: 1.6;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0 0 16px;
 }
 .link {
   font-size: 15px;
   font-weight: 600;
-  color: var(--orange);
-  border-bottom: 1px solid var(--orange);
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
   padding-bottom: 2px;
 }

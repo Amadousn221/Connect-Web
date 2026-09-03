@@ -20,7 +20,7 @@
   right: 0;
   bottom: 0;
   width: min(88vw, 380px);
-  background: var(--petrol-nuit);
+  background: var(--ink);
   z-index: var(--z-drawer);
   transform: translateX(100%);
   transition: transform var(--dur-standard) var(--ease-default);
@@ -88,7 +88,7 @@
 
 .cta {
   text-align: center;
-  background: var(--orange);
+  background: var(--accent);
   color: #fff;
   padding: 16px;
   font-size: 15px;

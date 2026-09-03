@@ -7,17 +7,17 @@
   justify-content: center;
   border: 1px solid var(--border);
   background: transparent;
-  color: var(--ink);
+  color: var(--text);
   cursor: pointer;
-  border-radius: var(--radius-0);
+  border-radius: var(--radius-sm);
   transition:
     color var(--dur-quick) ease,
     border-color var(--dur-quick) ease;
 }
 
 .toggle:hover {
-  color: var(--orange);
-  border-color: var(--orange);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* Sur surface pétrole nuit (drawer mobile) : la couleur de thème courante ne
@@ -27,6 +27,6 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 .onDark:hover {
-  color: var(--orange);
-  border-color: var(--orange);
+  color: var(--accent);
+  border-color: var(--accent);
 }

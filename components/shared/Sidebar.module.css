@@ -29,12 +29,12 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 /* ── CTA ─────────────────────────────────────────────────────────────── */
 .cta {
-  background: var(--petrol-nuit);
+  background: var(--ink);
   border-color: var(--petrol-deep);
 }
 .ctaTitle {
@@ -56,15 +56,15 @@
   margin: 0 0 var(--space-md);
   font-size: var(--text-body-sm);
   line-height: 1.65;
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 .aboutLink {
   font-size: var(--text-body-sm);
   font-weight: 600;
-  color: var(--orange);
+  color: var(--accent);
 }
 .aboutLink:hover {
-  color: var(--orange-h);
+  color: var(--accent-600);
 }
 
 /* ── Listes compactes ────────────────────────────────────────────────── */
@@ -87,10 +87,10 @@
   flex-direction: column;
   gap: 2px;
   padding: var(--space-md) 0;
-  color: var(--ink);
+  color: var(--text);
 }
 .rowLink:hover .rowLabel {
-  color: var(--orange);
+  color: var(--accent);
 }
 .rowLabel {
   font-size: var(--text-body-sm);
@@ -99,7 +99,7 @@
 }
 .rowSub {
   font-size: var(--text-caption);
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 .countRow {
@@ -109,14 +109,14 @@
   gap: var(--space-md);
   padding: var(--space-md) 0;
   font-size: var(--text-body-sm);
-  color: var(--ink);
+  color: var(--text);
 }
 .countRow:hover {
-  color: var(--orange);
+  color: var(--accent);
 }
 .count {
   font-size: var(--text-caption);
-  color: var(--ink-faint);
+  color: var(--text-faint);
   font-variant-numeric: tabular-nums;
 }
 

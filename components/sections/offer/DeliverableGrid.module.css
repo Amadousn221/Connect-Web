@@ -34,13 +34,13 @@
 }
 .cardTitle {
   font-size: 19px;
-  color: var(--ink);
+  color: var(--text);
   margin: 0 0 6px;
 }
 .cardBody {
   font-size: 14.5px;
   line-height: 1.6;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   margin: 0;
 }
 
@@ -52,7 +52,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   margin: 0 0 16px;
 }
 .chips {
@@ -63,7 +63,7 @@
 }
 .chip {
   border: 1px solid var(--border);
-  color: var(--ink-soft);
+  color: var(--text-soft);
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 500;
@@ -72,8 +72,8 @@
     color var(--dur-quick) ease;
 }
 .chip:hover {
-  border-color: var(--orange);
-  color: var(--orange);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 @media (max-width: 860px) {

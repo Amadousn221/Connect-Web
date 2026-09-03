@@ -1,6 +1,6 @@
 /* Section 12 — CTA final : bande pétrole nuit compacte et centrée. */
 .section {
-  background: var(--petrol-nuit);
+  background: var(--ink);
   color: #fff;
   padding: 80px 0;
 }

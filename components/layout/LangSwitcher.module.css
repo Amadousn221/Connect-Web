@@ -19,7 +19,7 @@
   font-weight: 600;
   cursor: pointer;
   background: transparent;
-  color: var(--ink);
+  color: var(--text);
   transition:
     background var(--dur-quick) ease,
     color var(--dur-quick) ease;
@@ -40,7 +40,7 @@
 }
 
 .active {
-  background: var(--orange);
+  background: var(--accent);
   color: #fff !important;
 }
 

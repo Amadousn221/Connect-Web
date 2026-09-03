@@ -35,14 +35,6 @@ export interface NeedOption {
   link: Cta;
 }
 
-// ── A6 — « Du site au système » : un élément besoin → solution (multi-segment)
-export interface SystemElement {
-  icon: 'building' | 'cart' | 'gear' | 'bolt';
-  need: string;
-  solution: string;
-  example: string; // client(s) — FACT
-}
-
 // ── A5 — Section Services (V2.1, Lot B — DECISION 23) ──────────────────────
 // Un lien de carte de service (sous-service en tag, ou micro-CTA). `todo` =
 // page pas encore créée → rendu non cliquable + repère « À valider » (preview).
@@ -52,17 +44,37 @@ export interface ServiceLink {
   todo?: boolean;
 }
 
-// Carte de service — format « image en tête + badges » (correction post-déploiement).
-// Les badges = déclinaisons / technos du service : preuve DANS la carte, jamais
-// en carte autonome (DECISION 23). `conseil` = carte porte d'entrée, ton distinct.
+// P25 — clé d'icône du jeu sur-mesure IconSet (une par offre, DECISION 03 :
+// 4 Niveau 1 + 3 Système + Conseil = 8). Voir components/ui/IconSet.tsx.
+export type OfferIconKey =
+  | 'boutiques'
+  | 'plateformes'
+  | 'entreprise'
+  | 'ong'
+  | 'odoo'
+  | 'automatisation'
+  | 'marketing'
+  | 'conseil';
+
+// Carte de service P25 (remplace le format « image en tête + badges » —
+// override PO C1 du brief P25 : icône sur-mesure, pas de capture). La preuve
+// nommée reste DANS la carte (DECISION 23), jamais en carte autonome.
+// `proof` = clients réels cités (asymétrie de preuve : absent pour IA/Marketing,
+// qui portent `capabilityNote` à la place — jamais de cas/chiffre inventé).
 export interface ServiceCardData {
   title: string;
   description: string;
-  badges: string[]; // max 5
-  image?: { src: string; alt: string };
-  imageMissing?: string; // libellé si capture réelle à fournir (repère preview)
+  icon: OfferIconKey;
+  proof?: { clients: string[]; tools?: string[] };
+  capabilityNote?: string;
   cta: ServiceLink;
-  variant?: 'conseil';
+}
+
+// Bloc Conseil (porte d'entrée) — 1 ligne CTA, pas une carte (P25 §S06).
+export interface ServiceConseilCard {
+  title: string;
+  body: string;
+  cta: Cta;
 }
 
 // ── A5 (wedge) — un des 3 points « ce qui nous rend irremplaçable »
@@ -106,19 +118,13 @@ export interface ProjectCardData {
   cta: ServiceLink; // « Voir l'étude de cas → » ; todo = page inexistante
 }
 
-// ── A9 — Preuve (« On montre, on ne prétend pas »).
-// Vague 4 : 3 piliers alignés sur le chapô, une icône fonctionnelle chacun.
-export interface ProofItem {
-  icon: 'users' | 'image' | 'shield';
-  title: string;
-  body: string;
-}
-
-// ── A10 — Méthode (V2.1, Lot C) — 3 étapes, <ol>
-export interface MethodStep {
+// ── P25 S09 — Méthode : 4 phases, tabs desktop / accordéon mobile ─────────
+export interface MethodPhase {
   num: string;
   title: string;
-  body: string;
+  intention: string;
+  actions: string[];
+  deliverables?: string[];
 }
 
 export interface FaqItem {
@@ -126,4 +132,36 @@ export interface FaqItem {
   a: string;
   /** paragraphe « à valider » (fourchettes prix) */
   toValidateNote?: string;
+}
+
+// ── P25 S04 — Ce qui nous distingue ────────────────────────────────────────
+export interface DifferentiatorItem {
+  num: '01' | '02' | '03';
+  title: string;
+  body: string;
+  link?: Cta;
+}
+
+// ── P25 S07 — Du site au système (chaîne de modules reliés) ───────────────
+export interface SystemRoadModule {
+  key: string;
+  label: string;
+}
+
+export interface SystemRoadProof {
+  client: string;
+  chain: string;
+  /** jamais inventé — placeholder balisé tant qu'aucun chiffre n'est confirmé */
+  result?: string;
+}
+
+// ── P25 S10 — Ressources (conditionnelle, contenu hardcodé — pas de CMS
+//    sur l'Accueil, cf. P25 §08) ────────────────────────────────────────────
+export interface ResourceTeaser {
+  category: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  href: string;
 }

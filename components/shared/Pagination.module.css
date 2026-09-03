@@ -25,34 +25,34 @@
   font-size: var(--text-body-sm);
   font-variant-numeric: tabular-nums;
   border: 1px solid var(--card-border);
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 .page:hover {
-  color: var(--ink);
+  color: var(--text);
   border-color: var(--border);
 }
 .page[data-current='true'] {
-  background: var(--ink);
-  border-color: var(--ink);
+  background: var(--text);
+  border-color: var(--text);
   color: var(--bg);
 }
 
 .gap {
   padding: 0 var(--space-xs);
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 .arrow {
   font-size: var(--text-body-sm);
   font-weight: 600;
-  color: var(--ink-soft);
+  color: var(--text-soft);
   white-space: nowrap;
 }
 .arrow:hover {
-  color: var(--orange);
+  color: var(--accent);
 }
 .disabled {
-  color: var(--ink-faint);
+  color: var(--text-faint);
   cursor: default;
 }
 

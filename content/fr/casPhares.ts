@@ -10,9 +10,10 @@ import type { ProjectCardData } from '../types';
 //   « visuel à fournir » en preview, jamais de mockup).
 // - Pages /realisations/[slug] : inexistantes → CTA non cliquable + repère.
 
+// P25 §S08 : titre changé (« Ce qu'on a construit, et ce que ça a changé. »).
 export const casPharesIntro = {
   eyebrow: 'Preuve',
-  title: 'Trois projets qui montrent comment on travaille.',
+  title: "Ce qu'on a construit, et ce que ça a changé.",
   lead: "Une boutique qui vend à l'international. Une plateforme qui prend les réservations à la place du téléphone. Une quincaillerie qui a remplacé Excel par un vrai système. Ce sont de vrais projets, chez de vrais clients qui nous autorisent à les nommer.",
 };
 

@@ -1,35 +1,16 @@
-/* A1 — Hero. Image de fond cover + overlay pétrole nuit. Texte en 1 colonne
-   aligné gauche (~60 % en desktop). */
+/* P25 S01 — Hero typographique, fond ink (dégradé discret), ~72-80vh. */
 .hero {
   position: relative;
-  overflow: hidden;
-  background: var(--petrol-nuit); /* repli sous l'image */
-  color: #fff;
-  padding-block: clamp(96px, 16vh, 176px);
-}
-
-.bg {
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(10, 37, 48, 0.8) 0%,
-      rgba(10, 37, 48, 0.92) 100%
-    ),
-    linear-gradient(90deg, rgba(10, 37, 48, 0.5) 0%, rgba(10, 37, 48, 0) 62%);
+  display: flex;
+  align-items: center;
+  min-height: clamp(560px, 78vh, 820px);
+  background: linear-gradient(135deg, var(--ink) 0%, #0c2f3e 100%);
+  color: var(--on-ink);
+  padding-block: clamp(72px, 12vh, 120px);
 }
 
 .inner {
-  position: relative;
-  z-index: 2;
+  width: 100%;
 }
 
 .copy {
@@ -45,14 +26,14 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
 }
 
 .pulse {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--orange);
+  background: var(--accent);
   animation: pulse 2.4s ease-in-out infinite;
 }
 @keyframes pulse {
@@ -69,7 +50,7 @@
 
 .title {
   margin: 0 0 22px;
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: var(--text-h1);
   line-height: 1.05;
   font-weight: 500;
   letter-spacing: -0.015em;
@@ -80,7 +61,8 @@
   margin: 0 0 32px;
   font-size: 18px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--on-ink);
+  opacity: 0.88;
   max-width: 560px;
   text-wrap: pretty;
 }
@@ -88,7 +70,8 @@
 .ctas {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  align-items: center;
+  gap: 24px;
   margin-bottom: 24px;
 }
 
@@ -97,20 +80,13 @@
 }
 
 @media (max-width: 640px) {
-  .overlay {
-    /* texte pleine largeur en mobile : overlay uniforme plus dense */
-    background: linear-gradient(
-      180deg,
-      rgba(10, 37, 48, 0.86) 0%,
-      rgba(10, 37, 48, 0.93) 100%
-    );
-  }
   .ctas {
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
+    gap: 16px;
   }
-  .ctas a,
-  .ctas button {
+  .ctas a:first-child,
+  .ctas button:first-child {
     width: 100%;
   }
   .title {
@@ -118,5 +94,11 @@
   }
   .sub {
     font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    animation: none;
   }
 }

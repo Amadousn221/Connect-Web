@@ -43,7 +43,7 @@ export function PricingBlock({ content }: { content: PricingContent }) {
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path
                     d="M3 8.5l3.2 3.2L13 5"
-                    stroke="var(--orange)"
+                    stroke="var(--accent)"
                     strokeWidth="1.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"

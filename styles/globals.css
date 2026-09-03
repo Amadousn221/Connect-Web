@@ -20,7 +20,7 @@ html {
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--ink);
+  color: var(--text);
   font-family: var(--font-sans);
   font-size: var(--text-body);
   line-height: var(--leading-normal);
@@ -33,12 +33,12 @@ body {
 }
 
 a {
-  color: var(--orange);
+  color: var(--accent);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--orange-h);
+  color: var(--accent-600);
 }
 
 button {
@@ -54,7 +54,7 @@ video {
 }
 
 :focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -82,6 +82,20 @@ video {
   padding-inline: var(--container-pad);
 }
 
+/* Visuellement masqué mais lisible par les lecteurs d'écran (P25 — titre de
+   section retiré visuellement mais un repère de landmark reste nécessaire). */
+.cw-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Lien d'évitement (accessibilité — WCAG AA, non présent dans les mockups
    statiques mais requis par la spec non-fonctionnelle P10). */
 .cw-skip-link {
@@ -89,7 +103,7 @@ video {
   left: -9999px;
   top: 0;
   z-index: 999;
-  background: var(--ink);
+  background: var(--text);
   color: var(--bg);
   padding: 12px 20px;
   font-weight: 600;

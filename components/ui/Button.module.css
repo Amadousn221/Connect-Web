@@ -7,7 +7,7 @@
   gap: 8px;
   font-family: var(--font-sans);
   font-weight: 500;
-  border-radius: var(--radius-0);
+  border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
   text-align: center;
@@ -34,66 +34,66 @@
 
 /* Variantes — fond clair */
 .primary {
-  background: var(--orange);
+  background: var(--accent);
   color: #fff;
 }
 .primary:hover {
-  background: var(--orange-h);
+  background: var(--accent-600);
   color: #fff;
 }
 
 .outline {
   background: transparent;
-  color: var(--ink);
+  color: var(--text);
   border-color: var(--border);
 }
 .outline:hover {
-  color: var(--orange);
-  border-color: var(--orange);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .ghost {
   background: var(--bg-alt);
-  color: var(--ink);
+  color: var(--text);
 }
 .ghost:hover {
-  color: var(--orange);
+  color: var(--accent);
 }
 
 /* Tertiaire — lien texte, sans fond ni bordure, flèche fournie par l'appelant. */
 .link {
   background: transparent;
   border-color: transparent;
-  color: var(--ink);
+  color: var(--text);
   padding-inline: 0;
   font-weight: 600;
 }
 .link:hover {
-  color: var(--orange);
+  color: var(--accent);
 }
 .onDark.link {
-  color: #fff;
+  color: var(--on-ink);
 }
 .onDark.link:hover {
-  color: #fff;
+  color: var(--on-ink);
   opacity: 0.8;
 }
 
-/* Sur surface sombre (hero / bandes pétrole nuit) */
+/* Sur surface sombre (hero / sections encre — P25) */
 .onDark.primary {
-  background: var(--orange);
+  background: var(--accent);
   color: #fff;
 }
 .onDark.outline {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--on-ink);
+  border-color: rgba(240, 238, 233, 0.3);
+  background: rgba(240, 238, 233, 0.08);
 }
 .onDark.outline:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--on-ink);
+  border-color: rgba(240, 238, 233, 0.6);
 }
 .onDark.ghost {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: rgba(240, 238, 233, 0.08);
+  color: var(--on-ink);
 }

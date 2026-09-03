@@ -24,7 +24,7 @@
   top: -3px;
   height: 10px;
   min-width: 40px;
-  background: var(--ink);
+  background: var(--text);
   cursor: grab;
   touch-action: none;
 }
@@ -38,13 +38,13 @@
   font-weight: 600;
 }
 .footer a {
-  color: var(--orange);
+  color: var(--accent);
 }
 .footer a:hover {
-  color: var(--orange-h);
+  color: var(--accent-600);
 }
 .linkTodo {
-  color: var(--ink-faint);
+  color: var(--text-faint);
   cursor: default;
 }
 

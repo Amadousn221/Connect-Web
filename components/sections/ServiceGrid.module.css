@@ -1,35 +1,90 @@
 .section {
-  background: var(--bg-cream);
+  background: var(--bg);
   padding-block: 100px;
 }
 
-/* Grille uniforme : 6 cartes, 3 colonnes (2 rangées). Chaque carte porte sa
-   propre bordure — pas de filet de grille. */
-.grid {
+.groupLabel {
+  margin-top: 48px;
+  margin-bottom: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.gridL1 ~ .groupLabel {
+  margin-top: 56px;
+}
+
+.gridL1 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.gridSystem {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  margin-top: 48px;
 }
 
-.note {
-  margin-top: 20px;
+.conseil {
+  margin-top: 56px;
+  padding: 28px 32px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-card);
+  background: var(--bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
 }
-.note > * {
-  display: inline-block;
+
+.conseilTitle {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  font-family: var(--font-serif);
+}
+
+.conseilBody {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--text-soft);
+  max-width: 52ch;
+}
+
+.conseilCta {
+  flex-shrink: 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.conseilCta:hover {
+  color: var(--accent-600);
 }
 
 @media (max-width: 1023px) {
-  .grid {
+  .gridL1 {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .gridSystem {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 640px) {
-  .grid {
+  .gridL1 {
     grid-template-columns: 1fr;
   }
   .section {
     padding-block: 56px;
+  }
+  .conseil {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

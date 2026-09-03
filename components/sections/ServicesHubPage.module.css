@@ -1,5 +1,5 @@
 .hero {
-  background: var(--petrol-nuit);
+  background: var(--ink);
   color: #fff;
   padding: 26px 0 72px;
 }
@@ -67,7 +67,7 @@
   gap: 16px;
   padding: 18px 0;
   border-bottom: 1px solid var(--border);
-  color: var(--ink);
+  color: var(--text);
   font-size: 17px;
   font-weight: 500;
 }
@@ -75,17 +75,17 @@
   border-top: 1px solid var(--border);
 }
 .row:hover {
-  color: var(--orange);
+  color: var(--accent);
 }
 .arrow {
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 .row:hover .arrow {
-  color: var(--orange);
+  color: var(--accent);
 }
 
 .conseil {
-  background: var(--petrol-nuit);
+  background: var(--ink);
   color: #fff;
   padding: 64px 0;
 }

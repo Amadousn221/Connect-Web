@@ -1,0 +1,33 @@
+.section {
+  background: var(--ink);
+  color: var(--on-ink);
+  padding-block: 100px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.copy {
+  padding-top: 8px;
+}
+
+.trust {
+  margin-top: 32px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-block: 56px;
+  }
+}

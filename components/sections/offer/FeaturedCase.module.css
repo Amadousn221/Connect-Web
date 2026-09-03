@@ -13,12 +13,12 @@
   grid-template-columns: 1.1fr 1fr;
   gap: 44px;
   align-items: center;
-  background: var(--petrol-nuit);
+  background: var(--ink);
 }
 
 .visual {
   aspect-ratio: 4 / 3;
-  border: 1px dashed var(--orange);
+  border: 1px dashed var(--accent);
   margin: 24px 0 24px 24px;
   display: flex;
   flex-direction: column;
@@ -57,7 +57,7 @@
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
   font-weight: 600;
   margin: 0 0 14px;
 }
@@ -68,7 +68,7 @@
   margin: 0 0 20px;
 }
 .quote {
-  border-left: 2px solid var(--orange);
+  border-left: 2px solid var(--accent);
   padding-left: 16px;
   margin: 0 0 24px;
   font-size: 15px;
