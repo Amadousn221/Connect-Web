@@ -1,16 +1,16 @@
 .hero {
   position: relative;
   overflow: hidden;
-  color: #fff;
+  color: var(--on-ink);
   min-height: 560px;
   display: flex;
   flex-direction: column;
   background: var(--ink);
 }
-/* Sans image de fond : dégradé diagonal pétrole (variante « Le système »). */
+/* Sans image de fond : même recette de dégradé que le Hero Accueil (P25). */
 .hero[data-plain='true'] {
   min-height: 520px;
-  background: linear-gradient(135deg, var(--ink) 0%, #0d3547 100%);
+  background: linear-gradient(135deg, var(--ink) 0%, #0c2f3e 100%);
 }
 
 .bg {
@@ -39,16 +39,16 @@
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(240, 238, 233, 0.55);
 }
 .crumb a {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(240, 238, 233, 0.55);
 }
 .crumb a:hover {
-  color: #fff;
+  color: var(--on-ink);
 }
 .crumb [aria-current] {
-  color: #fff;
+  color: var(--on-ink);
 }
 
 .inner {
@@ -104,7 +104,7 @@
 .sub {
   font-size: 17px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(240, 238, 233, 0.78);
   max-width: 520px;
   margin: 0 0 28px;
 }
@@ -129,7 +129,7 @@
   align-items: center;
   gap: 7px;
   font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(240, 238, 233, 0.7);
 }
 
 @media (prefers-reduced-motion: reduce) {

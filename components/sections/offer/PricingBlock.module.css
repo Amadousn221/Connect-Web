@@ -1,6 +1,6 @@
 .section {
   background: var(--ink);
-  color: #fff;
+  color: var(--on-ink);
   padding: 80px 0;
 }
 .grid {
@@ -19,12 +19,12 @@
   line-height: 1.12;
   font-weight: 500;
   margin: 0 0 14px;
-  color: #fff;
+  color: var(--on-ink);
 }
 .body {
   font-size: 16px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(240, 238, 233, 0.7);
   margin: 0 0 16px;
 }
 .note {
@@ -32,15 +32,15 @@
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(240, 238, 233, 0.05);
+  border: 1px solid rgba(240, 238, 233, 0.14);
   padding: 34px 32px;
 }
 .cardLabel {
   font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(240, 238, 233, 0.55);
   margin: 0 0 8px;
 }
 .price {
@@ -51,11 +51,11 @@
 }
 .priceFrom {
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(240, 238, 233, 0.7);
 }
 .priceValue {
   font-size: 40px;
-  color: #fff;
+  color: var(--on-ink);
 }
 .includes {
   list-style: none;
@@ -70,7 +70,7 @@
   align-items: center;
   gap: 10px;
   font-size: 14.5px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(240, 238, 233, 0.8);
 }
 
 @media (max-width: 860px) {
