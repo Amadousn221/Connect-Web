@@ -13,3 +13,13 @@ export function showValidationNotes(): boolean {
   const env = process.env.VERCEL_ENV || process.env.NODE_ENV;
   return env !== 'production';
 }
+
+// Refonte Accueil — brief §04-S10 / D31. La section Ressources de l'accueil est
+// livrée mais MASQUÉE par défaut. Elle ne s'affiche que si (a) le flag est
+// explicitement activé ET (b) au moins 2 vrais contenus publiés existent
+// (garde-fou anti-slop : jamais de blog vide ni de titres placeholder).
+// Piloté par NEXT_PUBLIC_RESOURCES_ENABLED — "1"/"true"/"on" pour activer.
+export function resourcesEnabled(): boolean {
+  const raw = process.env.NEXT_PUBLIC_RESOURCES_ENABLED?.trim().toLowerCase();
+  return raw === '1' || raw === 'true' || raw === 'on' || raw === 'yes';
+}

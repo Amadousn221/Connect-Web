@@ -1,70 +1,54 @@
 .section {
-  /* blanc : contraste franc juste après le Hero (pétrole nuit). Reste distinct
-     de NeedSelector (off-white) même quand LogoStrip est masqué en production
-     — règle anti-fond-identique (vague 4). */
+  /* Refonte Accueil — D25 : bande blanche, juste après le Hero (bleu profond). */
   background: var(--bg);
-  padding-block: 100px;
+  padding-block: clamp(48px, 7vw, 72px);
+  border-bottom: 1px solid var(--border);
 }
 
-.grid {
+.row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-top: 44px;
+  gap: 40px;
 }
 
-.tile {
-  background: var(--bg-alt);
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.item {
+  padding-left: 28px;
+  border-left: 1px solid var(--border);
 }
-
-.icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--orange);
-  border: 1px solid var(--border);
-  margin-bottom: 4px;
-}
-
-.label {
-  margin: 0;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
+.item:first-child {
+  padding-left: 0;
+  border-left: none;
 }
 
 .value {
-  margin: 0;
-  font-size: clamp(30px, 4vw, 40px);
+  margin: 0 0 6px;
+  font-size: clamp(30px, 3.4vw, 40px);
   font-weight: 500;
-  line-height: 1.05;
+  line-height: 1;
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
 
 .caption {
-  margin: 4px 0 0;
+  margin: 0;
   font-size: 13px;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--ink-soft);
+  max-width: 22ch;
 }
 
-@media (max-width: 1023px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 760px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 24px;
   }
-}
-@media (max-width: 640px) {
-  .section {
-    padding-block: 56px;
+  /* filets : garder à gauche de la 2e colonne uniquement */
+  .item {
+    padding-left: 0;
+    border-left: none;
+  }
+  .item:nth-child(2n) {
+    padding-left: 24px;
+    border-left: 1px solid var(--border);
   }
 }

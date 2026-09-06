@@ -1,46 +1,50 @@
-/* A1 — Hero. Image de fond cover + overlay pétrole nuit. Texte en 1 colonne
-   aligné gauche (~60 % en desktop). */
+/* A1 — Hero. Refonte : composition compacte en deux colonnes sur bleu profond.
+   Gauche = texte (fixe). Droite = vitrine interactive (`HeroShowcase`). Hauteur
+   naturelle (pas de plein écran imposé). Une seule surface d'encre
+   (var(--ink-deep)) + une texture très discrète. */
 .hero {
   position: relative;
   overflow: hidden;
-  background: var(--petrol-nuit); /* repli sous l'image */
+  background: var(--ink-deep);
   color: #fff;
-  padding-block: clamp(96px, 16vh, 176px);
+  padding-block: clamp(48px, 7vh, 88px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.bg {
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
-}
-
-.overlay {
+/* Texture d'encre : halo léger en haut à gauche + dégradé vertical subtil. */
+.texture {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
   background:
-    linear-gradient(
-      180deg,
-      rgba(10, 37, 48, 0.8) 0%,
-      rgba(10, 37, 48, 0.92) 100%
+    radial-gradient(
+      1100px 560px at 12% -5%,
+      rgba(255, 255, 255, 0.06),
+      transparent 60%
     ),
-    linear-gradient(90deg, rgba(10, 37, 48, 0.5) 0%, rgba(10, 37, 48, 0) 62%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0%, transparent 45%),
+    linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.14) 100%);
 }
 
 .inner {
   position: relative;
   z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
 }
 
 .copy {
-  max-width: 680px;
+  min-width: 0;
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  margin: 0 0 24px;
+  margin: 0 0 20px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -67,28 +71,30 @@
   }
 }
 
+/* Typographie mesurée — styles limités au Hero (aucune règle globale h1). */
 .title {
-  margin: 0 0 22px;
-  font-size: clamp(40px, 5vw, 64px);
-  line-height: 1.05;
+  margin: 0 0 18px;
+  font-size: clamp(30px, 4.2vw, 50px);
+  line-height: 1.12;
   font-weight: 500;
-  letter-spacing: -0.015em;
-  text-wrap: pretty;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
 }
 
 .sub {
-  margin: 0 0 32px;
-  font-size: 18px;
+  margin: 0 0 28px;
+  font-size: 17px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.88);
-  max-width: 560px;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 46ch;
   text-wrap: pretty;
 }
 
 .ctas {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  align-items: center;
+  gap: 10px 22px;
   margin-bottom: 24px;
 }
 
@@ -96,25 +102,42 @@
   margin-top: 4px;
 }
 
+.showcase {
+  min-width: 0;
+}
+
+/* ── Tablette / mobile : une colonne, vitrine sous le texte + les boutons ── */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+  .copy {
+    max-width: 640px;
+  }
+}
+
 @media (max-width: 640px) {
-  .overlay {
-    /* texte pleine largeur en mobile : overlay uniforme plus dense */
-    background: linear-gradient(
-      180deg,
-      rgba(10, 37, 48, 0.86) 0%,
-      rgba(10, 37, 48, 0.93) 100%
-    );
+  .hero {
+    padding-block: clamp(40px, 12vh, 72px);
+  }
+  .inner {
+    gap: 28px;
   }
   .ctas {
     flex-direction: column;
     align-items: stretch;
   }
-  .ctas a,
-  .ctas button {
+  /* primaire pleine largeur ; secondaire = lien texte aligné à gauche */
+  .ctas > :first-child {
     width: 100%;
   }
+  .ctas > :last-child {
+    align-self: flex-start;
+  }
   .title {
-    font-size: 32px;
+    font-size: clamp(30px, 7.5vw, 34px);
   }
   .sub {
     font-size: 16px;

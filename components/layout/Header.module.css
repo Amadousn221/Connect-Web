@@ -80,7 +80,7 @@
 .cta:hover {
   color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 12px 26px rgba(13, 13, 13, 0.16);
+  box-shadow: 0 12px 26px rgba(26, 26, 26, 0.16);
 }
 
 .burger {

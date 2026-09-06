@@ -1,5 +1,6 @@
 .section {
-  background: var(--bg-cream);
+  /* Refonte Accueil — D25 : Services sur fond blanc (brief S06). */
+  background: var(--bg);
   padding-block: 100px;
 }
 

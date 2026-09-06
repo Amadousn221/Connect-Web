@@ -2,11 +2,19 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { ValidationNote } from '@/components/ui/ValidationNote';
 import { showValidationNotes } from '@/lib/flags';
-import { contactIntro, contactPoints, contactPerson } from '@/content/fr/accueil';
+import {
+  contactIntro,
+  contactPoints,
+  contactPerson,
+  hero,
+} from '@/content/fr/accueil';
 import { ContactForm } from './ContactForm';
+import { TrustLine } from './TrustLine';
 import styles from './ContactSection.module.css';
 
-// A12 — Section Contact de l'Accueil (ancre #contact).
+// S12 — CTA final + formulaire (Refonte Accueil, D33). Apogée de conversion sur
+// fond BLEU PROFOND (3e et dernière ponctuation). Message à gauche, formulaire
+// (carte claire) à droite en desktop ; pile en mobile. Ancre #contact.
 // Icônes : SVG inline (convention du projet — pas de librairie d'icônes).
 const PhoneIcon = (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -45,6 +53,13 @@ export function ContactSection() {
             eyebrow={contactIntro.eyebrow}
             title={contactIntro.title}
             lead={contactIntro.lead}
+            tone="on-dark"
+          />
+
+          <TrustLine
+            items={hero.trustLine}
+            tone="on-dark"
+            className={styles.trust}
           />
 
           <ul className={styles.points}>

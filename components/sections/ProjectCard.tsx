@@ -44,14 +44,24 @@ export function ProjectCard({
         <p className={styles.sector}>{card.sector}</p>
         <span className={styles.tag}>{card.solutionTag}</span>
 
-        {card.result ? <p className={styles.result}>{card.result}</p> : null}
+        {card.result ? (
+          <p className={styles.result}>{card.result}</p>
+        ) : preview ? (
+          <p className={styles.result} data-pending="true">
+            [RÉSULTAT — à confirmer]
+          </p>
+        ) : null}
 
         {card.cta.todo ? (
           <span className={styles.cta} data-todo="true">
             {card.cta.label} <span aria-hidden="true">→</span>
           </span>
         ) : (
-          <Link href={localePath(locale, card.cta.href)} className={styles.cta}>
+          <Link
+            href={localePath(locale, card.cta.href)}
+            className={styles.cta}
+            aria-label={`${card.cta.label} — ${card.client}`}
+          >
             {card.cta.label} <span aria-hidden="true">→</span>
           </Link>
         )}

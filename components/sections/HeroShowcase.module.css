@@ -1,0 +1,126 @@
+/* A1b — Vitrine interactive du Hero. Cadre sobre sur le bleu profond du Hero,
+   sans faux navigateur. Angles vifs (radius 0, signature). */
+.showcase {
+  width: 100%;
+}
+
+/* ── Onglets ─────────────────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.tab {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 10px 4px 12px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition:
+    color var(--dur-quick) var(--ease-default),
+    border-color var(--dur-quick) var(--ease-default);
+}
+.tab:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+.tab[data-active='true'] {
+  color: #fff;
+  border-bottom-color: var(--orange);
+}
+.tab:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+/* ── Panneau ─────────────────────────────────────────────────────────────── */
+.panel {
+  margin-top: 18px;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Les deux captures sont montées et empilées ; seule l'active est opaque →
+   crossfade discret, hauteur du cadre inchangée entre projets. */
+.img {
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0;
+  transition: opacity 180ms var(--ease-default);
+}
+.img[data-active='true'] {
+  opacity: 1;
+}
+
+.info {
+  margin-top: 16px;
+  /* réserve ~3 lignes de description → aucun saut de mise en page */
+  min-height: 4.8em;
+}
+.headline {
+  margin: 0 0 8px;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.4;
+  color: #fff;
+  text-wrap: pretty;
+}
+.meta {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+}
+.sep {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Lien unique vers le hub Réalisations ────────────────────────────────── */
+.footer {
+  margin-top: 16px;
+}
+.link {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 2px;
+  transition:
+    border-color var(--dur-quick) ease,
+    opacity var(--dur-quick) ease;
+}
+.link:hover {
+  opacity: 0.82;
+  border-bottom-color: var(--orange);
+}
+.link:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img,
+  .tab,
+  .link {
+    transition: none;
+  }
+}

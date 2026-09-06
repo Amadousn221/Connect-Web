@@ -1,6 +1,7 @@
-/* Pied de page — mockup Accueil V2 lignes 952-980. Surface pétrole nuit. */
+/* Pied de page. Refonte Accueil — D25 : encre footer la plus foncée
+   (`--ink-900`), un cran sous le bleu profond des sections. */
 .footer {
-  background: var(--petrol-nuit);
+  background: var(--ink-900);
   color: #fff;
   padding: 64px 0 32px;
 }

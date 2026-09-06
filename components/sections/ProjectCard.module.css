@@ -93,6 +93,11 @@
   font-weight: 500;
   color: var(--ink);
 }
+.result[data-pending='true'] {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
 
 .cta {
   margin-top: auto;

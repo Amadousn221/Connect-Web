@@ -1,11 +1,67 @@
 .section {
-  background: var(--petrol-nuit);
+  background: var(--ink-deep);
   color: #fff;
   padding-block: 100px;
 }
 
+/* ── Mini-écosystème : chaîne de modules reliés ────────────────────────── */
+.chain {
+  margin-top: 44px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 0;
+}
+
+.chainItem {
+  display: flex;
+  align-items: center;
+}
+
+.module {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.module[data-lead='true'] {
+  color: #fff;
+  border-color: var(--orange);
+}
+
+.link {
+  width: clamp(16px, 3vw, 40px);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.outcome {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-deep);
+  background: var(--orange);
+}
+
+.framing {
+  margin: 26px 0 0;
+  max-width: 640px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.68);
+  border-left: 2px solid var(--orange);
+  padding-left: 16px;
+}
+
+/* ── 4 preuves besoin → solution ──────────────────────────────────────── */
 .grid {
-  margin-top: 48px;
+  margin-top: 52px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
@@ -14,7 +70,7 @@
 }
 
 .item {
-  background: var(--petrol-nuit);
+  background: var(--ink-deep);
   padding: 28px 26px;
   display: flex;
   flex-direction: column;
@@ -39,8 +95,6 @@
   color: #fff;
 }
 
-/* Colonne étroite (grille 4) : taille unifiée + césure, mais pas de justif
-   (largeur insuffisante — produirait des lézardes). */
 .solution {
   margin: 0;
   font-size: var(--text-section);
@@ -65,6 +119,19 @@
 }
 
 @media (max-width: 560px) {
+  .chain {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .chainItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .link {
+    width: 1px;
+    height: 14px;
+    margin-left: 18px;
+  }
   .grid {
     grid-template-columns: 1fr;
   }

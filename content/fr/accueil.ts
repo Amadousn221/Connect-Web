@@ -21,14 +21,15 @@ export const primaryCta: Cta = { label: 'Parlons de votre projet', href: '#conta
 // Copy : DECISION 20 (journal de décisions), formulation « Option A », validée
 // PO le 28 août 2026. Le §06.1 du Design Handoff (variante « Direction C »)
 // est une RECOMMENDATION, remplacée ici par la décision consignée.
-// Vague 4 (correction post-déploiement) : titre raccourci (~30 %) sur demande
-// PO — même promesse, même rythme. Sous-titre et trust line inchangés.
+// Vague 4 : titre raccourci (~30 %) sur demande PO — même promesse, même rythme.
+// Refonte Accueil — D26 : Hero purement typographique sur bleu profond, SANS
+// image (override PO). Sous-titre resserré à une seule phrase (brief S01/§09).
 export const hero: Hero = {
   eyebrow: 'Studio digital — Dakar',
   title:
     'Nous concevons et connectons les outils qui font tourner votre organisation.',
   subtitle:
-    'Sites et applications web sur mesure, boutiques e-commerce, plateformes métier, ERP et automatisations. Studio de Dakar au standard international. Vos accès vous appartiennent.',
+    'Sites et applications sur mesure, boutiques e-commerce, plateformes métier, ERP et automatisations — par un studio de Dakar, au standard international.',
   ctas: [
     primaryCta,
     // Ancre du slider Cas phares (section id="cas" — ProjectSlider, Lot D).
@@ -37,9 +38,6 @@ export const hero: Hero = {
   trustLine: ['Réponse sous 24 h', 'Devis gratuit', 'Vos accès vous appartiennent'],
 };
 
-// Composite visuel du Hero : ABANDONNÉ (correction post-déploiement). Le Hero
-// passe à une image de fond en cover + overlay pétrole. Voir Hero.tsx.
-
 // ── Bande de logos clients (V2.1 — §06.2 du Design Handoff) ───────────────
 // 11 clients approuvés. Maison Peinture Sénégal est exclu de la bande (projet
 // ERP interne, sans vitrine publique — il reste présent en cas phare).
@@ -47,7 +45,7 @@ export const hero: Hero = {
 // transparent). 3 encore à fournir : ATTA Africa, SCOD VTC, DDS Medical —
 // entrées sans `src`, masquées en prod, signalées [LOGO_MANQUANT] en preview.
 export const clientsIntro =
-  "Des marques, des commerces et des organisations d'Afrique de l'Ouest et d'ailleurs.";
+  "Des marques, des commerces et des institutions d'Afrique de l'Ouest nous confient leurs plateformes.";
 
 export const clientLogos: ClientLogo[] = [
   { name: 'ATTA Africa' },
@@ -70,9 +68,14 @@ export const clientLogos: ClientLogo[] = [
 // ── A3 — Ce qu'on construit (sélecteur) — RESTAURÉ (version d'avant la refonte
 //    V2.1). Rendu par components/sections/NeedSelector.tsx. La variante tableau
 //    statique du Lot C (content/fr/besoins.ts + NeedTable) est écartée.
+// Refonte Accueil — brief §04-S05 / D32. Section « À qui on parle » : la
+// reconnaissance d'audience (« ça, c'est moi ») + démonstration de « on part du
+// réel ». Titre resserré (l'ancien « on part de votre besoin… » faisait doublon
+// avec le différenciateur #1). Un seul CTA par situation, la bande CTA
+// intermédiaire est supprimée (on ne garde que Hero + CTA final).
 export const needIntro = {
-  eyebrow: "Ce qu'on construit",
-  title: 'On part de votre besoin, pas de notre catalogue.',
+  eyebrow: 'À qui on parle',
+  title: 'Des organisations très différentes, un même point de départ.',
   lead: "Digitaliser, ce n'est pas acheter un outil. C'est régler un problème précis — être trouvé, vendre, arrêter de tout gérer à la main — puis relier les pièces entre elles.",
 };
 
@@ -136,13 +139,6 @@ export const needOptions: NeedOption[] = [
   },
 ];
 
-export const needCtaBand = {
-  title: 'Pas sûr par où commencer ?',
-  body: "C'est le cas le plus fréquent. On cadre votre situation, on identifie ce qui bloque, et on vous dit ce qui compte en premier — sans engagement.",
-  primary: { label: 'Conseil & audit gratuit', href: '#contact' } as Cta,
-  secondary: { label: 'Découvrir nos solutions', href: '#systeme' } as Cta,
-};
-
 // ── A4 — Pour qui : SECTION SUPPRIMÉE (correction finale). La diversité des
 //    cibles est portée par « Du site au système » (multi-segment) et par les
 //    besoins (NeedSelector). Composant WhoForGrid + content/fr/pourqui.ts retirés.
@@ -156,10 +152,22 @@ export const needCtaBand = {
 // chaînes) : un seul bloc, 4 éléments besoin → solution, multi-segment
 // (présenter / vendre / piloter / automatiser). Icône par élément. Clients
 // cités = FACTS (DECISION 12/13).
+// Refonte Accueil — brief §04-S07 : narrative avant schématique. Titre P08-A7.
+// Cadre honnête assumé + mini-écosystème modulaire (modules reliés par des
+// filets fins, pas un diagramme d'ingénieur).
 export const systemIntro = {
   eyebrow: 'Du site au système',
-  title: 'On construit selon votre besoin — du site au système.',
-  lead: "Un site institutionnel, une boutique, une plateforme, des automatisations : on ne suppose pas que vous avez besoin de tout. On construit ce qui compte, puis on connecte le reste.",
+  title: "Un site, c'est le début. Pas la fin.",
+  lead: "Un site institutionnel, une boutique, une plateforme, des automatisations : on ne suppose pas que vous avez besoin de tout. On construit ce qui compte, puis on connecte le reste — jusqu'à ce que vos outils forment un système qui tourne.",
+  framing:
+    "On ne vous vendra pas de l'IA pour faire moderne. On connecte ce qui vous fait gagner du temps, rien de plus.",
+};
+
+// Mini-écosystème : le site n'est qu'un maillon. Rendu comme une chaîne de
+// modules reliés — jamais un schéma technique.
+export const systemChain = {
+  modules: ['Site', 'E-commerce', 'ERP / CRM', 'Outils métier', 'Automatisation'],
+  outcome: 'Un système qui tourne',
 };
 
 export const systemElements: SystemElement[] = [
@@ -332,7 +340,7 @@ export const contactFormContent = {
   ],
   submitLabel: 'Envoyer ma demande',
   submittingLabel: 'Envoi…',
-  reassurance: 'Réponse sous 24 h · Devis gratuit · Sans engagement',
+  reassurance: 'Réponse sous 24 h · Devis gratuit · Vos accès vous appartiennent',
   // Vague 4 : formulaire branché sur /api/contact (POST). Le stub back se
   // contente d'accepter la requête — le vrai câblage CRM/notification est un
   // jalon ultérieur (voir app/api/contact/route.ts).

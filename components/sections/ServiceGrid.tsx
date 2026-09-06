@@ -6,8 +6,8 @@ import { servicesIntro, serviceCards } from '@/content/fr/services';
 import { ServiceCard } from './ServiceCard';
 import styles from './ServiceGrid.module.css';
 
-// A5 — Section Services. Grille uniforme 6 cartes en 3 colonnes (2 rangées),
-// format « image en tête + badges ».
+// S06 — Section Services. Grille uniforme 6 cartes (5 expertises + Conseil) en
+// 3 colonnes. Format « icône sur-mesure + preuve + badges » (D27).
 export function ServiceGrid({ locale }: { locale: Locale }) {
   const todoRoutes = Array.from(
     new Set(serviceCards.filter((c) => c.cta.todo).map((c) => c.cta.href)),

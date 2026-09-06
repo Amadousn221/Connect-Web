@@ -10,10 +10,13 @@ import type { ProjectCardData } from '../types';
 //   « visuel à fournir » en preview, jamais de mockup).
 // - Pages /realisations/[slug] : inexistantes → CTA non cliquable + repère.
 
+// Refonte Accueil — brief §04-S08. Ordre intentionnel ATTA → SCOD → Maison
+// Peinture (commerce → plateforme → système). Résultats chiffrés : EVIDENCE
+// REQUIRED — non rendus tant que non collectés (jamais de résultat inventé).
 export const casPharesIntro = {
-  eyebrow: 'Preuve',
-  title: 'Trois projets qui montrent comment on travaille.',
-  lead: "Une boutique qui vend à l'international. Une plateforme qui prend les réservations à la place du téléphone. Une quincaillerie qui a remplacé Excel par un vrai système. Ce sont de vrais projets, chez de vrais clients qui nous autorisent à les nommer.",
+  eyebrow: 'Réalisations',
+  title: "Ce qu'on a construit, et ce que ça a changé.",
+  lead: "Une boutique qui vend à l'international. Une plateforme qui prend les réservations à la place du téléphone. Une quincaillerie qui a remplacé Excel par un vrai système. De vrais projets, chez de vrais clients qui nous autorisent à les nommer.",
 };
 
 export const casPharesLink = {
@@ -31,7 +34,7 @@ export const casPharesCards: ProjectCardData[] = [
     solutionTag: 'E-commerce · Automatisations',
     imageMissing: 'ATTA Africa — capture boutique cross-border',
     cta: {
-      label: "Voir l'étude de cas",
+      label: 'Voir le projet',
       href: '/realisations/atta-africa',
       todo: true,
     },
@@ -46,7 +49,7 @@ export const casPharesCards: ProjectCardData[] = [
       alt: "Capture d'écran de la plateforme de réservation SCOD VTC",
     },
     cta: {
-      label: "Voir l'étude de cas",
+      label: 'Voir le projet',
       href: '/realisations/scod-vtc',
       todo: true,
     },
@@ -58,7 +61,7 @@ export const casPharesCards: ProjectCardData[] = [
     solutionTag: 'ERP Odoo · Intégration',
     imageMissing: "Maison Peinture Sénégal — capture de l'ERP Odoo",
     cta: {
-      label: "Voir l'étude de cas",
+      label: 'Voir le projet',
       href: '/realisations/maison-peinture-senegal',
       todo: true,
     },

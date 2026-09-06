@@ -55,12 +55,16 @@ export interface ServiceLink {
 // Carte de service — format « image en tête + badges » (correction post-déploiement).
 // Les badges = déclinaisons / technos du service : preuve DANS la carte, jamais
 // en carte autonome (DECISION 23). `conseil` = carte porte d'entrée, ton distinct.
+// Refonte Accueil — D27 : cartes à ICÔNE sur-mesure (captures retirées, elles
+// vivent sur Réalisations). `proof` = ligne de preuve nichée, OBLIGATOIRE sur
+// les cartes prouvables (clients réels + technos). Pour IA/Marketing, sans cas
+// ni chiffre : une formulation-capacité honnête (asymétrie de preuve assumée).
 export interface ServiceCardData {
   title: string;
   description: string;
-  badges: string[]; // max 5
-  image?: { src: string; alt: string };
-  imageMissing?: string; // libellé si capture réelle à fournir (repère preview)
+  icon: 'web' | 'apps' | 'erp' | 'automation' | 'marketing' | 'conseil';
+  badges: string[]; // max 5 — technos / déclinaisons (DECISION 23)
+  proof?: string;
   cta: ServiceLink;
   variant?: 'conseil';
 }
@@ -114,11 +118,16 @@ export interface ProofItem {
   body: string;
 }
 
-// ── A10 — Méthode (V2.1, Lot C) — 3 étapes, <ol>
+// ── S09 — Méthode (Refonte Accueil, D29) — 4 phases navigables
 export interface MethodStep {
   num: string;
   title: string;
-  body: string;
+  /** l'intention de la phase (1 phrase) */
+  intent: string;
+  /** ce qu'on fait concrètement */
+  does: string;
+  /** livrable éventuel de la phase */
+  deliverable?: string;
 }
 
 export interface FaqItem {

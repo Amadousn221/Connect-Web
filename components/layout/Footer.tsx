@@ -20,8 +20,8 @@ export function Footer({ locale }: { locale: Locale }) {
         <div className={styles.grid}>
           <div>
             <p className={styles.blurb}>
-              Studio digital à Dakar. On conçoit et connecte les outils
-              numériques qui font tourner votre organisation.
+              Studio digital à Dakar. On conçoit et connecte les outils qui
+              font tourner votre organisation.
             </p>
             <div className={styles.social}>
               <a

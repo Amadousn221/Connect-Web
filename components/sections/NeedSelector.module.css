@@ -1,5 +1,7 @@
 .section {
-  background: var(--bg-alt);
+  /* Refonte Accueil — D25/D32 : « À qui on parle » est l'un des deux seuls
+     moments de repos de la page (crème). */
+  background: var(--cream);
   padding: 100px 0 96px;
 }
 
@@ -138,10 +140,6 @@
   font-size: 15px;
   font-weight: 600;
   color: var(--orange);
-}
-
-.band {
-  margin-top: 56px;
 }
 
 /* ── Mobile / tablette : accordéon ───────────────────────────────────────

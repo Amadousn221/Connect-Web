@@ -1,7 +1,7 @@
 .section {
-  /* crème : distinct de ProofGrid (blanc) qui précède et de Method (off-white)
-     qui suit — règle anti-fond-identique. */
-  background: var(--bg-cream);
+  /* Refonte Accueil — D25 : page blanc-dominante. Le crème est réservé à
+     NeedSelector et Method ; les sections blanches peuvent se suivre. */
+  background: var(--bg);
   padding-block: clamp(52px, 8vw, 88px);
   overflow: hidden;
 }

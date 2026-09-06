@@ -4,18 +4,17 @@ import { useId, useState } from 'react';
 import Link from 'next/link';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
-import { CtaBand } from '@/components/ui/CtaBand';
 import { Tag } from '@/components/ui/Tag';
 import { localePath } from '@/lib/i18n/routing';
 import type { Locale } from '@/lib/i18n/config';
 import type { NeedOption } from '@/content/types';
-import { needIntro, needOptions, needCtaBand } from '@/content/fr/accueil';
+import { needIntro, needOptions } from '@/content/fr/accueil';
 import styles from './NeedSelector.module.css';
 
-// A3 — « Ce qu'on construit » : 5 besoins → panneau (situation, réponse, ce
-// qu'on livre, lien) + bande CTA. Desktop (≥1024px) : liste à gauche, panneau
-// à droite. Mobile / tablette (≤1023px) : accordéon — le contenu s'ouvre juste
-// sous l'entrée cliquée, une seule ouverte à la fois.
+// S05 — « À qui on parle » (Refonte Accueil). 5 situations → panneau (situation,
+// réponse, ce qu'on livre, un seul lien de routage). Desktop (≥1024px) : liste à
+// gauche, panneau à droite. Mobile / tablette (≤1023px) : accordéon — une seule
+// situation ouverte à la fois. Plus de bande CTA intermédiaire (D30).
 function Panel({ opt, locale }: { opt: NeedOption; locale: Locale }) {
   return (
     <>
@@ -96,15 +95,6 @@ export function NeedSelector({ locale }: { locale: Locale }) {
           <div className={styles.panel} role="region" aria-live="polite">
             <Panel opt={opt} locale={locale} />
           </div>
-        </RevealOnScroll>
-
-        <RevealOnScroll className={styles.band}>
-          <CtaBand
-            title={needCtaBand.title}
-            body={needCtaBand.body}
-            primary={needCtaBand.primary}
-            secondary={needCtaBand.secondary}
-          />
         </RevealOnScroll>
       </div>
     </section>

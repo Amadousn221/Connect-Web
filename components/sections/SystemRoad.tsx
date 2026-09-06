@@ -1,12 +1,18 @@
 import type { ReactNode } from 'react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
-import { systemIntro, systemElements } from '@/content/fr/accueil';
+import {
+  systemIntro,
+  systemChain,
+  systemElements,
+} from '@/content/fr/accueil';
 import type { SystemElement } from '@/content/types';
 import styles from './SystemRoad.module.css';
 
-// A6 — « Du site au système ». Fusion des anciennes sections road + trajectoires.
-// 4 éléments besoin → solution, multi-segment, une icône fonctionnelle chacun.
+// S07 — « Du site au système » (Refonte Accueil, D26). Section stratégique sur
+// bleu profond. Narrative avant schématique : titre + chapô + cadre honnête +
+// mini-écosystème modulaire (chaîne de modules reliés par des filets fins) +
+// 4 preuves besoin → solution, multi-segment. Clients cités = FACTS.
 const ICON: Record<SystemElement['icon'], ReactNode> = {
   building: (
     <path
@@ -56,6 +62,23 @@ export function SystemRoad() {
             lead={systemIntro.lead}
             tone="on-dark"
           />
+        </RevealOnScroll>
+
+        {/* Mini-écosystème : le site n'est qu'un maillon */}
+        <RevealOnScroll className={styles.chain}>
+          {systemChain.modules.map((mod, i) => (
+            <div key={mod} className={styles.chainItem}>
+              <span className={styles.module} data-lead={i === 0}>
+                {mod}
+              </span>
+              <span className={styles.link} aria-hidden="true" />
+            </div>
+          ))}
+          <span className={styles.outcome}>{systemChain.outcome}</span>
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <p className={styles.framing}>{systemIntro.framing}</p>
         </RevealOnScroll>
 
         <RevealOnScroll className={styles.grid}>

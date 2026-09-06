@@ -56,8 +56,8 @@ function LogoItem({ logo }: { logo: ClientLogo }) {
         <Image
           src={logo.src}
           alt={logo.name}
-          width={132}
-          height={32}
+          width={180}
+          height={44}
           className={styles.logo}
         />
       ) : (

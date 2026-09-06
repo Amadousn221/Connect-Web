@@ -3,29 +3,35 @@ import { notFound } from 'next/navigation';
 import { Hero } from '@/components/sections/Hero';
 import { StatsBlock } from '@/components/sections/StatsBlock';
 import { LogoStrip } from '@/components/sections/LogoStrip';
+import { Differentiators } from '@/components/sections/Differentiators';
 import { NeedSelector } from '@/components/sections/NeedSelector';
-import { Wedge } from '@/components/sections/Wedge';
 import { ServiceGrid } from '@/components/sections/ServiceGrid';
-import { ProjectSlider } from '@/components/sections/ProjectSlider';
 import { SystemRoad } from '@/components/sections/SystemRoad';
+import { ProjectSlider } from '@/components/sections/ProjectSlider';
 import { TechnoStrip } from '@/components/sections/TechnoStrip';
-import { ProofGrid } from '@/components/sections/ProofGrid';
 import { Method } from '@/components/sections/Method';
+import { ResourcesSection } from '@/components/sections/ResourcesSection';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { faqIntro, faqItems, faqOutro } from '@/content/fr/accueil';
 
-// Accueil — contenu HARDCODÉ, FR uniquement. Fonds alternés (dark / blanc /
-// crème / off-white) — aucune section adjacente de même fond.
-// Corrections finales : « Du site au système » fusionne les anciennes sections
-// road + trajectoires ; « Pour qui » supprimée.
-// Vague 4 : la bande de stats de marché (MarketStats) est supprimée ; la bande
-// « En chiffres » (StatsBlock) remonte juste après le Hero. Slider techno ajouté
-// après « On montre, on ne prétend pas ». Carte des fonds :
-//   Hero(pétrole) · StatsBlock(off-white) · LogoStrip(crème) · NeedSelector(off-white)
-//   · Wedge(pétrole) · ServiceGrid(crème) · ProjectSlider(blanc) · SystemRoad(pétrole)
-//   · ProofGrid(blanc) · TechnoStrip(crème) · Method(off-white) · FaqAccordion(blanc)
-//   · ContactSection(off-white)
+// Accueil — contenu HARDCODÉ, FR uniquement.
+//
+// REFONTE ACCUEIL (brief CTO/CRO, sept. 2026). La page passe d'un damier
+// (dark / crème / dark…) à une page BLANC-DOMINANTE : le bleu profond
+// (pétrole nuit) devient une ponctuation, le crème un repos rare.
+//   · Bleu profond (≤ 3) : Hero, SystemRoad, ContactSection
+//   · Crème (≤ 2)        : NeedSelector, Method
+//   · Blanc              : tout le reste
+//
+// Architecture (brief §03) :
+//   01 Hero (bleu) · 02 Réassurance/StatsBlock · 03 Logos · 04 Differentiators
+//   · 05 NeedSelector « à qui on parle » (crème) · 06 Services · 07 SystemRoad
+//   « du site au système » (bleu) · 08 Réalisations · [techno] · 09 Méthode
+//   (crème) · 10 Ressources (flag, masquée si < 2 articles) · 11 FAQ
+//   · 12 CTA final / ContactSection (bleu)
+//
+// Supprimées : « On montre, on ne prétend pas » (ProofGrid) + bande CTA orange.
 
 export default async function HomePage({
   params,
@@ -37,17 +43,17 @@ export default async function HomePage({
 
   return (
     <>
-      <Hero />
+      <Hero locale={locale} />
       <StatsBlock />
       <LogoStrip />
+      <Differentiators />
       <NeedSelector locale={locale} />
-      <Wedge />
       <ServiceGrid locale={locale} />
-      <ProjectSlider locale={locale} />
       <SystemRoad />
-      <ProofGrid />
+      <ProjectSlider locale={locale} />
       <TechnoStrip />
       <Method />
+      <ResourcesSection locale={locale} />
       <FaqAccordion
         locale={locale}
         intro={faqIntro}

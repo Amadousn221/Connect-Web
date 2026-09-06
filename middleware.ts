@@ -10,8 +10,21 @@ import { isLocale, defaultLocale } from '@/lib/i18n/config';
 // 301, LangSwitcher rebranché) reste le Milestone M4 — ici on se contente de
 // faire fonctionner la navigation maintenant que le site a plusieurs pages.
 
+// Redirections 301 depuis l'ancien site (Refonte Accueil, Phase 13). À
+// compléter au fil du recensement des anciennes URLs.
+const REDIRECTS_301: Record<string, string> = {
+  '/nous-joindre': '/contact',
+};
+
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+
+  const redirectTo = REDIRECTS_301[pathname.replace(/\/+$/, '')];
+  if (redirectTo) {
+    const url = req.nextUrl.clone();
+    url.pathname = redirectTo;
+    return NextResponse.redirect(url, 301);
+  }
 
   const firstSegment = pathname.split('/')[1] ?? '';
   if (isLocale(firstSegment)) return NextResponse.next();

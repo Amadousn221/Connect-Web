@@ -54,24 +54,23 @@ Fichiers : `content/fr/offres/*.ts` + `content/fr/accueil.ts` (FAQ)
 
 ## 🟠 IMPORTANT — enrichit le site (non bloquant pour la mise en ligne)
 
-### 4. WordPress headless (débloque `/realisations/[slug]` + contenu Ressources)
+### 4. ~~WordPress headless~~ → **Sanity** (DÉCISION 25)
 
-**État constaté (`https://admin.connect-web.tech/graphql`) :**
-- [x] Endpoint GraphQL en ligne · WPGraphQL **installé et fonctionnel**
-- [ ] ⚠️ **Aucun type de contenu personnalisé** : seuls `post`/`page`/`attachment`
-      existent. `case_study`, `portfolio_item`, `resource`, `team_member` **à créer**.
-- [ ] Installer **ACF** + **WPGraphQL for ACF**
-- [ ] **Déposer `wordpress/mu-plugins/connect-web-content-model.php`** dans
-      `wp-content/mu-plugins/` sur le serveur → enregistre les 4 CPT, 2 taxonomies
-      et tous les groupes de champs ACF (voir `wordpress/README.md`)
-- [ ] Vérifier le schéma dans GraphiQL + `npm run test:wordpress`
-- [ ] Envoyer : `WORDPRESS_AUTH_USER` / `WORDPRESS_AUTH_APP_PASSWORD` si le
-      contenu doit être protégé (sinon l'endpoint public suffit)
-- [ ] Saisir : les 3 fiches de cas (**ATTA Africa**, **SCOD VTC**,
-      **Maison Peinture Sénégal**) + les premiers articles Ressources
+**Obsolète.** L'approche WordPress + ACF + WPGraphQL est abandonnée au profit de
+**Sanity** (Headless CMS). Le contenu Blog + Ressources passe désormais par un
+pipeline dédié :
 
-> `WORDPRESS_API_URL = https://admin.connect-web.tech/graphql` — connu, sera
-> ajouté aux variables Vercel une fois les CPT créés.
+- [x] **Étape 0** — setup Sanity : Studio embarqué à `/studio`, clients de lecture,
+      variables env, CORS (voir `docs/setup-sanity-guide-po.md`)
+- [ ] **Étape 2** — schemas de contenu (`blogPost`, `resource`, `author`,
+      catégories, tags, blocs Portable Text)
+- [ ] **Étape 3** — templates Next.js (catalogues + pages détail), webhook
+      Sanity → `/api/revalidate`, draft mode
+- [ ] **Étapes 4-6** — sujets d'articles, rédaction, publication + QA
+
+Les fiches de cas (**ATTA Africa**, **SCOD VTC**, **Maison Peinture Sénégal**) et
+`/realisations/[slug]` seront rebranchées sur Sanity dans une étape ultérieure.
+`wordpress/` et `lib/wordpress/` restent en archive, non utilisés.
 
 ### 5. Logos & captures
 Dossier : `public/assets/`
@@ -123,7 +122,7 @@ Deux cartes n'ont pas de page 1:1 → renvoient vers la plus proche :
 
 ### 10. FAQ accueil — montants ✅
 Fichier : `content/fr/accueil.ts` (`faqItems[0]`)
-- [x] Réponse mise à jour avec les tarifs indicatifs (vitrine 3M, boutique 500k)
+- [x] Réponse mise à jour avec les tarifs indicatifs (vitrine 500K, boutique 500k)
 
 ---
 
@@ -131,7 +130,7 @@ Fichier : `content/fr/accueil.ts` (`faqItems[0]`)
 
 - [ ] **i18n réel** : `/en` rend actuellement le FR. Middleware M4 (détection
       langue, hreflang, redirections 301, LangSwitcher). Rédaction EN à part.
-- [ ] `package-lock.json` non commité (builds non reproductibles)
-- [ ] Webhook de revalidation WP → `/api/revalidate` (M3)
+- [x] `package-lock.json` commité (avec le setup Sanity — Étape 0 v2)
+- [ ] Webhook de revalidation Sanity → `/api/revalidate` (Étape 3)
 - [ ] Redirections 301 depuis l'ancien site (`/nous-joindre` → `/contact`, etc.)
 - [ ] Audit Lighthouse / axe sur les 18 pages (M7)

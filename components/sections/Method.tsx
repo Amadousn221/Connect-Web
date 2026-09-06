@@ -1,13 +1,33 @@
+'use client';
+
+import { useId, useState, type KeyboardEvent } from 'react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { methodeIntro, methodeSteps } from '@/content/fr/methode';
 import styles from './Method.module.css';
 
-// A10 — Méthode : roadmap à 3 nœuds sur une ligne de progression. À l'entrée
-// dans le viewport (RevealOnScroll), la ligne se trace et les étapes
-// apparaissent en séquence. `prefers-reduced-motion` : apparition directe
-// (styles globaux). <ol> sémantique sous l'habillage visuel.
+// S09 — Méthode (Refonte Accueil, D29). 4 phases navigables :
+//   · Desktop (≥ 900px) : stepper horizontal 01 ─ 02 ─ 03 ─ 04, sélection →
+//     panneau de contenu. Navigable au clavier (flèches).
+//   · Mobile : accordéon vertical, une phase ouverte à la fois.
+// État actif en orange. `prefers-reduced-motion` respecté (styles globaux).
 export function Method() {
+  const [active, setActive] = useState(0);
+  const baseId = useId();
+  // `active` peut valoir -1 (accordéon mobile entièrement replié) : le panneau
+  // desktop retombe alors sur la première phase.
+  const step = methodeSteps[active] ?? methodeSteps[0];
+
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActive((i) => (i + 1) % methodeSteps.length);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActive((i) => (i - 1 + methodeSteps.length) % methodeSteps.length);
+    }
+  };
+
   return (
     <section id="methode" className={styles.section}>
       <div className="cw-sec">
@@ -18,22 +38,89 @@ export function Method() {
           />
         </RevealOnScroll>
 
-        <RevealOnScroll className={styles.roadmap}>
-          <span className={styles.line} aria-hidden="true" />
-          <ol className={styles.steps}>
-            {methodeSteps.map((step, i) => (
-              <li key={step.num} className={styles.step} data-step={i + 1}>
-                <span className={styles.dot} aria-hidden="true" />
-                <span className={`cw-serif ${styles.num}`} aria-hidden="true">
-                  {step.num}
-                </span>
-                <h3 className={`cw-serif ${styles.stepTitle}`}>{step.title}</h3>
-                <p className={styles.stepBody}>{step.body}</p>
-              </li>
+        <RevealOnScroll className={styles.stepper}>
+          {/* Stepper / onglets — desktop */}
+          <div
+            className={styles.tabs}
+            role="tablist"
+            aria-label="Les phases de notre méthode"
+            aria-orientation="horizontal"
+            onKeyDown={onKeyDown}
+          >
+            {methodeSteps.map((s, i) => (
+              <button
+                key={s.num}
+                type="button"
+                role="tab"
+                id={`${baseId}-tab-${i}`}
+                aria-selected={i === active}
+                aria-controls={`${baseId}-panel-${i}`}
+                tabIndex={i === active ? 0 : -1}
+                className={styles.tab}
+                data-active={i === active}
+                onClick={() => setActive(i)}
+              >
+                <span className={styles.tabNum}>{s.num}</span>
+                <span className={styles.tabLabel}>{s.title}</span>
+              </button>
             ))}
-          </ol>
+          </div>
+
+          {/* Panneau — desktop */}
+          <div
+            className={styles.panel}
+            role="tabpanel"
+            id={`${baseId}-panel-${active}`}
+            aria-labelledby={`${baseId}-tab-${active}`}
+          >
+            <PhaseBody step={step} />
+          </div>
+
+          {/* Accordéon — mobile */}
+          <div className={styles.accordion}>
+            {methodeSteps.map((s, i) => (
+              <div key={s.num} className={styles.accItem}>
+                <button
+                  type="button"
+                  className={styles.accHead}
+                  aria-expanded={i === active}
+                  aria-controls={`${baseId}-acc-${i}`}
+                  data-active={i === active}
+                  onClick={() => setActive(i === active ? -1 : i)}
+                >
+                  <span className={styles.tabNum}>{s.num}</span>
+                  <span className={styles.accTitle}>{s.title}</span>
+                  <span className={styles.chevron} aria-hidden="true" />
+                </button>
+                <div
+                  id={`${baseId}-acc-${i}`}
+                  className={styles.accPanel}
+                  data-open={i === active}
+                >
+                  <div className={styles.accPanelInner} inert={i !== active}>
+                    <PhaseBody step={s} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </RevealOnScroll>
       </div>
     </section>
+  );
+}
+
+function PhaseBody({ step }: { step: (typeof methodeSteps)[number] }) {
+  return (
+    <>
+      <p className={`cw-serif ${styles.intent}`}>{step.intent}</p>
+      <p className={styles.does}>{step.does}</p>
+      {step.deliverable ? (
+        <p className={styles.deliverable}>
+          <span className={styles.deliverableLabel}>Livrable</span>
+          {step.deliverable}
+        </p>
+      ) : null}
+    </>
   );
 }
