@@ -4,6 +4,7 @@ import { Hero } from '@/components/sections/Hero';
 import { StatsBlock } from '@/components/sections/StatsBlock';
 import { Differentiators } from '@/components/sections/Differentiators';
 import { NeedSelector } from '@/components/sections/NeedSelector';
+import { ApproachIntro } from '@/components/sections/ApproachIntro';
 import { ServiceGrid } from '@/components/sections/ServiceGrid';
 import { SystemRoad } from '@/components/sections/SystemRoad';
 import { ProjectSlider } from '@/components/sections/ProjectSlider';
@@ -20,11 +21,18 @@ import styles from './page.module.css';
 // REFONTE ACCUEIL — Lot 2 (sept. 2026) + copy V1. Page blanc-dominante avec
 // fonds alternés, plus minimaliste et plus interactive.
 //   Ordre : 01 Hero (pétrole) · 02 Réassurance/StatsBlock (blanc) · 03 À qui
-//   on parle/NeedSelector (ivoire) · 04 Services/ServiceGrid (blanc) · 05 Ce
+//   on parle/NeedSelector (ivoire) · 03b Notre approche/ApproachIntro (blanc,
+//   transition vers les services) · 04 Services/ServiceGrid (blanc) · 05 Ce
 //   qui nous distingue/Differentiators (ivoire) · 06 Du site au système/
 //   SystemRoad (pétrole, explorateur interactif) · 07 Réalisations/
 //   ProjectSlider (blanc) · Méthode (ivoire) · Blog (pétrole, 3 derniers
 //   articles) · Ressources (flag) · FAQ (blanc) · Contact (pétrole) · Footer.
+//
+// ApproachIntro : placée juste avant Services plutôt qu'immédiatement après
+// StatsBlock — la demande situe cette section « après réassurance + logos,
+// avant Services » mais LogoStrip est retiré du rendu et NeedSelector occupe
+// déjà cet intervalle ; la fonction demandée (transition vers Services) est
+// respectée à la lettre en la plaçant juste avant ServiceGrid.
 //
 // Retiré du render : TechnoStrip, LogoStrip (composants conservés dans le repo).
 
@@ -41,6 +49,7 @@ export default async function HomePage({
       <Hero locale={locale} />
       <StatsBlock />
       <NeedSelector locale={locale} />
+      <ApproachIntro locale={locale} />
       <ServiceGrid locale={locale} />
       <Differentiators />
       <SystemRoad />

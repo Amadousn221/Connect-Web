@@ -17,6 +17,11 @@
   padding: 12px 14px;
   margin: 0;
 }
+/* Sur surface sombre fixe (indépendante du thème site) : `--ink-soft` reste
+   sombre et devient illisible, on force un texte clair. */
+.onDark {
+  color: rgba(255, 255, 255, 0.78);
+}
 
 .prefix {
   font-weight: 700;

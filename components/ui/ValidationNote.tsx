@@ -10,17 +10,20 @@ import styles from './ValidationNote.module.css';
 export function ValidationNote({
   children,
   variant = 'badge',
+  tone = 'default',
 }: {
   children: React.ReactNode;
   /** `badge` = petite pastille inline ; `box` = encart avec préfixe. */
   variant?: 'badge' | 'box';
+  /** `on-dark` : posé sur une surface sombre fixe (ex. BlogSection sur `--ink-deep`) — le texte `--ink-soft` par défaut y est illisible. */
+  tone?: 'default' | 'on-dark';
 }) {
   if (!showValidationNotes()) return null;
   if (variant === 'badge') {
     return <span className={styles.badge}>{children}</span>;
   }
   return (
-    <p className={styles.box}>
+    <p className={[styles.box, tone === 'on-dark' && styles.onDark].filter(Boolean).join(' ')}>
       <span className={styles.prefix}>À valider — </span>
       {children}
     </p>

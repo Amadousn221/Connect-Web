@@ -119,6 +119,45 @@ export function SystemRoad() {
               </ul>
             </div>
           </div>
+
+          {/* Accordéon — mobile/tablette : le contenu s'ouvre directement
+              sous le module touché, au lieu d'un panneau unique après les 6
+              onglets empilés (même mécanisme que Method.tsx). */}
+          <div className={styles.accordion}>
+            {systemModules.map((m, i) => (
+              <div key={m.key} className={styles.accItem}>
+                <button
+                  type="button"
+                  className={styles.accHead}
+                  aria-expanded={i === active}
+                  aria-controls={`${baseId}-acc-${i}`}
+                  data-active={i === active}
+                  onClick={() => setActive(i)}
+                >
+                  <span className={styles.tabIcon} aria-hidden="true">
+                    {ICON[m.icon]}
+                  </span>
+                  <span className={styles.accTitle}>{m.name}</span>
+                  <span className={styles.chevron} aria-hidden="true" />
+                </button>
+                <div
+                  id={`${baseId}-acc-${i}`}
+                  className={styles.accPanel}
+                  data-open={i === active}
+                >
+                  <div className={styles.accPanelInner} inert={i !== active}>
+                    <p className={`cw-serif ${styles.role}`}>{m.role}</p>
+                    <p className={styles.usesLabel}>Ce que ça permet</p>
+                    <ul className={styles.uses}>
+                      {m.uses.map((u) => (
+                        <li key={u}>{u}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </RevealOnScroll>
 
         <RevealOnScroll>

@@ -73,7 +73,7 @@ export async function BlogSection({ locale }: { locale: Locale }) {
         </RevealOnScroll>
 
         {isDemo ? (
-          <ValidationNote variant="box">
+          <ValidationNote variant="box" tone="on-dark">
             Section Blog masquée en production : aucun article publié dans
             Sanity pour l’instant. Aperçu ci-dessous avec des données de
             démonstration (visibles hors production uniquement, sans lien) —

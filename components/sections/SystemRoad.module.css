@@ -154,21 +154,98 @@
   color: var(--orange);
 }
 
+/* ── Accordéon (mobile / tablette) — masqué sur desktop, remplace les
+   onglets + le panneau unique : le contenu s'ouvre directement sous le
+   module touché. ─────────────────────────────────────────────────────── */
+.accordion {
+  display: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+.accItem {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+.accHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.7);
+}
+.accHead:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+.accTitle {
+  flex: 1;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+}
+.accHead[data-active='true'] .accTitle {
+  color: #fff;
+}
+.accHead .chevron {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-right: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  transform: rotate(45deg);
+  transition: transform var(--dur-quick) ease;
+}
+.accHead[data-active='true'] .chevron {
+  transform: rotate(-135deg);
+  border-color: var(--orange);
+}
+.accPanel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-quick) ease;
+}
+.accPanel[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+.accPanelInner {
+  min-height: 0;
+  overflow: hidden;
+}
+.accPanel[data-open='true'] .accPanelInner {
+  padding-bottom: 20px;
+}
+.accPanelInner .role {
+  margin: 0 0 16px;
+  font-size: 17px;
+}
+.accPanelInner .uses {
+  margin: 0;
+}
+
 @media (max-width: 640px) {
   .section {
     padding-block: 48px;
   }
-  .tab {
-    flex: 1 1 100%;
-    min-width: 0;
-  }
+}
+
+@media (max-width: 899px) {
+  .tabs,
   .panel {
-    min-height: 0;
+    display: none;
+  }
+  .accordion {
+    display: block;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .panelInner {
     animation: none;
+  }
+  .accPanel {
+    transition: none;
   }
 }

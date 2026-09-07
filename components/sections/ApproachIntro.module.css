@@ -1,0 +1,117 @@
+/* « Notre approche » — section de transition minimaliste, blanche, entre la
+   réassurance et les services. Bordure basse discrète : la section suivante
+   (ServiceGrid) est déjà sur fond blanc, on sépare sans dupliquer la couleur. */
+.section {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding-block: clamp(72px, 8vw, 96px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  font-weight: 500;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 6px; /* aligne optiquement le paragraphe sur le titre */
+}
+
+.body {
+  margin: 0;
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding-block: 12px; /* zone cliquable ≥ 44px sans grossir le texte */
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--orange);
+  background: transparent;
+  border: none;
+}
+.link:hover {
+  color: var(--orange-h);
+  text-decoration: underline;
+}
+.link:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.arrow {
+  display: inline-block;
+  transition:
+    transform 200ms ease,
+    color 200ms ease;
+}
+.link:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Desktop uniquement : justification si le rendu reste naturel (pas de
+   grands espaces, césure activée en repli). */
+@media (min-width: 641px) {
+  .body {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .right {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-block: clamp(48px, 10vw, 64px);
+  }
+  .title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .body {
+    font-size: 16px;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow {
+    transition: none;
+  }
+}
