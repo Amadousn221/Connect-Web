@@ -87,20 +87,25 @@
   margin: 0;
 }
 
-/* ── Formulaire — même surface que la section (bleu profond) ── */
+/* ── Formulaire — même surface que la section (bleu profond) ──────────────
+   Uniformisation (sept. 2026) : chaque contrôle sur une ligne (input, select)
+   partage exactement la même hauteur / bordure / rayon / fond ; seul le
+   textarea diffère, uniquement par sa hauteur. Grille 2 colonnes sur
+   ordinateur (Nom/Email, Organisation/Objectif) → 1 colonne sur mobile. */
 .form {
   color-scheme: dark;
   background: transparent;
   border: none;
-  padding: 0;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 15px;
 }
 .formTitle {
-  font-size: 24px;
+  font-size: 30px;
+  line-height: 1.2;
   color: #fff;
-  margin: 0;
+  margin: 0 0 4px;
 }
 .row {
   display: grid;
@@ -113,37 +118,91 @@
   gap: 6px;
   font-size: 13px;
   font-weight: 600;
+  line-height: 1.3;
   color: #fff;
 }
+
+/* Base commune — input / select / textarea : même fond, bordure, rayon. */
 .field input,
 .field select,
 .field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 14px;
-  font-size: 15px;
+  border-radius: 5px;
   font-family: inherit;
+  font-size: 15px;
   font-weight: 400;
-  background: rgba(255, 255, 255, 0.06);
+  background-color: rgba(255, 255, 255, 0.06);
   color: #fff;
-  transition: border-color var(--dur-quick) ease;
+  transition:
+    border-color var(--dur-quick) ease,
+    box-shadow var(--dur-quick) ease;
 }
 .field input::placeholder,
 .field textarea::placeholder {
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.5);
 }
+
+/* Hauteur commune — input & select uniquement (le textarea a sa propre
+   hauteur, jamais alignée sur celle des champs courts). */
+.field input,
+.field select {
+  height: 48px;
+  padding: 0 14px;
+}
+
+/* Retire le rendu natif « pilule » du select ; flèche personnalisée centrée
+   verticalement via background-position, jamais dépendante de la hauteur. */
+.field select {
+  padding-right: 34px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23ffffffb3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px 8px;
+}
+
+.field textarea {
+  min-height: 112px;
+  height: 120px;
+  padding: 12px 14px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.field input:hover:not(:disabled),
+.field select:hover:not(:disabled),
+.field textarea:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
 .field input:focus-visible,
 .field select:focus-visible,
 .field textarea:focus-visible {
   outline: none;
   border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(232, 97, 42, 0.18);
 }
-.field input,
-.field select {
-  min-height: 48px;
+
+.field input:disabled,
+.field select:disabled,
+.field textarea:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
-.field textarea {
-  resize: vertical;
+
+/* Autofill (Chrome/Safari) : garder le fond sombre, jamais le blanc natif. */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.06) inset;
+  transition: background-color 9999s ease-in-out 0s;
 }
+
 /* Honeypot anti-spam : retiré du flux, invisible et inaccessible au clavier. */
 .honeypot {
   position: absolute;
@@ -154,19 +213,29 @@
 }
 
 .submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  width: fit-content;
+  height: 44px;
+  padding: 0 20px;
+  margin-top: 5px;
   background: var(--orange);
   color: #fff;
   border: none;
-  padding: 10px 18px;
-  min-height: 40px;
-  font-size: 13px;
+  border-radius: 5px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  align-self: flex-start;
   transition: background var(--dur-quick) ease;
 }
 .submit:hover:not(:disabled) {
   background: var(--orange-h);
+}
+.submit:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(232, 97, 42, 0.35);
 }
 .submit:disabled {
   opacity: 0.6;
@@ -177,7 +246,7 @@
 .error {
   font-size: 13px;
   text-align: center;
-  margin: 0;
+  margin: 5px 0 0;
 }
 .reassurance {
   color: rgba(255, 255, 255, 0.55);
@@ -209,5 +278,18 @@
   }
   .row {
     grid-template-columns: 1fr;
+  }
+  .form {
+    padding: 20px;
+  }
+  .formTitle {
+    font-size: 26px;
+  }
+  .field input,
+  .field select {
+    height: 46px;
+  }
+  .field textarea {
+    min-height: 104px;
   }
 }
