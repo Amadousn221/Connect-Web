@@ -1,0 +1,42 @@
+/* Bandeau « Vous avez déjà une boutique ? » — glue légère entre la roadmap
+   (OfferProcess, fond crème) et la FAQ (fond blanc). Pas un nouveau système :
+   mêmes tokens, mêmes boutons que le reste du design system. */
+
+.migration {
+  background: var(--bg-cream);
+  padding-bottom: 88px;
+}
+
+.migrationInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.migrationTitle {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.migrationBody {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 620px;
+}
+
+@media (max-width: 640px) {
+  .migration {
+    padding-bottom: 56px;
+  }
+  .migrationInner {
+    align-items: flex-start;
+  }
+}

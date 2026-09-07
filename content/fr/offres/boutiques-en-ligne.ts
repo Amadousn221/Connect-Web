@@ -1,196 +1,262 @@
-import type { OfferContent } from '../../offres';
+import type {
+  OfferHeroContent,
+  SectionIntro,
+  NumberedItem,
+  DeliverableItem,
+  EditorialContent,
+  FeaturedCaseContent,
+} from '../../offres';
+import type { Cta, FaqItem } from '../../types';
 
-// Boutiques en ligne (offre Niveau 1). Copy extraite de
-// `Connect Web - Boutiques en ligne.dc.html`. Placeholder prix [À PARTIR DE]
-// conservé tel quel (DECISION 10). Cas ATTA : visuel réel à fournir.
+// Boutiques en ligne (offre Niveau 1) — refonte validée PO (7 sept. 2026),
+// discovery ciblé + architecture ChatGPT, intégrée par Claude Code.
+// Architecture propre à cette page (DECISION 04 — pas de template générique) :
+// assemblée par `BoutiquesEnLignePage`, pas par l'archétype `OfferPage`.
+//
+// Intégrité des contenus : aucun chiffre de croissance, taux de conversion ou
+// témoignage inventé. ATTA Africa (4 devises, automatisations) = FACT déclaré
+// PO (DECISION 13). Prix/délai (500 000 FCFA, 2 semaines premier livrable) =
+// FACT déclaré PO (DECISION 22 / Correctifs V2). Visuel ATTA : non fourni →
+// `visualPending`, jamais de mockup de substitution. Fiches /realisations/[slug]
+// inexistantes → tous les liens de projet pointent vers le hub /realisations.
 
-export const boutiquesEnLigne: OfferContent = {
-  slug: 'boutiques-en-ligne',
-  meta: {
-    title: 'Boutiques en ligne',
-    description:
-      "On construit des boutiques qui vendent, du Sénégal au monde : paiement Mobile Money et international sur la même caisse, vente transfrontalière, catalogue et logistique — et que vous possédez entièrement.",
+export const boutiquesMeta = {
+  title: 'Boutiques en ligne',
+  description:
+    "Nous créons et refondons des boutiques en ligne adaptées à votre marque, à vos clients et à vos marchés — parcours d'achat, paiements, livraison et gestion quotidienne, du Sénégal à l'international.",
+};
+
+export const boutiquesHero: OfferHeroContent = {
+  eyebrow: 'Boutiques en ligne',
+  breadcrumb: 'Boutiques en ligne',
+  title: 'Votre boutique en ligne, du catalogue à la commande.',
+  subtitle:
+    "Nous créons et refondons des boutiques en ligne adaptées à votre marque, à vos clients et à vos marchés. Parcours d'achat, paiements, livraison et gestion quotidienne : chaque choix est pensé pour votre activité, que vous vendiez au Sénégal ou à l'international.",
+  ctas: [
+    { label: 'Parlons de votre projet', href: '#contact' },
+    { label: 'Voir nos boutiques', href: '#cas' },
+  ],
+  features: ['Devis gratuit', 'Réponse sous 24 h', 'Vos accès vous appartiennent'],
+  image: '/assets/svc-boutique.jpg',
+};
+
+// Section 1 — Une solution adaptée à votre activité (3 blocs, pas 4 : pas de
+// « solution sur mesure » présentée comme sous-service autonome).
+export const activitySolutionsIntro: SectionIntro = {
+  eyebrow: 'Pour tous vos ambitions e-commerce',
+  title: 'Une solution adaptée à votre activité.',
+  lead: "Chaque marque est unique. Nous vous aidons à choisir la bonne approche et à mettre en place une boutique en ligne qui répond à vos objectifs, aujourd'hui et demain.",
+};
+
+export const activitySolutions: DeliverableItem[] = [
+  {
+    title: 'Vendre vos produits',
+    body: "Une boutique en ligne pensée pour offrir une expérience d'achat simple, fluide et rassurante, du catalogue au paiement.",
   },
-
-  hero: {
-    eyebrow: 'Boutiques en ligne',
-    breadcrumb: 'Boutiques en ligne',
-    title:
-      'Vos ventes ne devraient pas vivre dans vos DM. On construit des boutiques qui vendent, du Sénégal au monde.',
-    subtitle:
-      "Paiement Mobile Money et international, vente transfrontalière, catalogue et logistique — une boutique faite pour convertir, et que vous possédez entièrement.",
-    ctas: [
-      { label: 'Parlons de votre projet', href: '#contact' },
-      { label: 'Voir les boutiques livrées', href: '#cas' },
-    ],
-    features: ['Mobile Money + international', 'Vente transfrontalière', 'Vous possédez tout'],
-    image: '/assets/svc-boutique.jpg',
+  {
+    title: 'Vendre localement et à l’international',
+    body: "Des solutions de paiement et de livraison adaptées à vos marchés, au Sénégal comme à l'étranger.",
   },
-
-  pain: {
-    eyebrow: 'Le problème',
-    title: "Vendre en ligne, ici, c'est plus qu'un catalogue.",
-    lead: "La plupart des « boutiques » se résument à des commandes par message, des paiements manuels et des ventes qui s'arrêtent à la frontière. Résultat : des ventes qui fuient et une gestion qui épuise.",
-    items: [
-      {
-        title: 'Les ventes vivent dans les DM',
-        body: "Commandes par message, stock de tête, paiements à la main — impossible à suivre et à faire grandir. Chaque nouvelle commande ajoute de la charge mentale, pas du chiffre d'affaires structuré.",
-      },
-      {
-        title: "La vente s'arrête à la frontière",
-        body: "Paiement international, devise, diaspora : sans ça, vous laissez le marché le plus rentable de côté. Un client à Paris ou à Montréal qui veut acheter chez vous ne peut tout simplement pas payer.",
-      },
-      {
-        title: 'La confiance ne suit pas',
-        body: "Sans checkout clair, réassurance et livraison lisible, le panier est abandonné à la dernière étape. Un acheteur qui hésite sur la fiabilité du paiement ne finalise pas.",
-      },
-      {
-        title: 'Impossible de savoir ce qui se vend vraiment',
-        body: "Sans structure, les ventes, les stocks et les meilleurs produits restent dans la tête de quelqu'un — pas dans un tableau qu'on peut regarder pour décider quoi produire ou commander ensuite.",
-      },
-      {
-        title: "Grandir veut dire embaucher quelqu'un pour gérer le désordre",
-        body: "Chaque nouvelle commande manuelle est une commande de plus à suivre à la main. Le volume qui devrait être une bonne nouvelle devient un goulot d'étranglement.",
-      },
-    ],
+  {
+    title: 'Développer et faire évoluer votre activité',
+    body: "Des outils pour gérer votre catalogue, vos commandes et vos clients, et des intégrations qui accompagnent votre croissance.",
   },
+];
 
-  deliverables: {
-    eyebrow: "Ce qu'on construit",
-    title: 'Une boutique faite pour vendre — pas juste pour exister.',
-    lead: "Chaque livrable sert la vente et la sérénité de gestion. La technologie n'est pas un titre : c'est notre preuve de maîtrise.",
-    items: [
-      { title: 'Catalogue & checkout qui convertit', body: "Fiches produits, variantes, panier et tunnel d'achat pensés pour réduire l'abandon." },
-      { title: 'Paiement local + international, sur la même caisse', body: "Wave, Orange Money, Free Money pour vos clients d'ici. PayPal, Apple Pay, carte pour vos clients ailleurs. Plusieurs devises si vous vendez à l'international." },
-      { title: 'Livraison & logistique lisibles', body: 'Zones, frais, suivi — une promesse de livraison claire qui rassure au moment de payer.' },
-      { title: 'SEO, vitesse & prêt au marketing', body: 'Boutique rapide, indexable et branchable sur vos campagnes dès le lancement.' },
-      { title: 'Le bon outil pour votre cas', body: "Shopify quand il faut du solide et du rapide, WooCommerce quand il faut de la souplesse, du sur-mesure quand le projet le demande. On maîtrise ces outils — on choisit celui qui sert votre commerce, pas celui qui nous arrange." },
-      { title: 'Une boutique qui vous appartient', body: 'Domaine, boutique, comptes de paiement, accès admin : tout à votre nom. Vos clés sont à vous.' },
-    ],
-    toolsLabel: "Des outils qu'on maîtrise",
-    tools: ['Shopify', 'WooCommerce', 'Odoo e-commerce', 'PWA sur-mesure', 'Wave · Orange Money'],
-  },
+// Section 2 — ATTA Africa, une preuve concrète. Résultats chiffrés, croissance
+// ou taux de conversion : jamais inventés (EVIDENCE REQUIRED tant que non
+// fournis). Automatisations = FACT déclaré PO (DECISION 13).
+export const attaFeaturedCase: FeaturedCaseContent = {
+  eyebrow: 'Un exemple concret',
+  name: 'ATTA Africa',
+  category: 'Marque de mode · Vente directe cross-border',
+  body: "ATTA Africa est une marque de mode premium dont le commerce en ligne s'adresse à des clients situés sur plusieurs marchés. Le catalogue, les fiches produits et le tunnel d'achat accompagnent la découverte et l'achat ; la boutique encaisse en plusieurs devises (XOF, EUR, USD, CAD) avec des moyens de paiement locaux et internationaux adaptés ; et des automatisations réelles gèrent le reporting commercial mensuel, le traitement des commandes et les relances de panier.",
+  quote:
+    '« Une boutique cross-border, avec reporting mensuel automatisé et relances panier. »',
+  primaryCta: { label: 'Voir le projet →', href: '/realisations' },
+  externalUrl: { label: 'atta-africa.com', href: 'https://atta-africa.com' },
+  visualPending: true,
+  visualNote: 'Visuel de la boutique et du reporting à fournir',
+};
 
-  editorial: {
-    eyebrow: 'Ce qui nous distingue',
-    title: "Local et international ne devraient jamais s'opposer. Nous, on les fait travailler ensemble.",
-    blocks: [
-      "La plupart des solutions vous font choisir : soit le beau template international qui ignore comment on paie vraiment au Sénégal, soit la solution locale qui ne tient pas la comparaison à l'étranger. Nous refusons ce compromis.",
-      { h3: 'Le paiement mobile et international, sur la même boutique.' },
-      "Wave, Orange Money, Free Money pour vos clients d'ici. PayPal, Apple Pay, carte pour vos clients ailleurs. Une seule caisse, plusieurs devises. Chez ATTA Africa, la même boutique encaisse en XOF, en euros, en dollars et en dollars canadiens.",
-      { h3: 'Vendre au-delà de la frontière, sans friction.' },
-      "Une marque sénégalaise peut vendre à sa diaspora et à ses clients étrangers depuis le premier jour. ATTA Africa livre du Sénégal vers la France et au-delà — le site, les paiements et la logistique sont pensés pour ça, pas bricolés après coup.",
-      { h3: 'Vous possédez tout.' },
-      "Le nom de domaine, l'hébergement, le compte de paiement, les accès admin : tout est à votre nom. Si un jour vous partez, vous partez avec vos clés.",
-    ],
-    link: { label: 'Voir comment ATTA vend du Sénégal au monde →', href: '#cas' },
-    sideLabel: 'Chez ATTA Africa',
-    sideFacts: [
-      '**4 devises** encaissées sur une même caisse — XOF, EUR, USD, CAD.',
-      '**Sénégal → France** et au-delà, livraison et paiement pensés dès la conception.',
-      '**Domaine, paiement, accès** — tout au nom de la marque, dès le premier jour.',
-    ],
-  },
+export const otherShopsIntro: SectionIntro = {
+  eyebrow: 'Autres boutiques à découvrir',
+  title: 'Des boutiques qui tournent, pour de vrai.',
+  lead: 'Bijouterie, high-tech — voici une partie des boutiques que nous avons construites.',
+};
 
-  why: {
-    eyebrow: 'Pourquoi nous',
-    title: 'Pourquoi une marque choisit Connect Web pour vendre en ligne.',
-    items: [
-      { title: "On choisit l'outil pour vous, pas pour nous", body: "On part de votre catalogue, votre budget et vos besoins de gestion. On recommande l'outil adapté — jamais l'inverse." },
-      { title: 'Une preuve réelle, pas une promesse', body: "ATTA Africa vend déjà du Sénégal vers la France avec la caisse qu'on a construite. Ce n'est pas un argument commercial, c'est un site en ligne aujourd'hui." },
-      { title: 'Vous possédez tout, dès le premier jour', body: "Domaine, boutique, comptes de paiement, accès admin — à votre nom. Aucune dépendance à l'agence pour continuer à vendre." },
-      { title: "Pensé mobile d'abord, comme vos clients achètent", body: 'La majorité de vos acheteurs commandent depuis leur téléphone. La boutique est construite pour ce parcours, pas adaptée après coup.' },
-      { title: 'La vitesse et le SEO ne sont pas un supplément', body: "Une boutique lente perd des ventes avant même d'arriver au paiement. Performance et référencement sont inclus dès la conception, pas vendus en option." },
-      { title: 'On garde ce qui marche déjà', body: "WhatsApp reste un canal de vente utile. On ne vous demande pas de tout arrêter — la boutique structure le catalogue, le paiement et le suivi, WhatsApp continue à discuter avec vos clients." },
-    ],
-  },
+export const otherShopsLink: Cta = { label: 'Voir toutes les réalisations', href: '/realisations' };
+export const otherShopsNames = ['Link Shop', 'Marjan Bijouterie', 'Luxury Bijouterie'];
 
-  featuredCase: {
-    eyebrow: 'Cas plein',
-    name: 'ATTA Africa',
-    category: 'Marque de mode · Vente directe',
-    body: "Une boutique qui vend du Sénégal au monde — paiement mobile et international sur la même caisse — et un système qui gère le reste tout seul.",
-    quote: '« Une boutique cross-border en ligne, avec reporting mensuel automatisé et relances panier. »',
-    primaryCta: { label: 'Voir le cas complet →', href: '/realisations' },
-    externalUrl: { label: 'atta-africa.com', href: 'https://atta-africa.com' },
-    visualPending: true,
-    visualNote: 'Visuel de la boutique et du reporting à fournir',
-  },
+// Section 3 — Du catalogue à la commande (parcours d'achat, 4 lignes).
+export const buyingJourneyIntro: SectionIntro = {
+  eyebrow: "L'expérience d'achat",
+  title: 'Chaque étape doit aider votre client à avancer.',
+  lead: "Une boutique ne se résume pas à mettre des produits en ligne. Nous travaillons les informations, les parcours et les fonctionnalités nécessaires pour permettre à vos visiteurs de découvrir votre offre, de choisir et de finaliser leur commande — sans ajouter chaque fonctionnalité possible, juste celles qui comptent.",
+};
 
-  relatedIntro: {
-    eyebrow: 'Boutiques livrées',
-    title: 'Des boutiques qui tournent, pour de vrai.',
-    lead: 'Bijouterie, high-tech, cross-border — voici une partie des boutiques que nous avons construites.',
+export const buyingJourneySteps: NumberedItem[] = [
+  {
+    title: 'Découvrir',
+    body: 'Catégories, navigation, recherche et filtres aident les visiteurs à accéder aux produits qui les intéressent.',
   },
-  relatedCaseNames: ['Link Shop', 'Marjan Bijouterie', 'Luxury Bijouterie'],
+  {
+    title: 'Choisir',
+    body: 'Les fiches produits présentent les informations utiles : visuels, variantes, prix, disponibilité et éléments nécessaires à la décision.',
+  },
+  {
+    title: 'Commander',
+    body: 'Le panier et le passage en caisse sont conçus pour limiter les frictions inutiles. Moyens de paiement, frais et options de livraison sont adaptés à votre modèle commercial.',
+  },
+  {
+    title: 'Suivre et revenir',
+    body: 'Confirmations, suivi des commandes et outils de relation client facilitent la continuité de l’expérience, selon les fonctionnalités retenues.',
+  },
+];
 
-  benefits: {
-    eyebrow: 'Ce que ça change',
-    title: "Ce qu'une vraie boutique change pour votre commerce.",
-    items: [
-      { title: 'Vous arrêtez de perdre des ventes dans les DM', body: "Plus de commande oubliée dans une conversation, plus de paiement à relancer à la main. Chaque visiteur qui veut acheter peut le faire seul, à n'importe quelle heure — sans attendre votre réponse." },
-      { title: 'Vous captez un marché que le DM ne peut pas atteindre', body: "Diaspora, clients internationaux, acheteurs qui préfèrent payer par carte : ce sont des ventes qui n'existaient simplement pas avant. Une boutique cross-border ouvre un marché entier, pas juste un canal de plus." },
-      { title: 'Vous savez enfin ce qui se vend', body: "Un tableau de bord qui montre vos ventes, vos meilleurs produits, votre chiffre d'affaires — au lieu de devoir vous en souvenir. Cette visibilité change vos décisions d'achat et de stock." },
-      { title: "Vous devenez une marque qu'on prend au sérieux", body: "Une boutique professionnelle, ici comme à l'étranger, change la perception qu'un client se fait de vous avant même d'acheter — et ouvre la porte à des partenariats que des ventes en DM ne permettent pas." },
-    ],
-  },
+// Section 4 — Vendre sur vos marchés (paiement, devises, livraison).
+export const marketsContent: EditorialContent = {
+  eyebrow: 'Vendre ici et ailleurs',
+  title: 'Votre marché doit guider les choix techniques.',
+  blocks: [
+    "Vendre au Sénégal, livrer dans la sous-région ou servir des clients à l'international ne pose pas les mêmes questions. Nous définissons les modalités de paiement, de livraison et de gestion en fonction des pays ciblés et des contraintes de votre activité.",
+    { h3: 'Pour vos ventes locales' },
+    "Nous étudions les moyens de paiement disponibles, notamment Mobile Money lorsque le prestataire et le pays le permettent, ainsi que les modalités de livraison, de retrait et de confirmation adaptées à votre fonctionnement.",
+    { h3: 'Pour vos ventes internationales' },
+    "Nous pouvons prévoir les devises, les moyens de paiement internationaux, les zones de livraison et les informations nécessaires aux commandes transfrontalières. Les solutions retenues dépendent des pays, des prestataires et de votre éligibilité.",
+    { h3: 'Des frais et des conditions compréhensibles' },
+    'Le client doit pouvoir identifier les informations essentielles avant de commander : prix, frais applicables, modalités de livraison et conditions de vente.',
+  ],
+};
 
-  process: {
-    eyebrow: 'Notre process',
-    title: "De l'idée à la première vente.",
-    lead: "Six étapes qui suivent le parcours d'achat — du catalogue à la première commande.",
-    steps: [
-      { title: 'Découverte & catalogue', body: "On cadre l'offre, les produits, les modes de paiement et de livraison, et ce que vous vendez déjà en DM ou en boutique physique.", deliverable: 'note de cadrage produits & paiements' },
-      { title: 'Choix de la plateforme', body: "Shopify, WooCommerce ou sur-mesure : on recommande l'outil adapté à votre catalogue et votre budget, pas celui qui nous arrange.", deliverable: 'recommandation de plateforme argumentée' },
-      { title: 'Design & prototypage', body: "On dessine la boutique et le tunnel d'achat, validés sur maquette avant de coder.", deliverable: 'maquettes catalogue et checkout validées' },
-      { title: 'Développement & paiements', body: 'On construit, on branche Mobile Money et paiement international, on teste chaque devise et chaque méthode de paiement.', deliverable: 'boutique fonctionnelle sur environnement de test' },
-      { title: 'Tests & recette', body: 'On vérifie que chaque parcours d\'achat fonctionne réellement — commande, paiement, confirmation — avant la mise en ligne.', deliverable: 'recette complète des parcours d\'achat' },
-      { title: 'Lancement & formation', body: 'On met en ligne, on forme votre équipe à gérer le catalogue et les commandes, et on reste pour faire performer les premières semaines.', deliverable: 'boutique en ligne, équipe formée' },
-    ],
-  },
+// Section 5 — Une boutique que votre équipe peut gérer (+ intégrations, en
+// bloc distinct dans la copy, jamais présumées incluses par défaut).
+export const managementIntro: SectionIntro = {
+  eyebrow: 'Gestion & évolution',
+  title: 'Votre boutique doit aussi fonctionner pour votre équipe.',
+  lead: "Après la mise en ligne, il faut pouvoir mettre à jour les produits, suivre les commandes et faire évoluer le commerce. Nous définissons les outils d'administration et les intégrations utiles selon votre organisation, sans imposer une complexité inutile.",
+};
 
-  pricing: {
-    eyebrow: 'Investissement',
-    title: 'Combien ça coûte ?',
-    body: "Nos boutiques démarrent à 500 000 FCFA. Le prix final dépend de la complexité : nombre de produits, paiements internationaux, connexions à vos outils. On cadre la valeur avec vous avant de chiffrer — pas de devis surprise.",
-    cardLabel: 'Boutique en ligne',
-    pricePlaceholder: '500 000 FCFA',
-    includes: [
-      'Boutique complète, paiement local + international',
-      'Formation + prise en main',
-      'Accès et domaine à votre nom',
-    ],
-    cta: { label: 'Demander un devis gratuit', href: '#contact' },
+export const managementItems: DeliverableItem[] = [
+  {
+    title: 'Catalogue et stocks',
+    body: 'Gérer les produits, variantes, disponibilités et informations commerciales depuis les outils retenus.',
   },
+  {
+    title: 'Commandes et livraison',
+    body: 'Organiser le suivi des commandes et les informations nécessaires à leur préparation et à leur expédition.',
+  },
+  {
+    title: 'Contenus et offres',
+    body: "Permettre à l'équipe de faire évoluer les pages, les collections et les opérations commerciales selon les droits prévus.",
+  },
+  {
+    title: 'Outils connectés, lorsque c’est utile',
+    body: "CRM, reporting, emailing, ERP ou automatisations peuvent être intégrés lorsque les besoins le justifient. Leur périmètre est défini séparément et n'est pas présumé inclus dans toute boutique.",
+  },
+];
 
-  faq: {
-    eyebrow: 'Questions fréquentes',
-    title: "Ce qu'on nous demande sur les boutiques.",
-    items: [
-      { q: "Puis-je vraiment vendre à l'international et à la diaspora ?", a: "Oui — c'est notre terrain. On branche Mobile Money local (Wave, Orange Money) et le paiement international par carte, pour vendre du Sénégal vers l'étranger." },
-      { q: 'Shopify, WooCommerce ou sur-mesure — comment on choisit ?', a: "On part de votre catalogue, votre budget et vos besoins de gestion. On recommande l'outil adapté — jamais l'inverse — et on vous l'explique clairement." },
-      { q: "Je gère déjà mes ventes sur WhatsApp — on repart de zéro ?", a: "Non — on garde ce qui marche. WhatsApp reste un canal ; la boutique structure le catalogue, le paiement et le suivi pour que vous arrêtiez de tout faire à la main." },
-      { q: "La boutique et les accès m'appartiennent ?", a: 'Entièrement. Domaine, hébergement, comptes de paiement et back-office sont à votre nom. Pas de dépendance — c\'est une règle chez nous.' },
-      { q: 'Combien de temps pour lancer une boutique ?', a: 'En général entre 4 et 8 semaines selon le nombre de produits et la disponibilité de vos visuels et descriptions. On cadre le calendrier dès le premier échange.' },
-      { q: 'La boutique gère mon stock automatiquement ?', a: "Oui, dans les limites de l'outil choisi : Shopify et WooCommerce suivent vos stocks et vous alertent quand un produit se termine. Pour une gestion plus poussée (multi-entrepôt, fournisseurs), on peut connecter un ERP — c'est l'étape « Le système »." },
-    ],
-  },
+// Section 6 — Choisir la bonne base technique (critères, pas un duel de
+// cartes de service — Shopify/WooCommerce restent des preuves/badges).
+export const techChoiceContent: EditorialContent = {
+  eyebrow: 'La bonne base technique',
+  title: 'La plateforme se choisit en fonction de votre commerce.',
+  blocks: [
+    "Shopify, WooCommerce ou une autre solution peuvent répondre à des besoins différents. Le bon choix dépend de votre catalogue, des marchés visés, des intégrations nécessaires, de votre budget et des ressources disponibles pour administrer le site.",
+    "Nous comparons les possibilités et les contraintes avant de recommander une architecture. Une solution existante suffit souvent ; un développement spécifique n'est pertinent que lorsque le besoin le justifie.",
+    { h3: 'Ce que nous regardons ensemble' },
+    'Le fonctionnement du catalogue et des commandes · les paiements, la livraison et les services disponibles · les possibilités d’administration et d’évolution · les coûts de licence, d’abonnement, de maintenance et d’intégration · les accès, les responsabilités et les conditions de reprise.',
+  ],
+  sideLabel: 'Technologies que nous maîtrisons',
+  sideFacts: [
+    '**Shopify** — solide et rapide à lancer.',
+    '**WooCommerce** — souple et évolutif.',
+    '**Solutions sur mesure** — quand le projet le justifie.',
+  ],
+};
 
-  systemBridge: {
-    eyebrow: 'Une fois que ça vend',
-    title: 'On connecte le reste.',
-    body: "Quand votre boutique tourne, on peut la relier à votre stock (ERP), automatiser les tâches répétitives (reporting, relances panier — comme chez ATTA), ou travailler l'acquisition. On commence par ce qui fait entrer l'argent.",
-    link: { label: 'Découvrir Le système →', href: '/#systeme' },
-  },
+// Section 7 — Lancer, refondre ou faire évoluer (roadmap 4 étapes).
+export const processIntro: SectionIntro = {
+  eyebrow: 'Notre méthode',
+  title: 'Créer une boutique ou faire évoluer l’existante.',
+  lead: 'Nous adaptons le projet à votre point de départ. Une nouvelle boutique, une refonte ou une migration ne nécessitent pas les mêmes décisions.',
+};
 
-  finalCta: {
-    eyebrow: 'On en parle ?',
-    title: "Vous vendez en DM et ça déborde ? Construisons votre boutique.",
-    body: "Racontez-nous votre projet — on revient vers vous en moins de 24 h avec un premier cadrage et un devis gratuit.",
-    ctas: [
-      { label: 'Parlons de votre projet', href: '#contact' },
-      { label: 'WhatsApp', href: 'https://wa.me/221783438249' },
-    ],
-    features: ['Réponse sous 24 h', 'Devis gratuit', 'Vous possédez tout'],
+export const processSteps: Array<NumberedItem & { deliverable: string }> = [
+  {
+    title: 'Cadrer le commerce',
+    body: 'Nous clarifions les objectifs, les marchés, le catalogue, les opérations et les fonctionnalités nécessaires. Pour une boutique existante, nous analysons les parcours, les contenus et les contraintes de migration.',
+    deliverable: 'diagnostic, périmètre, priorités et recommandations',
   },
+  {
+    title: 'Concevoir les parcours',
+    body: "Nous organisons le catalogue, les contenus et les étapes d'achat, puis définissons la direction visuelle et les fonctionnalités à valider.",
+    deliverable: 'arborescence, parcours, maquettes et spécifications utiles',
+  },
+  {
+    title: 'Développer et vérifier',
+    body: 'Nous mettons en place la boutique et les intégrations prévues, puis vérifions les parcours, le responsive et les fonctionnalités avant la mise en ligne.',
+    deliverable: 'environnement de recette, contrôles et corrections',
+  },
+  {
+    title: 'Lancer et transmettre',
+    body: "Nous préparons la mise en production, les accès, les modalités de gestion et l'accompagnement prévu au contrat.",
+    deliverable: 'mise en ligne, documentation, remise et formation selon le périmètre convenu',
+  },
+];
+
+export const migrationNote = {
+  title: 'Vous avez déjà une boutique ?',
+  body: "Nous pouvons commencer par un audit pour déterminer ce qu'il faut conserver, améliorer ou migrer. Les contenus, les données, les URLs et le référencement acquis sont pris en compte dans le plan de transition. Aucun changement de plateforme n'est recommandé automatiquement.",
+  cta: { label: 'Parlons de votre boutique actuelle', href: '#contact' } as Cta,
+};
+
+// Section 8 — FAQ (rendu centré : `FaqAccordion` centre par défaut).
+export const faqIntro: SectionIntro = {
+  eyebrow: 'Avant de démarrer',
+  title: 'Les questions qui comptent pour votre projet.',
+  lead: 'Les réponses aux questions les plus courantes pour vous aider à avancer sereinement.',
+};
+
+export const faqItems: FaqItem[] = [
+  {
+    q: 'Combien coûte une boutique en ligne ?',
+    a: "Le budget dépend du catalogue, du design, des fonctionnalités, des paiements, des intégrations et de l'accompagnement. Nos boutiques démarrent à 500 000 FCFA, selon les fonctionnalités. Le montant et les prestations en vigueur sont confirmés dans votre devis.",
+  },
+  {
+    q: 'Y a-t-il des frais après la mise en ligne ?',
+    a: "Selon la solution retenue, des frais peuvent concerner l'hébergement, le domaine, les abonnements, les applications, les paiements ou la maintenance. Nous distinguons les coûts de création des frais récurrents avant de valider le projet.",
+  },
+  {
+    q: 'Combien de temps faut-il prévoir ?',
+    a: "Le calendrier dépend du périmètre, du catalogue, des intégrations et des validations. Notre délai moyen déclaré est de deux semaines pour un premier livrable — pas nécessairement la mise en ligne finale. Le planning complet est défini selon le projet.",
+  },
+  {
+    q: 'Puis-je conserver mes produits et mes données lors d’une refonte ?',
+    a: 'Une migration peut permettre de reprendre les données et contenus utiles. Nous vérifions leur qualité, leur format, les possibilités d’export et les contraintes de la nouvelle solution avant de définir ce qui peut être conservé.',
+  },
+  {
+    q: 'Quels moyens de paiement peut-on intégrer ?',
+    a: 'Le choix dépend des pays ciblés, des prestataires disponibles, de la plateforme et de votre éligibilité. Nous étudions les moyens adaptés, notamment Mobile Money ou les paiements internationaux lorsque les conditions le permettent.',
+  },
+  {
+    q: 'Pourrai-je gérer ma boutique moi-même ?',
+    a: "Nous définissons les accès, les possibilités d'administration et la formation selon la solution retenue. L'objectif est que votre équipe puisse gérer les opérations prévues dans le périmètre du projet.",
+  },
+  {
+    q: 'Qui possède le domaine, les comptes et le code ?',
+    a: 'La titularité des comptes, la remise des accès, les droits sur le code et les licences sont précisés dans les documents contractuels. Les modalités de reprise et de maintenance sont définies dès le cadrage.',
+  },
+];
+
+// Section 9 — CTA final.
+export const finalCta = {
+  eyebrow: 'Votre projet e-commerce',
+  title: 'Parlons de votre boutique, qu’elle soit à créer ou à faire évoluer.',
+  body: 'Présentez-nous vos produits, vos marchés, votre fonctionnement actuel et les objectifs du projet. Nous pourrons définir ensemble un périmètre adapté et les prochaines étapes.',
+  ctas: [
+    { label: 'Parlons de votre projet', href: '#contact' },
+    { label: 'WhatsApp', href: 'https://wa.me/221783438249' },
+  ] as [Cta, Cta],
+  features: ['Réponse sous 24 h', 'Devis gratuit', 'Vous possédez tout'],
 };

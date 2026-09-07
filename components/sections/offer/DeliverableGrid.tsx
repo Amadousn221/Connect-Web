@@ -10,11 +10,14 @@ export function DeliverableGrid({
   items,
   toolsLabel,
   tools,
+  columns = 2,
 }: {
   intro: SectionIntro;
   items: DeliverableItem[];
   toolsLabel?: string;
   tools?: string[];
+  /** nombre de colonnes desktop (défaut 2, historique) */
+  columns?: 2 | 3;
 }) {
   return (
     <section className={styles.section}>
@@ -28,7 +31,7 @@ export function DeliverableGrid({
           />
         </RevealOnScroll>
 
-        <RevealOnScroll className={styles.grid}>
+        <RevealOnScroll className={styles.grid} data-columns={columns}>
           {items.map((item) => (
             <div key={item.title} className={styles.card}>
               <span className={styles.icon} aria-hidden="true">
