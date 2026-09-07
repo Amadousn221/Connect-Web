@@ -28,9 +28,10 @@ export const serviceCards: ServiceCardData[] = [
       'E-commerce WooCommerce',
       'Sur-mesure',
     ],
-    // Page parente réelle (chapeaute Sites d'entreprise · Sites institutionnels
-    // & ONG · Boutiques en ligne).
-    cta: { label: "Voir l'offre", href: '/services/conception-et-developpement-web' },
+    // Reset des architectures Services (2026-09-07) : la page dédiée est en
+    // refonte — on renvoie vers le hub Services (page d'attente) le temps de la
+    // reconstruction.
+    cta: { label: "Voir l'offre", href: '/services' },
   },
   {
     title: 'Logiciels & applications web',

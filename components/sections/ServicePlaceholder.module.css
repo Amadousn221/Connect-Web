@@ -1,0 +1,73 @@
+/* Page d'attente transitoire Services — reset 2026-09-07. Bande pétrole sobre,
+   design system existant, aucune fioriture. */
+.section {
+  background: var(--ink-deep);
+  color: #fff;
+  min-height: clamp(420px, 60vh, 520px);
+  display: flex;
+  align-items: center;
+  padding-block: clamp(56px, 10vh, 96px);
+}
+
+.crumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 28px;
+}
+.crumb a {
+  color: rgba(255, 255, 255, 0.55);
+}
+.crumb a:hover {
+  color: #fff;
+}
+.crumb [aria-current] {
+  color: #fff;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.title {
+  margin: 0 0 18px;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.14;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.body {
+  margin: 0 0 28px;
+  max-width: 56ch;
+  font-size: 16px;
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.82);
+  text-wrap: pretty;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+}
+
+@media (max-width: 640px) {
+  .section {
+    min-height: 0;
+  }
+  .ctas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

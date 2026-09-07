@@ -293,14 +293,6 @@ Chiffres réels déclarés par le PO, à utiliser tels quels sans arrondi ni exa
 Confirmation et renforcement de DECISION 03 : Shopify, WooCommerce, Odoo, HubSpot, Mailchimp, Klaviyo apparaissent uniquement comme lignes de preuve/badges sous une carte de service parente. Jamais de carte dédiée à une techno. Maximum 3-5 tags par carte.
 *Validé PO.*
 
-> **STATUT 2026-09-07 — Reset des architectures Services.** Les *implications
-> d'architecture de page* de DECISION 23 (archétype, ordre de sections, page
-> parente réelle, compo des pages d'offre) sont **supersedées** : les pages
-> Services sont réinitialisées et reconstruites une par une (voir
-> `docs/connect-web/RESET-SERVICES-2026-09-07.md`). Restent **valides** : la
-> taxonomie « 5 expertises + Conseil », la règle DECISION 24 (technos = preuves),
-> et DECISION 04 (« pas de template générique », renforcée par ce reset).
-
 ---
 
 ## CORRECTIFS DE FINITION V2 (post-déploiement, 4 vagues)

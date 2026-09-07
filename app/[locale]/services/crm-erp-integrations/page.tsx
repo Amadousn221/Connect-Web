@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { isLocale } from '@/lib/i18n/config';
-import { OfferPage } from '@/components/sections/offer/OfferPage';
-import { crmErpIntegrations as content } from '@/content/fr/offres/crm-erp-integrations';
+import { ServicePlaceholder } from '@/components/sections/ServicePlaceholder';
 
+// Reset des architectures Services (2026-09-07) : page d'attente transitoire.
+// Reconstruction via le workflow validé (ChatGPT -> PO -> revue -> Code -> PO).
 export const metadata: Metadata = {
-  title: content.meta.title,
-  description: content.meta.description,
+  title: 'ERP / CRM',
+  robots: { index: false, follow: true },
 };
 
 export default async function Page({
@@ -16,5 +17,5 @@ export default async function Page({
 }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  return <OfferPage locale={locale} content={content} />;
+  return <ServicePlaceholder locale={locale} title="ERP / CRM" />;
 }

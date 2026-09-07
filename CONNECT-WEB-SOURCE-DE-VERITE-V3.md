@@ -7,6 +7,20 @@
 
 ---
 
+> **ADDENDUM 2026-09-07 — Reset des architectures Services.**
+> Les architectures éditoriales et visuelles des **pages Services** (hub +
+> conception/développement web, sites d'entreprise, sites institutionnels & ONG,
+> boutiques, logiciels & applications, ERP/CRM, IA & automatisation, marketing,
+> conseil) sont **réinitialisées**. Toute mention d'un « archétype page d'offre »
+> ou d'une architecture Services figée dans ce document (notamment §4 « pages
+> d'offres validées » et §9 M5) est **suspendue** : ces pages seront reconstruites
+> une par une via le workflow ChatGPT → PO → revue Claude IA → Claude Code → PO.
+> Les routes `/services*` rendent une page d'attente `noindex` en attendant.
+> Rien d'autre dans ce document n'est modifié (stack, Sanity, sécurité, bilingue,
+> périmètre V1 restent en vigueur). Détail : `docs/connect-web/RESET-SERVICES-2026-09-07.md`.
+
+---
+
 ## 1. RÈGLE D'AUTORITÉ
 
 En cas de contradiction, appliquer cet ordre :

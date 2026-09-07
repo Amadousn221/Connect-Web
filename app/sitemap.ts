@@ -16,16 +16,9 @@ const STATIC_PATHS: { path: string; priority: number; changeFrequency: MetadataR
   { path: '/blog', priority: 0.9, changeFrequency: 'daily' },
   { path: '/ressources', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
-  { path: '/services', priority: 0.8, changeFrequency: 'monthly' },
-  { path: '/services/conception-et-developpement-web', priority: 0.8, changeFrequency: 'monthly' },
-  { path: '/services/boutiques-en-ligne', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/services/plateformes-applications', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/services/sites-entreprise', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/services/sites-institutionnels-ong', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/services/crm-erp-integrations', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/services/ia-automatisation', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/services/marketing-acquisition', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/services/conseil-strategie', priority: 0.7, changeFrequency: 'monthly' },
+  // Reset Services (2026-09-07) : les routes /services* rendent une page
+  // d'attente `noindex` le temps de la reconstruction — retirées du sitemap,
+  // à ré-ajouter page par page. Voir docs/connect-web/RESET-SERVICES-2026-09-07.md.
   { path: '/mentions-legales', priority: 0.2, changeFrequency: 'yearly' },
   { path: '/politique-de-confidentialite', priority: 0.2, changeFrequency: 'yearly' },
 ];

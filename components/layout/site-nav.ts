@@ -5,14 +5,16 @@
 // DECISION 06 : nav = Services · Réalisations · Agence · Ressources + CTA Contact.
 // Slugs = arborescence cible du plan d'implémentation Phase 24.
 //
-// Audit liens — toutes les routes de navigation existent (Lots A→D) :
-//   / · /services (hub) · /services/conception-et-developpement-web (page parente) ·
-//   /services/{boutiques-en-ligne, plateformes-applications,
+// Audit liens — toutes les routes de navigation existent :
+//   / · /services (hub) · /services/{boutiques-en-ligne, plateformes-applications,
 //   sites-entreprise, sites-institutionnels-ong, crm-erp-integrations,
 //   ia-automatisation, marketing-acquisition, conseil-strategie} · /realisations ·
 //   /ressources · /agence · /contact · /mentions-legales ·
 //   /politique-de-confidentialite
-//   ⛔ Seul TODO : /realisations/[slug] (fiches de cas — contenu Sanity, jalon M4).
+//   ℹ Reset Services (2026-09-07) : les routes /services* rendent une page
+//     d'attente le temps de la reconstruction (pas de lien mort). Voir
+//     docs/connect-web/RESET-SERVICES-2026-09-07.md.
+//   ⛔ TODO : /realisations/[slug] (fiches de cas — contenu Sanity, jalon M4).
 
 export type NavLink = { label: string; path: string };
 
@@ -25,15 +27,12 @@ export const primaryNav: NavLink[] = [
   { label: 'Contact', path: '/contact' },
 ];
 
-/** Bloc 1 du méga-menu — « Ce qu'on construit » (offres Niveau 1, DECISION 03).
- *  « Conception & développement web » est la page parente des 3 sous-services web ;
- *  les liens directs vers ces sous-services sont conservés sous elle. */
+/** Bloc 1 du méga-menu — « Ce qu'on construit » (offres Niveau 1, DECISION 03). */
 export const megaMenuBuild: NavLink[] = [
-  { label: 'Conception & développement web', path: '/services/conception-et-developpement-web' },
-  { label: "Sites d'entreprise", path: '/services/sites-entreprise' },
-  { label: 'Sites institutionnels & ONG', path: '/services/sites-institutionnels-ong' },
   { label: 'Boutiques en ligne', path: '/services/boutiques-en-ligne' },
   { label: 'Plateformes & applications', path: '/services/plateformes-applications' },
+  { label: "Sites d'entreprise", path: '/services/sites-entreprise' },
+  { label: 'Sites institutionnels & ONG', path: '/services/sites-institutionnels-ong' },
 ];
 
 /** Bloc 2 du méga-menu — « Le système » (offres Niveau 2, DECISION 03). */
