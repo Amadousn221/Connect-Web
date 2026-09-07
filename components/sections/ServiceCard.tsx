@@ -5,11 +5,9 @@ import type { ServiceCardData, ServiceLink } from '@/content/types';
 import { ServiceIcon } from '@/components/ui/service-icons';
 import styles from './ServiceCard.module.css';
 
-// S06 — Carte de service (Refonte Accueil, D27). Icône sur-mesure + H3 +
-// description + ligne de preuve + badges technos (max 5) + micro-CTA.
-// Plus de capture : la preuve montrée vit sur Réalisations. La ligne `proof`
-// (clients réels ou formulation-capacité) est ce qui empêche l'icône d'être
-// décorative.
+// S06 — Carte de service (Refonte Accueil, D27 · Lot 2). Icône sur-mesure + H3 +
+// description justifiée + badges technos (max 5) + micro-CTA. La ligne de preuve
+// est retirée (Lot 2) : la preuve vit dans Réalisations et la bande de logos.
 function resolveHref(link: ServiceLink, locale: Locale): string {
   return link.href.startsWith('#') ? link.href : localePath(locale, link.href);
 }
@@ -29,8 +27,6 @@ export function ServiceCard({
 
       <h3 className={`cw-serif ${styles.title}`}>{card.title}</h3>
       <p className={styles.desc}>{card.description}</p>
-
-      {card.proof ? <p className={styles.proof}>{card.proof}</p> : null}
 
       {card.badges.length > 0 ? (
         <ul className={styles.badges}>

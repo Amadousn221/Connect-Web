@@ -2,67 +2,48 @@ import Image from 'next/image';
 import { showValidationNotes } from '@/lib/flags';
 import { ValidationNote } from '@/components/ui/ValidationNote';
 import { clientsIntro, clientLogos } from '@/content/fr/accueil';
-import type { ClientLogo } from '@/content/types';
 import styles from './LogoStrip.module.css';
 
-// Bande de logos clients — §03 / §06.2 du Design Handoff. Placée juste après le
-// Hero, avant la bande réassurance. Défilement lent horizontal en CSS pur quand
-// les logos réels existent (piste dupliquée, pause au survol/focus, coupé par
-// `prefers-reduced-motion`). Tant qu'aucun fichier n'est fourni : grille
-// statique de placeholders [LOGO_MANQUANT], visible en preview uniquement.
+// Bande de logos clients — Refonte Accueil / Lot 2. Déplacée entre « Du site au
+// système » et « Réalisations », sur fond ivoire. AUCUN défilement automatique :
+// grille centrée statique, adaptable au nombre réel de logos. Tant qu'aucun
+// fichier n'est fourni : grille de repères [LOGO_MANQUANT] en preview seulement.
 export function LogoStrip() {
   const hasLogos = clientLogos.some((c) => c.src);
   const showNotes = showValidationNotes();
   if (!hasLogos && !showNotes) return null;
 
-  // En prod : uniquement les logos réellement fournis (pas de trou dans le
-  // défilement). En preview : toute la liste, avec les repères [LOGO_MANQUANT].
-  const logos = hasLogos && !showNotes ? clientLogos.filter((c) => c.src) : clientLogos;
+  // En prod : uniquement les logos réellement fournis. En preview : toute la
+  // liste, avec les repères [LOGO_MANQUANT].
+  const logos =
+    hasLogos && !showNotes ? clientLogos.filter((c) => c.src) : clientLogos;
 
   return (
-    <section
-      className={styles.section}
-      data-has-logos={String(hasLogos)}
-      aria-labelledby="clients-label"
-    >
+    <section className={styles.section} aria-labelledby="clients-label">
       <div className="cw-sec">
         <p id="clients-label" className={styles.intro}>
           {clientsIntro}
         </p>
 
-        <div className={styles.viewport}>
-          <ul className={styles.track}>
-            {logos.map((logo) => (
-              <LogoItem key={logo.name} logo={logo} />
-            ))}
-          </ul>
-          {hasLogos ? (
-            <ul className={styles.track} aria-hidden="true">
-              {logos.map((logo) => (
-                <LogoItem key={`dup-${logo.name}`} logo={logo} />
-              ))}
-            </ul>
-          ) : null}
-        </div>
+        <ul className={styles.grid}>
+          {logos.map((logo) => (
+            <li key={logo.name} className={styles.item}>
+              {logo.src ? (
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  width={200}
+                  height={64}
+                  sizes="(max-width: 640px) 40vw, 170px"
+                  className={styles.logo}
+                />
+              ) : (
+                <ValidationNote>{`LOGO_MANQUANT : ${logo.name}`}</ValidationNote>
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
-  );
-}
-
-function LogoItem({ logo }: { logo: ClientLogo }) {
-  return (
-    <li className={styles.item}>
-      {logo.src ? (
-        <Image
-          src={logo.src}
-          alt={logo.name}
-          width={180}
-          height={44}
-          className={styles.logo}
-        />
-      ) : (
-        <ValidationNote>{`LOGO_MANQUANT : ${logo.name}`}</ValidationNote>
-      )}
-    </li>
   );
 }

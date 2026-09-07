@@ -1,46 +1,49 @@
 .section {
-  /* Refonte Accueil — D25 : page blanc-dominante. La bande logos est collée à
-     la réassurance sur fond blanc (brief S03). Le crème est réservé à
-     NeedSelector et Method. */
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  padding-block: clamp(28px, 4vw, 44px);
-  overflow: hidden;
+  /* Lot 2 : bande logos sur fond ivoire, entre « Du site au système » (pétrole)
+     et « Réalisations » (blanc). */
+  background: var(--cream);
+  border-block: 1px solid var(--border);
+  padding-block: clamp(40px, 6vw, 64px);
 }
 
 .intro {
-  margin: 0 0 26px;
+  margin: 0 auto 32px;
+  max-width: 46ch;
   text-align: center;
   font-size: 14px;
+  line-height: 1.6;
   color: var(--ink-soft);
   letter-spacing: 0.01em;
 }
 
-.viewport {
-  position: relative;
-}
-
-.track {
+/* Grille centrée, adaptable au nombre réel de logos. Pas de défilement. */
+.grid {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  gap: clamp(24px, 4vw, 52px) clamp(28px, 5vw, 60px);
 }
 
 .item {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* zone de logo homogène : chaque logo occupe optiquement la même surface */
+  width: clamp(112px, 16vw, 168px);
+  height: 56px;
 }
 
-/* Refonte Accueil — brief S03 : logos agrandis, contraste renforcé (a11y).
-   Fini le grayscale + opacité 0.7 qui les rendait illisibles. */
 .logo {
-  height: 44px;
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
+  height: auto;
   object-fit: contain;
-  opacity: 0.92;
+  opacity: 0.9;
   transition: opacity var(--dur-quick) ease;
 }
 .item:hover .logo {
@@ -48,73 +51,12 @@
 }
 :global(:root[data-theme='dark']) .logo {
   filter: brightness(0) invert(1);
-  opacity: 0.9;
-}
-
-/* ── Aucun logo réel : grille statique de placeholders (preview) ─────────── */
-.section[data-has-logos='false'] .track {
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}
-
-/* ── Logos réels : défilement lent, piste dupliquée ────────────────────── */
-.section[data-has-logos='true'] .viewport {
-  display: flex;
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 8%,
-    #000 92%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 8%,
-    #000 92%,
-    transparent
-  );
-}
-.section[data-has-logos='true'] .track {
-  flex: 0 0 auto;
-  gap: clamp(36px, 6vw, 64px);
-  padding-right: clamp(36px, 6vw, 64px);
-  animation: marquee 42s linear infinite;
-}
-.section[data-has-logos='true'] .viewport:hover .track,
-.section[data-has-logos='true'] .viewport:focus-within .track {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+  opacity: 0.85;
 }
 
 @media (max-width: 640px) {
-  .section[data-has-logos='true'] .track {
-    animation-duration: 28s;
-  }
-}
-
-/* Réduction de mouvement : pas de défilement, une seule piste, wrap centré. */
-@media (prefers-reduced-motion: reduce) {
-  .section[data-has-logos='true'] .viewport {
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-  .section[data-has-logos='true'] .track {
-    animation: none;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: clamp(24px, 5vw, 48px);
-  }
-  .section[data-has-logos='true'] .track[aria-hidden='true'] {
-    display: none;
+  .item {
+    width: clamp(96px, 38vw, 132px);
+    height: 48px;
   }
 }

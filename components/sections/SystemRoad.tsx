@@ -1,57 +1,59 @@
-import type { ReactNode } from 'react';
+'use client';
+
+import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
-import {
-  systemIntro,
-  systemChain,
-  systemElements,
-} from '@/content/fr/accueil';
-import type { SystemElement } from '@/content/types';
+import { ServiceIcon } from '@/components/ui/service-icons';
+import { UsersIcon, BarChartIcon } from '@/components/ui/icons';
+import { systemIntro } from '@/content/fr/accueil';
+import { systemModules } from '@/content/fr/systemExplorer';
+import type { SystemModule } from '@/content/types';
 import styles from './SystemRoad.module.css';
 
-// S07 — « Du site au système » (Refonte Accueil, D26). Section stratégique sur
-// bleu profond. Narrative avant schématique : titre + chapô + cadre honnête +
-// mini-écosystème modulaire (chaîne de modules reliés par des filets fins) +
-// 4 preuves besoin → solution, multi-segment. Clients cités = FACTS.
-const ICON: Record<SystemElement['icon'], ReactNode> = {
-  building: (
-    <path
-      d="M4 21V5l7-2v18M11 21h9V9l-9-3M8 8v0M8 12v0M8 16v0M15 12v0M15 16v0"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  ),
-  cart: (
-    <path
-      d="M3 4h2l2.4 11.5a2 2 0 0 0 2 1.5h7.7a2 2 0 0 0 2-1.6L21 8H6M9 21v0M18 21v0"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  ),
-  gear: (
-    <path
-      d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7 19.4l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3 12a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 5.3l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 12 3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  ),
-  bolt: (
-    <path
-      d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-  ),
+// S07 — « Du site au système » (Refonte Accueil, Lot 2). Section stratégique sur
+// bleu profond, devenue une EXPLORATION INTERACTIVE : 5 modules sélectionnables
+// (site/boutique, CRM, ERP, automatisation, reporting). Onglets réutilisant le
+// mécanisme de Method.tsx (role=tablist, roving tabindex, flèches, Home/End,
+// focus suivi). Un module actif à l'arrivée. Panneau sous les sélecteurs :
+// rôle · 2–3 usages · échanges. Crossfade discret (~180 ms), coupé par
+// prefers-reduced-motion. Aucun ordre technique imposé, aucune référence client.
+const ICON: Record<SystemModule['icon'], ReactNode> = {
+  web: <ServiceIcon name="web" width={22} height={22} />,
+  crm: <UsersIcon width={22} height={22} />,
+  erp: <ServiceIcon name="erp" width={22} height={22} />,
+  automation: <ServiceIcon name="automation" width={22} height={22} />,
+  reporting: <BarChartIcon width={22} height={22} />,
 };
 
 export function SystemRoad() {
+  const [active, setActive] = useState(0);
+  const baseId = useId();
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const count = systemModules.length;
+  const current = systemModules[active];
+
+  const goTo = (i: number) => {
+    const next = (i + count) % count;
+    setActive(next);
+    tabRefs.current[next]?.focus();
+  };
+
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      goTo(active + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      goTo(active - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goTo(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goTo(count - 1);
+    }
+  };
+
   return (
     <section id="systeme" className={styles.section}>
       <div className="cw-sec">
@@ -64,36 +66,65 @@ export function SystemRoad() {
           />
         </RevealOnScroll>
 
-        {/* Mini-écosystème : le site n'est qu'un maillon */}
-        <RevealOnScroll className={styles.chain}>
-          {systemChain.modules.map((mod, i) => (
-            <div key={mod} className={styles.chainItem}>
-              <span className={styles.module} data-lead={i === 0}>
-                {mod}
-              </span>
-              <span className={styles.link} aria-hidden="true" />
+        <RevealOnScroll className={styles.explorer}>
+          <div
+            className={styles.tabs}
+            role="tablist"
+            aria-label="Les outils du système"
+            aria-orientation="horizontal"
+            onKeyDown={onKeyDown}
+          >
+            {systemModules.map((m, i) => (
+              <button
+                key={m.key}
+                ref={(el) => {
+                  tabRefs.current[i] = el;
+                }}
+                type="button"
+                role="tab"
+                id={`${baseId}-tab-${i}`}
+                aria-selected={i === active}
+                aria-controls={`${baseId}-panel`}
+                tabIndex={i === active ? 0 : -1}
+                className={styles.tab}
+                data-active={i === active}
+                onClick={() => setActive(i)}
+              >
+                <span className={styles.tabIcon} aria-hidden="true">
+                  {ICON[m.icon]}
+                </span>
+                <span className={styles.tabLabel}>{m.name}</span>
+              </button>
+            ))}
+          </div>
+
+          <div
+            className={styles.panel}
+            role="tabpanel"
+            id={`${baseId}-panel`}
+            aria-labelledby={`${baseId}-tab-${active}`}
+          >
+            <div key={current.key} className={styles.panelInner}>
+              <p className={styles.moduleName}>{current.name}</p>
+              <p className={`cw-serif ${styles.role}`}>{current.role}</p>
+
+              <p className={styles.usesLabel}>Ce que ça permet</p>
+              <ul className={styles.uses}>
+                {current.uses.map((u) => (
+                  <li key={u}>{u}</li>
+                ))}
+              </ul>
+
+              <p className={styles.exchange}>
+                <span className={styles.exchangeLabel}>Échanges</span>
+                {current.exchange}
+              </p>
             </div>
-          ))}
-          <span className={styles.outcome}>{systemChain.outcome}</span>
+          </div>
         </RevealOnScroll>
 
         <RevealOnScroll>
           <p className={styles.framing}>{systemIntro.framing}</p>
-        </RevealOnScroll>
-
-        <RevealOnScroll className={styles.grid}>
-          {systemElements.map((el) => (
-            <div key={el.need} className={styles.item}>
-              <span className={styles.icon} aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  {ICON[el.icon]}
-                </svg>
-              </span>
-              <p className={styles.need}>{el.need}</p>
-              <p className={styles.solution}>{el.solution}</p>
-              <p className={styles.example}>{el.example}</p>
-            </div>
-          ))}
         </RevealOnScroll>
       </div>
     </section>

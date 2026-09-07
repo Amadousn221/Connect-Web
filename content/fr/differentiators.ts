@@ -16,6 +16,8 @@ export const differentiatorsIntro = {
 export interface Differentiator {
   title: string;
   body: string;
+  /** Icône (jeu components/ui/icons.tsx) — décorative, le titre porte le sens. */
+  icon: 'pin' | 'network' | 'shield';
   /** Lien optionnel — le différenciateur #2 pointe vers « Du site au système ». */
   link?: Cta;
 }
@@ -24,14 +26,17 @@ export const differentiators: Differentiator[] = [
   {
     title: 'On part du réel, pas d’un catalogue.',
     body: "On conçoit à partir du fonctionnement de votre organisation — vos clients, vos flux, vos contraintes — pas d’une liste de prestations à cocher.",
+    icon: 'pin',
   },
   {
     title: 'Du site au système.',
     body: "On ne s’arrête pas au site : on le connecte à vos opérations — stock, ventes, facturation, automatisation. Le site devient une pièce d’un ensemble qui tourne.",
+    icon: 'network',
     link: { label: 'Voir comment', href: '#systeme' },
   },
   {
     title: 'Vous gardez les clés.',
     body: "Domaine, hébergement, comptes de paiement, accès admin : tout est à votre nom. Paiement mobile et international sur la même boutique. Vous partez quand vous voulez, avec tout.",
+    icon: 'shield',
   },
 ];

@@ -35,12 +35,16 @@ export interface NeedOption {
   link: Cta;
 }
 
-// ── A6 — « Du site au système » : un élément besoin → solution (multi-segment)
-export interface SystemElement {
-  icon: 'building' | 'cart' | 'gear' | 'bolt';
-  need: string;
-  solution: string;
-  example: string; // client(s) — FACT
+// ── S07 — « Du site au système » : un module de l'écosystème, exploré par
+// onglets (Refonte Accueil, Lot 2). Aucune référence client ici — que des
+// possibilités selon le projet.
+export interface SystemModule {
+  key: string;
+  name: string;
+  icon: 'web' | 'crm' | 'erp' | 'automation' | 'reporting';
+  role: string; // rôle concret, une phrase
+  uses: string[]; // 2–3 usages compréhensibles
+  exchange: string; // ce qu'il peut échanger avec les autres outils
 }
 
 // ── A5 — Section Services (V2.1, Lot B — DECISION 23) ──────────────────────

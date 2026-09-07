@@ -1,8 +1,8 @@
 .section {
-  /* Refonte Accueil — D25/D32 : « À qui on parle » est l'un des deux seuls
-     moments de repos de la page (crème). */
+  /* Refonte Accueil — D25/D32 · Lot 2 : « À qui on parle » sur crème, remontée
+     juste après la réassurance. */
   background: var(--cream);
-  padding: 100px 0 96px;
+  padding-block: clamp(56px, 8vw, 84px);
 }
 
 .editorial {
@@ -137,9 +137,13 @@
 }
 
 .more {
-  font-size: 15px;
+  display: inline-block;
+  font-size: 13px;
   font-weight: 600;
   color: var(--orange);
+}
+.more:hover {
+  color: var(--orange-h);
 }
 
 /* ── Mobile / tablette : accordéon ───────────────────────────────────────

@@ -95,6 +95,27 @@ export function ShieldCheckIcon(props: IconProps) {
   );
 }
 
+// ── Section « Ce qui nous distingue » / « Du site au système » ────────────
+export function NetworkIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="4.5" r="2.2" />
+      <circle cx="4.5" cy="17.5" r="2.2" />
+      <circle cx="19.5" cy="17.5" r="2.2" />
+      <path d="M12 6.7 6 15.5M12 6.7l6 8.8M6.7 17.5h10.6" />
+    </Svg>
+  );
+}
+
+export function BarChartIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M4 20V4M4 20h16" />
+      <path d="M8 20v-6M12.5 20V9M17 20v-9" />
+    </Svg>
+  );
+}
+
 // ── Page Agence ───────────────────────────────────────────────────────────
 export function CheckCircleIcon(props: IconProps) {
   return (

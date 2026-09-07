@@ -2,11 +2,12 @@ import type { ServiceCardData } from '../types';
 
 // ── S06 — Nos services / expertises ─────────────────────────────────────────
 // Refonte Accueil — D27 : cartes à ICÔNE sur-mesure (captures retirées — elles
-// se concentrent sur Réalisations et les pages de cas). La crédibilité tient
-// par la LIGNE DE PREUVE (`proof`), pas par l'image : clients réels + technos.
+// se concentrent sur Réalisations et les pages de cas).
+// Lot 2 : la ligne de preuve (`proof`) est RETIRÉE de ces cartes (la preuve est
+// portée par Réalisations et les logos ailleurs sur la page). Le champ reste
+// dans le type (optionnel) mais n'est plus renseigné ni rendu ici.
 // Taxonomie inchangée (verrouillée, DECISION 23) : 5 expertises + Conseil.
-// Asymétrie de preuve : IA & Marketing = formulation-capacité, sans cas ni
-// chiffre. Les technos restent des badges nichés, jamais des titres d'offre.
+// Les technos restent des badges nichés, jamais des titres d'offre.
 
 export const servicesIntro = {
   eyebrow: 'Nos capacités',
@@ -27,7 +28,6 @@ export const serviceCards: ServiceCardData[] = [
       'E-commerce WooCommerce',
       'Sur-mesure',
     ],
-    proof: 'ATTA Africa · WAS Africa · ADA Voyages · Link Shop',
     // Pas de page « conception-developpement-web » : on renvoie vers la page
     // d'offre la plus proche (présence / crédibilité).
     cta: { label: "Voir l'offre", href: '/services/sites-entreprise' },
@@ -44,7 +44,6 @@ export const serviceCards: ServiceCardData[] = [
       'Espace client',
       'Tableau de bord',
     ],
-    proof: 'SCOD VTC — plateforme de réservation',
     cta: { label: "Voir l'offre", href: '/services/plateformes-applications' },
   },
   {
@@ -53,7 +52,6 @@ export const serviceCards: ServiceCardData[] = [
       'Centraliser vos ventes, vos stocks et vos clients dans un seul système, relié à ce qui vend déjà.',
     icon: 'erp',
     badges: ['Odoo', 'HubSpot', 'Gestion des stocks', 'Ventes', 'Intégrations'],
-    proof: 'Maison Peinture Sénégal — ERP Odoo',
     cta: { label: "Voir l'offre", href: '/services/crm-erp-integrations' },
   },
   {
@@ -62,7 +60,6 @@ export const serviceCards: ServiceCardData[] = [
       'Faire disparaître les tâches répétitives : traitement de commandes, relances, reporting — pour que votre équipe se concentre sur le reste.',
     icon: 'automation',
     badges: ['n8n', 'Automatisation', 'Reporting auto', 'Relance panier', 'API'],
-    proof: 'Capacité — workflows, intégrations et IA appliquée aux processus',
     cta: { label: "Voir l'offre", href: '/services/ia-automatisation' },
   },
   {
@@ -70,7 +67,6 @@ export const serviceCards: ServiceCardData[] = [
     description: 'Attirer, qualifier et convertir : campagnes, e-mail, acquisition.',
     icon: 'marketing',
     badges: ['Mailchimp', 'Klaviyo', 'Email marketing', 'Campagnes', 'Acquisition'],
-    proof: 'Capacité — e-mail, campagnes et acquisition',
     cta: { label: "Voir l'offre", href: '/services/marketing-acquisition' },
   },
   {

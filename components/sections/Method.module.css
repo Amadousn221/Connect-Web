@@ -1,7 +1,7 @@
 .section {
-  /* Refonte Accueil — D25/D29 : second des deux seuls moments de repos (crème). */
+  /* Refonte Accueil — D25/D29 : moment de repos (crème). */
   background: var(--cream);
-  padding-block: 100px;
+  padding-block: clamp(56px, 8vw, 84px);
 }
 
 .stepper {

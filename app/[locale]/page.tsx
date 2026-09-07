@@ -8,30 +8,25 @@ import { NeedSelector } from '@/components/sections/NeedSelector';
 import { ServiceGrid } from '@/components/sections/ServiceGrid';
 import { SystemRoad } from '@/components/sections/SystemRoad';
 import { ProjectSlider } from '@/components/sections/ProjectSlider';
-import { TechnoStrip } from '@/components/sections/TechnoStrip';
 import { Method } from '@/components/sections/Method';
 import { ResourcesSection } from '@/components/sections/ResourcesSection';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { faqIntro, faqItems, faqOutro } from '@/content/fr/accueil';
+import styles from './page.module.css';
 
 // Accueil — contenu HARDCODÉ, FR uniquement.
 //
-// REFONTE ACCUEIL (brief CTO/CRO, sept. 2026). La page passe d'un damier
-// (dark / crème / dark…) à une page BLANC-DOMINANTE : le bleu profond
-// (pétrole nuit) devient une ponctuation, le crème un repos rare.
-//   · Bleu profond (≤ 3) : Hero, SystemRoad, ContactSection
-//   · Crème (≤ 2)        : NeedSelector, Method
-//   · Blanc              : tout le reste
+// REFONTE ACCUEIL — Lot 2 (sept. 2026). Page blanc-dominante avec fonds
+// alternés, plus minimaliste et plus interactive.
+//   Ordre : 01 Hero (pétrole) · 02 Réassurance/StatsBlock (blanc)
+//   · 03 À qui on parle/NeedSelector (ivoire) · 04 Services/ServiceGrid (blanc)
+//   · 05 Ce qui nous distingue/Differentiators (ivoire) · 06 Du site au système/
+//   SystemRoad (pétrole, explorateur interactif) · 07 Logos clients/LogoStrip
+//   (ivoire) · 08 Réalisations/ProjectSlider (blanc) · Méthode (ivoire)
+//   · Ressources (flag) · FAQ (blanc) · Contact (pétrole) · Footer.
 //
-// Architecture (brief §03) :
-//   01 Hero (bleu) · 02 Réassurance/StatsBlock · 03 Logos · 04 Differentiators
-//   · 05 NeedSelector « à qui on parle » (crème) · 06 Services · 07 SystemRoad
-//   « du site au système » (bleu) · 08 Réalisations · [techno] · 09 Méthode
-//   (crème) · 10 Ressources (flag, masquée si < 2 articles) · 11 FAQ
-//   · 12 CTA final / ContactSection (bleu)
-//
-// Supprimées : « On montre, on ne prétend pas » (ProofGrid) + bande CTA orange.
+// Retiré du render : TechnoStrip (composant conservé dans le repo).
 
 export default async function HomePage({
   params,
@@ -42,16 +37,15 @@ export default async function HomePage({
   if (!isLocale(locale)) notFound();
 
   return (
-    <>
+    <div className={styles.page}>
       <Hero locale={locale} />
       <StatsBlock />
-      <LogoStrip />
-      <Differentiators />
       <NeedSelector locale={locale} />
       <ServiceGrid locale={locale} />
+      <Differentiators />
       <SystemRoad />
+      <LogoStrip />
       <ProjectSlider locale={locale} />
-      <TechnoStrip />
       <Method />
       <ResourcesSection locale={locale} />
       <FaqAccordion
@@ -61,6 +55,6 @@ export default async function HomePage({
         outro={faqOutro}
       />
       <ContactSection />
-    </>
+    </div>
   );
 }

@@ -6,7 +6,6 @@ import type {
   Hero,
   NeedOption,
   ProofItem,
-  SystemElement,
 } from '../types';
 
 // Copy de l'Accueil — extraite fidèlement de `Connect Web - Accueil V2.dc.html`.
@@ -155,47 +154,16 @@ export const needOptions: NeedOption[] = [
 // Refonte Accueil — brief §04-S07 : narrative avant schématique. Titre P08-A7.
 // Cadre honnête assumé + mini-écosystème modulaire (modules reliés par des
 // filets fins, pas un diagramme d'ingénieur).
+// Refonte Accueil — Lot 2 : la section est devenue une exploration interactive.
+// Les modules et leur contenu vivent dans `content/fr/systemExplorer.ts`.
+// `framing` est conservé (cadre honnête, rendu sous l'explorateur).
 export const systemIntro = {
   eyebrow: 'Du site au système',
   title: "Un site, c'est le début. Pas la fin.",
   lead: "Un site institutionnel, une boutique, une plateforme, des automatisations : on ne suppose pas que vous avez besoin de tout. On construit ce qui compte, puis on connecte le reste — jusqu'à ce que vos outils forment un système qui tourne.",
   framing:
-    "On ne vous vendra pas de l'IA pour faire moderne. On connecte ce qui vous fait gagner du temps, rien de plus.",
+    "On ne vous vendra pas de l'IA pour faire moderne. On connecte ce qui vous fait gagner du temps, rien de plus. Ce qui suit, ce sont des possibilités selon le projet — pas une intégration universelle.",
 };
-
-// Mini-écosystème : le site n'est qu'un maillon. Rendu comme une chaîne de
-// modules reliés — jamais un schéma technique.
-export const systemChain = {
-  modules: ['Site', 'E-commerce', 'ERP / CRM', 'Outils métier', 'Automatisation'],
-  outcome: 'Un système qui tourne',
-};
-
-export const systemElements: SystemElement[] = [
-  {
-    icon: 'building',
-    need: 'Présenter une institution, une administration, une ONG',
-    solution: "Un site qui tient la comparaison avec vos homologues internationaux — mission, programmes, publications.",
-    example: 'WAS Africa',
-  },
-  {
-    icon: 'cart',
-    need: 'Vendre en ligne, au Sénégal comme à l’étranger',
-    solution: 'Une boutique multi-devises, Mobile Money et carte sur la même caisse, livraison et relances.',
-    example: 'ATTA Africa',
-  },
-  {
-    icon: 'gear',
-    need: 'Piloter une opération : réservations, dossiers, stocks, ventes',
-    solution: 'Une plateforme métier ou un ERP relié à ce qui vend déjà — une seule source de vérité.',
-    example: 'SCOD VTC · Maison Peinture Sénégal',
-  },
-  {
-    icon: 'bolt',
-    need: 'Faire disparaître les tâches répétitives',
-    solution: 'Des workflows qui traitent les commandes, relancent les paniers et sortent les rapports tout seuls.',
-    example: 'ATTA Africa — reporting mensuel automatisé',
-  },
-];
 
 // ── A8 — Réalisations (carrousel, contenu figé M2 → WordPress M3) ─────────
 export const casesIntro = {

@@ -1,55 +1,70 @@
 .section {
-  background: var(--bg);
-  padding-block: 100px;
+  /* Lot 2 : passe en ivoire (juste après Services blanc, avant Système pétrole). */
+  background: var(--cream);
+  padding-block: clamp(56px, 8vw, 80px);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-top: 52px;
+  gap: 16px;
+  margin-top: 40px;
 }
 
-/* Pas de carte : un filet supérieur, un numéro accent, un titre, du texte. */
+/* Carte sobre : bordure 1px discrète, pas d'ombre. */
 .item {
-  padding-top: 20px;
-  border-top: 2px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--space-xl);
+  background: var(--card);
+  border: 1px solid var(--card-border);
   transition: border-color var(--dur-quick) var(--ease-default);
 }
 .item:hover {
-  border-top-color: var(--orange);
+  border-color: var(--ink-soft);
 }
 
-.num {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+.item:hover .icon {
   color: var(--orange);
-  margin-bottom: 14px;
+  border-color: var(--orange);
 }
 
 .title {
-  margin: 0 0 12px;
-  font-size: var(--text-h3); /* 28 */
-  line-height: 1.15;
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.25;
   font-weight: 500;
+  color: var(--ink);
   text-wrap: pretty;
 }
 
+/* Paragraphe justifié (règle Lot 2). */
 .body {
   margin: 0;
-  font-size: var(--text-section);
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--ink-soft);
-  text-wrap: pretty;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .link {
-  display: inline-block;
-  margin-top: 16px;
-  font-size: 14px;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 6px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--orange);
 }
@@ -60,12 +75,12 @@
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 12px;
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding-block: 56px;
+    padding-block: 48px;
   }
 }

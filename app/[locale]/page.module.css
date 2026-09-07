@@ -1,0 +1,13 @@
+/* Refonte Accueil — Lot 2. Réglages typographiques limités à la homepage :
+   titres de section plus mesurés. `--text-h2` est aussi utilisé par des
+   composants partagés (blog, related, 404) qui n'apparaissent jamais ici, donc
+   l'override est sûr tant qu'il reste scopé à ce wrapper. */
+.page {
+  --text-h2: clamp(28px, 3vw, 34px);
+}
+
+@media (max-width: 640px) {
+  .page {
+    --text-h2: clamp(24px, 6vw, 28px);
+  }
+}
