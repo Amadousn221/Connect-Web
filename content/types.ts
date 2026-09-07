@@ -140,3 +140,19 @@ export interface FaqItem {
   /** paragraphe « à valider » (fourchettes prix) */
   toValidateNote?: string;
 }
+
+// ── S05b — « Notre rôle » : transition entre la réassurance et « À qui on
+// parle » (Refonte Accueil, sept. 2026). 3 axes courts, pas de carte.
+export interface OurRoleAxis {
+  num: string;
+  title: string;
+  body: string;
+}
+
+export interface OurRoleContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  axes: OurRoleAxis[];
+  cta: Cta;
+}
