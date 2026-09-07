@@ -1,29 +1,44 @@
-/* A1 — Hero. Composition minimaliste sur bleu profond : bloc texte compact +
-   image de couverture pleine largeur à hauteur réduite. Une seule surface
-   d'encre (var(--ink-deep)) + une texture très discrète. */
+/* A1 — Hero. Composition minimaliste sur bleu profond : photo de couverture
+   en fond plein cadre de toute la section (assombrie), texte par-dessus. */
 .hero {
   position: relative;
   overflow: hidden;
   background: var(--ink-deep);
   color: #fff;
-  padding-top: clamp(48px, 7vh, 88px);
-  padding-bottom: 0;
+  padding-block: clamp(64px, 11vh, 116px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Texture d'encre : halo léger en haut à gauche + dégradé vertical subtil. */
-.texture {
+/* Photo de fond — pleine largeur, pleine hauteur de section, cover. */
+.bg {
   position: absolute;
   inset: 0;
   z-index: 0;
+}
+.bgImg {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.5) saturate(0.85);
+}
+
+/* Voile sombre — l'image reste identifiable mais s'intègre à la surface
+   d'encre du Hero et garantit la lisibilité du texte par-dessus. */
+.texture {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   background:
     radial-gradient(
       1100px 560px at 12% -5%,
-      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.05),
       transparent 60%
     ),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0%, transparent 45%),
-    linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.14) 100%);
+    linear-gradient(
+      180deg,
+      rgba(10, 37, 48, 0.78) 0%,
+      rgba(10, 37, 48, 0.66) 45%,
+      rgba(10, 37, 48, 0.85) 100%
+    );
 }
 
 .inner {
@@ -95,24 +110,9 @@
   margin-top: 4px;
 }
 
-/* ── Image de couverture pleine largeur, hauteur minimaliste ────────────── */
-.cover {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: clamp(200px, 30vh, 320px);
-  margin-top: clamp(36px, 6vh, 64px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.coverImg {
-  object-fit: cover;
-  object-position: center;
-}
-
 @media (max-width: 640px) {
   .hero {
-    padding-top: clamp(40px, 12vh, 72px);
+    padding-block: clamp(56px, 16vh, 96px);
   }
   .ctas {
     flex-direction: column;
@@ -123,9 +123,5 @@
   }
   .sub {
     font-size: 16px;
-  }
-  .cover {
-    height: clamp(170px, 44vw, 240px);
-    margin-top: 28px;
   }
 }

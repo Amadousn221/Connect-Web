@@ -4,14 +4,24 @@ import { hero } from '@/content/fr/accueil';
 import { TrustLine } from './TrustLine';
 import styles from './Hero.module.css';
 
-// A1 — Hero. Composition minimaliste sur bleu profond : un bloc texte compact
-// (eyebrow, H1 mesuré, description, CTA, trust line) suivi d'une image de
-// couverture pleine largeur, à hauteur réduite. Plus de vitrine projets.
-// Un seul <h1> sur la page. Seule animation : la pulsation de l'eyebrow
-// (coupée par `prefers-reduced-motion` via les styles globaux).
+// A1 — Hero. Composition minimaliste sur bleu profond : photo de couverture en
+// fond plein cadre de toute la section (assombrie), bloc texte compact par-
+// dessus (eyebrow, H1 mesuré, description, CTA, trust line). Plus de vitrine
+// projets. Un seul <h1> sur la page. Seule animation : la pulsation de
+// l'eyebrow (coupée par `prefers-reduced-motion` via les styles globaux).
 export function Hero() {
   return (
     <section className={styles.hero}>
+      <div className={styles.bg} aria-hidden="true">
+        <Image
+          src="/assets/hero-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bgImg}
+        />
+      </div>
       <div className={styles.texture} aria-hidden="true" />
 
       <div className={`cw-sec ${styles.inner}`}>
@@ -36,17 +46,6 @@ export function Hero() {
           items={hero.trustLine}
           tone="on-dark"
           className={styles.trust}
-        />
-      </div>
-
-      <div className={styles.cover}>
-        <Image
-          src="/assets/hero-bg.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className={styles.coverImg}
         />
       </div>
     </section>
