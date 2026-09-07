@@ -11,27 +11,25 @@ import type { NeedOption } from '@/content/types';
 import { needIntro, needOptions } from '@/content/fr/accueil';
 import styles from './NeedSelector.module.css';
 
-// S05 — « À qui on parle » (design éditorial restauré). 4 situations →
-// panneau (situation, réponse, ce qu'on livre, un seul lien de routage).
-// Desktop (≥1024px) : liste à gauche, panneau à droite. Mobile / tablette
-// (≤1023px) : accordéon — une seule situation ouverte à la fois.
+// S05 — « À qui nous parlons » (design éditorial restauré, copy corrigée —
+// textes courts). 4 situations → panneau (situation, réponse, services
+// associés en badges, avantages en ligne éditoriale, un seul lien de
+// routage). Desktop (≥1024px) : liste à gauche, panneau à droite. Mobile /
+// tablette (≤1023px) : accordéon — une seule situation ouverte à la fois.
 function Panel({ opt, locale }: { opt: NeedOption; locale: Locale }) {
   return (
     <>
-      <div className={styles.panelHead}>
-        <span className={styles.kicker}>Votre situation</span>
-        {opt.capabilityBadge ? (
-          <span className={styles.capBadge}>Capacité démontrée</span>
-        ) : null}
-      </div>
+      <span className={styles.kicker}>Votre situation</span>
       <p className={`cw-serif ${styles.situation}`}>{opt.situation}</p>
       <p className={styles.answer}>{opt.answer}</p>
-      <p className={styles.deliversLabel}>Ce qu’on livre</p>
+      <p className={styles.servicesLabel}>Services associés</p>
       <div className={styles.tags}>
-        {opt.delivers.map((d) => (
-          <Tag key={d}>{d}</Tag>
+        {opt.services.map((s) => (
+          <Tag key={s}>{s}</Tag>
         ))}
       </div>
+      <p className={styles.advantagesLabel}>Vos avantages</p>
+      <p className={styles.advantages}>{opt.advantages.join(' · ')}</p>
       <Link href={localePath(locale, opt.link.href)} className={styles.more}>
         {opt.link.label} →
       </Link>

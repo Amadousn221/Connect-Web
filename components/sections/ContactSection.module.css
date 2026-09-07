@@ -94,19 +94,25 @@
   margin: 0;
 }
 
-/* ── Formulaire ── */
+/* ── Formulaire — compact et uniforme (présentation uniquement, logique
+   inchangée). Radius 5px partout (exception assumée à `--radius-0` pour ce
+   panneau, demandée explicitement) ; max-width pour rester un panneau
+   « conteneur », jamais bord à bord. */
 .form {
   background: var(--card);
   border: 1px solid var(--card-border);
-  padding: 36px 32px;
+  border-radius: 5px;
+  max-width: 460px;
+  padding: 30px 28px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 .formTitle {
-  font-size: 24px;
+  font-size: 30px;
+  line-height: 1.2;
   color: var(--ink);
-  margin: 0;
+  margin: 0 0 8px;
 }
 .row {
   display: grid;
@@ -121,23 +127,74 @@
   font-weight: 600;
   color: var(--ink);
 }
+/* Un seul système visuel pour input / select / textarea : même fond, même
+   bordure, même radius. `appearance: none` + flèche SVG maison sur le select
+   pour éviter le rendu « pilule » natif. */
 .field input,
 .field select,
 .field textarea {
+  width: 100%;
+  appearance: none;
+  border-radius: 5px;
   border: 1px solid var(--border);
-  padding: 14px;
-  font-size: 15px;
+  padding: 0 14px;
+  font-size: 16px; /* ≥16px : évite le zoom auto iOS au focus */
   font-family: inherit;
   background: var(--bg-alt);
   color: var(--ink);
+  box-shadow: none;
+  transition: border-color var(--dur-quick) ease;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  font-size: 14.5px;
+  color: var(--ink-faint);
 }
 .field input,
 .field select {
-  min-height: 48px;
+  height: 46px;
+}
+.field select {
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' stroke='%231A1A1A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+/* Thème sombre : --ink devient blanc, la flèche doit suivre. */
+:global(:root[data-theme='dark']) .field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' stroke='%23FFFFFF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 .field textarea {
+  min-height: 110px;
+  padding: 12px 14px;
   resize: vertical;
 }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 2px rgba(232, 97, 42, 0.16);
+}
+.field input:disabled,
+.field select:disabled,
+.field textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+/* Erreur native (après interaction utilisateur uniquement — jamais sur un
+   champ vierge non touché). */
+.field input:user-invalid,
+.field select:user-invalid,
+.field textarea:user-invalid {
+  border-color: #c0392b;
+}
+/* Autofill navigateur : garder le même fond ivoire que les autres champs. */
+.field input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-alt) inset;
+  -webkit-text-fill-color: var(--ink);
+}
+
 /* Honeypot anti-spam : retiré du flux, invisible et inaccessible au clavier. */
 .honeypot {
   position: absolute;
@@ -148,10 +205,15 @@
 }
 
 .submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
   background: var(--orange);
   color: #fff;
   border: none;
-  padding: 14px 22px;
+  border-radius: 5px;
+  padding: 11px 20px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -160,6 +222,10 @@
 }
 .submit:hover:not(:disabled) {
   background: var(--orange-h);
+}
+.submit:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
 }
 .submit:disabled {
   opacity: 0.6;
@@ -200,7 +266,16 @@
   .section {
     padding-block: 56px;
   }
+  .form {
+    max-width: none;
+    padding: 22px 20px;
+  }
+  .formTitle {
+    font-size: 26px;
+    margin-bottom: 6px;
+  }
   .row {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 }

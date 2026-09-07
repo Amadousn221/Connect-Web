@@ -1,5 +1,5 @@
 .section {
-  /* Design éditorial restauré : « À qui on parle » sur crème. */
+  /* Design éditorial restauré : « À qui nous parlons » sur crème. */
   background: var(--cream);
   padding-block: clamp(56px, 8vw, 84px);
 }
@@ -39,8 +39,7 @@
   border-left-color: var(--orange);
 }
 
-/* Titre de profil — resserré (32-36 desktop demandé pour le titre de section
-   restait trop grand pour un intitulé de profil) : 28px desktop / 24px mobile. */
+/* Titre de profil : 28px desktop / 24px mobile (fourchette 25-28 / 23-25). */
 .itemTitle {
   font-size: 28px;
   line-height: 1.2;
@@ -50,8 +49,9 @@
   color: var(--ink);
 }
 
+/* Publics concernés — 14px (fourchette 14-15), jamais justifié. */
 .itemHint {
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--ink-soft);
 }
 
@@ -80,71 +80,101 @@
   overflow: hidden;
 }
 .panelMobileInner {
-  padding: 4px 22px 26px;
+  padding: 4px 22px 18px;
+  transition: padding var(--dur-quick) ease;
+}
+/* `min-height: 0` (ci-dessous) annule le plancher de hauteur du contenu,
+   mais pas le padding vertical : sans ce correctif, un panneau fermé laisse
+   fuir ~22px (le padding) hors de la ligne de grille censée être à 0. */
+.panelMobile[data-open='false'] > .panelMobileInner {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-.panelHead {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
-}
 .kicker {
+  display: inline-block;
+  margin-bottom: 8px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--orange);
 }
-.capBadge {
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  border: 1px solid var(--border);
-  padding: 3px 8px;
-}
 
+/* « Votre situation » — seul paragraphe (avec `.answer`) autorisé à être
+   justifié : text-align-last à gauche, césure française, pas de grands
+   espaces entre les mots. 20px desktop / 18px mobile (fourchette 18-21 /
+   17-19), marges resserrées pour une section plus courte. */
 .situation {
-  font-size: 23px;
-  line-height: 1.4;
+  font-size: 20px;
+  line-height: 1.45;
   color: var(--ink);
-  margin: 0 0 26px;
-  text-wrap: pretty;
+  margin: 0 0 14px;
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
+/* « Notre réponse » — 15-16px via cw-prose (déjà justifié) ; on complète
+   avec les règles de la §8 non couvertes par l'utilitaire global. */
 .answer {
   composes: cw-prose from global;
   color: var(--ink-soft);
-  margin: 0 0 28px;
+  margin: 0 0 14px;
+  text-align-last: left;
+  overflow-wrap: break-word;
 }
 
-.deliversLabel {
+/* « Services associés » — badges encadrés (conservés). */
+.servicesLabel {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-faint);
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 30px;
+  margin-bottom: 14px;
+}
+
+/* « Vos avantages » — libellé + ligne éditoriale légère (jamais de grande
+   étiquette, jamais justifié). */
+.advantagesLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 6px;
+}
+
+.advantages {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--ink-soft);
 }
 
 .more {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  padding-block: 6px;
   font-size: 13px;
   font-weight: 600;
   color: var(--orange);
 }
 .more:hover {
   color: var(--orange-h);
+  text-decoration: underline;
+}
+.more:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
 }
 
 /* ── Mobile / tablette : accordéon ───────────────────────────────────────
@@ -173,11 +203,11 @@
     font-size: 24px;
   }
   .situation {
-    font-size: 19px;
-    margin-bottom: 18px;
+    font-size: 18px;
+    margin-bottom: 12px;
   }
   .answer {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 }
 
@@ -191,7 +221,8 @@
   .panel {
     animation: none;
   }
-  .panelMobile {
+  .panelMobile,
+  .panelMobileInner {
     transition: none;
   }
 }

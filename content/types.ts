@@ -21,18 +21,18 @@ export interface ClientLogo {
   src?: string;
 }
 
-// ── A3/S05 — « À qui on parle » : sélecteur interactif restauré (design
+// ── A3/S05 — « À qui nous parlons » : sélecteur interactif restauré (design
 //    éditorial d'origine — liste + panneau desktop, accordéon mobile, ligne
-//    orange active). Contenu enrichi (copy « restaurer et enrichir », 4 profils).
+//    orange active). Panneau : services associés (badges encadrés) ET
+//    avantages (ligne éditoriale courte) — les deux sont conservés.
 export interface NeedOption {
   key: string;
   label: string;
-  hint: string;
-  /** badge « capacité démontrée » (Odoo, automatisation) */
-  capabilityBadge?: boolean;
-  situation: string; // citation « votre situation »
-  answer: string;
-  delivers: string[];
+  hint: string; // publics concernés
+  situation: string; // « Votre situation » — paragraphe justifié
+  answer: string; // « Notre réponse » — paragraphe justifié
+  services: string[]; // « Services associés » — badges encadrés
+  advantages: string[]; // « Vos avantages » — 3 mots, ligne éditoriale
   link: Cta;
 }
 
