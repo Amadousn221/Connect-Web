@@ -28,9 +28,9 @@ export const serviceCards: ServiceCardData[] = [
       'E-commerce WooCommerce',
       'Sur-mesure',
     ],
-    // Pas de page « conception-developpement-web » : on renvoie vers la page
-    // d'offre la plus proche (présence / crédibilité).
-    cta: { label: "Voir l'offre", href: '/services/sites-entreprise' },
+    // Page parente réelle (chapeaute Sites d'entreprise · Sites institutionnels
+    // & ONG · Boutiques en ligne).
+    cta: { label: "Voir l'offre", href: '/services/conception-et-developpement-web' },
   },
   {
     title: 'Logiciels & applications web',

@@ -10,6 +10,9 @@ import type { Cta } from './types';
 export interface OfferHeroContent {
   eyebrow: string; // nom de l'offre
   breadcrumb: string; // libellé fil d'Ariane (dernier segment)
+  /** niveau intermédiaire du fil d'Ariane (ex. page parente « Conception et
+   *  développement web » pour les 3 sous-services web). Absent = fil à 3 niveaux. */
+  parentCrumb?: { label: string; href: string };
   title: string;
   subtitle: string;
   ctas: [Cta, Cta];

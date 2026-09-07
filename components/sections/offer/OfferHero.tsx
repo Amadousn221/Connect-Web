@@ -40,6 +40,14 @@ export function OfferHero({
           <span aria-hidden="true">/</span>
           <Link href={localePath(locale, '/services')}>Services</Link>
           <span aria-hidden="true">/</span>
+          {content.parentCrumb ? (
+            <>
+              <Link href={localePath(locale, content.parentCrumb.href)}>
+                {content.parentCrumb.label}
+              </Link>
+              <span aria-hidden="true">/</span>
+            </>
+          ) : null}
           <span aria-current="page">{content.breadcrumb}</span>
         </nav>
       </div>

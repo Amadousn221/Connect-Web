@@ -29,6 +29,10 @@ export const boutiquesMeta = {
 export const boutiquesHero: OfferHeroContent = {
   eyebrow: 'Boutiques en ligne',
   breadcrumb: 'Boutiques en ligne',
+  parentCrumb: {
+    label: 'Conception et développement web',
+    href: '/services/conception-et-developpement-web',
+  },
   title: 'Votre boutique en ligne, du catalogue à la commande.',
   subtitle:
     "Nous créons et refondons des boutiques en ligne adaptées à votre marque, à vos clients et à vos marchés. Parcours d'achat, paiements, livraison et gestion quotidienne : chaque choix est pensé pour votre activité, que vous vendiez au Sénégal ou à l'international.",
