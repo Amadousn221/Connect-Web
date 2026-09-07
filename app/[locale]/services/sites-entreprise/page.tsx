@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { isLocale } from '@/lib/i18n/config';
-import { OfferPage } from '@/components/sections/offer/OfferPage';
-import { sitesEntreprise as content } from '@/content/fr/offres/sites-entreprise';
+import { SitesEntreprisePage } from '@/components/sections/SitesEntreprisePage';
+import { sitesEntrepriseMeta } from '@/content/fr/sitesEntreprise';
 
 export const metadata: Metadata = {
-  title: content.meta.title,
-  description: content.meta.description,
+  title: sitesEntrepriseMeta.title,
+  description: sitesEntrepriseMeta.description,
 };
 
 export default async function Page({
@@ -16,5 +16,5 @@ export default async function Page({
 }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  return <OfferPage locale={locale} content={content} />;
+  return <SitesEntreprisePage locale={locale} />;
 }

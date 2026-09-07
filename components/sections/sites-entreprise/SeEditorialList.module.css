@@ -1,0 +1,94 @@
+/* Composition éditoriale 2 colonnes, lignes numérotées. Fond blanc. */
+.section {
+  background: var(--bg);
+  padding: 96px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.eyebrowWrap {
+  margin-bottom: 16px;
+}
+.title {
+  font-size: var(--text-h2);
+  line-height: 1.14;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 16px;
+  text-wrap: pretty;
+}
+.lead {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.row {
+  display: flex;
+  gap: 22px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+.row:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.num {
+  flex-shrink: 0;
+  width: 44px;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--orange);
+}
+
+.rowTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 2px 0 6px;
+}
+.rowText {
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.conclusion {
+  margin: 28px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+@media (max-width: 640px) {
+  .section {
+    padding: 56px 0;
+  }
+  .num {
+    width: 38px;
+    font-size: 26px;
+  }
+}

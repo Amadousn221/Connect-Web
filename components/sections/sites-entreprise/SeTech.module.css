@@ -1,0 +1,104 @@
+/* 07 — Choisir la bonne base technique. Surface pétrole nuit. */
+.section {
+  background: var(--ink-deep);
+  color: #fff;
+  padding: 96px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.eyebrowWrap {
+  margin-bottom: 16px;
+}
+.title {
+  font-size: var(--text-h2);
+  line-height: 1.14;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: #fff;
+  margin: 0 0 16px;
+  text-wrap: pretty;
+}
+.lead {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+}
+
+.criteriaLabel,
+.tagsLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 0 0 14px;
+}
+.tagsLabel {
+  margin-top: 28px;
+}
+
+.criteria {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.criteria li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 10px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+}
+.criteria li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+}
+
+.tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  padding: 5px 11px;
+}
+
+.note {
+  margin: 24px 0 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+@media (max-width: 640px) {
+  .section {
+    padding: 56px 0;
+  }
+}
