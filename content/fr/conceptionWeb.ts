@@ -21,7 +21,7 @@ export const conceptionWebHero = {
   breadcrumb: 'Conception et développement web',
   title: 'Un site web pensé pour ce que votre organisation doit accomplir.',
   intro:
-    "Nous concevons des sites d'entreprise, des sites institutionnels et des boutiques en ligne adaptés à vos publics, à votre activité et à vos objectifs. De la première réflexion à la mise en ligne, nous associons qualité de conception, maîtrise technique et connaissance du terrain ouest-africain.",
+    "Sites d'entreprise, sites institutionnels et boutiques en ligne, adaptés à vos publics et à vos objectifs — de la première réflexion à la mise en ligne.",
   ctas: [
     { label: 'Parlons de votre projet', href: '/contact' },
     { label: 'Voir nos réalisations', href: '/realisations' },
@@ -46,12 +46,12 @@ export interface OrientationCard {
 export const conceptionWebOrientation = {
   eyebrow: 'Choisir la bonne solution',
   title: 'Le bon site dépend d’abord de ce que vous voulez en faire.',
-  lead: "Un site peut présenter une activité, faciliter la prise de contact, rendre des informations accessibles ou permettre de vendre en ligne. Sa structure et ses fonctionnalités doivent découler de ce rôle, pas d'une liste de technologies à ajouter. Nous vous aidons à définir le périmètre adapté, que vous partiez de zéro ou que vous souhaitiez faire évoluer un site existant.",
+  lead: "Un site doit découler de ce qu'il doit accomplir — présenter, rassurer, informer ou vendre — pas d'une liste de technologies. Nous vous aidons à définir le périmètre adapté.",
   cards: [
     {
       index: '01',
       title: "Sites d'entreprise",
-      body: "Présentez votre activité, clarifiez vos offres et facilitez les prises de contact. Une présence professionnelle pensée pour rassurer vos clients, partenaires et prospects, au Sénégal comme à l'international.",
+      body: "Présentez votre activité et facilitez les prises de contact, au Sénégal comme à l'international.",
       needs: ['Crédibilité', 'Offre', 'Contact'],
       link: {
         label: "Découvrir les sites d'entreprise",
@@ -61,7 +61,7 @@ export const conceptionWebOrientation = {
     {
       index: '02',
       title: 'Sites institutionnels & ONG',
-      body: "Organisez vos missions, programmes, publications et informations pour les rendre accessibles à vos différents publics. Une conception attentive à la clarté, à l'administration des contenus et aux contraintes de votre organisation.",
+      body: 'Rendez vos missions, programmes et publications accessibles à vos différents publics.',
       needs: ['Missions', 'Publications', 'Accessibilité'],
       link: {
         label: 'Découvrir les sites institutionnels',
@@ -71,7 +71,7 @@ export const conceptionWebOrientation = {
     {
       index: '03',
       title: 'Boutiques en ligne',
-      body: 'Proposez une expérience d’achat adaptée à votre marque et à vos marchés. Le catalogue, le parcours de commande, les paiements et les solutions de livraison sont définis selon votre modèle commercial.',
+      body: 'Une expérience d’achat adaptée à votre marque : catalogue, commande, paiement et livraison.',
       needs: ['Catalogue', 'Paiement', 'Livraison'],
       link: {
         label: 'Découvrir les boutiques en ligne',
@@ -81,7 +81,7 @@ export const conceptionWebOrientation = {
   ] as OrientationCard[],
   bifurcation: {
     title: 'Votre besoin dépasse celui d’un site ?',
-    body: "Espace client, application métier, plateforme transactionnelle ou outil sur mesure : certains projets demandent une architecture spécifique. Nous pouvons vous aider à distinguer le site, l'application et les outils à connecter.",
+    body: 'Espace client, application métier ou outil sur mesure : certains projets demandent une architecture spécifique.',
     link: {
       label: 'Explorer les logiciels & applications web',
       href: '/services/plateformes-applications',
@@ -117,7 +117,7 @@ export interface Criterion {
 export const conceptionWebCriteria = {
   eyebrow: 'Conception & qualité',
   title: 'Les bonnes décisions ne se voient pas toujours. Leurs effets, si.',
-  lead: "Un site doit être agréable à consulter, mais aussi compréhensible, utilisable et simple à faire évoluer. Voici les critères qui guident notre travail et que vous pouvez demander à n'importe quel prestataire.",
+  lead: "Un site doit être agréable à consulter, mais aussi compréhensible, utilisable et simple à faire évoluer. Voici les critères qui guident notre travail.",
   items: [
     {
       title: 'Une information facile à trouver',

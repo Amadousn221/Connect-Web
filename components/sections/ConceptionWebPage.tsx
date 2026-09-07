@@ -2,6 +2,7 @@ import type { Locale } from '@/lib/i18n/config';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { CaseTeaserCarousel } from '@/components/sections/CaseTeaserCarousel';
 import { FinalCta } from '@/components/sections/offer/FinalCta';
+import { ContactSection } from '@/components/sections/ContactSection';
 import { pickCaseTeasers } from '@/content/fr/accueil';
 import {
   conceptionWebRealisations,
@@ -16,8 +17,9 @@ import { CwMethod } from './conception-web/CwMethod';
 
 // Page parente « Conception et développement web ». Compose des sections
 // propres à cette page + des composants partagés réutilisés tels quels
-// (CaseTeaserCarousel, FaqAccordion, FinalCta). Elle ne clone pas OfferPage :
-// pas de PainList/DeliverableGrid/PricingBlock, pas de formulaire embarqué.
+// (CaseTeaserCarousel, FaqAccordion, FinalCta, ContactSection). Elle ne clone
+// pas OfferPage : pas de PainList/DeliverableGrid/PricingBlock — mais conserve
+// le formulaire de contact existant (correction de fidélité visuelle, PO).
 export function ConceptionWebPage({ locale }: { locale: Locale }) {
   return (
     <>
@@ -48,6 +50,7 @@ export function ConceptionWebPage({ locale }: { locale: Locale }) {
       />
 
       <FinalCta locale={locale} content={conceptionWebFinalCta} />
+      <ContactSection />
     </>
   );
 }

@@ -37,8 +37,8 @@
 }
 .row {
   display: flex;
-  gap: 22px;
-  padding: 24px 0;
+  gap: 18px;
+  padding: 18px 0;
   border-top: 1px solid var(--border);
 }
 .row:first-child {
@@ -80,15 +80,22 @@
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 28px;
   }
 }
 @media (max-width: 640px) {
   .section {
     padding: 56px 0;
   }
+  .row {
+    padding: 16px 0;
+  }
   .num {
     width: 38px;
     font-size: 26px;
+  }
+  .outro {
+    margin-top: 20px;
+    padding-top: 16px;
   }
 }

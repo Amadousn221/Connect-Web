@@ -75,6 +75,15 @@ video {
   hyphens: auto;
 }
 
+/* Sous 640px, la justification crée des rivières de blancs et des césures
+   disgracieuses sur les colonnes étroites (constat PO, correction de fidélité
+   visuelle de la page Conception web) : lecture naturelle en drapeau, sitewide. */
+@media (max-width: 640px) {
+  .cw-prose {
+    text-align: left;
+  }
+}
+
 /* Conteneur centré standard (mockup : .cw-sec) */
 .cw-sec {
   max-width: var(--container-max);
