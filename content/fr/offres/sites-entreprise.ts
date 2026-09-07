@@ -15,6 +15,10 @@ export const sitesEntreprise: OfferContent = {
   hero: {
     eyebrow: "Sites d'entreprise",
     breadcrumb: "Sites d'entreprise",
+    parentCrumb: {
+      label: 'Conception et développement web',
+      href: '/services/conception-et-developpement-web',
+    },
     title: "Un site à la hauteur de votre crédibilité, prêt pour l'export.",
     subtitle:
       "Présentation d'entreprise, offre, preuve et contact — un site au standard international qui rassure vos clients, partenaires et investisseurs, où qu'ils soient.",

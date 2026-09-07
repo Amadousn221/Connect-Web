@@ -16,6 +16,10 @@ export const sitesInstitutionnelsOng: OfferContent = {
   hero: {
     eyebrow: 'Sites institutionnels & ONG',
     breadcrumb: 'Sites institutionnels & ONG',
+    parentCrumb: {
+      label: 'Conception et développement web',
+      href: '/services/conception-et-developpement-web',
+    },
     title: 'Une présence numérique à la hauteur de votre mission.',
     subtitle:
       "Crédibilité auprès des bailleurs, clarté du plaidoyer, autonomie éditoriale de votre équipe — un site conçu pour les organisations qui portent une mission au long cours.",

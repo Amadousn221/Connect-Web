@@ -15,6 +15,10 @@ export const boutiquesEnLigne: OfferContent = {
   hero: {
     eyebrow: 'Boutiques en ligne',
     breadcrumb: 'Boutiques en ligne',
+    parentCrumb: {
+      label: 'Conception et développement web',
+      href: '/services/conception-et-developpement-web',
+    },
     title:
       'Vos ventes ne devraient pas vivre dans vos DM. On construit des boutiques qui vendent, du Sénégal au monde.',
     subtitle:

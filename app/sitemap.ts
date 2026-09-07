@@ -17,6 +17,7 @@ const STATIC_PATHS: { path: string; priority: number; changeFrequency: MetadataR
   { path: '/ressources', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
   { path: '/services', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/services/conception-et-developpement-web', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/services/boutiques-en-ligne', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/services/plateformes-applications', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/services/sites-entreprise', priority: 0.7, changeFrequency: 'monthly' },
