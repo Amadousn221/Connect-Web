@@ -22,8 +22,13 @@ export function ThemeToggle({
   tone = 'default',
 }: {
   className?: string;
-  /** `on-dark` : posé sur une surface pétrole nuit (drawer mobile). */
-  tone?: 'default' | 'on-dark';
+  /**
+   * `on-dark` : posé sur une surface pétrole nuit.
+   * `on-light` : posé sur un panneau blanc fixe (tiroir mobile), couleurs
+   * figées et indépendantes du thème site — le tiroir reste blanc même en
+   * thème sombre.
+   */
+  tone?: 'default' | 'on-dark' | 'on-light';
 }) {
   const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
@@ -62,6 +67,7 @@ export function ThemeToggle({
       className={[
         styles.toggle,
         tone === 'on-dark' && styles.onDark,
+        tone === 'on-light' && styles.onLight,
         className,
       ]
         .filter(Boolean)

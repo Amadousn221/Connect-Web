@@ -8,3 +8,14 @@ export function localePath(locale: Locale, path: string): string {
   if (locale === defaultLocale) return clean || '/';
   return `/${locale}${clean}`;
 }
+
+// Inverse de `localePath` : retire le préfixe de la locale courante d'un
+// pathname (`usePathname()`) pour obtenir le chemin « propre » à reformater
+// vers une autre locale — utilisé par le sélecteur de langue.
+export function stripLocalePrefix(locale: Locale, pathname: string): string {
+  if (locale === defaultLocale) return pathname;
+  const prefix = `/${locale}`;
+  if (pathname === prefix) return '/';
+  if (pathname.startsWith(`${prefix}/`)) return pathname.slice(prefix.length);
+  return pathname;
+}

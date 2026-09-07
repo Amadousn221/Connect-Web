@@ -1,10 +1,12 @@
-/* Drawer mobile — mockup Accueil V2 lignes 178-203. */
+/* Tiroir mobile — panneau blanc opaque, y compris en thème sombre (le fond
+   du tiroir est indépendant de `data-theme` : couleurs figées ci-dessous,
+   jamais les tokens `--ink`/`--border` qui basculent avec le thème). */
 
 .overlay {
   position: fixed;
   inset: 0;
   z-index: var(--z-drawer-overlay);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(10, 20, 25, 0.5);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur-standard) ease;
@@ -20,13 +22,22 @@
   right: 0;
   bottom: 0;
   width: min(88vw, 380px);
-  background: var(--petrol-nuit);
+  background: #ffffff;
   z-index: var(--z-drawer);
   transform: translateX(100%);
   transition: transform var(--dur-standard) var(--ease-default);
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 20px;
+  padding-top: max(20px, env(safe-area-inset-top));
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+  overflow-y: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .overlay {
+    transition-duration: 1ms;
+  }
 }
 .drawer[data-open='true'] {
   transform: translateX(0);
@@ -36,78 +47,101 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 28px;
+  flex-shrink: 0;
+  margin-bottom: 24px;
 }
 
 .logo {
   width: auto;
-  filter: brightness(0) invert(1);
+  filter: none; /* toujours le logo « clair » : le panneau reste blanc quel que soit le thème. */
 }
 
 .close {
   width: 44px;
   height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  border: 1px solid var(--neutral-300);
+  color: var(--neutral-900);
   cursor: pointer;
+  border-radius: var(--radius-0);
+  transition:
+    color var(--dur-quick) ease,
+    border-color var(--dur-quick) ease;
+}
+.close:hover {
+  color: var(--orange);
+  border-color: var(--orange);
 }
 
 .nav {
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 .nav a {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 18px;
+  color: var(--neutral-900);
+  font-size: 17px;
   font-weight: 500;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 13px 0;
+  border-bottom: 1px solid var(--neutral-200);
 }
 .nav a:hover {
-  color: #fff;
+  color: var(--orange);
 }
 
 .controls {
   display: flex;
   gap: 10px;
-  margin: 20px 0;
+  margin: 18px 0;
   align-items: stretch;
+  flex-shrink: 0;
 }
 .themeInline {
   height: auto;
-  flex: 0 0 48px;
+  flex: 0 0 44px;
 }
 
 .actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 14px;
+  flex-shrink: 0;
+  margin-top: 4px;
 }
 
 .cta {
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   background: var(--orange);
   color: #fff;
-  padding: 16px;
-  font-size: 15px;
+  padding: 10px 20px;
+  font-size: 14px;
   font-weight: 600;
+  border-radius: var(--radius-0);
+  transition: background var(--dur-instant) ease;
 }
 .cta:hover {
   color: #fff;
+  background: var(--orange-pressed);
 }
 
 .reach {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 18px;
 }
 .reach a {
-  flex: 1;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  padding: 14px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--petrol);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
+}
+.reach a:hover {
+  color: var(--orange);
 }

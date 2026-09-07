@@ -1,50 +1,119 @@
-/* Segmented control FR/EN — mockup header lignes 136-139. Angles vifs, bordure. */
-.bar {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid var(--border);
-  overflow: hidden;
+/* Sélecteur de langue — trigger compact (drapeau + code + chevron) + panneau. */
+
+.bar,
+.stack {
+  position: relative;
 }
 
 .stack {
-  display: flex;
-  gap: 10px;
+  flex: 1;
 }
 
-.bar button,
-.stack button {
-  border: none;
-  padding: 7px 12px;
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-0);
+  background: transparent;
+  color: var(--ink);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  background: transparent;
-  color: var(--ink);
   transition:
-    background var(--dur-quick) ease,
-    color var(--dur-quick) ease;
+    color var(--dur-quick) ease,
+    border-color var(--dur-quick) ease;
+}
+.trigger:hover {
+  color: var(--orange);
+  border-color: var(--orange);
 }
 
-.stack button {
-  flex: 1;
-  padding: 13px;
-  font-size: 14px;
+.chevron {
+  color: var(--ink-faint);
+  transition: transform var(--dur-quick) var(--ease-default);
+}
+.chevron[data-open='true'] {
+  transform: rotate(180deg);
 }
 
-/* La variante `stack` n'est utilisée que dans le drawer mobile (pétrole nuit). */
-.stack button {
-  color: #fff;
-}
-.stack .inactive {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.flag {
+  display: block;
+  flex-shrink: 0;
+  border-radius: 2px;
 }
 
-.active {
-  background: var(--orange);
-  color: #fff !important;
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: var(--z-header);
+  margin: 0;
+  padding: 6px;
+  min-width: 168px;
+  list-style: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-0);
+  box-shadow: var(--shadow-default);
+}
+.menu[hidden] {
+  display: none;
 }
 
-.inactive:disabled {
-  cursor: default;
-  opacity: 1; /* garde le contraste : c'est un état « à venir » (M4), pas désactivé visuellement */
+.item,
+.itemActive {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  border-radius: var(--radius-0);
+  transition: background var(--dur-instant) ease;
+}
+.item:hover {
+  background: var(--bg-alt);
+  color: var(--ink);
+}
+
+.itemActive {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* ── Variante `stack` : tiroir mobile, toujours sur panneau blanc fixe,
+   couleurs figées (indépendantes du thème site — voir MobileDrawer). ───── */
+.stack .trigger {
+  height: 44px;
+  width: 100%;
+  justify-content: space-between;
+  color: var(--petrol);
+  border-color: var(--neutral-300);
+}
+.stack .trigger:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.stack .chevron {
+  color: var(--neutral-500);
+}
+
+.stack .menu {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.stack .item,
+.stack .itemActive {
+  color: var(--neutral-900);
+}
+.stack .item:hover {
+  background: var(--neutral-100);
+}
+.stack .itemActive {
+  color: var(--orange);
 }

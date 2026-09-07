@@ -76,6 +76,39 @@
   color: var(--ink-faint);
 }
 
+.readMore {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--orange);
+  transition: color var(--dur-instant) ease;
+}
+.card:hover .readMore {
+  color: var(--orange-h);
+}
+
+/* `surface="light"` : carte toujours claire, y compris en thème sombre —
+   utilisée quand la carte est posée sur un fond de marque sombre fixe
+   (ex. section Blog homepage sur `--ink-deep`). Couleurs figées, jamais les
+   tokens de thème `--card`/`--ink`/`--border` qui basculent avec `data-theme`. */
+.card[data-surface='light'] {
+  background: #ffffff;
+  border-color: var(--neutral-200);
+}
+.card[data-surface='light'] .category {
+  color: var(--orange);
+}
+.card[data-surface='light'] .title {
+  color: var(--neutral-900);
+}
+.card[data-surface='light'] .excerpt {
+  color: var(--neutral-600);
+}
+.card[data-surface='light'] .meta {
+  color: var(--neutral-500);
+}
+
 @media (max-width: 640px) {
   .body {
     padding: var(--space-lg);

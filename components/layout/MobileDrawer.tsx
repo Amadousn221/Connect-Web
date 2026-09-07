@@ -95,7 +95,7 @@ export function MobileDrawer({
 
         <div className={styles.controls}>
           <LangSwitcher current={locale} variant="stack" />
-          <ThemeToggle tone="on-dark" className={styles.themeInline} />
+          <ThemeToggle tone="on-light" className={styles.themeInline} />
         </div>
 
         <div className={styles.actions}>

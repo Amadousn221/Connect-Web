@@ -104,7 +104,7 @@
   /* ── Layout ──────────────────────────────────────────────────────────── */
   --container-max: 1280px;
   --container-pad: 32px;      /* 24px en mobile — voir globals.css */
-  --header-height: 74px;
+  --header-height: 64px;      /* header desktop compact (refonte header/menu mobile) */
   --section-rhythm: 80px;     /* 56px en mobile */
 
   /* ── Radius — angles vifs, signature Connect Web (Design Foundations §04) */

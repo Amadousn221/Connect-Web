@@ -11,14 +11,26 @@ import styles from './BlogCard.module.css';
 const DATE_FMT = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 
 /** Carte d'article — catalogue Blog + sidebar (spec §6.1). Cliquable en entier. */
-export function BlogCard({ post, locale }: { post: BlogPostCardData; locale: Locale }) {
+export function BlogCard({
+  post,
+  locale,
+  showReadMore = false,
+  surface = 'auto',
+}: {
+  post: BlogPostCardData;
+  locale: Locale;
+  /** Affiche l'affordance « Lire l'article → » en pied de carte (texte dans le lien englobant, pas un second lien). */
+  showReadMore?: boolean;
+  /** `light` : surface figée blanche, indépendante du thème site (carte posée sur un fond de marque sombre fixe). */
+  surface?: 'auto' | 'light';
+}) {
   const href = localePath(locale, `/blog/${post.slug}`);
   const cover = post.coverImage?.asset
     ? urlFor(post.coverImage).width(760).height(475).fit('crop').auto('format').quality(75).url()
     : null;
 
   return (
-    <article className={styles.card}>
+    <article className={styles.card} data-surface={surface}>
       <Link href={href} className={styles.link}>
         <div className={styles.media}>
           {cover ? (
@@ -42,6 +54,11 @@ export function BlogCard({ post, locale }: { post: BlogPostCardData; locale: Loc
             <time dateTime={post.publishedAt}>{DATE_FMT.format(new Date(post.publishedAt))}</time>
             {post.readingTime ? <span> · {post.readingTime} min de lecture</span> : null}
           </p>
+          {showReadMore ? (
+            <span className={styles.readMore} aria-hidden="true">
+              Lire l&apos;article →
+            </span>
+          ) : null}
         </div>
       </Link>
     </article>

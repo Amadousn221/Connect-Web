@@ -9,6 +9,7 @@ import { ServiceGrid } from '@/components/sections/ServiceGrid';
 import { SystemRoad } from '@/components/sections/SystemRoad';
 import { ProjectSlider } from '@/components/sections/ProjectSlider';
 import { Method } from '@/components/sections/Method';
+import { BlogSection } from '@/components/sections/BlogSection';
 import { ResourcesSection } from '@/components/sections/ResourcesSection';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { ContactSection } from '@/components/sections/ContactSection';
@@ -24,7 +25,8 @@ import styles from './page.module.css';
 //   · 05 Ce qui nous distingue/Differentiators (ivoire) · 06 Du site au système/
 //   SystemRoad (pétrole, explorateur interactif) · 07 Logos clients/LogoStrip
 //   (ivoire) · 08 Réalisations/ProjectSlider (blanc) · Méthode (ivoire)
-//   · Ressources (flag) · FAQ (blanc) · Contact (pétrole) · Footer.
+//   · Blog (pétrole, 3 derniers articles) · Ressources (flag) · FAQ (blanc)
+//   · Contact (pétrole) · Footer.
 //
 // Retiré du render : TechnoStrip (composant conservé dans le repo).
 
@@ -47,6 +49,7 @@ export default async function HomePage({
       <LogoStrip />
       <ProjectSlider locale={locale} />
       <Method />
+      <BlogSection locale={locale} />
       <ResourcesSection locale={locale} />
       <FaqAccordion
         locale={locale}
