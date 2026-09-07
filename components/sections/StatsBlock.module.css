@@ -20,6 +20,38 @@
   border-left: none;
 }
 
+.icon {
+  display: block;
+  color: var(--orange);
+  margin-bottom: 10px;
+  /* état par défaut : visible (si le reveal ne se déclenche pas, JS off, etc.) */
+  opacity: 1;
+}
+
+/* Cascade d'apparition — jouée quand RevealOnScroll ajoute `.cw-in`. */
+@keyframes statIconIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.row:global(.cw-in) .icon {
+  animation: statIconIn 460ms var(--ease-default) both;
+}
+.row:global(.cw-in) .item:nth-child(2) .icon {
+  animation-delay: 80ms;
+}
+.row:global(.cw-in) .item:nth-child(3) .icon {
+  animation-delay: 160ms;
+}
+.row:global(.cw-in) .item:nth-child(4) .icon {
+  animation-delay: 240ms;
+}
+
 .value {
   margin: 0 0 4px;
   font-size: clamp(24px, 2.4vw, 28px);
@@ -50,5 +82,11 @@
   .item:nth-child(2n) {
     padding-left: 20px;
     border-left: 1px solid var(--border);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row:global(.cw-in) .icon {
+    animation: none;
   }
 }

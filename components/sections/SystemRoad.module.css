@@ -8,8 +8,8 @@
   margin-top: 44px;
 }
 
-/* ── Sélecteurs ───────────────────────────────────────────────────────────
-   Rangée régulière reliée par un filet fin — aucun ordre technique suggéré. */
+/* ── Sélecteurs (desktop ≥ 900px) ─────────────────────────────────────────
+   Rangée régulière — aucun ordre technique suggéré. */
 .tabs {
   display: flex;
   flex-wrap: wrap;
@@ -61,7 +61,7 @@
   letter-spacing: 0.01em;
 }
 
-/* ── Panneau ──────────────────────────────────────────────────────────────
+/* ── Panneau (desktop) ───────────────────────────────────────────────────
    Hauteur libre mais réservée : aucun saut, aucun texte coupé. */
 .panel {
   margin-top: 26px;
@@ -79,15 +79,72 @@
   }
 }
 
-.moduleName {
-  margin: 0 0 6px;
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--orange);
+/* ── Accordéon (mobile / tablette) ──────────────────────────────────────── */
+.accordion {
+  display: none;
+}
+.accItem {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+.accItem:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.accHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.7);
+}
+.accHead[data-active='true'] {
+  color: #fff;
+}
+.accHead:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+.accLabel {
+  flex: 1;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.chevron {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  transform: rotate(45deg);
+  transition: transform var(--dur-quick) ease;
+  flex-shrink: 0;
+}
+.accHead[data-active='true'] .chevron {
+  transform: rotate(-135deg);
+  border-color: var(--orange);
+}
+.accPanel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-quick) ease;
+}
+.accPanel[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+.accPanelInner {
+  min-height: 0;
+  overflow: hidden;
+}
+.accPanel[data-open='true'] .accPanelInner {
+  padding: 6px 2px 22px;
 }
 
+/* ── Corps de module (partagé desktop / mobile) ─────────────────────────── */
 .role {
   margin: 0 0 22px;
   font-size: clamp(18px, 2vw, 22px);
@@ -163,21 +220,27 @@
   padding-left: 16px;
 }
 
+@media (max-width: 899px) {
+  .tabs,
+  .panel {
+    display: none;
+  }
+  .accordion {
+    display: block;
+  }
+}
+
 @media (max-width: 640px) {
   .section {
     padding-block: 48px;
-  }
-  .tab {
-    flex: 1 1 100%;
-    min-width: 0;
-  }
-  .panel {
-    min-height: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .panelInner {
     animation: none;
+  }
+  .accPanel {
+    transition: none;
   }
 }

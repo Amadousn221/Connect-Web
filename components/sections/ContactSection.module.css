@@ -1,8 +1,9 @@
 .section {
-  /* Refonte Accueil — D25/D33 : apogée de conversion sur bleu profond. */
+  /* Refonte Accueil — D25/D33 : apogée de conversion sur bleu profond.
+     Fond unique : le formulaire partage la surface pétrole, pas de carte claire. */
   background: var(--ink-deep);
   color: #fff;
-  padding-block: 100px;
+  padding-block: clamp(56px, 8vw, 88px);
 }
 
 .grid {
@@ -86,18 +87,19 @@
   margin: 0;
 }
 
-/* ── Formulaire ── */
+/* ── Formulaire — même surface que la section (bleu profond) ── */
 .form {
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  padding: 36px 32px;
+  color-scheme: dark;
+  background: transparent;
+  border: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 .formTitle {
   font-size: 24px;
-  color: var(--ink);
+  color: #fff;
   margin: 0;
 }
 .row {
@@ -111,17 +113,29 @@
   gap: 6px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--ink);
+  color: #fff;
 }
 .field input,
 .field select,
 .field textarea {
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 14px;
   font-size: 15px;
   font-family: inherit;
-  background: var(--bg-alt);
-  color: var(--ink);
+  font-weight: 400;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  transition: border-color var(--dur-quick) ease;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: none;
+  border-color: var(--orange);
 }
 .field input,
 .field select {
@@ -143,9 +157,10 @@
   background: var(--orange);
   color: #fff;
   border: none;
-  padding: 14px 22px;
-  font-size: 14px;
-  font-weight: 500;
+  padding: 10px 18px;
+  min-height: 40px;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
   align-self: flex-start;
   transition: background var(--dur-quick) ease;
@@ -165,19 +180,19 @@
   margin: 0;
 }
 .reassurance {
-  color: var(--ink-faint);
+  color: rgba(255, 255, 255, 0.55);
 }
 .notice {
-  color: var(--ink);
-  background: rgba(232, 97, 42, 0.1);
-  border: 1px solid rgba(232, 97, 42, 0.25);
+  color: #fff;
+  background: rgba(232, 97, 42, 0.18);
+  border: 1px solid rgba(232, 97, 42, 0.4);
   padding: 12px 14px;
   line-height: 1.5;
 }
 .error {
-  color: var(--ink);
-  background: rgba(26, 26, 26, 0.05);
-  border: 1px solid var(--border);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 12px 14px;
   line-height: 1.5;
 }

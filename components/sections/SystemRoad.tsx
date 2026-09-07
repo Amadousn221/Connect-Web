@@ -10,13 +10,14 @@ import { systemModules } from '@/content/fr/systemExplorer';
 import type { SystemModule } from '@/content/types';
 import styles from './SystemRoad.module.css';
 
-// S07 — « Du site au système » (Refonte Accueil, Lot 2). Section stratégique sur
-// bleu profond, devenue une EXPLORATION INTERACTIVE : 5 modules sélectionnables
-// (site/boutique, CRM, ERP, automatisation, reporting). Onglets réutilisant le
-// mécanisme de Method.tsx (role=tablist, roving tabindex, flèches, Home/End,
-// focus suivi). Un module actif à l'arrivée. Panneau sous les sélecteurs :
-// rôle · 2–3 usages · échanges. Crossfade discret (~180 ms), coupé par
-// prefers-reduced-motion. Aucun ordre technique imposé, aucune référence client.
+// S07 — « Du site au système » (Refonte Accueil, Lot 2). Exploration interactive
+// de 5 modules (site/boutique, CRM, ERP, automatisation, reporting).
+//   · Desktop (≥ 900px) : rangée de sélecteurs (role=tablist, roving tabindex,
+//     flèches, Home/End, focus suivi) + un panneau sous les sélecteurs.
+//   · Mobile / tablette (< 900px) : accordéon — le contenu s'ouvre directement
+//     sous le sélecteur choisi. Un module toujours actif.
+// Crossfade discret (~180 ms) coupé par `prefers-reduced-motion`. Aucun ordre
+// technique imposé, aucune référence client.
 const ICON: Record<SystemModule['icon'], ReactNode> = {
   web: <ServiceIcon name="web" width={22} height={22} />,
   crm: <UsersIcon width={22} height={22} />,
@@ -24,6 +25,26 @@ const ICON: Record<SystemModule['icon'], ReactNode> = {
   automation: <ServiceIcon name="automation" width={22} height={22} />,
   reporting: <BarChartIcon width={22} height={22} />,
 };
+
+function ModuleBody({ m }: { m: SystemModule }) {
+  return (
+    <>
+      <p className={`cw-serif ${styles.role}`}>{m.role}</p>
+
+      <p className={styles.usesLabel}>Ce que ça permet</p>
+      <ul className={styles.uses}>
+        {m.uses.map((u) => (
+          <li key={u}>{u}</li>
+        ))}
+      </ul>
+
+      <p className={styles.exchange}>
+        <span className={styles.exchangeLabel}>Échanges</span>
+        {m.exchange}
+      </p>
+    </>
+  );
+}
 
 export function SystemRoad() {
   const [active, setActive] = useState(0);
@@ -67,6 +88,7 @@ export function SystemRoad() {
         </RevealOnScroll>
 
         <RevealOnScroll className={styles.explorer}>
+          {/* Sélecteurs — desktop */}
           <div
             className={styles.tabs}
             role="tablist"
@@ -98,6 +120,7 @@ export function SystemRoad() {
             ))}
           </div>
 
+          {/* Panneau — desktop */}
           <div
             className={styles.panel}
             role="tabpanel"
@@ -105,21 +128,39 @@ export function SystemRoad() {
             aria-labelledby={`${baseId}-tab-${active}`}
           >
             <div key={current.key} className={styles.panelInner}>
-              <p className={styles.moduleName}>{current.name}</p>
-              <p className={`cw-serif ${styles.role}`}>{current.role}</p>
-
-              <p className={styles.usesLabel}>Ce que ça permet</p>
-              <ul className={styles.uses}>
-                {current.uses.map((u) => (
-                  <li key={u}>{u}</li>
-                ))}
-              </ul>
-
-              <p className={styles.exchange}>
-                <span className={styles.exchangeLabel}>Échanges</span>
-                {current.exchange}
-              </p>
+              <ModuleBody m={current} />
             </div>
+          </div>
+
+          {/* Accordéon — mobile / tablette */}
+          <div className={styles.accordion}>
+            {systemModules.map((m, i) => (
+              <div key={m.key} className={styles.accItem}>
+                <button
+                  type="button"
+                  className={styles.accHead}
+                  aria-expanded={i === active}
+                  aria-controls={`${baseId}-acc-${i}`}
+                  data-active={i === active}
+                  onClick={() => setActive(i)}
+                >
+                  <span className={styles.tabIcon} aria-hidden="true">
+                    {ICON[m.icon]}
+                  </span>
+                  <span className={styles.accLabel}>{m.name}</span>
+                  <span className={styles.chevron} aria-hidden="true" />
+                </button>
+                <div
+                  id={`${baseId}-acc-${i}`}
+                  className={styles.accPanel}
+                  data-open={i === active}
+                >
+                  <div className={styles.accPanelInner} inert={i !== active}>
+                    <ModuleBody m={m} />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </RevealOnScroll>
 
