@@ -1,12 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { ValidationNote } from '@/components/ui/ValidationNote';
+import { showValidationNotes } from '@/lib/flags';
 import { contactFormContent as c } from '@/content/fr/accueil';
 import styles from './ContactSection.module.css';
 
-// A12 — Formulaire de contact. Vague 4 : branché sur /api/contact (POST JSON).
-// États idle / loading / success / error tous gérés. Honeypot anti-spam
-// (`entreprise_site`, masqué). Après succès : message + reset des champs.
+// A12 — Formulaire de contact (copy V1 : Nom, Entreprise, Email, Téléphone,
+// Type de projet, Budget indicatif, Votre besoin). Branché sur /api/contact
+// (POST JSON). États idle / loading / success / error tous gérés. Honeypot
+// anti-spam (`site_web`, masqué). Après succès : message + reset des champs.
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
 export function ContactForm() {
@@ -20,7 +23,7 @@ export function ContactForm() {
     const data = new FormData(form);
 
     // Honeypot : un bot remplit ce champ caché → on simule un succès sans envoi.
-    if ((data.get('entreprise_site') as string)?.trim()) {
+    if ((data.get('site_web') as string)?.trim()) {
       setStatus('success');
       form.reset();
       return;
@@ -33,9 +36,11 @@ export function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           nom: data.get('nom'),
+          entreprise: data.get('entreprise'),
           email: data.get('email'),
-          organisation: data.get('organisation'),
-          objectif: data.get('objectif'),
+          telephone: data.get('telephone'),
+          typeProjet: data.get('typeProjet'),
+          budget: data.get('budget'),
           message: data.get('message'),
         }),
       });
@@ -58,12 +63,7 @@ export function ContactForm() {
       <div className={styles.honeypot}>
         <label>
           Ne remplissez pas ce champ
-          <input
-            type="text"
-            name="entreprise_site"
-            tabIndex={-1}
-            autoComplete="off"
-          />
+          <input type="text" name="site_web" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
 
@@ -80,6 +80,19 @@ export function ContactForm() {
           />
         </label>
         <label className={styles.field}>
+          Entreprise ou organisation
+          <input
+            type="text"
+            name="entreprise"
+            placeholder="Nom de votre structure"
+            autoComplete="organization"
+            disabled={isDone}
+          />
+        </label>
+      </div>
+
+      <div className={styles.row}>
+        <label className={styles.field}>
           Email
           <input
             type="email"
@@ -90,28 +103,39 @@ export function ContactForm() {
             disabled={isDone}
           />
         </label>
+        <label className={styles.field}>
+          Téléphone
+          <input
+            type="tel"
+            name="telephone"
+            placeholder="+221 …"
+            autoComplete="tel"
+            disabled={isDone}
+          />
+        </label>
+      </div>
+
+      <div className={styles.row}>
+        <label className={styles.field}>
+          Type de projet
+          <select name="typeProjet" defaultValue={c.projectTypes[0]} disabled={isDone}>
+            {c.projectTypes.map((t) => (
+              <option key={t}>{t}</option>
+            ))}
+          </select>
+        </label>
+        <label className={styles.field}>
+          Budget indicatif
+          <select name="budget" defaultValue={c.budgets[0]} disabled={isDone}>
+            {c.budgets.map((b) => (
+              <option key={b}>{b}</option>
+            ))}
+          </select>
+        </label>
       </div>
 
       <label className={styles.field}>
-        Type d&apos;organisation
-        <select name="organisation" defaultValue={c.orgTypes[0]} disabled={isDone}>
-          {c.orgTypes.map((o) => (
-            <option key={o}>{o}</option>
-          ))}
-        </select>
-      </label>
-
-      <label className={styles.field}>
-        Ce que vous cherchez à faire
-        <select name="objectif" defaultValue={c.goals[0]} disabled={isDone}>
-          {c.goals.map((g) => (
-            <option key={g}>{g}</option>
-          ))}
-        </select>
-      </label>
-
-      <label className={styles.field}>
-        Votre message
+        Votre besoin
         <textarea
           name="message"
           rows={4}
@@ -138,7 +162,15 @@ export function ContactForm() {
           {c.errorMessage}
         </p>
       ) : (
-        <p className={styles.reassurance}>{c.reassurance}</p>
+        <p className={styles.reassurance}>
+          {c.reassurance}
+          {showValidationNotes() ? (
+            <>
+              {' · '}
+              <ValidationNote>{c.reassurancePending}</ValidationNote>
+            </>
+          ) : null}
+        </p>
       )}
     </form>
   );

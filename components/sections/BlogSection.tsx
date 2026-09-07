@@ -62,8 +62,9 @@ export async function BlogSection({ locale }: { locale: Locale }) {
               Des repères pour vos projets numériques.
             </h2>
             <p className={styles.lead}>
-              Web, e-commerce et automatisation : des conseils concrets pour
-              comprendre vos options et faire avancer votre projet.
+              Web, e-commerce, systèmes métier et automatisation : des
+              contenus concrets pour comprendre vos options et prendre de
+              meilleures décisions.
             </p>
           </div>
           <Link href={localePath(locale, '/blog')} className={styles.allLink}>

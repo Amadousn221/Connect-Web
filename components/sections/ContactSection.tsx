@@ -41,6 +41,28 @@ const WhatsAppIcon = (
     />
   </svg>
 );
+const MailIcon = (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path
+      d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"
+      stroke="var(--orange)"
+      strokeWidth="1.6"
+      strokeLinejoin="round"
+    />
+    <path d="m3.5 7 8.5 6 8.5-6" stroke="var(--orange)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+const PinIcon = (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path
+      d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z"
+      stroke="var(--orange)"
+      strokeWidth="1.6"
+      strokeLinejoin="round"
+    />
+    <circle cx="12" cy="9.5" r="2.3" stroke="var(--orange)" strokeWidth="1.6" />
+  </svg>
+);
 
 export function ContactSection() {
   const showPlaceholders = showValidationNotes();
@@ -64,20 +86,35 @@ export function ContactSection() {
 
           <ul className={styles.points}>
             {contactPoints.map((p) => {
-              const isWhatsApp = p.href.includes('wa.me');
+              const icon = p.href.includes('wa.me')
+                ? WhatsAppIcon
+                : p.href.startsWith('mailto:')
+                  ? MailIcon
+                  : p.href
+                    ? PhoneIcon
+                    : PinIcon;
               return (
-                <li key={p.href}>
-                  <a
-                    href={p.href}
-                    {...(p.href.startsWith('http')
-                      ? { target: '_blank', rel: 'noopener noreferrer' }
-                      : {})}
-                  >
-                    <span className={styles.pointIcon} aria-hidden="true">
-                      {isWhatsApp ? WhatsAppIcon : PhoneIcon}
+                <li key={p.label}>
+                  {p.href ? (
+                    <a
+                      href={p.href}
+                      {...(p.href.startsWith('http')
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                    >
+                      <span className={styles.pointIcon} aria-hidden="true">
+                        {icon}
+                      </span>
+                      {p.label}
+                    </a>
+                  ) : (
+                    <span className={styles.pointStatic}>
+                      <span className={styles.pointIcon} aria-hidden="true">
+                        {icon}
+                      </span>
+                      {p.label}
                     </span>
-                    {p.label}
-                  </a>
+                  )}
                 </li>
               );
             })}

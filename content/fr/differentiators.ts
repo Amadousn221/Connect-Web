@@ -8,9 +8,10 @@ import type { Cta } from '../types';
 // 06/13). À valider PO. Aucune donnée chiffrée ni cas ici — la preuve est
 // portée par les sections Services et Réalisations.
 
+// Copy V1 (validée PO).
 export const differentiatorsIntro = {
-  eyebrow: 'Ce qui nous distingue',
-  title: 'Trois choses qu’on ne trouve pas ailleurs en même temps.',
+  eyebrow: 'Notre façon de travailler',
+  title: 'Nous ne commençons pas par choisir un outil.',
 };
 
 export interface Differentiator {
@@ -24,19 +25,18 @@ export interface Differentiator {
 
 export const differentiators: Differentiator[] = [
   {
-    title: 'On part du réel, pas d’un catalogue.',
-    body: "On conçoit à partir du fonctionnement de votre organisation — vos clients, vos flux, vos contraintes — pas d’une liste de prestations à cocher.",
+    title: 'Le besoin avant la technologie',
+    body: 'Nous cherchons d’abord à comprendre ce que votre organisation doit améliorer : vendre, informer, centraliser, automatiser ou mieux suivre.',
     icon: 'pin',
   },
   {
-    title: 'Du site au système.',
-    body: "On ne s’arrête pas au site : on le connecte à vos opérations — stock, ventes, facturation, automatisation. Le site devient une pièce d’un ensemble qui tourne.",
+    title: 'Le terrain compte',
+    body: 'Paiement mobile, usages locaux, vente transfrontalière, contraintes internes : la solution doit fonctionner dans votre réalité, pas seulement dans une maquette.',
     icon: 'network',
-    link: { label: 'Voir comment', href: '#systeme' },
   },
   {
-    title: 'Vous gardez les clés.',
-    body: "Domaine, hébergement, comptes de paiement, accès admin : tout est à votre nom. Paiement mobile et international sur la même boutique. Vous partez quand vous voulez, avec tout.",
+    title: 'La continuité après la livraison',
+    body: 'Un projet numérique doit pouvoir évoluer. Nous construisons des bases compréhensibles, administrables et adaptées aux prochaines étapes de votre activité.',
     icon: 'shield',
   },
 ];

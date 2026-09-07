@@ -1,24 +1,27 @@
 'use client';
 
 import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import Link from 'next/link';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { ServiceIcon } from '@/components/ui/service-icons';
 import { UsersIcon, BarChartIcon } from '@/components/ui/icons';
-import { systemIntro } from '@/content/fr/accueil';
+import { systemIntro, systemCta } from '@/content/fr/accueil';
 import { systemModules } from '@/content/fr/systemExplorer';
 import type { SystemModule } from '@/content/types';
 import styles from './SystemRoad.module.css';
 
-// S07 — « Du site au système » (Refonte Accueil, Lot 2). Section stratégique sur
-// bleu profond, devenue une EXPLORATION INTERACTIVE : 5 modules sélectionnables
-// (site/boutique, CRM, ERP, automatisation, reporting). Onglets réutilisant le
-// mécanisme de Method.tsx (role=tablist, roving tabindex, flèches, Home/End,
-// focus suivi). Un module actif à l'arrivée. Panneau sous les sélecteurs :
-// rôle · 2–3 usages · échanges. Crossfade discret (~180 ms), coupé par
-// prefers-reduced-motion. Aucun ordre technique imposé, aucune référence client.
+// S07 — « Du site au système » (Refonte Accueil, Lot 2 ; copy V1). Section
+// stratégique sur bleu profond, EXPLORATION INTERACTIVE : 6 modules
+// sélectionnables (site/boutique, application web, CRM, ERP, automatisation,
+// reporting). Onglets réutilisant le mécanisme de Method.tsx (role=tablist,
+// roving tabindex, flèches, Home/End, focus suivi). Un module actif à
+// l'arrivée. Panneau sous les sélecteurs : rôle · 2–3 usages. Crossfade
+// discret (~180 ms), coupé par prefers-reduced-motion. Aucun ordre technique
+// imposé, aucune référence client.
 const ICON: Record<SystemModule['icon'], ReactNode> = {
   web: <ServiceIcon name="web" width={22} height={22} />,
+  apps: <ServiceIcon name="apps" width={22} height={22} />,
   crm: <UsersIcon width={22} height={22} />,
   erp: <ServiceIcon name="erp" width={22} height={22} />,
   automation: <ServiceIcon name="automation" width={22} height={22} />,
@@ -114,17 +117,15 @@ export function SystemRoad() {
                   <li key={u}>{u}</li>
                 ))}
               </ul>
-
-              <p className={styles.exchange}>
-                <span className={styles.exchangeLabel}>Échanges</span>
-                {current.exchange}
-              </p>
             </div>
           </div>
         </RevealOnScroll>
 
         <RevealOnScroll>
           <p className={styles.framing}>{systemIntro.framing}</p>
+          <Link href={systemCta.href} className={styles.cta}>
+            {systemCta.label} →
+          </Link>
         </RevealOnScroll>
       </div>
     </section>

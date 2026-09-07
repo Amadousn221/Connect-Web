@@ -153,6 +153,23 @@
   padding-bottom: 22px;
 }
 
+.outro {
+  composes: cw-prose from global;
+  margin: 44px 0 10px;
+  max-width: 62ch;
+  color: var(--ink-soft);
+}
+
+.outroLink {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--orange);
+}
+.outroLink:hover {
+  color: var(--orange-h);
+}
+
 @media (max-width: 899px) {
   .tabs,
   .panel {

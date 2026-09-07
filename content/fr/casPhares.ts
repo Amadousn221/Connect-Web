@@ -13,25 +13,27 @@ import type { ProjectCardData } from '../types';
 // Refonte Accueil — brief §04-S08. Ordre intentionnel ATTA → SCOD → Maison
 // Peinture (commerce → plateforme → système). Résultats chiffrés : EVIDENCE
 // REQUIRED — non rendus tant que non collectés (jamais de résultat inventé).
+// Copy V1 (validée PO) — pas de chapô distinct fourni pour cette section.
 export const casPharesIntro = {
-  eyebrow: 'Réalisations',
-  title: "Ce qu'on a construit, et ce que ça a changé.",
-  lead: "Une boutique qui vend à l'international. Une plateforme qui prend les réservations à la place du téléphone. Une quincaillerie qui a remplacé Excel par un vrai système. De vrais projets, chez de vrais clients qui nous autorisent à les nommer.",
+  eyebrow: 'Nos réalisations',
+  title: 'Ce que nous construisons se voit dans le travail livré.',
+  lead: '',
 };
 
 export const casPharesLink = {
-  label: 'Voir toutes les réalisations',
+  label: 'Voir toutes nos réalisations',
   href: '/realisations',
   // /realisations existe désormais (Lot C) — lien actif.
   todo: false,
 };
 
+// Copy V1 — ordre ATTA Africa → Maison Peinture Sénégal → SCOD VTC.
 export const casPharesCards: ProjectCardData[] = [
   {
     client: 'ATTA Africa',
     sector: 'Mode DTC · Cross-border Dakar → Europe & Amérique',
-    title: 'Une boutique cross-border qui vend en 4 devises',
-    solutionTag: 'E-commerce · Automatisations',
+    title: 'Une boutique Shopify accompagnée par un système de reporting, de traitement des commandes et de relance client.',
+    solutionTag: 'E-commerce · Automatisation',
     imageMissing: 'ATTA Africa — capture boutique cross-border',
     cta: {
       label: 'Voir le projet',
@@ -40,10 +42,22 @@ export const casPharesCards: ProjectCardData[] = [
     },
   },
   {
+    client: 'Maison Peinture Sénégal',
+    sector: 'Commerce · Distribution · Gestion interne',
+    title: 'Un système Odoo conçu pour mieux structurer les opérations d’une activité de distribution.',
+    solutionTag: 'ERP · Processus métier',
+    imageMissing: "Maison Peinture Sénégal — capture de l'ERP Odoo",
+    cta: {
+      label: 'Voir le projet',
+      href: '/realisations/maison-peinture-senegal',
+      todo: true,
+    },
+  },
+  {
     client: 'SCOD VTC',
     sector: 'Transport · Plateforme de réservation',
-    title: 'Une plateforme qui prend les réservations à la place du téléphone',
-    solutionTag: 'Plateforme métier · Logiciels sur mesure',
+    title: 'Une plateforme web pensée pour faciliter l’accès au service et la gestion des demandes.',
+    solutionTag: 'Application web · Mobilité',
     image: {
       src: '/assets/real/scod-vtc.jpg',
       alt: "Capture d'écran de la plateforme de réservation SCOD VTC",
@@ -51,18 +65,6 @@ export const casPharesCards: ProjectCardData[] = [
     cta: {
       label: 'Voir le projet',
       href: '/realisations/scod-vtc',
-      todo: true,
-    },
-  },
-  {
-    client: 'Maison Peinture Sénégal',
-    sector: 'Commerce · Distribution · Gestion interne',
-    title: 'Un ERP qui a remplacé Excel et les tableurs',
-    solutionTag: 'ERP Odoo · Intégration',
-    imageMissing: "Maison Peinture Sénégal — capture de l'ERP Odoo",
-    cta: {
-      label: 'Voir le projet',
-      href: '/realisations/maison-peinture-senegal',
       todo: true,
     },
   },

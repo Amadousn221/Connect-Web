@@ -21,18 +21,13 @@ export interface ClientLogo {
   src?: string;
 }
 
-// ── A3 — « Ce qu'on construit » : sélecteur interactif (restauré — version
-//    d'avant la refonte V2.1 ; la variante tableau statique du Lot C est écartée).
-export interface NeedOption {
+// ── S05 — « À qui nous parlons » (Copy V1) : grille de 4 profils, titre +
+//    description. Remplace l'ancien sélecteur interactif `NeedOption`
+//    (situation/réponse/on livre/lien par carte) — un seul lien de section.
+export interface AudienceCard {
   key: string;
-  label: string;
-  hint: string;
-  /** badge « capacité démontrée » (Odoo, automatisation) */
-  capabilityBadge?: boolean;
-  situation: string; // citation « votre situation »
-  answer: string;
-  delivers: string[];
-  link: Cta;
+  title: string;
+  body: string;
 }
 
 // ── S07 — « Du site au système » : un module de l'écosystème, exploré par
@@ -41,10 +36,9 @@ export interface NeedOption {
 export interface SystemModule {
   key: string;
   name: string;
-  icon: 'web' | 'crm' | 'erp' | 'automation' | 'reporting';
-  role: string; // rôle concret, une phrase
+  icon: 'web' | 'apps' | 'crm' | 'erp' | 'automation' | 'reporting';
+  role: string; // rôle concret (Copy V1 : inclut l'idée d'échange en prose)
   uses: string[]; // 2–3 usages compréhensibles
-  exchange: string; // ce qu'il peut échanger avec les autres outils
 }
 
 // ── A5 — Section Services (V2.1, Lot B — DECISION 23) ──────────────────────
@@ -66,7 +60,7 @@ export interface ServiceLink {
 export interface ServiceCardData {
   title: string;
   description: string;
-  icon: 'web' | 'apps' | 'erp' | 'automation' | 'marketing' | 'conseil';
+  icon: 'web' | 'ecommerce' | 'apps' | 'erp' | 'automation' | 'marketing' | 'conseil';
   badges: string[]; // max 5 — technos / déclinaisons (DECISION 23)
   proof?: string;
   cta: ServiceLink;
@@ -128,8 +122,8 @@ export interface MethodStep {
   title: string;
   /** l'intention de la phase (1 phrase) */
   intent: string;
-  /** ce qu'on fait concrètement */
-  does: string;
+  /** ce qu'on fait concrètement — optionnel (Copy V1 : une seule phrase suffit parfois) */
+  does?: string;
   /** livrable éventuel de la phase */
   deliverable?: string;
 }

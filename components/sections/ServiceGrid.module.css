@@ -4,13 +4,17 @@
   padding-block: clamp(56px, 8vw, 80px);
 }
 
-/* Grille uniforme : 6 cartes, 3 colonnes (2 rangées). Chaque carte porte sa
-   propre bordure — pas de filet de grille. */
+/* Grille : 3 colonnes, 6 expertises + Conseil (copy V1). Chaque carte porte sa
+   propre bordure — pas de filet de grille. La carte Conseil, seule sur sa
+   ligne, s'étend sur toute la largeur (ligne de conclusion). */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 40px;
+}
+.grid [data-variant='conseil'] {
+  grid-column: 1 / -1;
 }
 
 .note {

@@ -1,10 +1,10 @@
 import type {
+  AudienceCard,
   CaseTeaser,
   ClientLogo,
   Cta,
   FaqItem,
   Hero,
-  NeedOption,
   ProofItem,
 } from '../types';
 
@@ -23,18 +23,22 @@ export const primaryCta: Cta = { label: 'Parlons de votre projet', href: '#conta
 // Vague 4 : titre raccourci (~30 %) sur demande PO — même promesse, même rythme.
 // Refonte Accueil — D26 : Hero purement typographique sur bleu profond, SANS
 // image (override PO). Sous-titre resserré à une seule phrase (brief S01/§09).
+// Copy V1 (validée PO) — remplace la formulation « Option A » ci-dessus.
 export const hero: Hero = {
-  eyebrow: 'Studio digital — Dakar',
-  title:
-    'Nous concevons et connectons les outils qui font tourner votre organisation.',
+  eyebrow: 'Sur le terrain, comme en ligne',
+  title: 'Nous construisons les outils numériques qui font avancer votre activité.',
   subtitle:
-    'Sites et applications sur mesure, boutiques e-commerce, plateformes métier, ERP et automatisations — par un studio de Dakar, au standard international.',
+    'Site vitrine, boutique en ligne, application métier, CRM ou automatisation : Connect Web réunit les expertises nécessaires pour concevoir un système cohérent, adapté à votre organisation et à votre marché.',
   ctas: [
     primaryCta,
     // Ancre du slider Cas phares (section id="cas" — ProjectSlider, Lot D).
-    { label: 'Voir les réalisations', href: '#cas' },
+    { label: 'Découvrir nos réalisations', href: '#cas' },
   ],
-  trustLine: ['Réponse sous 24 h', 'Devis gratuit', 'Vos accès vous appartiennent'],
+  trustLine: [
+    'Basés à Dakar',
+    'Projets locaux et internationaux',
+    'Accompagnement après la mise en ligne',
+  ],
 };
 
 // ── Bande de logos clients (V2.1 — §06.2 du Design Handoff) ───────────────
@@ -43,8 +47,8 @@ export const hero: Hero = {
 // Logos fournis par le PO dans /public/assets/logos (PNG détourés, fond
 // transparent). 3 encore à fournir : ATTA Africa, SCOD VTC, DDS Medical —
 // entrées sans `src`, masquées en prod, signalées [LOGO_MANQUANT] en preview.
-export const clientsIntro =
-  "Des marques, des commerces et des institutions d'Afrique de l'Ouest nous confient leurs plateformes.";
+// Copy V1 — bande de logos rattachée à la réassurance (StatsBlock), agrandie.
+export const clientsIntro = 'Ils nous ont confié leurs projets';
 
 export const clientLogos: ClientLogo[] = [
   { name: 'ATTA Africa' },
@@ -72,71 +76,41 @@ export const clientLogos: ClientLogo[] = [
 // réel ». Titre resserré (l'ancien « on part de votre besoin… » faisait doublon
 // avec le différenciateur #1). Un seul CTA par situation, la bande CTA
 // intermédiaire est supprimée (on ne garde que Hero + CTA final).
-export const needIntro = {
-  eyebrow: 'À qui on parle',
-  title: 'Des organisations très différentes, un même point de départ.',
-  lead: "Digitaliser, ce n'est pas acheter un outil. C'est régler un problème précis — être trouvé, vendre, arrêter de tout gérer à la main — puis relier les pièces entre elles.",
+// Copy V1 — section simplifiée (4 profils, plus d'accordéon « situation/
+// réponse/on livre » : un titre + une description, un seul lien de section).
+export const audienceIntro = {
+  eyebrow: 'À qui nous parlons',
+  title: 'Des organisations différentes, avec le même besoin : avancer.',
+  lead: "Nous accompagnons les structures qui veulent transformer une idée, résoudre un problème concret ou mieux faire travailler leurs outils numériques.",
 };
 
-export const needOptions: NeedOption[] = [
+export const audienceCards: AudienceCard[] = [
   {
-    key: 'visible',
-    label: 'Être visible et crédible',
-    hint: 'Administrations, institutions, ONG, entreprises, écoles',
-    situation:
-      "« On existe depuis des années, mais quand un bailleur, un partenaire ou un client nous cherche en ligne, il ne trouve rien de sérieux. »",
-    answer:
-      "On construit une présence qui tient la comparaison avec vos homologues internationaux : structure claire, contenu qui explique vraiment ce que vous faites, publications et rapports accessibles, performance et référencement soignés dès le départ.",
-    delivers: ['Site institutionnel', "Site d'entreprise", 'Site ONG & programmes', 'Refonte & SEO'],
-    link: { label: 'Découvrir', href: '/services/sites-entreprise' },
+    key: 'pme',
+    title: 'Entreprises et PME',
+    body: "Vous avez besoin d'un site, d'une application ou d'un système qui soutient réellement votre activité, sans devenir une charge supplémentaire pour votre équipe.",
   },
   {
-    key: 'vendre',
-    label: 'Vendre et se développer',
-    hint: 'E-commerce, cross-border, paiement mobile',
-    situation:
-      "« On vend bien à Dakar. Mais la diaspora nous écrit, et on n'a aucun moyen propre de l'encaisser. »",
-    answer:
-      'On construit des boutiques faites pour vendre au-delà des frontières : catalogue, paiement mobile et international côte à côte, livraison, relances. Le cross-border est notre terrain, pas une option.',
-    delivers: ['Shopify', 'WooCommerce', 'Paiement mobile & international', 'Livraison & logistique'],
-    link: { label: 'Découvrir', href: '/services/boutiques-en-ligne' },
+    key: 'ecommerce',
+    title: 'Marques et e-commerce',
+    body: 'Vous voulez vendre en ligne, structurer vos commandes, suivre vos performances et offrir une expérience cohérente à vos clients.',
   },
   {
-    key: 'operations',
-    label: 'Digitaliser ses opérations',
-    hint: 'Plateformes métier, portails, réservation, PWA',
-    situation:
-      '« Les demandes arrivent par WhatsApp, les réservations dans un tableur, et personne ne sait où en est quoi. »',
-    answer:
-      "On construit l'outil qui remplace le tableur : réservation, portail client ou fournisseur, suivi de dossiers, application mobile installable. Un seul endroit où l'information vit.",
-    delivers: ['Plateforme de réservation', 'Portail client', 'Application / PWA', 'Espace de gestion'],
-    link: { label: 'Découvrir', href: '/services/plateformes-applications' },
+    key: 'institutions',
+    title: 'Institutions et organisations',
+    body: 'Vous devez informer, mobiliser ou rendre un service accessible à différents publics, avec une plateforme claire, fiable et facile à administrer.',
   },
   {
-    key: 'piloter',
-    label: 'Piloter son activité',
-    hint: 'CRM, ERP / Odoo, POS, stocks, reporting',
-    capabilityBadge: true,
-    situation:
-      '« Les ventes sont dans la boutique, les stocks sur un carnet, les devis dans une boîte mail. »',
-    answer:
-      'On met en place la couche de gestion et on la relie à ce qui vend déjà : clients, devis, stocks, factures, tableaux de bord. Vous voyez votre activité en un seul endroit, à jour.',
-    delivers: ['Odoo / ERP', 'CRM', 'Stocks & POS', 'Reporting'],
-    link: { label: 'Découvrir', href: '/services/crm-erp-integrations' },
-  },
-  {
-    key: 'automatiser',
-    label: 'Automatiser & gagner du temps',
-    hint: 'Workflows, intégrations, notifications, IA appliquée',
-    capabilityBadge: true,
-    situation:
-      '« Chaque commande demande cinq copier-coller. Multipliés par trente par jour. »',
-    answer:
-      "On identifie les tâches répétitives et on les fait disparaître : traitement des commandes, relances, notifications, reporting automatique. L'IA n'intervient que là où elle règle un problème réel.",
-    delivers: ['Workflows automatisés', 'Intégrations entre outils', 'Notifications & relances', 'IA appliquée aux processus'],
-    link: { label: 'Découvrir', href: '/services/ia-automatisation' },
+    key: 'croissance',
+    title: 'Équipes en croissance',
+    body: "Vos outils se multiplient, les tâches manuelles s'accumulent et les informations circulent mal. Nous vous aidons à remettre de la cohérence dans l'ensemble.",
   },
 ];
+
+export const audienceLink: Cta = {
+  label: "Trouver l'accompagnement adapté",
+  href: '/services/conseil-strategie',
+};
 
 // ── A4 — Pour qui : SECTION SUPPRIMÉE (correction finale). La diversité des
 //    cibles est portée par « Du site au système » (multi-segment) et par les
@@ -157,13 +131,16 @@ export const needOptions: NeedOption[] = [
 // Refonte Accueil — Lot 2 : la section est devenue une exploration interactive.
 // Les modules et leur contenu vivent dans `content/fr/systemExplorer.ts`.
 // `framing` est conservé (cadre honnête, rendu sous l'explorateur).
+// Copy V1 — « Nos capacités » : reformulation + ajout d'un CTA de conclusion.
 export const systemIntro = {
-  eyebrow: 'Du site au système',
-  title: "Un site, c'est le début. Pas la fin.",
-  lead: "Un site institutionnel, une boutique, une plateforme, des automatisations : on ne suppose pas que vous avez besoin de tout. On construit ce qui compte, puis on connecte le reste — jusqu'à ce que vos outils forment un système qui tourne.",
+  eyebrow: 'Nos capacités',
+  title: "Un projet peut commencer par un site. Il ne s'arrête pas forcément là.",
+  lead: 'Sélectionnez un élément pour comprendre son rôle dans votre environnement numérique.',
   framing:
-    "On ne vous vendra pas de l'IA pour faire moderne. On connecte ce qui vous fait gagner du temps, rien de plus. Ce qui suit, ce sont des possibilités selon le projet — pas une intégration universelle.",
+    "Chaque organisation n'a pas besoin de tous ces éléments. Notre rôle est d'identifier la combinaison utile, puis de la construire étape par étape.",
 };
+
+export const systemCta: Cta = { label: 'Parler de votre organisation', href: '#contact' };
 
 // ── A8 — Réalisations (carrousel, contenu figé M2 → WordPress M3) ─────────
 export const casesIntro = {
@@ -231,55 +208,66 @@ export const proofItems: ProofItem[] = [
 //    §06.9). L'ancienne version « 6 étapes + rail scroll-spy » est abandonnée.
 
 // ── A11 — FAQ ─────────────────────────────────────────────────────────
+// Copy V1 (validée PO) — remplace les 6 questions ci-dessus.
+// ⚠️ Tarif site vitrine : 300 000 FCFA (V1) vs 3 000 000 FCFA (version
+// précédente ci-dessus, DECISION antérieure) — écart x10 à faire confirmer
+// par le PO avant mise en ligne (le tarif boutique, 500 000 FCFA, est stable
+// entre les deux versions).
 export const faqIntro = {
   eyebrow: 'Questions fréquentes',
-  title: 'Ce que les organisations nous demandent avant de démarrer.',
+  title: "Les questions que l'on nous pose avant de commencer.",
 };
 
-// 6 questions §06.10 du Design Handoff, orientées objection.
 export const faqItems: FaqItem[] = [
   {
-    q: 'Combien coûte un projet avec vous ?',
-    a: "À titre indicatif : un site vitrine démarre à 3 000 000 FCFA, une boutique en ligne à 500 000 FCFA, une plateforme métier se chiffre selon les besoins. Chaque devis est ensuite cadré sur le projet réel — pas de package figé. Le cadrage et le devis sont gratuits.",
+    q: 'Combien coûte un projet avec Connect Web ?',
+    a: 'Le tarif dépend du périmètre, des fonctionnalités et du niveau d’accompagnement. Un site vitrine commence à partir de 300 000 FCFA et une boutique en ligne à partir de 500 000 FCFA, selon les fonctionnalités. Un devis détaillé est établi après le premier échange.',
+  },
+  {
+    q: 'Combien de temps faut-il pour lancer un projet ?',
+    a: 'Le calendrier dépend du type de projet et de la disponibilité des contenus. Nous organisons le travail par étapes afin de vous présenter rapidement une première version exploitable.',
   },
   {
     q: 'Pouvez-vous reprendre un projet existant ?',
-    a: 'Oui, si le code ou le CMS le permet. On audite gratuitement pour vous dire ce qui est réutilisable et ce qui doit être refait.',
+    a: "Oui. Nous commençons par analyser l'existant afin de déterminer ce qui peut être conservé, amélioré ou doit être reconstruit.",
   },
   {
-    q: 'Vous travaillez avec WordPress, Shopify, du sur-mesure ? Comment choisissez-vous ?',
-    a: "On choisit selon le projet. WordPress ou Shopify si la solution du marché convient ; du sur-mesure (Next.js, React) quand aucune plateforme n'apporte de vraie valeur. Jamais l'inverse.",
+    q: 'Travaillez-vous uniquement au Sénégal ?',
+    a: 'Non. Nous sommes basés à Dakar et pouvons accompagner des organisations locales comme internationales.',
   },
   {
-    q: 'Combien de temps pour un projet ?',
-    a: 'De 3 à 6 semaines pour un site institutionnel, 6 à 12 semaines pour une boutique complète, 8 à 16 semaines pour une plateforme métier. On fixe le calendrier avec vous au cadrage.',
+    q: 'Assurez-vous le suivi après la mise en ligne ?',
+    a: "Oui. Selon le projet, nous pouvons assurer la maintenance, le suivi, les améliorations et l'accompagnement de votre équipe.",
   },
   {
-    q: 'Que se passe-t-il après la mise en ligne ?',
-    a: "On reste disponibles pour la maintenance, les évolutions, les intégrations. Vous n'êtes jamais lié à un contrat — vous partez quand vous voulez, et vous avez toujours vos accès.",
-  },
-  {
-    q: 'Travaillez-vous hors du Sénégal ?',
-    a: "Oui. ATTA Africa livre depuis Dakar vers l'Europe et l'Amérique du Nord ; on gère l'international quotidiennement. Nos équipes travaillent en français et en anglais.",
+    q: 'Pouvez-vous connecter nos outils existants ?',
+    a: 'Oui, lorsque leurs API et leurs conditions techniques le permettent. Nous vérifions cette faisabilité avant de confirmer l’intégration.',
   },
 ];
 
-export const faqOutro = { text: 'Une autre question ?', link: { label: 'Parlons-en', href: '#contact' } as Cta };
+export const faqOutro = {
+  text: 'Une autre question ?',
+  link: { label: 'Contactez-nous', href: '#contact' } as Cta,
+};
 
 // ── A12 — Contact — RESTAURÉ (version d'avant la refonte V2.1). Rendu par
 //    components/sections/ContactSection.tsx + ContactForm.tsx. Formulaire UI
 //    seule, non branché (câblage CRM = M5). La variante FinalCta + ProjectForm
 //    + modales du Lot D2 est écartée.
+// Copy V1 — le titre n'affirme plus de délai de réponse chiffré (le délai réel
+// reste à confirmer par le PO, voir `contactFormContent.reassurancePending`).
 export const contactIntro = {
-  eyebrow: 'Contact',
-  title: 'Décrivez-nous votre projet, on revient vers vous sous 24 h.',
-  lead: "Même si vous ne savez pas encore ce dont vous avez besoin. Un échange suffit souvent à y voir clair — et il est gratuit.",
+  eyebrow: 'Parlons de votre projet',
+  title: 'Décrivez-nous votre besoin. Nous vous aiderons à clarifier la prochaine étape.',
+  lead: 'Site, boutique, application, système interne ou automatisation : expliquez-nous où vous en êtes et ce que vous souhaitez améliorer.',
 };
 
 export const contactPoints = [
+  { label: 'contact@connect-web.tech', href: 'mailto:contact@connect-web.tech' },
   { label: '+221 77 900 62 82', href: 'tel:+221779006282' },
   { label: '+221 78 343 82 49', href: 'tel:+221783438249' },
   { label: 'WhatsApp', href: 'https://wa.me/221783438249' },
+  { label: 'Rond-point SCAT-URBAM, G49 · Dakar, Sénégal', href: '' },
 ];
 
 export const contactPerson = {
@@ -288,31 +276,36 @@ export const contactPerson = {
   // nom + photo : à valider (jamais de placeholder visible côté public — géré par le flag)
 };
 
+// Copy V1 — champs alignés sur le brief (Nom, Entreprise, Email, Téléphone,
+// Type de projet, Budget indicatif, Votre besoin). `reassurancePending` :
+// le délai de réponse réel n'est pas confirmé par le PO — jamais affirmé en
+// production, seulement signalé en preview (voir ContactForm.tsx).
 export const contactFormContent = {
   title: 'Parlez-nous de votre projet',
-  orgTypes: [
-    'Entreprise / PME',
-    'Commerce ou marque',
-    'ONG / institution',
-    'École / organisme de formation',
-    'Industrie / filière',
-    'Entrepreneur / porteur de projet',
+  projectTypes: [
+    'Site vitrine',
+    'Boutique en ligne',
+    'Application web / logicielle',
+    'CRM / ERP',
+    'Automatisation / IA',
+    'Marketing / acquisition',
+    'Je ne sais pas encore',
   ],
-  goals: [
-    'Être visible et crédible',
-    'Vendre et me développer',
-    'Digitaliser mes opérations',
-    'Piloter mon activité',
-    'Automatiser et gagner du temps',
+  budgets: [
+    'Moins de 500 000 FCFA',
+    '500 000 – 1 500 000 FCFA',
+    '1 500 000 – 5 000 000 FCFA',
+    'Plus de 5 000 000 FCFA',
     'Je ne sais pas encore',
   ],
   submitLabel: 'Envoyer ma demande',
   submittingLabel: 'Envoi…',
-  reassurance: 'Réponse sous 24 h · Devis gratuit · Vos accès vous appartiennent',
+  reassurance: 'Premier échange sans engagement · Vos informations restent confidentielles',
+  reassurancePending: 'Délai de réponse — à confirmer',
   // Vague 4 : formulaire branché sur /api/contact (POST). Le stub back se
   // contente d'accepter la requête — le vrai câblage CRM/notification est un
   // jalon ultérieur (voir app/api/contact/route.ts).
-  successMessage: 'Reçu. On revient vers vous sous 24 h.',
+  successMessage: 'Reçu. On revient vers vous rapidement.',
   errorMessage:
     "L'envoi a échoué. Réessayez, ou appelez-nous / écrivez sur WhatsApp.",
 };

@@ -18,15 +18,15 @@ import styles from './page.module.css';
 
 // Accueil — contenu HARDCODÉ, FR uniquement.
 //
-// REFONTE ACCUEIL — Lot 2 (sept. 2026). Page blanc-dominante avec fonds
-// alternés, plus minimaliste et plus interactive.
-//   Ordre : 01 Hero (pétrole) · 02 Réassurance/StatsBlock (blanc)
-//   · 03 À qui on parle/NeedSelector (ivoire) · 04 Services/ServiceGrid (blanc)
-//   · 05 Ce qui nous distingue/Differentiators (ivoire) · 06 Du site au système/
-//   SystemRoad (pétrole, explorateur interactif) · 07 Logos clients/LogoStrip
-//   (ivoire) · 08 Réalisations/ProjectSlider (blanc) · Méthode (ivoire)
-//   · Blog (pétrole, 3 derniers articles) · Ressources (flag) · FAQ (blanc)
-//   · Contact (pétrole) · Footer.
+// REFONTE ACCUEIL — Lot 2 (sept. 2026) + copy V1. Page blanc-dominante avec
+// fonds alternés, plus minimaliste et plus interactive.
+//   Ordre : 01 Hero (pétrole) · 02 Réassurance/StatsBlock + LogoStrip (blanc,
+//   un seul bloc « réassurance minimaliste » — copy V1) · 03 À qui on parle/
+//   NeedSelector (ivoire) · 04 Services/ServiceGrid (blanc) · 05 Ce qui nous
+//   distingue/Differentiators (ivoire) · 06 Du site au système/SystemRoad
+//   (pétrole, explorateur interactif) · 07 Réalisations/ProjectSlider (blanc)
+//   · Méthode (ivoire) · Blog (pétrole, 3 derniers articles) · Ressources
+//   (flag) · FAQ (blanc) · Contact (pétrole) · Footer.
 //
 // Retiré du render : TechnoStrip (composant conservé dans le repo).
 
@@ -42,11 +42,11 @@ export default async function HomePage({
     <div className={styles.page}>
       <Hero locale={locale} />
       <StatsBlock />
+      <LogoStrip />
       <NeedSelector locale={locale} />
       <ServiceGrid locale={locale} />
       <Differentiators />
       <SystemRoad />
-      <LogoStrip />
       <ProjectSlider locale={locale} />
       <Method />
       <BlogSection locale={locale} />

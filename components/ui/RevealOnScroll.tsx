@@ -8,11 +8,13 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 export function RevealOnScroll({
   className,
   delay,
+  style,
   children,
 }: {
   className?: string;
   /** décalage en ms pour un effet de stagger entre frères (60–80ms conseillé) */
   delay?: number;
+  style?: React.CSSProperties;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,7 +50,7 @@ export function RevealOnScroll({
       ref={ref}
       data-reveal
       className={[shown ? 'cw-in' : undefined, className].filter(Boolean).join(' ')}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      style={{ ...style, ...(delay ? { transitionDelay: `${delay}ms` } : null) }}
     >
       {children}
     </div>

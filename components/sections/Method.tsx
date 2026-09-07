@@ -1,9 +1,10 @@
 'use client';
 
 import { useId, useState, type KeyboardEvent } from 'react';
+import Link from 'next/link';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
-import { methodeIntro, methodeSteps } from '@/content/fr/methode';
+import { methodeIntro, methodeSteps, methodeOutro } from '@/content/fr/methode';
 import styles from './Method.module.css';
 
 // S09 — Méthode (Refonte Accueil, D29). 4 phases navigables :
@@ -105,6 +106,13 @@ export function Method() {
             ))}
           </div>
         </RevealOnScroll>
+
+        <RevealOnScroll>
+          <p className={styles.outro}>{methodeOutro.text}</p>
+          <Link href={methodeOutro.link.href} className={styles.outroLink}>
+            {methodeOutro.link.label} →
+          </Link>
+        </RevealOnScroll>
       </div>
     </section>
   );
@@ -114,7 +122,7 @@ function PhaseBody({ step }: { step: (typeof methodeSteps)[number] }) {
   return (
     <>
       <p className={`cw-serif ${styles.intent}`}>{step.intent}</p>
-      <p className={styles.does}>{step.does}</p>
+      {step.does ? <p className={styles.does}>{step.does}</p> : null}
       {step.deliverable ? (
         <p className={styles.deliverable}>
           <span className={styles.deliverableLabel}>Livrable</span>

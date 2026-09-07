@@ -11,8 +11,17 @@ export const chiffresIntro = {
 };
 
 export const stats: StatTile[] = [
-  { label: 'Expérience', value: '3 ans', caption: "d'expérience sur des projets réels", icon: 'calendar' },
-  { label: 'Projets', value: '+20', caption: 'sites, boutiques et systèmes livrés', icon: 'folder' },
-  { label: 'Délais', value: '2 semaines', caption: 'délai moyen du premier livrable', icon: 'bolt' },
-  { label: 'Fidélité', value: '90 %', caption: 'de clients qui reviennent', icon: 'repeat' },
+  { label: 'Expérience', value: '3 ans', caption: "d'expérience", icon: 'calendar' },
+  { label: 'Projets', value: '20 projets', caption: 'réalisés', icon: 'folder' },
+  { label: 'Délais', value: '2 semaines', caption: 'avant le premier livrable', icon: 'bolt' },
 ];
+
+// Copy V1 — brief PO : « [INTITULÉ ET SOURCE À CONFIRMER] ». Ne publier ce
+// chiffre qu'après confirmation de son exactitude et de sa signification —
+// masqué en production, visible en preview uniquement (StatsBlock.tsx).
+export const pendingStat: StatTile = {
+  label: '[À confirmer]',
+  value: '90 %',
+  caption: '[intitulé et source à confirmer]',
+  icon: 'repeat',
+};

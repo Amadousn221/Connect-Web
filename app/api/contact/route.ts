@@ -20,8 +20,10 @@ export const dynamic = 'force-dynamic';
 type ContactPayload = {
   nom?: string;
   email?: string;
+  telephone?: string;
   organisation?: string;
-  objectif?: string;
+  typeProjet?: string;
+  budget?: string;
   message?: string;
 };
 
@@ -33,12 +35,14 @@ async function sendEmail(p: Required<ContactPayload>): Promise<'ok' | 'fail' | '
   if (!key) return 'skip';
 
   const text = [
-    `Nom          : ${p.nom}`,
-    `E-mail       : ${p.email}`,
-    `Organisation : ${p.organisation || '—'}`,
-    `Objectif     : ${p.objectif || '—'}`,
+    `Nom            : ${p.nom}`,
+    `E-mail         : ${p.email}`,
+    `Téléphone      : ${p.telephone || '—'}`,
+    `Entreprise     : ${p.organisation || '—'}`,
+    `Type de projet : ${p.typeProjet || '—'}`,
+    `Budget         : ${p.budget || '—'}`,
     '',
-    'Message :',
+    'Besoin décrit :',
     p.message,
   ].join('\n');
 
@@ -72,8 +76,14 @@ async function upsertHubspotContact(p: Required<ContactPayload>): Promise<void> 
     firstname: p.nom,
     hs_lead_status: 'NEW',
   };
+  if (p.telephone) properties.phone = p.telephone;
   if (p.organisation) properties.company = p.organisation;
   if (p.message) properties.message = p.message;
+  // `project_type` / `budget` : propriétés personnalisées, best-effort — si
+  // elles n'existent pas dans le portail HubSpot, l'appel échoue silencieusement
+  // (catch ci-dessous), sans jamais faire échouer la soumission du formulaire.
+  if (p.typeProjet) properties.project_type = p.typeProjet;
+  if (p.budget) properties.budget = p.budget;
 
   try {
     const res = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
@@ -127,8 +137,10 @@ export async function POST(request: Request) {
     nom,
     email,
     message,
+    telephone: body.telephone?.trim() ?? '',
     organisation: body.organisation?.trim() ?? '',
-    objectif: body.objectif?.trim() ?? '',
+    typeProjet: body.typeProjet?.trim() ?? '',
+    budget: body.budget?.trim() ?? '',
   };
 
   const [emailResult] = await Promise.all([
@@ -139,8 +151,10 @@ export async function POST(request: Request) {
   console.info('[contact] demande reçue', {
     nom,
     email,
+    telephone: payload.telephone || null,
     organisation: payload.organisation || null,
-    objectif: payload.objectif || null,
+    typeProjet: payload.typeProjet || null,
+    budget: payload.budget || null,
     email_status: emailResult,
   });
 

@@ -8,6 +8,7 @@ import type { SVGProps } from 'react';
 
 export type ServiceIconName =
   | 'web'
+  | 'ecommerce'
   | 'apps'
   | 'erp'
   | 'automation'
@@ -41,6 +42,13 @@ const ICONS: Record<ServiceIconName, (props: IconProps) => React.ReactElement> =
     <Svg {...props}>
       <rect x="3" y="4" width="18" height="16" rx="1.5" />
       <path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01" />
+    </Svg>
+  ),
+  // Sac / panier — boutique en ligne
+  ecommerce: (props) => (
+    <Svg {...props}>
+      <path d="M5 8h14l-1.3 10.5a2 2 0 0 1-2 1.98H8.3a2 2 0 0 1-2-1.98L5 8Z" />
+      <path d="M8.5 8V6a3.5 3.5 0 0 1 7 0v2" />
     </Svg>
   ),
   // Panneaux applicatifs superposés

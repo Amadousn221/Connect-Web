@@ -1,81 +1,77 @@
 import type { ServiceCardData } from '../types';
 
-// ── S06 — Nos services / expertises ─────────────────────────────────────────
+// ── S06 — Nos services / expertises (copy V1) ───────────────────────────────
 // Refonte Accueil — D27 : cartes à ICÔNE sur-mesure (captures retirées — elles
 // se concentrent sur Réalisations et les pages de cas).
 // Lot 2 : la ligne de preuve (`proof`) est RETIRÉE de ces cartes (la preuve est
 // portée par Réalisations et les logos ailleurs sur la page). Le champ reste
 // dans le type (optionnel) mais n'est plus renseigné ni rendu ici.
-// Taxonomie inchangée (verrouillée, DECISION 23) : 5 expertises + Conseil.
-// Les technos restent des badges nichés, jamais des titres d'offre.
+// Copy V1 : 7 cartes (E-commerce détachée de « Conception et développement
+// web » en carte autonome — la taxonomie 5+Conseil de la DECISION 23 devient
+// 6 expertises + Conseil).
 
 export const servicesIntro = {
-  eyebrow: 'Nos capacités',
-  title: 'Cinq expertises, une équipe, un système.',
-  lead: "On construit selon votre besoin : une présence qui crédibilise, une boutique qui vend, une plateforme qui fait tourner l'opération, des automatisations qui font gagner du temps.",
+  eyebrow: 'Nos services',
+  title: "Les expertises nécessaires pour passer de l'idée à un système qui fonctionne.",
+  lead: "Un projet peut commencer par un site, une boutique, une application ou un problème interne. Nous choisissons les outils en fonction du résultat recherché, puis nous les faisons travailler ensemble lorsque le projet l'exige.",
 };
 
 export const serviceCards: ServiceCardData[] = [
   {
     title: 'Conception et développement web',
     description:
-      "Sites institutionnels, sites d'entreprise, boutiques en ligne : une présence qui vous représente et qui, quand il le faut, vend.",
+      "Sites institutionnels, sites d'entreprise et expériences web conçus pour présenter clairement votre activité, renforcer votre crédibilité et faciliter la prise de contact.",
     icon: 'web',
-    badges: [
-      'Site vitrine',
-      'Site institutionnel',
-      'E-commerce Shopify',
-      'E-commerce WooCommerce',
-      'Sur-mesure',
-    ],
-    // Pas de page « conception-developpement-web » : on renvoie vers la page
-    // d'offre la plus proche (présence / crédibilité).
-    cta: { label: "Voir l'offre", href: '/services/sites-entreprise' },
+    badges: ['UX/UI', 'Développement sur mesure', 'CMS', 'Maintenance'],
+    cta: { label: 'Découvrir le développement web', href: '/services/sites-entreprise' },
   },
   {
-    title: 'Logiciels & applications web',
+    title: 'E-commerce',
     description:
-      "Plateformes métier, applications web sur mesure, PWA : l'outil s'adapte à votre opération, pas l'inverse.",
+      'Boutiques en ligne adaptées aux habitudes de vos clients, à vos moyens de paiement et à votre organisation quotidienne.',
+    icon: 'ecommerce',
+    badges: ['Shopify', 'WooCommerce', 'Paiement mobile', 'Vente internationale'],
+    cta: { label: "Découvrir l'e-commerce", href: '/services/boutiques-en-ligne' },
+  },
+  {
+    title: 'Logiciels et applications web',
+    description:
+      'Applications métier, portails et plateformes conçus autour de vos processus, de vos utilisateurs et de vos contraintes réelles.',
     icon: 'apps',
-    badges: [
-      'Plateforme métier',
-      'Application web',
-      'PWA',
-      'Espace client',
-      'Tableau de bord',
-    ],
-    cta: { label: "Voir l'offre", href: '/services/plateformes-applications' },
+    badges: ['Applications web', 'Portails', 'API', 'Tableaux de bord'],
+    cta: { label: 'Découvrir les applications web', href: '/services/plateformes-applications' },
   },
   {
-    title: 'ERP / CRM',
+    title: 'ERP, CRM et intégrations',
     description:
-      'Centraliser vos ventes, vos stocks et vos clients dans un seul système, relié à ce qui vend déjà.',
+      'Des outils pour centraliser les données, suivre les opérations et limiter les doubles saisies entre vos équipes.',
     icon: 'erp',
-    badges: ['Odoo', 'HubSpot', 'Gestion des stocks', 'Ventes', 'Intégrations'],
-    cta: { label: "Voir l'offre", href: '/services/crm-erp-integrations' },
+    badges: ['CRM', 'ERP', 'Odoo', "Intégrations API"],
+    cta: { label: 'Découvrir les systèmes métier', href: '/services/crm-erp-integrations' },
   },
   {
-    title: 'IA & automatisation',
+    title: 'IA et automatisation',
     description:
-      'Faire disparaître les tâches répétitives : traitement de commandes, relances, reporting — pour que votre équipe se concentre sur le reste.',
+      'Des automatisations utiles pour transmettre les informations, déclencher les tâches répétitives et libérer du temps dans vos opérations.',
     icon: 'automation',
-    badges: ['n8n', 'Automatisation', 'Reporting auto', 'Relance panier', 'API'],
-    cta: { label: "Voir l'offre", href: '/services/ia-automatisation' },
+    badges: ['Workflows', 'Reporting', 'Agents assistés par IA', "Connexions d'outils"],
+    cta: { label: "Découvrir l'automatisation", href: '/services/ia-automatisation' },
   },
   {
-    title: 'Marketing & génération de prospects',
-    description: 'Attirer, qualifier et convertir : campagnes, e-mail, acquisition.',
-    icon: 'marketing',
-    badges: ['Mailchimp', 'Klaviyo', 'Email marketing', 'Campagnes', 'Acquisition'],
-    cta: { label: "Voir l'offre", href: '/services/marketing-acquisition' },
-  },
-  {
-    title: 'Conseil & stratégie',
+    title: 'Marketing et génération de prospects',
     description:
-      "Avant de construire, comprendre. Audit, cadrage, choix d'architecture, priorisation : on part de votre problème, pas de notre catalogue.",
+      'Des dispositifs d’acquisition conçus pour attirer les bonnes personnes, mesurer les actions et transformer davantage de visites en opportunités.',
+    icon: 'marketing',
+    badges: ['SEO', 'Publicité', 'Emailing', 'Optimisation de conversion'],
+    cta: { label: "Découvrir l'acquisition", href: '/services/marketing-acquisition' },
+  },
+  {
+    title: 'Conseil et stratégie',
+    description:
+      "Vous ne savez pas encore quelle solution construire ou quelle priorité traiter ? Nous analysons l'existant et transformons vos besoins en plan d'action clair.",
     icon: 'conseil',
-    badges: ['Audit', 'Cadrage', 'Architecture', 'Choix techno', 'Priorisation'],
+    badges: [],
     variant: 'conseil',
-    cta: { label: "Demander l'audit", href: '#contact' },
+    cta: { label: 'Demander un accompagnement stratégique', href: '/services/conseil-strategie' },
   },
 ];
