@@ -1,10 +1,10 @@
 import type {
-  AudienceCard,
   CaseTeaser,
   ClientLogo,
   Cta,
   FaqItem,
   Hero,
+  NeedOption,
   ProofItem,
 } from '../types';
 
@@ -76,41 +76,61 @@ export const clientLogos: ClientLogo[] = [
 // réel ». Titre resserré (l'ancien « on part de votre besoin… » faisait doublon
 // avec le différenciateur #1). Un seul CTA par situation, la bande CTA
 // intermédiaire est supprimée (on ne garde que Hero + CTA final).
-// Copy V1 — section simplifiée (4 profils, plus d'accordéon « situation/
-// réponse/on livre » : un titre + une description, un seul lien de section).
-export const audienceIntro = {
-  eyebrow: 'À qui nous parlons',
-  title: 'Des organisations différentes, avec le même besoin : avancer.',
-  lead: "Nous accompagnons les structures qui veulent transformer une idée, résoudre un problème concret ou mieux faire travailler leurs outils numériques.",
+// Design éditorial restauré (liste + panneau desktop, accordéon mobile,
+// ligne orange active) — contenu enrichi à 4 profils (remplace la grille de
+// cartes de la copy V1, écartée à la demande du PO).
+export const needIntro = {
+  eyebrow: 'À qui on parle',
+  title: 'Des organisations très différentes, un même point de départ.',
+  lead: "Digitaliser, ce n'est pas simplement acheter un outil. C'est résoudre un problème précis : être mieux trouvé, vendre, simplifier une opération ou faire circuler les informations entre les équipes.",
 };
 
-export const audienceCards: AudienceCard[] = [
+export const needOptions: NeedOption[] = [
   {
-    key: 'pme',
-    title: 'Entreprises et PME',
-    body: "Vous avez besoin d'un site, d'une application ou d'un système qui soutient réellement votre activité, sans devenir une charge supplémentaire pour votre équipe.",
+    key: 'visible',
+    label: 'Être visible et crédible',
+    hint: 'Institutions, ONG, écoles, associations et entreprises',
+    situation:
+      "« Notre organisation existe et agit depuis plusieurs années. Pourtant, lorsqu'un partenaire, un bailleur ou un futur client nous cherche en ligne, il ne comprend pas clairement qui nous sommes ni ce que nous faisons. »",
+    answer:
+      "Nous construisons une présence numérique claire et crédible : une structure qui explique réellement votre mission, des contenus faciles à consulter, des publications et documents accessibles, ainsi qu'une base technique pensée pour la performance et le référencement.",
+    delivers: ['Site institutionnel', "Site d'entreprise", 'UX/UI', 'Référencement'],
+    link: { label: 'Découvrir nos solutions web', href: '/services/sites-entreprise' },
   },
   {
-    key: 'ecommerce',
-    title: 'Marques et e-commerce',
-    body: 'Vous voulez vendre en ligne, structurer vos commandes, suivre vos performances et offrir une expérience cohérente à vos clients.',
+    key: 'vendre',
+    label: 'Vendre en ligne',
+    hint: 'Marques, commerces, créateurs et distributeurs',
+    situation:
+      '« Nous voulons vendre en ligne, mais nous devons aussi gérer les paiements, les commandes, les stocks, les livraisons et le suivi client sans ajouter davantage de travail manuel. »',
+    answer:
+      "Nous concevons une boutique adaptée à vos produits, à vos clients et à votre organisation. Le parcours d'achat, les moyens de paiement, le traitement des commandes et les outils de suivi sont pensés comme un ensemble cohérent.",
+    delivers: ['Shopify', 'WooCommerce', 'Paiement mobile', 'Vente internationale'],
+    link: { label: 'Découvrir nos solutions e-commerce', href: '/services/boutiques-en-ligne' },
   },
   {
-    key: 'institutions',
-    title: 'Institutions et organisations',
-    body: 'Vous devez informer, mobiliser ou rendre un service accessible à différents publics, avec une plateforme claire, fiable et facile à administrer.',
+    key: 'operations',
+    label: 'Digitaliser une opération',
+    hint: 'PME, équipes métier, startups et services',
+    situation:
+      '« Une partie importante de notre activité repose encore sur des fichiers dispersés, des messages, des formulaires manuels ou des informations difficiles à retrouver. »',
+    answer:
+      "Nous transformons ce fonctionnement en application, portail ou espace métier adapté à vos utilisateurs. L'objectif n'est pas d'ajouter un outil de plus, mais de rendre le processus plus clair, plus rapide et plus facile à suivre.",
+    delivers: ['Application web', 'Portail', 'Tableau de bord', 'Intégration API'],
+    link: { label: 'Découvrir les applications web', href: '/services/plateformes-applications' },
   },
   {
-    key: 'croissance',
-    title: 'Équipes en croissance',
-    body: "Vos outils se multiplient, les tâches manuelles s'accumulent et les informations circulent mal. Nous vous aidons à remettre de la cohérence dans l'ensemble.",
+    key: 'automatiser',
+    label: 'Relier et automatiser',
+    hint: 'Entreprises en croissance et équipes équipées de plusieurs outils',
+    situation:
+      '« Nous avons déjà un site, un CRM, des fichiers et plusieurs logiciels, mais les informations circulent mal et notre équipe répète les mêmes tâches. »',
+    answer:
+      'Nous identifions les échanges qui peuvent être simplifiés, puis nous connectons les outils pertinents. Les données peuvent circuler plus facilement, les tâches répétitives être déclenchées automatiquement et les indicateurs utiles être regroupés dans des rapports lisibles.',
+    delivers: ['CRM', 'ERP', 'Automatisation', 'Reporting'],
+    link: { label: "Découvrir l'automatisation", href: '/services/ia-automatisation' },
   },
 ];
-
-export const audienceLink: Cta = {
-  label: "Trouver l'accompagnement adapté",
-  href: '/services/conseil-strategie',
-};
 
 // ── A4 — Pour qui : SECTION SUPPRIMÉE (correction finale). La diversité des
 //    cibles est portée par « Du site au système » (multi-segment) et par les

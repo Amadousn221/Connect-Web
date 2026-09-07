@@ -1,62 +1,197 @@
-/* « À qui nous parlons » (copy V1) — grille statique de 4 profils. */
 .section {
+  /* Design éditorial restauré : « À qui on parle » sur crème. */
   background: var(--cream);
   padding-block: clamp(56px, 8vw, 84px);
 }
 
-.grid {
+.editorial {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 44px;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 56px;
 }
 
-.card {
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  padding: var(--space-xl);
+.list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
-.cardTitle {
-  margin: 0;
-  font-size: 19px;
-  line-height: 1.25;
-  font-weight: 500;
+.itemWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-left: 2px solid var(--border);
+  padding: 18px 22px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: border-color var(--dur-quick) ease;
+}
+.item[data-active='true'] {
+  border-left-color: var(--orange);
+}
+
+/* Titre de profil — resserré (32-36 desktop demandé pour le titre de section
+   restait trop grand pour un intitulé de profil) : 28px desktop / 24px mobile. */
+.itemTitle {
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--ink-soft);
+}
+.item[data-active='true'] .itemTitle {
   color: var(--ink);
 }
 
-.cardBody {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.6;
+.itemHint {
+  font-size: 13.5px;
   color: var(--ink-soft);
 }
 
-.link {
+/* ── Panneau latéral (desktop) ─────────────────────────────────────────── */
+.panel {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  padding: 40px 38px;
+  animation: fade 0.45s var(--ease-default);
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Panneau accordéon (mobile / tablette) ─────────────────────────────── */
+.panelMobile {
+  display: none; /* activé en dessous de 1024px */
+  border-left: 2px solid var(--orange);
+  overflow: hidden;
+}
+.panelMobileInner {
+  padding: 4px 22px 26px;
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.capBadge {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+}
+
+.situation {
+  font-size: 23px;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0 0 26px;
+  text-wrap: pretty;
+}
+
+.answer {
+  composes: cw-prose from global;
+  color: var(--ink-soft);
+  margin: 0 0 28px;
+}
+
+.deliversLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 12px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.more {
   display: inline-block;
-  margin-top: 32px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--orange);
 }
-.link:hover {
+.more:hover {
   color: var(--orange-h);
 }
 
+/* ── Mobile / tablette : accordéon ───────────────────────────────────────
+   Le contenu s'ouvre juste sous l'entrée cliquée. `grid-template-rows`
+   0fr → 1fr : hauteur animée sans max-height fixe. */
 @media (max-width: 1023px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+  .editorial {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .panel {
+    display: none;
+  }
+  .panelMobile {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 200ms ease;
+  }
+  .panelMobile[data-open='true'] {
+    grid-template-rows: 1fr;
+  }
+  .panelMobile > .panelMobileInner {
+    min-height: 0;
+  }
+  .itemTitle {
+    font-size: 24px;
+  }
+  .situation {
+    font-size: 19px;
+    margin-bottom: 18px;
+  }
+  .answer {
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding-block: 56px;
+    padding: 56px 0;
   }
-  .grid {
-    grid-template-columns: 1fr;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+  .panelMobile {
+    transition: none;
   }
 }

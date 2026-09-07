@@ -21,13 +21,19 @@ export interface ClientLogo {
   src?: string;
 }
 
-// ── S05 — « À qui nous parlons » (Copy V1) : grille de 4 profils, titre +
-//    description. Remplace l'ancien sélecteur interactif `NeedOption`
-//    (situation/réponse/on livre/lien par carte) — un seul lien de section.
-export interface AudienceCard {
+// ── A3/S05 — « À qui on parle » : sélecteur interactif restauré (design
+//    éditorial d'origine — liste + panneau desktop, accordéon mobile, ligne
+//    orange active). Contenu enrichi (copy « restaurer et enrichir », 4 profils).
+export interface NeedOption {
   key: string;
-  title: string;
-  body: string;
+  label: string;
+  hint: string;
+  /** badge « capacité démontrée » (Odoo, automatisation) */
+  capabilityBadge?: boolean;
+  situation: string; // citation « votre situation »
+  answer: string;
+  delivers: string[];
+  link: Cta;
 }
 
 // ── S07 — « Du site au système » : un module de l'écosystème, exploré par
