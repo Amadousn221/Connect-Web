@@ -12,8 +12,7 @@
 //   /ressources · /agence · /contact · /mentions-legales ·
 //   /politique-de-confidentialite
 //   ℹ Reset Services (2026-09-07) : les routes /services* rendent une page
-//     d'attente le temps de la reconstruction (pas de lien mort). Voir
-//     docs/connect-web/RESET-SERVICES-2026-09-07.md.
+//     d'attente le temps de la reconstruction (pas de lien mort).
 //   ⛔ TODO : /realisations/[slug] (fiches de cas — contenu Sanity, jalon M4).
 
 export type NavLink = { label: string; path: string };

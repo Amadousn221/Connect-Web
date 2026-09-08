@@ -296,8 +296,7 @@ Confirmation et renforcement de DECISION 03 : Shopify, WooCommerce, Odoo, HubSpo
 > **STATUT 2026-09-07 — Reset des architectures Services.** Les *implications
 > d'architecture de page* de DECISION 23 (archétype, ordre de sections, page
 > parente réelle, compo des pages d'offre) sont **supersedées** : les pages
-> Services sont réinitialisées et reconstruites une par une (voir
-> `docs/connect-web/RESET-SERVICES-2026-09-07.md`). Restent **valides** : la
+> Services sont réinitialisées et reconstruites une par une. Restent **valides** : la
 > taxonomie « 5 expertises + Conseil », la règle DECISION 24 (technos = preuves),
 > et DECISION 04 (« pas de template générique », renforcée par ce reset).
 

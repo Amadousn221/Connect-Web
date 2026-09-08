@@ -17,7 +17,7 @@
 > une par une via le workflow ChatGPT → PO → revue Claude IA → Claude Code → PO.
 > Les routes `/services*` rendent une page d'attente `noindex` en attendant.
 > Rien d'autre dans ce document n'est modifié (stack, Sanity, sécurité, bilingue,
-> périmètre V1 restent en vigueur). Détail : `docs/connect-web/RESET-SERVICES-2026-09-07.md`.
+> périmètre V1 restent en vigueur).
 
 ---
 
