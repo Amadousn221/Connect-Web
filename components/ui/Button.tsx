@@ -6,7 +6,7 @@ import styles from './Button.module.css';
 // `link` = variante tertiaire (lien texte, sans fond ; la flèche → est fournie
 // par l'appelant). Vague 4 : poids 500, largeur au contenu, ~44px de haut.
 type Variant = 'primary' | 'outline' | 'ghost' | 'link';
-type Size = 'sm' | 'md' | 'lg';
+type Size = 'xs' | 'sm' | 'md' | 'lg';
 
 interface BaseProps {
   variant?: Variant;

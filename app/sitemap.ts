@@ -16,9 +16,9 @@ const STATIC_PATHS: { path: string; priority: number; changeFrequency: MetadataR
   { path: '/blog', priority: 0.9, changeFrequency: 'daily' },
   { path: '/ressources', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
-  // Reset Services (2026-09-07) : les routes /services* rendent une page
-  // d'attente `noindex` le temps de la reconstruction — retirées du sitemap,
-  // à ré-ajouter page par page. Voir docs/connect-web/RESET-SERVICES-2026-09-07.md.
+  // Services : hub /services reconstruit (2026-09-08). Les 9 sous-routes
+  // restent en page d'attente `noindex` — à ré-ajouter au fil de leur refonte.
+  { path: '/services', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/mentions-legales', priority: 0.2, changeFrequency: 'yearly' },
   { path: '/politique-de-confidentialite', priority: 0.2, changeFrequency: 'yearly' },
 ];

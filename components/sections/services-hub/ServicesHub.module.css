@@ -1,0 +1,624 @@
+/* ===========================================================================
+   Hub Services (/services) — styles partagés des sections S2→S13.
+   Design system existant : tokens, Newsreader/Hanken, angles vifs, deux thèmes.
+   Chaque section garde une composition propre — pas un template générique.
+   =========================================================================== */
+
+/* ── Coquille de section + rythme ──────────────────────────────────────── */
+.section {
+  padding-block: clamp(48px, 7vw, 76px);
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+.section[data-bg='soft'] {
+  background: var(--bg-alt);
+}
+.section[data-bg='deep'] {
+  background: var(--ink-deep);
+  color: #fff;
+  /* Sépare la bande pétrole du fond en thème sombre (où --bg ≈ --ink-deep). */
+  border-block: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── En-tête de section : titre à gauche, chapô à droite (stack en mobile) ─ */
+.head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 52px;
+  margin-bottom: 34px;
+}
+.headEyebrow {
+  display: block;
+  margin-bottom: 14px;
+}
+.headTitle {
+  font-size: var(--text-h2);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 12px 0 0;
+  text-wrap: pretty;
+  color: inherit;
+}
+.headLead {
+  margin: 0;
+  align-self: end;
+  font-size: var(--text-section);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.section[data-bg='deep'] .headLead {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ── Lien tertiaire orange (repris de la maquette `.cw-link`) ───────────── */
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  min-height: 44px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.link:hover {
+  color: var(--orange-h);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.section[data-bg='deep'] .link {
+  color: var(--orange-h);
+}
+
+/* ── S2 — Index des cinq expertises (lignes numérotées, ancres) ─────────── */
+.indexList {
+  border-top: 1px solid var(--border);
+}
+.indexRow {
+  display: grid;
+  grid-template-columns: 40px 1fr 1.15fr 24px;
+  gap: 22px;
+  align-items: start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  color: inherit;
+  transition:
+    background var(--dur-quick) ease,
+    color var(--dur-quick) ease;
+}
+.indexRow:hover {
+  background: var(--bg-alt);
+}
+.indexNum {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--orange);
+  padding-top: 6px;
+}
+.indexRow h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+.indexRow p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.indexArrow {
+  font-size: 18px;
+  color: var(--orange);
+  justify-self: end;
+  transition: transform var(--dur-quick) ease;
+}
+.indexRow:hover .indexArrow {
+  transform: translate(2px, 2px);
+}
+.rattach {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+  font-size: var(--text-body-sm);
+  color: var(--text-muted);
+}
+
+/* ── Sous-titre à filet (« Par usage — … ») ────────────────────────────── */
+.railTitle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 36px 0 22px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.railTitle::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── S3 — Famille web ─────────────────────────────────────────────────── */
+.usageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.usage {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--orange);
+  padding-top: 20px;
+}
+.usage h3 {
+  margin: 0 0 10px;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.usage p {
+  margin: 0 0 16px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.usage .link {
+  margin-top: auto;
+}
+
+.platformList {
+  border-top: 1px solid var(--border);
+}
+.platform {
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: 12px 28px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+.platform h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.platform p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.platformNote {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.proof {
+  margin: 28px 0 24px;
+  border-left: 2px solid var(--orange);
+  background: var(--card);
+  padding: 18px 22px;
+}
+.section[data-bg='soft'] .proof {
+  background: var(--bg);
+}
+.proofLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.proof p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.proof a {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* ── S4–S8 — Gabarit d'expertise compact (2 colonnes) ─────────────────── */
+.expertise {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 64px;
+  border-top: 1px solid var(--border);
+  padding-top: 34px;
+}
+.section[data-bg='deep'] .expertise {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.expertiseIntro p {
+  font-size: var(--text-section);
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 16px 0 20px;
+}
+.section[data-bg='deep'] .expertiseIntro p {
+  color: rgba(255, 255, 255, 0.82);
+}
+.expertiseTitle {
+  margin: 12px 0 0;
+  font-size: var(--text-h2);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: inherit;
+}
+
+.detailBlock {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.section[data-bg='deep'] .detailBlock {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.detailBlock:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.detailBlock h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: inherit;
+}
+.detailBlock p,
+.detailBlock li {
+  font-size: var(--text-body-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.section[data-bg='deep'] .detailBlock p,
+.section[data-bg='deep'] .detailBlock li {
+  color: rgba(255, 255, 255, 0.82);
+}
+.detailBlock p {
+  margin: 0;
+}
+.detailBlock ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.detailBlock li {
+  padding: 3px 0;
+}
+/* S6 — « ce qui est prouvé » : encart appuyé, distinct de « ce qu'on explore » */
+.detailBlock[data-variant='proven'] {
+  background: var(--bg-alt);
+  border-left: 2px solid var(--orange);
+  border-bottom: 0;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+.detailBlock[data-variant='explored'] {
+  border-left: 2px solid var(--border);
+  padding-left: 20px;
+  border-bottom: 0;
+  margin-bottom: 20px;
+}
+
+/* ── S8 — Conseil : bande pétrole, traitement distinct ─────────────────── */
+.conseilGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 64px;
+}
+.conseilLead {
+  font-size: var(--text-section);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 16px 0 20px;
+}
+
+/* ── S9 — Orientation (situation → destinations) ──────────────────────── */
+.situations {
+  border-top: 1px solid var(--border);
+}
+.situation {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 12px 50px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.situation h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: inherit;
+}
+.situation p {
+  margin: 0 0 10px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.situationLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.situationLinks .link {
+  min-height: 0;
+  padding: 2px 0;
+}
+
+/* ── S10 — Marqueurs (3 colonnes éditoriales à filets) ────────────────── */
+.markers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.marker {
+  border-top: 1px solid var(--border);
+  padding-top: 22px;
+}
+.markerNum {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+.marker h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.marker p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* ── S11 — Réalisations (3 cartes uniformes) ──────────────────────────── */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.project {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: var(--card);
+  overflow: hidden;
+}
+.projectCover {
+  aspect-ratio: 16 / 10;
+  position: relative;
+  background: var(--bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 22px;
+}
+.projectCover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.coverType {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.coverType small {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-top: 12px;
+  color: var(--text-muted);
+}
+.projectBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-start;
+  padding: 22px;
+}
+.projectBadge {
+  display: inline-block;
+  padding: 5px 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+.projectBody h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.projectBody p {
+  margin: 0 0 16px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.projectBody .link {
+  margin-top: auto;
+}
+
+/* ── S12 — Méthode en quatre temps ───────────────────────────────────── */
+.roadmap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.step {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.stepNum {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+.step h3 {
+  margin: 0 0 10px;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.step p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.sectionCta {
+  margin-top: 30px;
+}
+
+/* ── Cartes entièrement cliquables (mono-destination) ─────────────────── */
+.clickable {
+  position: relative;
+}
+.clickable .link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.clickable:focus-within {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+@media (hover: hover) {
+  .clickable:hover {
+    border-color: var(--orange);
+  }
+  .usage.clickable:hover,
+  .platform.clickable:hover,
+  .situation.clickable:hover {
+    background: var(--bg-alt);
+  }
+  .project.clickable:hover {
+    transform: translateY(-3px);
+  }
+}
+.clickable {
+  transition:
+    background var(--dur-quick) ease,
+    border-color var(--dur-quick) ease,
+    transform var(--dur-quick) ease;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .head {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .headTitle {
+    margin: 0;
+  }
+  .expertise,
+  .conseilGrid {
+    gap: 32px;
+  }
+  .roadmap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .expertise,
+  .conseilGrid,
+  .usageGrid,
+  .platform,
+  .markers,
+  .projects,
+  .situation {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .platform {
+    gap: 8px;
+  }
+  .indexRow {
+    grid-template-columns: 24px 1fr 18px;
+    gap: 12px 14px;
+    padding: 22px 0;
+  }
+  .indexRow h3 {
+    grid-column: 2;
+  }
+  .indexRow p {
+    grid-column: 2;
+  }
+  .indexArrow {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .roadmap {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .step {
+    border-top: 0;
+    border-left: 1px solid var(--border);
+    padding: 4px 0 20px 20px;
+  }
+  .step:last-child {
+    padding-bottom: 0;
+  }
+  .projectBody h3 {
+    min-height: 0;
+  }
+}
+
+/* ── Réduction de mouvement ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .indexRow,
+  .indexArrow,
+  .clickable {
+    transition: none;
+  }
+  .project.clickable:hover {
+    transform: none;
+  }
+}

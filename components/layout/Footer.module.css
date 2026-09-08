@@ -18,12 +18,15 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Demande PO (2026-09-08) : tous les textes du footer en blanc sur pétrole.
+   Hiérarchie conservée par la taille/graisse — copyright et mentions légales
+   restent à ~70 % pour rester secondaires sans redevenir gris. */
 .blurb {
   margin: 0 0 20px;
   max-width: 300px;
   font-size: 16.5px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.6);
+  color: #fff;
 }
 
 .social {
@@ -63,7 +66,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: #fff;
 }
 
 .colList {
@@ -74,13 +77,13 @@
   flex-direction: column;
   gap: 12px;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #fff;
 }
 .colList a {
-  color: rgba(255, 255, 255, 0.7);
+  color: #fff;
 }
 .colList a:hover {
-  color: #fff;
+  color: var(--orange-h);
 }
 
 .bottom {
@@ -95,7 +98,7 @@
 .copyright {
   margin: 0;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .legal {
@@ -104,7 +107,7 @@
   font-size: 13px;
 }
 .legal a {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.7);
 }
 .legal a:hover {
   color: #fff;

@@ -19,6 +19,13 @@
 }
 
 /* Tailles — `md` est la taille de référence de la home (hauteur ~44px). */
+/* `xs` — CTA des pages Services (maquette V6) : visuellement petit (~34px),
+   cible tactile portée à 44px via ::after sur pointeur grossier. */
+.xs {
+  padding: 8px 12px;
+  font-size: 12px;
+  min-height: 34px;
+}
 .sm {
   padding: 9px 18px;
   font-size: 13px;
@@ -96,4 +103,20 @@
 .onDark.ghost {
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
+}
+
+/* Cible tactile : les boutons `xs` sont visuellement ~34px — sur pointeur
+   grossier, on étend la zone cliquable à 44px sans changer l'apparence. */
+@media (pointer: coarse) {
+  .xs {
+    position: relative;
+  }
+  .xs::after {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto;
+    transform: translateY(-50%);
+    height: max(100%, 44px);
+    min-width: 44px;
+  }
 }

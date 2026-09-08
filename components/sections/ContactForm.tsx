@@ -9,7 +9,14 @@ import styles from './ContactSection.module.css';
 // (`entreprise_site`, masqué). Après succès : message + reset des champs.
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
-export function ContactForm() {
+// `tone` change uniquement la présentation (surface pétrole de l'accueil, ou
+// carte claire sur fond crème du hub Services V6). Champs, validations et
+// backend Resend/HubSpot identiques dans les deux cas.
+export function ContactForm({
+  tone = 'on-dark',
+}: {
+  tone?: 'on-dark' | 'on-light';
+} = {}) {
   const [status, setStatus] = useState<Status>('idle');
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -50,7 +57,7 @@ export function ContactForm() {
   const isDone = status === 'success';
 
   return (
-    <form className={styles.form} onSubmit={onSubmit}>
+    <form className={styles.form} data-tone={tone} onSubmit={onSubmit}>
       <p className={`cw-serif ${styles.formTitle}`}>{c.title}</p>
 
       {/* Honeypot anti-spam — hors flux visuel et hors ordre de tabulation ;

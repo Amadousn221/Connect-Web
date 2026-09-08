@@ -197,6 +197,53 @@
   line-height: 1.5;
 }
 
+/* ── Variante claire — carte blanche sur fond crème (hub Services V6) ── */
+.form[data-tone='on-light'] {
+  color-scheme: light;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 28px;
+}
+.form[data-tone='on-light'] .formTitle {
+  color: var(--ink);
+}
+.form[data-tone='on-light'] .field {
+  color: var(--ink);
+}
+.form[data-tone='on-light'] .field input,
+.form[data-tone='on-light'] .field select,
+.form[data-tone='on-light'] .field textarea {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--ink);
+}
+.form[data-tone='on-light'] .field input::placeholder,
+.form[data-tone='on-light'] .field textarea::placeholder {
+  color: var(--ink-faint);
+}
+.form[data-tone='on-light'] .field input:focus-visible,
+.form[data-tone='on-light'] .field select:focus-visible,
+.form[data-tone='on-light'] .field textarea:focus-visible {
+  border-color: var(--orange);
+}
+.form[data-tone='on-light'] .reassurance {
+  color: var(--ink-soft);
+}
+.form[data-tone='on-light'] .notice {
+  color: var(--ink);
+}
+.form[data-tone='on-light'] .error {
+  color: var(--ink);
+  background: rgba(232, 97, 42, 0.08);
+  border-color: rgba(232, 97, 42, 0.35);
+}
+
+@media (max-width: 640px) {
+  .form[data-tone='on-light'] {
+    padding: 20px;
+  }
+}
+
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr;

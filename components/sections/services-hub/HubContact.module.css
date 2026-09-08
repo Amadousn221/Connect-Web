@@ -1,0 +1,49 @@
+/* S14 — Contact du hub Services. Fond crème, carte formulaire claire à droite. */
+
+.section {
+  background: var(--bg-alt);
+  padding-block: clamp(48px, 7vw, 80px);
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.coords {
+  font-style: normal;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: var(--text-body-sm);
+  color: var(--ink-soft);
+}
+.coords a {
+  color: var(--ink);
+  width: fit-content;
+}
+.coords a:hover {
+  color: var(--orange);
+}
+
+.fallback {
+  margin: 16px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.fallback a {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}

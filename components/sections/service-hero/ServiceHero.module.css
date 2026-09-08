@@ -1,0 +1,114 @@
+/* Hero partagé des pages Services — voir ServiceHero.tsx. */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--ink-deep);
+  color: #fff;
+  padding-block: clamp(43px, 6vw, 66px);
+}
+
+/* ── Image de fond cover + overlay lisible ──────────────────────────────── */
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.mediaImg {
+  object-fit: cover;
+  object-position: var(--sh-focal-desktop, 50% 50%);
+}
+
+/* Overlay : dégradé horizontal (texte à gauche prioritaire) + voile global.
+   `strong` garantit la lisibilité quelle que soit l'image (asset provisoire). */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10, 37, 48, 0.96) 0%,
+      rgba(10, 37, 48, 0.86) 45%,
+      rgba(10, 37, 48, 0.6) 100%
+    ),
+    linear-gradient(180deg, rgba(10, 37, 48, 0.35), rgba(10, 37, 48, 0.55));
+}
+
+.hero[data-overlay='medium']::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10, 37, 48, 0.88) 0%,
+      rgba(10, 37, 48, 0.7) 45%,
+      rgba(10, 37, 48, 0.4) 100%
+    ),
+    linear-gradient(180deg, rgba(10, 37, 48, 0.2), rgba(10, 37, 48, 0.4));
+}
+
+/* Sans image : l'aplat pétrole suffit, on neutralise l'overlay. */
+.hero:not(:has(.media))::before {
+  display: none;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  max-width: min(var(--container-max), 900px);
+}
+
+.title {
+  margin: 14px 0 18px;
+  font-size: clamp(36px, 5.1vw, 61px);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
+  text-wrap: balance;
+  color: #fff;
+}
+
+.intro {
+  margin: 0 0 26px;
+  max-width: 650px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.86);
+  text-wrap: pretty;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+  margin-bottom: 18px;
+}
+
+.trust {
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-block: clamp(38px, 12vw, 48px);
+  }
+  .mediaImg {
+    object-position: var(--sh-focal-mobile, 50% 50%);
+  }
+  .title {
+    font-size: 37px;
+    letter-spacing: -0.012em;
+    max-width: none;
+  }
+  .intro {
+    font-size: 16px;
+  }
+  .ctas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

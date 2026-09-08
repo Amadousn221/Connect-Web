@@ -2,13 +2,37 @@
   background: var(--bg);
   padding-block: 100px;
 }
+/* Variante « split » (hub Services V6) : rythme resserré, pleine largeur. */
+.section:has(.split) {
+  padding-block: clamp(48px, 7vw, 80px);
+}
 
 .inner {
   max-width: 900px;
 }
+.inner[data-layout='split'] {
+  max-width: var(--container-max);
+}
 
 .list {
   margin-top: 44px;
+}
+
+/* Split : titre à gauche, accordéons à droite. */
+.split {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 60px;
+  align-items: start;
+}
+.split .list {
+  margin-top: 0;
+}
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 }
 
 .item {
