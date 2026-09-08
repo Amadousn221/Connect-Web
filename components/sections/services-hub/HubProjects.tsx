@@ -31,7 +31,7 @@ export function HubProjects({ locale }: { locale: Locale }) {
                     src={p.image.src}
                     alt={p.image.alt}
                     fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 880px) 50vw, 33vw"
                   />
                 ) : p.cover ? (
                   <span className={styles.coverType}>

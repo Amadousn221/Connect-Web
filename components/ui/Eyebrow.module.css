@@ -1,12 +1,21 @@
 .eyebrow {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  row-gap: 2px;
   gap: 9px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--orange);
+  max-width: 100%;
+}
+
+/* Le label peut rétrécir sous son contenu : les eyebrows longs (« Trois
+   marqueurs, tenus au quotidien ») passent à la ligne au lieu de déborder. */
+.label {
+  min-width: 0;
 }
 
 .dot {
@@ -15,6 +24,15 @@
   border-radius: 50%;
   background: var(--orange);
   flex-shrink: 0;
+  align-self: center;
+}
+
+/* Mobile : interlettrage réduit — moins de largeur, aucun débordement. */
+@media (max-width: 480px) {
+  .eyebrow {
+    letter-spacing: 0.1em;
+    font-size: 11px;
+  }
 }
 
 /* Sur pétrole nuit l'orange garde un bon contraste — pas de changement de

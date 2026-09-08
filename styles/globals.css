@@ -75,6 +75,17 @@ video {
   hyphens: auto;
 }
 
+/* Mobile : la justification sur une colonne étroite crée des lézardes —
+   alignement à gauche et interligne resserré (PO, correction typo mobile). */
+@media (max-width: 640px) {
+  .cw-prose {
+    text-align: left;
+    line-height: 1.6;
+    -webkit-hyphens: none;
+    hyphens: none;
+  }
+}
+
 /* Conteneur centré standard (mockup : .cw-sec) */
 .cw-sec {
   max-width: var(--container-max);

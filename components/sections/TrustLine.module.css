@@ -35,12 +35,14 @@
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* Mobile : la ligne passe en colonne (§19.2) — on masque les séparateurs. */
+/* Mobile : la ligne passe en colonne (§19.2) — on masque les séparateurs.
+   Interligne resserré pour limiter le volume du bloc réassurance. */
 @media (max-width: 640px) {
   .line {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 6px;
+    font-size: 13px;
   }
   .sep {
     display: none;

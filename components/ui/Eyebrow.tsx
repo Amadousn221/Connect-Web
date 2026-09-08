@@ -13,7 +13,7 @@ export function Eyebrow({
   return (
     <span className={styles.eyebrow} data-tone={tone}>
       <span aria-hidden="true" className={styles.dot} />
-      {children}
+      <span className={styles.label}>{children}</span>
     </span>
   );
 }

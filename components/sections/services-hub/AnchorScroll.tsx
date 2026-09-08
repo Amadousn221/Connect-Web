@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import styles from './ServicesHub.module.css';
 
 // Défilement doux vers les ancres in-page du hub, avec offset du header réel
 // et respect de `prefers-reduced-motion` (défilement immédiat). L'historique
@@ -38,7 +39,7 @@ export function AnchorScroll({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div ref={ref} id="services-hub">
+    <div ref={ref} id="services-hub" className={styles.hub}>
       {children}
     </div>
   );

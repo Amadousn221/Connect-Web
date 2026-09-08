@@ -4,6 +4,16 @@
    Chaque section garde une composition propre — pas un template générique.
    =========================================================================== */
 
+/* ── Wrapper du hub — porte l'échelle typo mobile (comme `.page` sur l'accueil).
+   Sur mobile, `--text-h2` du design system a un plancher de 30px qui ne
+   descend jamais : on le réabaisse ici, uniquement pour les pages Services.
+   Cascade jusqu'aux SectionHeading imbriqués (FAQ split, contact). ── */
+@media (max-width: 640px) {
+  .hub {
+    --text-h2: clamp(26px, 6.5vw, 30px);
+  }
+}
+
 /* ── Coquille de section + rythme ──────────────────────────────────────── */
 .section {
   padding-block: clamp(48px, 7vw, 76px);
@@ -547,6 +557,20 @@
     transform var(--dur-quick) ease;
 }
 
+/* ── Garde anti-débordement horizontal : les enfants de grille/flex qui
+   portent du texte doivent pouvoir rétrécir sous leur contenu. ── */
+.head > *,
+.expertise > *,
+.situation > *,
+.platform > *,
+.usage,
+.marker,
+.step,
+.projectBody,
+.indexRow > * {
+  min-width: 0;
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .head {
@@ -565,7 +589,46 @@
   }
 }
 
+/* Tablette : les grilles à 3 colonnes deviennent trop étroites — passage à 2. */
+@media (max-width: 880px) {
+  .usageGrid,
+  .markers,
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+}
+
 @media (max-width: 640px) {
+  /* Densité : rythme vertical resserré, marges titres/paragraphes réduites. */
+  .section {
+    padding-block: 36px;
+  }
+  .head {
+    margin-bottom: 22px;
+  }
+  .headEyebrow {
+    margin-bottom: 10px;
+  }
+  .headLead {
+    line-height: 1.55;
+  }
+  .sectionCta {
+    margin-top: 22px;
+  }
+  .rattach {
+    margin-top: 18px;
+  }
+  .railTitle {
+    margin: 24px 0 16px;
+    letter-spacing: 0.04em;
+  }
+  .proof {
+    margin: 22px 0 20px;
+    padding: 16px 18px;
+  }
+
+  /* Grilles : tout en une colonne. */
   .expertise,
   .conseilGrid,
   .usageGrid,
@@ -574,26 +637,77 @@
   .projects,
   .situation {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 20px;
   }
   .platform {
-    gap: 8px;
+    gap: 6px;
   }
+  .situation {
+    gap: 12px;
+  }
+  .expertise {
+    padding-top: 24px;
+  }
+  .expertiseIntro p {
+    line-height: 1.55;
+    margin: 12px 0 16px;
+  }
+  .detailBlock {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+  .detailBlock p,
+  .detailBlock li {
+    line-height: 1.55;
+  }
+  .detailBlock[data-variant='proven'],
+  .detailBlock[data-variant='explored'] {
+    margin-bottom: 16px;
+  }
+
+  /* Titres : hiérarchie resserrée. */
+  .headTitle,
+  .expertiseTitle {
+    line-height: 1.16;
+  }
+  .indexRow h3 {
+    font-size: 20px;
+  }
+  .usage h3,
+  .step h3 {
+    font-size: 18px;
+  }
+  .marker h3,
+  .projectBody h3 {
+    font-size: 19px;
+  }
+  .markerNum {
+    margin-bottom: 10px;
+  }
+  .stepNum {
+    margin-bottom: 12px;
+  }
+
+  /* Index des expertises : 3 colonnes (num · titre+desc · flèche). */
   .indexRow {
     grid-template-columns: 24px 1fr 18px;
-    gap: 12px 14px;
-    padding: 22px 0;
+    gap: 10px 14px;
+    padding: 18px 0;
   }
   .indexRow h3 {
     grid-column: 2;
+    grid-row: 1;
   }
   .indexRow p {
     grid-column: 2;
+    grid-row: 2;
   }
   .indexArrow {
     grid-column: 3;
     grid-row: 1;
   }
+
+  /* Méthode : timeline verticale. */
   .roadmap {
     grid-template-columns: 1fr;
     gap: 0;
@@ -601,7 +715,7 @@
   .step {
     border-top: 0;
     border-left: 1px solid var(--border);
-    padding: 4px 0 20px 20px;
+    padding: 4px 0 18px 18px;
   }
   .step:last-child {
     padding-bottom: 0;

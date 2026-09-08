@@ -21,10 +21,12 @@
   gap: 10px;
   font-size: var(--text-body-sm);
   color: var(--ink-soft);
+  overflow-wrap: break-word;
 }
 .coords a {
   color: var(--ink);
   width: fit-content;
+  max-width: 100%;
 }
 .coords a:hover {
   color: var(--orange);
@@ -35,6 +37,7 @@
   font-size: 13px;
   line-height: 1.6;
   color: var(--ink-soft);
+  overflow-wrap: break-word;
 }
 .fallback a {
   color: var(--orange);
@@ -45,5 +48,17 @@
   .grid {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-block: 36px;
+  }
+  .grid {
+    gap: 28px;
+  }
+  .coords {
+    margin-top: 20px;
   }
 }
