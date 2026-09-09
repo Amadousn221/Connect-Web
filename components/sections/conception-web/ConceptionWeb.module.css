@@ -1,0 +1,776 @@
+/* ===========================================================================
+   Page « Conception et développement web » (/services/conception-et-
+   developpement-web). Design system existant : tokens, Newsreader/Hanken,
+   angles vifs, deux thèmes. Composition finale de la maquette V2 (12 sections).
+   =========================================================================== */
+
+/* Wrapper : porte l'échelle typo mobile (comme `.hub` sur le hub Services).
+   `--text-h2` du design system a un plancher de 30px sur mobile — on le
+   réabaisse ici, cascade jusqu'aux SectionHeading imbriqués (FAQ split). */
+@media (max-width: 640px) {
+  .page {
+    --text-h2: clamp(27px, 6.7vw, 31px);
+  }
+}
+
+/* ── Coquille de section + rythme ──────────────────────────────────────── */
+.section {
+  padding-block: clamp(48px, 7vw, 76px);
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+.soft {
+  background: var(--bg-alt);
+}
+.deep {
+  background: var(--ink-deep);
+  color: #fff;
+  border-block: 1px solid rgba(255, 255, 255, 0.1);
+}
+.contact {
+  background: var(--bg-alt);
+}
+
+/* ── En-tête de section : titre à gauche, chapô à droite (stack en mobile) ─ */
+.head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 52px;
+  margin-bottom: 34px;
+}
+.headEyebrow {
+  display: block;
+  margin-bottom: 14px;
+}
+.headTitle {
+  font-size: var(--text-h2);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 12px 0 0;
+  text-wrap: pretty;
+  color: inherit;
+}
+.headLead {
+  margin: 0;
+  align-self: end;
+  font-size: var(--text-section);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ── Lien tertiaire orange avec flèche (maquette `.cw-link`) ────────────── */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  min-height: 44px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.cta:hover {
+  color: var(--orange-h);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.deep .cta {
+  color: var(--orange-h);
+}
+
+/* ── S2 — Section de lecture + sélecteur d'intentions ──────────────────── */
+.reading {
+  max-width: 760px;
+}
+.readingTitle {
+  font-size: var(--text-h2);
+  line-height: 1.14;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 12px 0 0;
+  text-wrap: pretty;
+}
+.readingBody {
+  margin: 18px 0 0;
+  font-size: var(--text-section);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.intentLayout {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: minmax(0, 260px) 1fr;
+  gap: 8px 32px;
+  align-items: start;
+}
+.intentNav {
+  display: flex;
+  flex-direction: column;
+}
+.intentTab {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 10px 12px 0;
+  min-height: 44px;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: none;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--dur-quick) ease;
+}
+.intentTab:last-child {
+  border-bottom: 0;
+}
+.intentTab:hover {
+  color: var(--text);
+}
+.intentTab[aria-selected='true'] {
+  color: var(--text);
+}
+.intentNum {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.intentTab[aria-selected='true'] .intentNum {
+  color: var(--orange);
+}
+.intentPanel {
+  border-left: 2px solid var(--orange);
+  padding: 4px 0 4px 22px;
+}
+.intentPanel:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+.intentPanelEyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.intentPanelTitle {
+  margin: 0 0 8px;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.intentPanel p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.intentFallback {
+  margin: 24px 0 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 10px;
+}
+.intentFallback li {
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.routeNote {
+  margin-top: 30px;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+.routeNote p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ── S3 — Trois usages (cartes égales) ────────────────────────────────── */
+.usageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.usage {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--orange);
+  padding-top: 20px;
+}
+.usageAudience {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.usageTitle {
+  margin: 10px 0;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.usage p {
+  margin: 0 0 16px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.usage .cta {
+  margin-top: auto;
+}
+
+/* ── S4 — Choix de plateforme ─────────────────────────────────────────── */
+.platformGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.platformCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 24px;
+}
+.soft .platformCard {
+  background: var(--bg);
+}
+.platformEyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+.platformTitle {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.platformCard p {
+  margin: 0 0 16px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.platformCard .cta {
+  margin-top: auto;
+}
+.adapted {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: 16px 40px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+.adaptedTitle {
+  margin: 8px 0 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.adapted p {
+  margin: 0 0 8px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.choiceNote {
+  margin-top: 24px;
+  border-left: 2px solid var(--border);
+  padding-left: 20px;
+}
+.choiceNote b {
+  display: block;
+  font-size: var(--text-body-sm);
+  margin-bottom: 6px;
+}
+.choiceNote p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* ── S5 — Refonte (bande pétrole, layout narratif) ────────────────────── */
+.refonteLayout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px 56px;
+  align-items: start;
+}
+.refonteTitle {
+  font-size: var(--text-h2);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 12px 0 0;
+  color: #fff;
+}
+.refonteBody {
+  margin: 16px 0 20px;
+  font-size: var(--text-section);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+.refonteQuestionsTitle {
+  margin: 0 0 14px;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: #fff;
+}
+.refonteQuestions {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 10px;
+}
+.refonteQuestions li {
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* ── S6 méthode / S7 durabilité — grilles de blocs numérotés ──────────── */
+.roadmap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.step {
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+.stepNum {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+.step h3,
+.durable h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.step p,
+.durable p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.durableGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px 40px;
+}
+.durable {
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+
+/* ── S8 — Propriété ───────────────────────────────────────────────────── */
+.ownership {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px 56px;
+  align-items: start;
+}
+.ownershipList {
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+.ownershipRow {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 12px 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ownershipRow dt {
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+}
+.ownershipRow dd {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.thirdParty {
+  border-left: 2px solid var(--orange);
+  background: var(--bg);
+  padding: 20px 22px;
+}
+.thirdParty h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-weight: 500;
+}
+.thirdParty p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* ── S9 — Réalisations (3 cartes uniformes) ───────────────────────────── */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.project {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  overflow: hidden;
+}
+.projectCover {
+  aspect-ratio: 16 / 10;
+  position: relative;
+  background: var(--bg-alt);
+}
+.projectCover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.projectBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-start;
+  padding: 24px;
+}
+.projectPortfolio {
+  background: var(--card);
+}
+.portfolioTags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.portfolioTags span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  padding: 6px 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.projectBadge {
+  display: inline-block;
+  padding: 5px 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+.projectBody h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+.projectBody p {
+  margin: 0 0 16px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.projectBody .cta {
+  margin-top: auto;
+}
+
+/* ── S10 — Prolongements (lignes éditoriales) ─────────────────────────── */
+.extensions {
+  border-top: 1px solid var(--border);
+}
+.extension {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr auto;
+  gap: 12px 32px;
+  align-items: baseline;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.extension h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.extension p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.extension .cta {
+  min-height: 0;
+  padding: 2px 0;
+  white-space: nowrap;
+}
+
+/* ── S12 — Contact ───────────────────────────────────────────────────── */
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.coords {
+  font-style: normal;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: var(--text-body-sm);
+  color: var(--text-muted);
+  overflow-wrap: break-word;
+}
+.coords a {
+  color: var(--text);
+  width: fit-content;
+  max-width: 100%;
+}
+.coords a:hover {
+  color: var(--orange);
+}
+.fallback {
+  margin: 16px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  overflow-wrap: break-word;
+}
+.fallback a {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* ── Cartes entièrement cliquables (mono-destination, ancre unique) ────── */
+.clickable {
+  position: relative;
+  transition:
+    background var(--dur-quick) ease,
+    border-color var(--dur-quick) ease,
+    transform var(--dur-quick) ease;
+}
+.clickable .cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.clickable:focus-within {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+@media (hover: hover) {
+  .usage.clickable:hover,
+  .extension.clickable:hover {
+    background: var(--bg-alt);
+  }
+  .project.clickable:hover {
+    transform: translateY(-3px);
+    border-color: var(--orange);
+  }
+}
+
+/* ── Garde anti-débordement : enfants de grille/flex porteurs de texte ── */
+.head > *,
+.refonteLayout > *,
+.ownership > *,
+.extension > *,
+.adapted > *,
+.usage,
+.step,
+.durable,
+.projectBody,
+.platformCard,
+.intentLayout > * {
+  min-width: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .head {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .headTitle {
+    margin: 0;
+  }
+  .refonteLayout,
+  .ownership {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .roadmap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .intentLayout {
+    grid-template-columns: minmax(0, 240px) 1fr;
+  }
+}
+
+@media (max-width: 880px) {
+  .usageGrid,
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .platformGrid {
+    grid-template-columns: 1fr;
+  }
+  .adapted {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-block: 40px;
+  }
+  .head {
+    margin-bottom: 22px;
+  }
+  .headEyebrow {
+    margin-bottom: 10px;
+  }
+  .headLead {
+    line-height: 1.55;
+  }
+  .readingBody,
+  .refonteBody {
+    line-height: 1.55;
+  }
+
+  /* Grilles : tout en une colonne. */
+  .usageGrid,
+  .platformGrid,
+  .durableGrid,
+  .projects,
+  .roadmap,
+  .ownershipRow,
+  .extension,
+  .contactGrid,
+  .intentLayout {
+    grid-template-columns: 1fr;
+  }
+  .intentLayout {
+    gap: 20px;
+  }
+  .roadmap {
+    gap: 0;
+  }
+  .step {
+    border-top: 0;
+    border-left: 1px solid var(--border);
+    padding: 4px 0 18px 18px;
+  }
+  .step:last-child {
+    padding-bottom: 0;
+  }
+  .durableGrid {
+    gap: 20px;
+  }
+  .contactGrid {
+    gap: 28px;
+  }
+  .ownershipRow {
+    gap: 4px;
+    padding: 14px 0;
+  }
+  .extension {
+    gap: 8px;
+    padding: 16px 0;
+  }
+
+  /* Sélecteur d'intentions : la liste passe au-dessus du panneau. */
+  .intentPanel {
+    padding-left: 16px;
+  }
+  .intentTab {
+    font-size: 14px;
+  }
+
+  /* Titres resserrés. */
+  .readingTitle,
+  .refonteTitle,
+  .headTitle {
+    line-height: 1.16;
+  }
+  .usageTitle,
+  .step h3,
+  .durable h3,
+  .extension h3 {
+    font-size: 17px;
+  }
+  .projectBody h3 {
+    font-size: 21px;
+  }
+  .platformTitle {
+    font-size: 19px;
+  }
+  .stepNum {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .intentTab {
+    padding-right: 0;
+  }
+}
+
+/* ── Réduction de mouvement ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .clickable,
+  .intentTab {
+    transition: none;
+  }
+  .project.clickable:hover {
+    transform: none;
+  }
+}

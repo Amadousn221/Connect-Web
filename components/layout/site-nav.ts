@@ -32,11 +32,14 @@ export const servicesHubPath = '/services';
 //    footer, maillage du hub). Ne jamais dupliquer ces routes ailleurs.
 //
 //    UNIQUEMENT des routes réellement présentes dans `app/[locale]/services/*`.
-//    Développement WordPress / Shopify / Refonte : pages NON créées → absentes
-//    de la nav (aucun lien mort, aucune URL inventée).
-//    Les 8 sous-pages rendent aujourd'hui `ServicePlaceholder` (noindex,
-//    accessible) ; elles restent navigables et seront enrichies à leur
-//    reconstruction. `/services` (hub) est la seule page Services validée.
+//    Développement WordPress / Shopify / Refonte : routes créées en page
+//    d'attente `noindex` (renvois S4/S5 de la page « Conception et
+//    développement web ») mais VOLONTAIREMENT tenues hors de la nav globale
+//    tant qu'elles ne sont pas reconstruites — accessibles uniquement par le
+//    corps de la page parente.
+//    Les sous-pages en `ServicePlaceholder` restent navigables et seront
+//    enrichies à leur reconstruction. `/services` (hub) et « Conception et
+//    développement web » sont les seules pages Services intégrées.
 export type ServiceFamily = { heading: string; links: NavLink[] };
 
 /** Lien de rattache prioritaire — retour au hub. */

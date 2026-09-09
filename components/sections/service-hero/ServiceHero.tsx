@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { TrustLine } from '@/components/sections/TrustLine';
+import { localePath } from '@/lib/i18n/routing';
+import type { Locale } from '@/lib/i18n/config';
 import styles from './ServiceHero.module.css';
 
 // ── Hero partagé des pages Services ───────────────────────────────────────
@@ -34,6 +36,9 @@ export interface ServiceHeroProps {
   overlay?: 'strong' | 'medium';
   /** Ligne de réassurance optionnelle sous les CTA. */
   reassurance?: string[];
+  /** Si fourni, les hrefs internes des CTA (hors `#ancre` et `http…`) sont
+   *  préfixés par la locale. Absent → href passé tel quel (compat. hub). */
+  locale?: Locale;
 }
 
 export function ServiceHero({
@@ -47,7 +52,12 @@ export function ServiceHero({
   focalMobile,
   overlay = 'strong',
   reassurance,
+  locale,
 }: ServiceHeroProps) {
+  const resolve = (href: string) =>
+    locale && !href.startsWith('#') && !/^[a-z]+:/i.test(href)
+      ? localePath(locale, href)
+      : href;
   return (
     <section
       className={styles.hero}
@@ -79,11 +89,11 @@ export function ServiceHero({
         <p className={styles.intro}>{intro}</p>
 
         <div className={styles.ctas}>
-          <Button href={primaryCta.href} variant="primary" onDark size="xs">
+          <Button href={resolve(primaryCta.href)} variant="primary" onDark size="xs">
             {primaryCta.label}
           </Button>
           {secondaryCta ? (
-            <Button href={secondaryCta.href} variant="link" onDark size="xs">
+            <Button href={resolve(secondaryCta.href)} variant="link" onDark size="xs">
               {secondaryCta.label} →
             </Button>
           ) : null}
