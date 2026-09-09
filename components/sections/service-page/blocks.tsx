@@ -5,6 +5,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { contactInfo } from '@/components/layout/site-nav';
 import { SpHead, SpLink, SpProse, type SpLinkData } from './parts';
+import { TabbedPanels, type TabItem } from './TabbedPanels';
 import styles from './service-page.module.css';
 
 type Bg = 'plain' | 'soft' | 'deep';
@@ -128,6 +129,7 @@ export function ConfigCards({
   intro,
   cards,
   outro,
+  notes,
 }: {
   headId?: string;
   eyebrow: string;
@@ -135,6 +137,7 @@ export function ConfigCards({
   intro?: string[];
   cards: { title: string; body: string[]; accent?: boolean }[];
   outro?: string;
+  notes?: { title: string; body: string[] }[];
 }) {
   return (
     <>
@@ -152,6 +155,16 @@ export function ConfigCards({
           </article>
         ))}
       </div>
+      {notes && notes.length > 0 ? (
+        <div className={styles.configNotes}>
+          {notes.map((n) => (
+            <div key={n.title} className={styles.configNote}>
+              <b>{n.title}</b>
+              <SpProse blocks={n.body} />
+            </div>
+          ))}
+        </div>
+      ) : null}
       {outro ? <p className={styles.configOutro}>{outro}</p> : null}
     </>
   );
@@ -363,6 +376,46 @@ export function Extensions({
           </div>
         ))}
       </div>
+    </>
+  );
+}
+
+/** Section « sélecteur » : tête + intro + TabbedPanels + repli <noscript> + outro. */
+export function SelectorSection({
+  headId,
+  eyebrow,
+  title,
+  intro,
+  ariaLabel,
+  panelEyebrow,
+  items,
+  outro,
+}: {
+  headId?: string;
+  eyebrow: string;
+  title: string;
+  intro?: string[];
+  ariaLabel: string;
+  panelEyebrow?: string;
+  items: TabItem[];
+  outro?: string;
+}) {
+  return (
+    <>
+      <SpHead id={headId} eyebrow={eyebrow} title={title} />
+      {intro ? <div className={styles.leadProse}><SpProse blocks={intro} /></div> : null}
+      <TabbedPanels ariaLabel={ariaLabel} panelEyebrow={panelEyebrow} items={items} />
+      <noscript>
+        <div className={styles.selectorFallback}>
+          {items.map((it) => (
+            <div key={it.label}>
+              <h3>{it.label}</h3>
+              <SpProse blocks={it.body} />
+            </div>
+          ))}
+        </div>
+      </noscript>
+      {outro ? <p className={styles.configOutro}>{outro}</p> : null}
     </>
   );
 }

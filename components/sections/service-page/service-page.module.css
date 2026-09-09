@@ -235,6 +235,29 @@
   line-height: 1.6;
   color: var(--text-muted);
 }
+.configNotes {
+  margin-top: 22px;
+  display: grid;
+  gap: 16px;
+}
+.configNote {
+  border-left: 2px solid var(--border);
+  padding-left: 18px;
+}
+.configNote b {
+  display: block;
+  font-size: var(--text-body-sm);
+  margin-bottom: 6px;
+}
+.configNote p {
+  margin: 0 0 6px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.configNote p:last-child {
+  margin-bottom: 0;
+}
 
 /* ── Timeline — étapes ───────────────────────────────────────────────── */
 .timeline {
@@ -575,6 +598,23 @@
   .tab {
     transition: none;
   }
+}
+
+.selectorFallback {
+  margin-top: 20px;
+  display: grid;
+  gap: 16px;
+}
+.selectorFallback h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.selectorFallback p {
+  margin: 0 0 6px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 
 /* ── Cartes cliquables (mono-destination) ─────────────────────────────── */
