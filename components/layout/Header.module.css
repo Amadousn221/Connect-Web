@@ -53,11 +53,39 @@
   color: var(--orange);
 }
 
+/* Page (ou section) en cours de consultation. */
+.navlink[data-active] {
+  color: var(--orange);
+}
+.navlink[data-active]::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  background: currentColor;
+}
+.navlink {
+  position: relative;
+}
+
 .chevron {
   transition: transform var(--dur-quick) var(--ease-default);
 }
 .chevron[data-open='true'] {
   transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron,
+  .navlink,
+  .cta {
+    transition: none;
+  }
+  .cta:hover {
+    transform: none;
+  }
 }
 
 .actions {

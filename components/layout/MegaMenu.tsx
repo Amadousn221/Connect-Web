@@ -1,17 +1,15 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/routing';
-import {
-  megaMenuBuild,
-  megaMenuSystem,
-  megaMenuConseil,
-  servicesHubPath,
-} from './site-nav';
+import { serviceFamilies, serviceConseil, servicesTop } from './site-nav';
 import styles from './MegaMenu.module.css';
 
-// Méga-menu Services — 3 blocs (mockup Accueil V2, lignes 149-175) :
-// « Ce qu'on construit » (Niveau 1) · « Le système » (Niveau 2) · Conseil.
-// Présentationnel : l'état ouvert/fermé et le focus trap sont gérés par Header.
+// Méga-menu Services — 3 colonnes : « Tous nos services » en tête, puis les
+// deux familles de routes RÉELLES (serviceFamilies) et le bloc Conseil.
+// Source unique de routes : site-nav.ts. Ouverture / fermeture / Échap : Header.
 
 export function MegaMenu({
   id,
@@ -24,70 +22,60 @@ export function MegaMenu({
   locale: Locale;
   onNavigate?: () => void;
 }) {
+  const pathname = usePathname();
+  const isActive = (path: string) => pathname === localePath(locale, path);
+
   return (
     <div id={id} className={styles.mega} hidden={!open}>
       <div className={styles.inner}>
         <Link
-          href={localePath(locale, servicesHubPath)}
+          href={localePath(locale, servicesTop.path)}
           className={styles.hubLink}
+          aria-current={isActive(servicesTop.path) ? 'page' : undefined}
+          data-active={isActive(servicesTop.path) || undefined}
           onClick={onNavigate}
         >
-          Tous nos services
+          {servicesTop.label}
           <span aria-hidden="true" className={styles.arrow}>
             →
           </span>
         </Link>
 
-        <div>
-          <p className={styles.eyebrow}>Ce qu&apos;on construit</p>
-          <ul className={styles.list}>
-            {megaMenuBuild.map((item) => (
-              <li key={item.path}>
-                <Link
-                  href={localePath(locale, item.path)}
-                  className={styles.link}
-                  onClick={onNavigate}
-                >
-                  <span>{item.label}</span>
-                  <span aria-hidden="true" className={styles.arrow}>
-                    →
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <p className={styles.eyebrow}>Le système</p>
-          <ul className={styles.list}>
-            {megaMenuSystem.map((item) => (
-              <li key={item.path}>
-                <Link
-                  href={localePath(locale, item.path)}
-                  className={styles.link}
-                  onClick={onNavigate}
-                >
-                  <span>{item.label}</span>
-                  <span aria-hidden="true" className={styles.arrow}>
-                    →
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {serviceFamilies.map((family) => (
+          <div key={family.heading} className={styles.col}>
+            <p className={styles.eyebrow}>{family.heading}</p>
+            <ul className={styles.list}>
+              {family.links.map((item) => (
+                <li key={item.path}>
+                  <Link
+                    href={localePath(locale, item.path)}
+                    className={styles.link}
+                    aria-current={isActive(item.path) ? 'page' : undefined}
+                    data-active={isActive(item.path) || undefined}
+                    onClick={onNavigate}
+                  >
+                    <span>{item.label}</span>
+                    <span aria-hidden="true" className={styles.arrow}>
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
 
         <div className={styles.conseil}>
           <p className={styles.eyebrow}>Conseil</p>
-          <p className={`cw-serif ${styles.conseilTitle}`}>{megaMenuConseil.title}</p>
-          <p className={styles.conseilBody}>{megaMenuConseil.body}</p>
+          <p className={`cw-serif ${styles.conseilTitle}`}>{serviceConseil.title}</p>
+          <p className={styles.conseilBody}>{serviceConseil.body}</p>
           <Link
-            href={localePath(locale, megaMenuConseil.path)}
+            href={localePath(locale, serviceConseil.path)}
             className={styles.conseilCta}
+            aria-current={isActive(serviceConseil.path) ? 'page' : undefined}
             onClick={onNavigate}
           >
-            {megaMenuConseil.cta}
+            {serviceConseil.cta}
           </Link>
         </div>
       </div>

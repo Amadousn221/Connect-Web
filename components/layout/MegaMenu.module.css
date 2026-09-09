@@ -1,4 +1,5 @@
-/* Méga-menu — mockup Accueil V2 lignes 149-175. */
+/* Méga-menu Services — « Tous nos services » + 2 familles de routes réelles
+   + bloc Conseil. Source de routes : site-nav.ts. */
 .mega {
   position: absolute;
   top: var(--header-height);
@@ -30,19 +31,25 @@
   margin-inline: auto;
   padding: 40px var(--container-pad);
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  align-items: start;
+  gap: 24px 44px;
 }
 
-/* Lien de rattache vers le hub Services (/services) — maillage interne entrant
-   (Opus §5.5). Bandeau plein largeur au-dessus des trois colonnes. */
+/* Enfants de grille porteurs de texte : peuvent rétrécir sous leur contenu
+   (pas de débordement sur les écrans intermédiaires). */
+.col,
+.conseil {
+  min-width: 0;
+}
+
+/* « Tous nos services » — lien de rattache prioritaire, pleine largeur. */
 .hubLink {
   grid-column: 1 / -1;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   width: fit-content;
-  margin-bottom: -16px;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -50,7 +57,8 @@
   color: var(--ink);
   transition: color var(--dur-instant) ease;
 }
-.hubLink:hover {
+.hubLink:hover,
+.hubLink[data-active] {
   color: var(--orange);
 }
 .hubLink .arrow {
@@ -58,12 +66,13 @@
 }
 
 .eyebrow {
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   font-size: var(--text-eyebrow);
   font-weight: 600;
-  letter-spacing: var(--tracking-eyebrow);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--orange);
+  text-wrap: balance;
 }
 
 .list {
@@ -79,12 +88,16 @@
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+  min-width: 0;
   padding: 11px 0;
   font-size: 15px;
   font-weight: 500;
   color: var(--ink);
   border-bottom: 1px solid var(--border);
   transition: color var(--dur-instant) ease;
+}
+.link > span:first-child {
+  min-width: 0;
 }
 
 .list li:last-child .link {
@@ -95,7 +108,17 @@
   color: var(--orange);
 }
 
+/* Page en cours de consultation. */
+.link[data-active] {
+  color: var(--orange);
+  font-weight: 600;
+}
+.link[data-active] .arrow {
+  color: var(--orange);
+}
+
 .arrow {
+  flex-shrink: 0;
   color: var(--ink-faint);
 }
 
@@ -119,7 +142,7 @@
   margin: 0 0 20px;
   font-size: 14px;
   line-height: var(--leading-normal);
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .conseilCta {
@@ -136,10 +159,41 @@
   color: #fff;
   transform: translateY(-3px);
 }
+.conseilCta[aria-current='page'] {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Écrans intermédiaires (961–1120px) : resserrer sans jamais déborder. */
+@media (max-width: 1120px) {
+  .inner {
+    padding: 32px 24px;
+    gap: 20px 28px;
+  }
+  .link {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+  .conseil {
+    padding: 22px;
+  }
+}
 
 @media (max-width: 960px) {
   /* Le méga-menu desktop est remplacé par le drawer mobile en dessous de 960px. */
   .mega {
     display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mega {
+    animation: none;
+  }
+  .conseilCta {
+    transition: none;
+  }
+  .conseilCta:hover {
+    transform: none;
   }
 }

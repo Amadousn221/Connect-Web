@@ -3,12 +3,16 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/routing';
 import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
 import {
   servicesHubPath,
+  servicesTop,
+  serviceFamilies,
+  serviceConseil,
   primaryNav,
   primaryCta,
   contactInfo,
@@ -29,6 +33,11 @@ export function MobileDrawer({
   locale: Locale;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
+  const isActive = (path: string) => pathname === localePath(locale, path);
+  const onServices =
+    pathname === localePath(locale, servicesHubPath) ||
+    pathname.startsWith(`${localePath(locale, servicesHubPath)}/`);
 
   // Fermeture à Échap + focus initial sur le bouton fermer + blocage du scroll.
   useEffect(() => {
@@ -83,11 +92,60 @@ export function MobileDrawer({
         </div>
 
         <nav className={styles.nav}>
-          <Link href={localePath(locale, servicesHubPath)} onClick={onClose}>
-            Services
-          </Link>
+          {/* Services — accordéon natif : arborescence complète, source unique
+              (site-nav.ts). Ouvert par défaut sur une page Services. */}
+          <details className={styles.group} open={onServices}>
+            <summary className={styles.groupSummary}>
+              <span data-active={onServices || undefined}>Services</span>
+              <span aria-hidden="true" className={styles.groupChevron} />
+            </summary>
+            <div className={styles.groupBody}>
+              <Link
+                href={localePath(locale, servicesTop.path)}
+                onClick={onClose}
+                className={styles.subLinkStrong}
+                aria-current={isActive(servicesTop.path) ? 'page' : undefined}
+                data-active={isActive(servicesTop.path) || undefined}
+              >
+                {servicesTop.label}
+              </Link>
+              {serviceFamilies.map((family) => (
+                <div key={family.heading} className={styles.subFamily}>
+                  <p className={styles.subHeading}>{family.heading}</p>
+                  {family.links.map((item) => (
+                    <Link
+                      key={item.path}
+                      href={localePath(locale, item.path)}
+                      onClick={onClose}
+                      className={styles.subLink}
+                      aria-current={isActive(item.path) ? 'page' : undefined}
+                      data-active={isActive(item.path) || undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+              <Link
+                href={localePath(locale, serviceConseil.path)}
+                onClick={onClose}
+                className={styles.subLink}
+                aria-current={isActive(serviceConseil.path) ? 'page' : undefined}
+                data-active={isActive(serviceConseil.path) || undefined}
+              >
+                {serviceConseil.label}
+              </Link>
+            </div>
+          </details>
+
           {primaryNav.map((item) => (
-            <Link key={item.path} href={localePath(locale, item.path)} onClick={onClose}>
+            <Link
+              key={item.path}
+              href={localePath(locale, item.path)}
+              onClick={onClose}
+              aria-current={isActive(item.path) ? 'page' : undefined}
+              data-active={isActive(item.path) || undefined}
+            >
               {item.label}
             </Link>
           ))}

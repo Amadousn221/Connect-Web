@@ -57,16 +57,123 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
-.nav a {
+.nav > a {
   color: rgba(255, 255, 255, 0.85);
   font-size: 18px;
   font-weight: 500;
   padding: 14px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .nav a:hover {
   color: #fff;
+}
+.nav a[data-active],
+.groupSummary span[data-active] {
+  color: var(--orange);
+}
+
+/* ── Services — accordéon natif ─────────────────────────────────────────── */
+.group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.groupSummary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  min-height: 44px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  font-weight: 500;
+}
+.groupSummary::-webkit-details-marker {
+  display: none;
+}
+.groupSummary:hover {
+  color: #fff;
+}
+.groupChevron {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+.groupChevron::before,
+.groupChevron::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 2px;
+  background: currentColor;
+  transition: transform var(--dur-quick) var(--ease-default);
+}
+.groupChevron::before {
+  left: 0;
+  transform: translateY(-50%) rotate(45deg);
+}
+.groupChevron::after {
+  right: 0;
+  transform: translateY(-50%) rotate(-45deg);
+}
+.group[open] .groupChevron::before {
+  transform: translateY(-50%) rotate(-45deg);
+}
+.group[open] .groupChevron::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.groupBody {
+  padding: 4px 0 12px;
+}
+.subFamily {
+  padding-top: 8px;
+}
+.subHeading {
+  margin: 0;
+  padding: 8px 0 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+.nav .subLink,
+.nav .subLinkStrong {
+  font-size: 16px;
+  padding: 12px 0 12px 14px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  border-bottom: none;
+  color: rgba(255, 255, 255, 0.8);
+}
+.nav .subLinkStrong {
+  font-weight: 600;
+  color: #fff;
+  padding-left: 0;
+}
+.nav .subLink:hover,
+.nav .subLinkStrong:hover {
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .groupChevron::before,
+  .groupChevron::after {
+    transition: none;
+  }
 }
 
 .controls {

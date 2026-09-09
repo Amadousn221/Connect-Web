@@ -6,6 +6,7 @@ import {
   legalNav,
   contactInfo,
   socialLinks,
+  servicesHubPath,
 } from './site-nav';
 import styles from './Footer.module.css';
 
@@ -60,7 +61,12 @@ export function Footer({ locale }: { locale: Locale }) {
               <ul className={styles.colList}>
                 {col.links.map((link) => (
                   <li key={`${col.heading}-${link.path}-${link.label}`}>
-                    <Link href={localePath(locale, link.path)}>{link.label}</Link>
+                    <Link
+                      href={localePath(locale, link.path)}
+                      data-top={link.path === servicesHubPath ? '' : undefined}
+                    >
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

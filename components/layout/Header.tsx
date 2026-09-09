@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/routing';
 import { MegaMenu } from './MegaMenu';
@@ -21,6 +22,12 @@ export function Header({ locale }: { locale: Locale }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const megaId = useId();
   const headerRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+
+  const servicesRoot = localePath(locale, servicesHubPath);
+  const onServices =
+    pathname === servicesRoot || pathname.startsWith(`${servicesRoot}/`);
+  const isActive = (path: string) => pathname === localePath(locale, path);
 
   // Fermer le méga-menu au clic extérieur et à Échap.
   useEffect(() => {
@@ -65,6 +72,8 @@ export function Header({ locale }: { locale: Locale }) {
             className={styles.navlink}
             aria-expanded={megaOpen}
             aria-controls={megaId}
+            data-active={onServices || undefined}
+            aria-current={onServices ? 'page' : undefined}
             onClick={() => setMegaOpen((v) => !v)}
           >
             Services
@@ -91,6 +100,8 @@ export function Header({ locale }: { locale: Locale }) {
               key={item.path}
               href={localePath(locale, item.path)}
               className={styles.navlink}
+              data-active={isActive(item.path) || undefined}
+              aria-current={isActive(item.path) ? 'page' : undefined}
             >
               {item.label}
             </Link>

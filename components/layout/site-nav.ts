@@ -26,45 +26,83 @@ export const primaryNav: NavLink[] = [
   { label: 'Contact', path: '/contact' },
 ];
 
-/** Bloc 1 du méga-menu — « Ce qu'on construit » (offres Niveau 1, DECISION 03). */
-export const megaMenuBuild: NavLink[] = [
-  { label: 'Boutiques en ligne', path: '/services/boutiques-en-ligne' },
-  { label: 'Plateformes & applications', path: '/services/plateformes-applications' },
-  { label: "Sites d'entreprise", path: '/services/sites-entreprise' },
-  { label: 'Sites institutionnels & ONG', path: '/services/sites-institutionnels-ong' },
+export const servicesHubPath = '/services';
+
+// ── Arborescence Services — SOURCE UNIQUE (méga-menu desktop, drawer mobile,
+//    footer, maillage du hub). Ne jamais dupliquer ces routes ailleurs.
+//
+//    UNIQUEMENT des routes réellement présentes dans `app/[locale]/services/*`.
+//    Développement WordPress / Shopify / Refonte : pages NON créées → absentes
+//    de la nav (aucun lien mort, aucune URL inventée).
+//    Les 8 sous-pages rendent aujourd'hui `ServicePlaceholder` (noindex,
+//    accessible) ; elles restent navigables et seront enrichies à leur
+//    reconstruction. `/services` (hub) est la seule page Services validée.
+export type ServiceFamily = { heading: string; links: NavLink[] };
+
+/** Lien de rattache prioritaire — retour au hub. */
+export const servicesTop: NavLink = { label: 'Tous nos services', path: servicesHubPath };
+
+/** Familles logiques (méga-menu colonnes 1 & 2, drawer, hub). */
+export const serviceFamilies: ServiceFamily[] = [
+  {
+    heading: 'Conception & développement web',
+    links: [
+      { label: "Vue d'ensemble", path: '/services/conception-et-developpement-web' },
+      { label: "Sites d'entreprise", path: '/services/sites-entreprise' },
+      { label: 'Sites institutionnels & ONG', path: '/services/sites-institutionnels-ong' },
+      { label: 'Boutiques en ligne', path: '/services/boutiques-en-ligne' },
+    ],
+  },
+  {
+    heading: 'Systèmes & croissance',
+    links: [
+      { label: 'Logiciels & applications web', path: '/services/plateformes-applications' },
+      { label: 'ERP, CRM & intégrations', path: '/services/crm-erp-integrations' },
+      { label: 'IA & automatisation', path: '/services/ia-automatisation' },
+      { label: 'Marketing & acquisition', path: '/services/marketing-acquisition' },
+    ],
+  },
 ];
 
-/** Bloc 2 du méga-menu — « Le système » (offres Niveau 2, DECISION 03). */
-export const megaMenuSystem: NavLink[] = [
-  // slug vérifié en prod P23 : /services/crm-erp-integrations
-  { label: 'Odoo / ERP-CRM', path: '/services/crm-erp-integrations' },
-  { label: 'IA & automatisation', path: '/services/ia-automatisation' },
-  { label: 'Marketing & acquisition', path: '/services/marketing-acquisition' },
-];
-
-/** Bloc 3 du méga-menu — Conseil (porte d'entrée, DECISION 07/08). */
-export const megaMenuConseil = {
+/** Conseil — porte d'entrée transversale (méga-menu colonne 3, DECISION 07/08). */
+export const serviceConseil = {
   path: '/services/conseil-strategie',
+  label: 'Conseil & stratégie',
   title: 'Pas sûr par où commencer ?',
-  body: 'Un audit gratuit pour cadrer votre projet et prioriser ce qui compte.',
-  cta: 'Conseil & audit gratuit',
+  body: 'Un cadrage gratuit pour prioriser votre projet avant tout choix technique.',
+  cta: 'Voir Conseil & stratégie',
 };
 
-export const servicesHubPath = '/services';
+/** Toutes les routes Services réelles, à plat (drawer complet, contrôles QA). */
+export const allServiceLinks: NavLink[] = [
+  servicesTop,
+  ...serviceFamilies.flatMap((f) => f.links),
+  { label: serviceConseil.label, path: serviceConseil.path },
+];
+
+/** Sélection condensée pour le footer : « Tous nos services » + les 5 expertises
+ *  + Conseil. Les 3 usages web restent accessibles via « Conception &
+ *  développement web » et le hub — footer non transformé en liste trop longue. */
+export const footerServiceLinks: NavLink[] = [
+  servicesTop,
+  { label: 'Conception & développement web', path: '/services/conception-et-developpement-web' },
+  { label: 'Logiciels & applications web', path: '/services/plateformes-applications' },
+  { label: 'ERP, CRM & intégrations', path: '/services/crm-erp-integrations' },
+  { label: 'IA & automatisation', path: '/services/ia-automatisation' },
+  { label: 'Marketing & acquisition', path: '/services/marketing-acquisition' },
+  { label: serviceConseil.label, path: serviceConseil.path },
+];
 export const contactPath = '/contact';
 
 /** CTA principal unique — DECISION 11 (« devis » uniformisé, DECISION 15). */
 export const primaryCta = { label: 'Parlons de votre projet', path: contactPath };
 
-/** Colonnes du footer (footer mockup lignes 962-973). */
+/** Colonnes du footer (footer mockup lignes 962-973). La colonne Services tire
+ *  ses liens de `footerServiceLinks` (source unique). */
 export const footerColumns: { heading: string; links: NavLink[] }[] = [
   {
     heading: 'Services',
-    links: [
-      ...megaMenuBuild,
-      { label: 'Odoo / ERP-CRM', path: '/services/crm-erp-integrations' },
-      { label: 'Automatisation & IA', path: '/services/ia-automatisation' },
-    ],
+    links: footerServiceLinks,
   },
   {
     heading: 'Agence',
