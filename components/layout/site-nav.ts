@@ -26,20 +26,23 @@ export const primaryNav: NavLink[] = [
   { label: 'Contact', path: '/contact' },
 ];
 
-/** Bloc 1 du méga-menu — « Ce qu'on construit » (offres Niveau 1, DECISION 03). */
-export const megaMenuBuild: NavLink[] = [
-  { label: 'Boutiques en ligne', path: '/services/boutiques-en-ligne' },
-  { label: 'Plateformes & applications', path: '/services/plateformes-applications' },
+/** Famille 1 du méga-menu — « Conception & développement web » (4 liens :
+ * vue d'ensemble + les 3 usages, alignés sur hubWeb.usages / servicesHub.ts). */
+export const megaMenuWebFamily: NavLink[] = [
+  { label: "Vue d'ensemble", path: '/services/conception-et-developpement-web' },
   { label: "Sites d'entreprise", path: '/services/sites-entreprise' },
   { label: 'Sites institutionnels & ONG', path: '/services/sites-institutionnels-ong' },
+  { label: 'Boutiques en ligne', path: '/services/boutiques-en-ligne' },
 ];
 
-/** Bloc 2 du méga-menu — « Le système » (offres Niveau 2, DECISION 03). */
-export const megaMenuSystem: NavLink[] = [
+/** Famille 2 du méga-menu — « Systèmes & croissance » (les 4 autres expertises
+ * du hub Services, alignées sur hubIndex.rows[1..4] de servicesHub.ts). */
+export const megaMenuSystemFamily: NavLink[] = [
+  { label: 'Logiciels et applications web', path: '/services/plateformes-applications' },
   // slug vérifié en prod P23 : /services/crm-erp-integrations
-  { label: 'Odoo / ERP-CRM', path: '/services/crm-erp-integrations' },
-  { label: 'IA & automatisation', path: '/services/ia-automatisation' },
-  { label: 'Marketing & acquisition', path: '/services/marketing-acquisition' },
+  { label: 'ERP, CRM et intégrations', path: '/services/crm-erp-integrations' },
+  { label: 'IA et automatisation', path: '/services/ia-automatisation' },
+  { label: 'Marketing et génération de prospects', path: '/services/marketing-acquisition' },
 ];
 
 /** Bloc 3 du méga-menu — Conseil (porte d'entrée, DECISION 07/08). */
@@ -56,15 +59,23 @@ export const contactPath = '/contact';
 /** CTA principal unique — DECISION 11 (« devis » uniformisé, DECISION 15). */
 export const primaryCta = { label: 'Parlons de votre projet', path: contactPath };
 
+/** Colonne Services du footer — hub + les 5 expertises + Conseil (mêmes
+ * intitulés/ordre que hubIndex.rows + hubConseil dans content/fr/servicesHub.ts). */
+export const footerServicesColumn: NavLink[] = [
+  { label: 'Tous nos services', path: servicesHubPath },
+  { label: 'Conception et développement web', path: '/services/conception-et-developpement-web' },
+  { label: 'Logiciels et applications web', path: '/services/plateformes-applications' },
+  { label: 'ERP, CRM et intégrations', path: '/services/crm-erp-integrations' },
+  { label: 'IA et automatisation', path: '/services/ia-automatisation' },
+  { label: 'Marketing et génération de prospects', path: '/services/marketing-acquisition' },
+  { label: 'Conseil et stratégie', path: '/services/conseil-strategie' },
+];
+
 /** Colonnes du footer (footer mockup lignes 962-973). */
 export const footerColumns: { heading: string; links: NavLink[] }[] = [
   {
     heading: 'Services',
-    links: [
-      ...megaMenuBuild,
-      { label: 'Odoo / ERP-CRM', path: '/services/crm-erp-integrations' },
-      { label: 'Automatisation & IA', path: '/services/ia-automatisation' },
-    ],
+    links: footerServicesColumn,
   },
   {
     heading: 'Agence',

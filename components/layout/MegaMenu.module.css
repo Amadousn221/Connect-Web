@@ -25,6 +25,12 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .mega {
+    animation: none;
+  }
+}
+
 .inner {
   max-width: var(--container-max);
   margin-inline: auto;
@@ -95,6 +101,11 @@
   color: var(--orange);
 }
 
+.link[aria-current='page'] {
+  color: var(--orange);
+  font-weight: 600;
+}
+
 .arrow {
   color: var(--ink-faint);
 }
@@ -135,6 +146,20 @@
 .conseilCta:hover {
   color: #fff;
   transform: translateY(-3px);
+}
+
+/* Resserrement 961-1120px : la nav desktop cohabite avec le méga-menu sur des
+   viewports étroits (petits laptops) — on réduit gap/padding pour éviter tout
+   débordement horizontal sans passer par le breakpoint drawer mobile. */
+@media (min-width: 961px) and (max-width: 1120px) {
+  .inner {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    padding: 32px var(--container-pad);
+  }
+  .conseil {
+    padding: 20px;
+  }
 }
 
 @media (max-width: 960px) {

@@ -52,6 +52,10 @@
 .navlink:hover {
   color: var(--orange);
 }
+.navlink[data-active='true'] {
+  color: var(--orange);
+  font-weight: 600;
+}
 
 .chevron {
   transition: transform var(--dur-quick) var(--ease-default);

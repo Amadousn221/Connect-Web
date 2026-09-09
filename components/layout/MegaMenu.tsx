@@ -1,16 +1,18 @@
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/routing';
 import {
-  megaMenuBuild,
-  megaMenuSystem,
+  megaMenuWebFamily,
+  megaMenuSystemFamily,
   megaMenuConseil,
   servicesHubPath,
 } from './site-nav';
 import styles from './MegaMenu.module.css';
 
-// Méga-menu Services — 3 blocs (mockup Accueil V2, lignes 149-175) :
-// « Ce qu'on construit » (Niveau 1) · « Le système » (Niveau 2) · Conseil.
+// Méga-menu Services — hub + 2 familles (4 liens chacune) + Conseil, alignés
+// sur les 5 expertises + Conseil du hub /services (content/fr/servicesHub.ts) :
+// « Conception & développement web » · « Systèmes & croissance » · Conseil.
 // Présentationnel : l'état ouvert/fermé et le focus trap sont gérés par Header.
 
 export function MegaMenu({
@@ -24,12 +26,16 @@ export function MegaMenu({
   locale: Locale;
   onNavigate?: () => void;
 }) {
+  const pathname = usePathname();
+  const isActive = (path: string) => pathname === localePath(locale, path);
+
   return (
     <div id={id} className={styles.mega} hidden={!open}>
       <div className={styles.inner}>
         <Link
           href={localePath(locale, servicesHubPath)}
           className={styles.hubLink}
+          aria-current={isActive(servicesHubPath) ? 'page' : undefined}
           onClick={onNavigate}
         >
           Tous nos services
@@ -39,13 +45,14 @@ export function MegaMenu({
         </Link>
 
         <div>
-          <p className={styles.eyebrow}>Ce qu&apos;on construit</p>
+          <p className={styles.eyebrow}>Conception &amp; développement web</p>
           <ul className={styles.list}>
-            {megaMenuBuild.map((item) => (
+            {megaMenuWebFamily.map((item) => (
               <li key={item.path}>
                 <Link
                   href={localePath(locale, item.path)}
                   className={styles.link}
+                  aria-current={isActive(item.path) ? 'page' : undefined}
                   onClick={onNavigate}
                 >
                   <span>{item.label}</span>
@@ -59,13 +66,14 @@ export function MegaMenu({
         </div>
 
         <div>
-          <p className={styles.eyebrow}>Le système</p>
+          <p className={styles.eyebrow}>Systèmes &amp; croissance</p>
           <ul className={styles.list}>
-            {megaMenuSystem.map((item) => (
+            {megaMenuSystemFamily.map((item) => (
               <li key={item.path}>
                 <Link
                   href={localePath(locale, item.path)}
                   className={styles.link}
+                  aria-current={isActive(item.path) ? 'page' : undefined}
                   onClick={onNavigate}
                 >
                   <span>{item.label}</span>
@@ -85,6 +93,7 @@ export function MegaMenu({
           <Link
             href={localePath(locale, megaMenuConseil.path)}
             className={styles.conseilCta}
+            aria-current={isActive(megaMenuConseil.path) ? 'page' : undefined}
             onClick={onNavigate}
           >
             {megaMenuConseil.cta}

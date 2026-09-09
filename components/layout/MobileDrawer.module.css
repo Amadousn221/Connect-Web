@@ -57,6 +57,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow-y: auto;
+  min-height: 0;
 }
 .nav a {
   color: rgba(255, 255, 255, 0.85);
@@ -66,6 +68,87 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .nav a:hover {
+  color: #fff;
+}
+
+/* Accordéon Services — même arborescence que le méga-menu desktop
+   (hub + 2 familles + Conseil), via <details>/<summary> natif. */
+.servicesAccordion {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.servicesAccordion summary {
+  list-style: none;
+}
+.servicesAccordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.servicesSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 14px 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.servicesSummary:hover {
+  color: #fff;
+}
+
+.servicesChevron {
+  transition: transform var(--dur-quick) var(--ease-default);
+}
+.servicesAccordion[open] .servicesChevron {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .servicesChevron {
+    transition: none;
+  }
+}
+
+.servicesPanel {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8px;
+}
+
+.servicesHubLink {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--orange-h, #fff);
+  border-bottom: none !important;
+}
+
+.servicesGroupLabel {
+  margin: 10px 0 2px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.servicesLink {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0 10px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: none !important;
+}
+.servicesLink:hover {
   color: #fff;
 }
 

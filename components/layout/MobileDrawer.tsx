@@ -9,6 +9,9 @@ import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
 import {
   servicesHubPath,
+  megaMenuWebFamily,
+  megaMenuSystemFamily,
+  megaMenuConseil,
   primaryNav,
   primaryCta,
   contactInfo,
@@ -83,9 +86,69 @@ export function MobileDrawer({
         </div>
 
         <nav className={styles.nav}>
-          <Link href={localePath(locale, servicesHubPath)} onClick={onClose}>
-            Services
-          </Link>
+          <details className={styles.servicesAccordion}>
+            <summary className={styles.servicesSummary}>
+              Services
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                aria-hidden="true"
+                className={styles.servicesChevron}
+              >
+                <path
+                  d="M3 4.5 6 7.5 9 4.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </summary>
+            <div className={styles.servicesPanel}>
+              <Link
+                href={localePath(locale, servicesHubPath)}
+                className={styles.servicesHubLink}
+                onClick={onClose}
+              >
+                Tous nos services
+              </Link>
+
+              <p className={styles.servicesGroupLabel}>Conception &amp; développement web</p>
+              {megaMenuWebFamily.map((item) => (
+                <Link
+                  key={item.path}
+                  href={localePath(locale, item.path)}
+                  className={styles.servicesLink}
+                  onClick={onClose}
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              <p className={styles.servicesGroupLabel}>Systèmes &amp; croissance</p>
+              {megaMenuSystemFamily.map((item) => (
+                <Link
+                  key={item.path}
+                  href={localePath(locale, item.path)}
+                  className={styles.servicesLink}
+                  onClick={onClose}
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              <p className={styles.servicesGroupLabel}>Conseil</p>
+              <Link
+                href={localePath(locale, megaMenuConseil.path)}
+                className={styles.servicesLink}
+                onClick={onClose}
+              >
+                {megaMenuConseil.cta}
+              </Link>
+            </div>
+          </details>
           {primaryNav.map((item) => (
             <Link key={item.path} href={localePath(locale, item.path)} onClick={onClose}>
               {item.label}
