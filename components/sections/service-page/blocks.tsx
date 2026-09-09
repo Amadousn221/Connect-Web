@@ -39,6 +39,45 @@ export function Section({
 
 export type NumberedItem = { title: string; body: string[]; link?: SpLinkData };
 
+/** Section de pure prose : tête (+ chapô optionnel) + corps de texte. */
+export function Prose({
+  headId,
+  eyebrow,
+  title,
+  body,
+  split = false,
+  tone,
+}: {
+  headId?: string;
+  eyebrow: string;
+  title: string;
+  body: string[];
+  split?: boolean;
+  tone?: 'on-dark';
+}) {
+  const content = (
+    <div className={styles.leadProse}>
+      <SpProse blocks={body} />
+    </div>
+  );
+  if (!split) {
+    return (
+      <>
+        <SpHead id={headId} eyebrow={eyebrow} title={title} tone={tone} />
+        {content}
+      </>
+    );
+  }
+  return (
+    <div className={styles.split}>
+      <div className={styles.intro}>
+        <SpHead id={headId} eyebrow={eyebrow} title={title} tone={tone} />
+      </div>
+      {content}
+    </div>
+  );
+}
+
 /** Blocs numérotés — intro à gauche, liste séquentielle à droite (ou empilé). */
 export function Sequence({
   headId,
