@@ -37,7 +37,7 @@ export function Section({
   );
 }
 
-export type NumberedItem = { title: string; body: string[] };
+export type NumberedItem = { title: string; body: string[]; link?: SpLinkData };
 
 /** Blocs numérotés — intro à gauche, liste séquentielle à droite (ou empilé). */
 export function Sequence({
@@ -90,6 +90,7 @@ export function Reading({
   items,
   outro,
   split = true,
+  locale,
 }: {
   headId?: string;
   eyebrow: string;
@@ -98,6 +99,7 @@ export function Reading({
   items: NumberedItem[];
   outro?: string;
   split?: boolean;
+  locale?: Locale;
 }) {
   const list = (
     <div className={styles.reading}>
@@ -105,6 +107,12 @@ export function Reading({
         <article key={it.title} className={styles.readingRow}>
           <h3>{it.title}</h3>
           <SpProse blocks={it.body} />
+          {it.link && locale ? (
+            <SpLink href={it.link.href} locale={locale} className={styles.cta}>
+              {it.link.label}
+              <span aria-hidden="true">↗</span>
+            </SpLink>
+          ) : null}
         </article>
       ))}
       {outro ? <p className={styles.configOutro}>{outro}</p> : null}
@@ -215,12 +223,16 @@ export function Trio({
   title,
   intro,
   items,
+  notes,
+  numbered = true,
 }: {
   headId?: string;
   eyebrow: string;
   title: string;
   intro?: string[];
   items: { title: string; body: string[] }[];
+  notes?: { title: string; body: string[] }[];
+  numbered?: boolean;
 }) {
   return (
     <>
@@ -228,12 +240,22 @@ export function Trio({
       <div className={styles.trioGrid} data-count={items.length}>
         {items.map((it, i) => (
           <article key={it.title} className={styles.trio}>
-            <span className={styles.stepNum}>{`0${i + 1}`}</span>
+            {numbered ? <span className={styles.stepNum}>{`0${i + 1}`}</span> : null}
             <h3>{it.title}</h3>
             <SpProse blocks={it.body} />
           </article>
         ))}
       </div>
+      {notes && notes.length > 0 ? (
+        <div className={styles.configNotes}>
+          {notes.map((n) => (
+            <div key={n.title} className={styles.configNote}>
+              <b>{n.title}</b>
+              <SpProse blocks={n.body} />
+            </div>
+          ))}
+        </div>
+      ) : null}
     </>
   );
 }
@@ -288,6 +310,7 @@ export function Projects({
   title,
   intro,
   cards,
+  note,
   cta,
   locale,
 }: {
@@ -302,6 +325,7 @@ export function Projects({
     image?: { src: string; alt: string };
     link: SpLinkData;
   }[];
+  note?: string;
   cta?: SpLinkData;
   locale: Locale;
 }) {
@@ -333,6 +357,7 @@ export function Projects({
           </article>
         ))}
       </div>
+      {note ? <p className={styles.configOutro}>{note}</p> : null}
       {cta ? (
         <p className={styles.sectionCta}>
           <SpLink href={cta.href} locale={locale} className={styles.cta}>

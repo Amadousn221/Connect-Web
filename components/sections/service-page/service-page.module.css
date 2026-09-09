@@ -202,6 +202,29 @@
 .configGrid[data-count='2'] {
   grid-template-columns: repeat(2, 1fr);
 }
+.configGrid[data-count='4'] {
+  grid-template-columns: repeat(2, 1fr);
+}
+.deep .configCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.deep .configCard p {
+  color: rgba(255, 255, 255, 0.82);
+}
+.deep .configNote {
+  border-color: rgba(255, 255, 255, 0.24);
+}
+.deep .configNote p {
+  color: rgba(255, 255, 255, 0.82);
+}
+.deep .reading p,
+.deep .readingRow p,
+.deep .configOutro,
+.deep .leadProse > p,
+.deep .selectorFallback p {
+  color: rgba(255, 255, 255, 0.82);
+}
 .configCard {
   border: 1px solid var(--border);
   background: var(--card);
@@ -394,6 +417,9 @@
 }
 .projects[data-count='2'] {
   grid-template-columns: repeat(2, 1fr);
+}
+.projects[data-count='1'] {
+  grid-template-columns: minmax(0, 460px);
 }
 .project {
   display: flex;
