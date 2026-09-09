@@ -1,0 +1,720 @@
+/* ===========================================================================
+   Kit commun des pages Services enfants — design system existant (tokens,
+   Newsreader/Hanken, angles vifs, deux thèmes). Chaque page compose ces
+   primitives dans SON ordre et avec SA copy : pas un template rigide.
+   =========================================================================== */
+
+@media (max-width: 640px) {
+  .page {
+    --text-h2: clamp(27px, 6.7vw, 31px);
+  }
+}
+
+/* ── Coquille de section ───────────────────────────────────────────────── */
+.section {
+  padding-block: clamp(48px, 7vw, 76px);
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+.soft {
+  background: var(--bg-alt);
+}
+.deep {
+  background: var(--ink-deep);
+  color: #fff;
+  border-block: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── En-tête de section ────────────────────────────────────────────────── */
+.head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 52px;
+  margin-bottom: 32px;
+}
+.headEyebrow {
+  display: block;
+  margin-bottom: 14px;
+}
+.headTitle {
+  font-size: var(--text-h2);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 12px 0 0;
+  text-wrap: pretty;
+  color: inherit;
+}
+.headLead {
+  margin: 0;
+  align-self: end;
+  font-size: var(--text-section);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.deep .headLead {
+  color: rgba(255, 255, 255, 0.72);
+}
+.miniEyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+/* ── Split : intro à gauche, contenu à droite ─────────────────────────── */
+.split {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px 64px;
+  align-items: start;
+}
+.split .head {
+  display: block;
+  margin-bottom: 18px;
+}
+.intro > p,
+.leadProse > p {
+  font-size: var(--text-section);
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0 0 14px;
+}
+.deep .intro > p {
+  color: rgba(255, 255, 255, 0.82);
+}
+.intro > ul,
+.leadProse > ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  color: var(--text-muted);
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+}
+.leadProse {
+  max-width: 68ch;
+  margin-bottom: 24px;
+}
+
+/* ── Lien tertiaire orange à flèche ───────────────────────────────────── */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  min-height: 44px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.cta:hover {
+  color: var(--orange-h);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.ctaOnDark,
+.deep .cta {
+  color: var(--orange-h);
+}
+.sectionCta {
+  margin: 28px 0 0;
+}
+
+/* ── Sequence — blocs numérotés ──────────────────────────────────────── */
+.sequence {
+  display: grid;
+  gap: 4px;
+}
+.seqRow {
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+}
+.deep .seqRow {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.seqRow:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.deep .seqRow:last-child {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.seqRow h3 {
+  display: flex;
+  gap: 12px;
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+.seqNum {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+.seqRow p {
+  margin: 0 0 8px;
+  font-size: var(--text-body-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.deep .seqRow p {
+  color: rgba(255, 255, 255, 0.82);
+}
+.seqRow p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Reading — prose titrée, rythme éditorial ─────────────────────────── */
+.reading {
+  display: grid;
+  gap: 22px;
+}
+.readingRow h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: inherit;
+}
+.readingRow p {
+  margin: 0 0 8px;
+  font-size: var(--text-body-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.readingRow p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── ConfigCards ─────────────────────────────────────────────────────── */
+.configGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.configGrid[data-count='2'] {
+  grid-template-columns: repeat(2, 1fr);
+}
+.configCard {
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 22px;
+}
+.soft .configCard {
+  background: var(--bg);
+}
+.configCard[data-accent] {
+  border-color: var(--orange);
+  border-top-width: 2px;
+}
+.configCard h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.configCard p {
+  margin: 0 0 8px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.configCard p:last-child {
+  margin-bottom: 0;
+}
+.configOutro {
+  margin: 20px 0 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ── Timeline — étapes ───────────────────────────────────────────────── */
+.timeline {
+  display: grid;
+  gap: 20px 28px;
+  grid-template-columns: repeat(2, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.step {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.deep .step {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.stepNum {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+.step h3,
+.trio h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+.step p,
+.trio p {
+  margin: 0 0 8px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.deep .step p,
+.deep .trio p {
+  color: rgba(255, 255, 255, 0.82);
+}
+.step p:last-child,
+.trio p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Trio ────────────────────────────────────────────────────────────── */
+.trioGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px 40px;
+}
+.trioGrid[data-count='2'] {
+  grid-template-columns: repeat(2, 1fr);
+}
+.trioGrid[data-count='4'] {
+  grid-template-columns: repeat(4, 1fr);
+}
+.trio {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.deep .trio {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* ── Ownership ───────────────────────────────────────────────────────── */
+.ownList {
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+.deep .ownList,
+.deep .ownRow {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.ownRow {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 12px 24px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ownRow dt {
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+}
+.ownRow dd {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.deep .ownRow dd {
+  color: rgba(255, 255, 255, 0.82);
+}
+.ownAside {
+  margin-top: 22px;
+  border-left: 2px solid var(--orange);
+  background: var(--bg);
+  padding: 18px 20px;
+}
+.deep .ownAside {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ownAside h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.ownAside p {
+  margin: 0 0 8px;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.deep .ownAside p {
+  color: rgba(255, 255, 255, 0.82);
+}
+.ownAside p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Projects ────────────────────────────────────────────────────────── */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.projects[data-count='3'] {
+  grid-template-columns: repeat(3, 1fr);
+}
+.projects[data-count='2'] {
+  grid-template-columns: repeat(2, 1fr);
+}
+.project {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  overflow: hidden;
+}
+.soft .project {
+  background: var(--card);
+}
+.projectCover {
+  aspect-ratio: 16 / 10;
+  position: relative;
+  background: var(--bg-alt);
+}
+.projectCover :global(img) {
+  object-fit: cover;
+}
+.projectBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-start;
+  padding: 20px;
+}
+.projectBadge {
+  display: inline-block;
+  padding: 4px 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+}
+.projectBody h3 {
+  margin: 0 0 10px;
+  font-size: 19px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+.projectBody p {
+  margin: 0 0 14px;
+  font-size: var(--text-body-sm);
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.projectBody .cta {
+  margin-top: auto;
+}
+
+/* ── Extensions ──────────────────────────────────────────────────────── */
+.extensions {
+  border-top: 1px solid var(--border);
+}
+.extension {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr auto;
+  gap: 12px 32px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+.extension h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.extension p {
+  margin: 0;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.extension .cta {
+  min-height: 0;
+  padding: 2px 0;
+  white-space: nowrap;
+}
+
+/* ── Contact ─────────────────────────────────────────────────────────── */
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.coords {
+  font-style: normal;
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: var(--text-body-sm);
+  color: var(--text-muted);
+  overflow-wrap: break-word;
+}
+.coords a {
+  color: var(--text);
+  width: fit-content;
+  max-width: 100%;
+}
+.coords a:hover {
+  color: var(--orange);
+}
+.fallback {
+  margin: 16px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  overflow-wrap: break-word;
+}
+.fallback a {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* ── TabbedPanels — sélecteur générique ──────────────────────────────── */
+.tabbed {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: minmax(0, 260px) 1fr;
+  gap: 8px 32px;
+  align-items: start;
+}
+.tabList {
+  display: flex;
+  flex-direction: column;
+}
+.tab {
+  text-align: left;
+  padding: 12px 10px 12px 0;
+  min-height: 44px;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: none;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--dur-quick) ease;
+}
+.tab:last-child {
+  border-bottom: 0;
+}
+.tab:hover {
+  color: var(--text);
+}
+.tab[aria-selected='true'] {
+  color: var(--text);
+  border-bottom-color: var(--orange);
+}
+.tabPanel {
+  border-left: 2px solid var(--orange);
+  padding: 4px 0 4px 22px;
+}
+.tabPanel:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+.tabPanelEyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.tabPanelTitle {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.tabPanel p {
+  margin: 0 0 8px;
+  font-size: var(--text-body-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.tabPanel p:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 640px) {
+  .tabbed {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .tabPanel {
+    padding-left: 16px;
+  }
+  .tab {
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab {
+    transition: none;
+  }
+}
+
+/* ── Cartes cliquables (mono-destination) ─────────────────────────────── */
+.clickable {
+  position: relative;
+  transition:
+    background var(--dur-quick) ease,
+    border-color var(--dur-quick) ease,
+    transform var(--dur-quick) ease;
+}
+.clickable .cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.clickable:focus-within {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+@media (hover: hover) {
+  .extension.clickable:hover {
+    background: var(--bg-alt);
+  }
+  .project.clickable:hover {
+    transform: translateY(-3px);
+    border-color: var(--orange);
+  }
+}
+
+/* ── Anti-débordement ────────────────────────────────────────────────── */
+.head > *,
+.split > *,
+.ownRow > *,
+.extension > *,
+.seqRow,
+.step,
+.trio,
+.projectBody {
+  min-width: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .head {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .headTitle {
+    margin: 0;
+  }
+  .split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .trioGrid[data-count='4'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 880px) {
+  .configGrid,
+  .configGrid[data-count='2'] {
+    grid-template-columns: 1fr;
+  }
+  .trioGrid,
+  .trioGrid[data-count='2'] {
+    grid-template-columns: 1fr;
+  }
+  .projects,
+  .projects[data-count='3'],
+  .projects[data-count='2'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-block: 40px;
+  }
+  .head {
+    margin-bottom: 20px;
+  }
+  .headEyebrow {
+    margin-bottom: 10px;
+  }
+  .headLead,
+  .intro > p,
+  .leadProse > p {
+    line-height: 1.55;
+  }
+  .timeline,
+  .projects,
+  .projects[data-count='3'],
+  .projects[data-count='2'],
+  .ownRow,
+  .extension,
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+  .timeline {
+    gap: 0;
+  }
+  .step {
+    border-top: 0;
+    border-left: 1px solid var(--border);
+    padding: 4px 0 16px 16px;
+  }
+  .step:last-child {
+    padding-bottom: 0;
+  }
+  .ownRow {
+    gap: 4px;
+    padding: 13px 0;
+  }
+  .extension {
+    gap: 8px;
+    padding: 16px 0;
+  }
+  .contactGrid {
+    gap: 28px;
+  }
+  .seqRow h3,
+  .step h3,
+  .trio h3,
+  .readingRow h3 {
+    font-size: 16px;
+  }
+  .projectBody h3 {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clickable {
+    transition: none;
+  }
+  .project.clickable:hover {
+    transform: none;
+  }
+}
