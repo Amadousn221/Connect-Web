@@ -42,40 +42,82 @@
   border-bottom: 1px solid var(--border);
 }
 
-.qHeading {
-  margin: 0;
-}
-
+/* <summary> stylé comme un bouton pleine largeur, sans marqueur natif. */
 .qButton {
-  width: 100%;
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 24px 0;
+  list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  padding: 24px 0;
   cursor: pointer;
-  font-size: 19px;
   color: var(--ink);
+  transition: color var(--dur-quick) ease;
 }
-.qButton .icon {
-  flex-shrink: 0;
-  font-size: 24px;
+.qButton::-webkit-details-marker {
+  display: none;
+}
+.qButton::marker {
+  content: '';
+}
+.qButton:hover {
   color: var(--orange);
-  line-height: 1;
+}
+
+.qText {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: inherit;
+}
+
+/* Icône +/− pilotée par l'état natif [open], sans JavaScript. */
+.icon {
+  flex-shrink: 0;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  color: var(--orange);
+}
+.icon::before,
+.icon::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  transition:
+    opacity var(--dur-quick) ease,
+    transform var(--dur-quick) ease;
+}
+.icon::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: translateY(-50%);
+}
+.icon::after {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+}
+.item[open] .icon::after {
+  opacity: 0;
+  transform: translateX(-50%) rotate(90deg);
 }
 
 .body {
   composes: cw-prose from global;
   color: var(--ink-soft);
+  padding-bottom: 8px;
 }
 .body p {
-  margin: 0 0 24px;
+  margin: 0 0 16px;
 }
-.body[hidden] {
-  display: none;
+.body p:last-child {
+  margin-bottom: 0;
 }
 
 .outro {
@@ -99,7 +141,7 @@
     padding-block: 56px;
   }
   .section:has(.split) {
-    padding-block: 36px;
+    padding-block: 40px;
   }
   .split {
     gap: 22px;
@@ -108,15 +150,11 @@
     margin-top: 28px;
   }
   .qButton {
-    font-size: 16.5px;
     padding: 18px 0;
     gap: 14px;
   }
-  .qButton .icon {
-    font-size: 22px;
-  }
-  .body p {
-    margin: 0 0 16px;
+  .qText {
+    font-size: 16.5px;
   }
   .outro {
     margin-top: 24px;

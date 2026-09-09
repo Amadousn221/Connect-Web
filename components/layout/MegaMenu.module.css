@@ -34,6 +34,29 @@
   gap: 40px;
 }
 
+/* Lien de rattache vers le hub Services (/services) — maillage interne entrant
+   (Opus §5.5). Bandeau plein largeur au-dessus des trois colonnes. */
+.hubLink {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-bottom: -16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: color var(--dur-instant) ease;
+}
+.hubLink:hover {
+  color: var(--orange);
+}
+.hubLink .arrow {
+  color: var(--orange);
+}
+
 .eyebrow {
   margin: 0 0 20px;
   font-size: var(--text-eyebrow);

@@ -53,7 +53,7 @@
 
 @media (max-width: 640px) {
   .section {
-    padding-block: 36px;
+    padding-block: 40px;
   }
   .grid {
     gap: 28px;

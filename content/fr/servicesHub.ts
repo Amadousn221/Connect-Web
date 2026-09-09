@@ -334,9 +334,11 @@ export const hubOrientation = {
     {
       situation: '« Mon site existe mais ne me sert plus. »',
       answer: 'Refonte de site internet — diagnostic d’abord, réécriture ensuite.',
-      links: [
-        { label: 'Conception et développement web', href: '/services/conception-et-developpement-web' },
-      ],
+      // Lien provisoire (décision PO 2026-09-08) : la page Refonte n'est pas
+      // encore intégrée → on renvoie vers le formulaire de contact plutôt que
+      // vers un slug inventé. À remplacer par /services/refonte-site-internet
+      // une fois la route confirmée et la page intégrée.
+      links: [{ label: 'Discuter de ma refonte', href: '#contact' }],
     },
     {
       situation: '« Je veux digitaliser une opération métier (stock, ventes, comptabilité, relation client). »',

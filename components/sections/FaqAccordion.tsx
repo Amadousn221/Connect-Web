@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useId } from 'react';
 import Link from 'next/link';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ValidationNote } from '@/components/ui/ValidationNote';
@@ -9,9 +9,18 @@ import type { Locale } from '@/lib/i18n/config';
 import type { Cta, FaqItem } from '@/content/types';
 import styles from './FaqAccordion.module.css';
 
-// Accordéon FAQ réutilisable (Accueil A11 + chaque page d'offre).
-//   layout="split"     : titre à gauche, accordéons à droite (maquette V6 hub).
-//   allowMultiple=true : plusieurs réponses peuvent rester ouvertes.
+// Accordéon FAQ — amélioration progressive stricte.
+//
+// Chaque question est un `<details>/<summary>` natif : sans JavaScript, elle
+// s'ouvre et se ferme au clic comme au clavier (Entrée / Espace), l'état
+// ouvert/fermé est annoncé nativement par les lecteurs d'écran, et TOUTES les
+// réponses restent consultables. Aucun script requis.
+//
+//   layout="split"      : titre à gauche, questions à droite (maquette V6 hub).
+//   allowMultiple=false : accordéon exclusif via l'attribut natif `name`
+//     (referme les autres à l'ouverture, sur navigateurs récents). Sur les
+//     navigateurs sans support de `name`, les questions s'ouvrent librement —
+//     dégradation acceptable, aucune réponse n'est masquée.
 export function FaqAccordion({
   locale,
   intro,
@@ -29,56 +38,30 @@ export function FaqAccordion({
   layout?: 'stack' | 'split';
   allowMultiple?: boolean;
 }) {
-  const [open, setOpen] = useState<Set<number>>(new Set());
-  const baseId = useId();
-
-  const toggle = (i: number) =>
-    setOpen((prev) => {
-      const next = allowMultiple ? new Set(prev) : new Set<number>();
-      if (prev.has(i)) next.delete(i);
-      else next.add(i);
-      return next;
-    });
+  // Nom de groupe stable pour l'accordéon exclusif natif (sans `:` — invalide
+  // dans certains contextes DOM).
+  const groupName = `faq-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
 
   const list = (
     <div className={styles.list}>
-      {items.map((item, i) => {
-        const isOpen = open.has(i);
-        const panelId = `${baseId}-p${i}`;
-        const btnId = `${baseId}-b${i}`;
-        return (
-          <div key={item.q} className={styles.item}>
-            <h3 className={styles.qHeading}>
-              <button
-                id={btnId}
-                type="button"
-                className={styles.qButton}
-                aria-expanded={isOpen}
-                aria-controls={panelId}
-                onClick={() => toggle(i)}
-              >
-                <span className="cw-serif">{item.q}</span>
-                <span aria-hidden="true" className={styles.icon}>
-                  {isOpen ? '−' : '+'}
-                </span>
-              </button>
-            </h3>
-            <div
-              id={panelId}
-              role="region"
-              aria-labelledby={btnId}
-              className={styles.body}
-              data-open={isOpen}
-              hidden={!isOpen}
-            >
-              <p>{item.a}</p>
-              {item.toValidateNote ? (
-                <ValidationNote variant="box">{item.toValidateNote}</ValidationNote>
-              ) : null}
-            </div>
+      {items.map((item) => (
+        <details
+          key={item.q}
+          className={styles.item}
+          name={allowMultiple ? undefined : groupName}
+        >
+          <summary className={styles.qButton}>
+            <h3 className={`cw-serif ${styles.qText}`}>{item.q}</h3>
+            <span aria-hidden="true" className={styles.icon} />
+          </summary>
+          <div className={styles.body}>
+            <p>{item.a}</p>
+            {item.toValidateNote ? (
+              <ValidationNote variant="box">{item.toValidateNote}</ValidationNote>
+            ) : null}
           </div>
-        );
-      })}
+        </details>
+      ))}
     </div>
   );
 

@@ -5,6 +5,7 @@ import {
   megaMenuBuild,
   megaMenuSystem,
   megaMenuConseil,
+  servicesHubPath,
 } from './site-nav';
 import styles from './MegaMenu.module.css';
 
@@ -26,6 +27,17 @@ export function MegaMenu({
   return (
     <div id={id} className={styles.mega} hidden={!open}>
       <div className={styles.inner}>
+        <Link
+          href={localePath(locale, servicesHubPath)}
+          className={styles.hubLink}
+          onClick={onNavigate}
+        >
+          Tous nos services
+          <span aria-hidden="true" className={styles.arrow}>
+            →
+          </span>
+        </Link>
+
         <div>
           <p className={styles.eyebrow}>Ce qu&apos;on construit</p>
           <ul className={styles.list}>

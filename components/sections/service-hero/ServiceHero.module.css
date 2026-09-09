@@ -75,7 +75,7 @@
   margin: 0 0 24px;
   max-width: 650px;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7; /* repère V6 handoff §4 : intro 16px / interligne 1,7 */
   color: rgba(255, 255, 255, 0.86);
   text-wrap: pretty;
 }
@@ -94,22 +94,24 @@
 
 @media (max-width: 640px) {
   .hero {
-    padding-block: 32px;
+    padding-block: 40px; /* repère V6 handoff §4 : rythme Hero mobile ~43/38 */
   }
   .mediaImg {
     object-position: var(--sh-focal-mobile, 50% 50%);
   }
   .title {
-    /* H1 3 phrases : compact au plus étroit, ~32-34px dès 390px. */
-    font-size: clamp(28px, 8vw, 34px);
+    /* Repère V6 handoff §4 : H1 mobile ~37px. H1 = 3 phrases → on descend à
+       30px au plus étroit (320px) pour éviter tout débordement, on atteint
+       ~37px vers 390px. */
+    font-size: clamp(30px, 9.4vw, 37px);
     line-height: 1.1;
     letter-spacing: -0.012em;
     max-width: none;
-    margin: 8px 0 12px;
+    margin: 8px 0 14px;
   }
   .intro {
     font-size: 16px;
-    line-height: 1.55;
+    line-height: 1.6;
     margin-bottom: 20px;
   }
   .ctas {

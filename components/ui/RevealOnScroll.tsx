@@ -1,10 +1,33 @@
 'use client';
 
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 
-// Révélation au scroll — porté du comportement des maquettes (`[data-reveal]` +
-// IntersectionObserver, classe `.cw-in`). opacity + translateY(24px) max.
-// `prefers-reduced-motion` : rendu visible d'emblée, aucun transform.
+// Révélation au scroll — amélioration progressive stricte.
+//
+// Le contenu est rendu VISIBLE par défaut : côté serveur, sans JavaScript,
+// si `IntersectionObserver` est absent, ou sous `prefers-reduced-motion`,
+// aucun attribut `data-reveal` n'est posé — donc aucune règle d'opacité 0.
+// L'animation d'apparition (opacity + translateY, portée par les styles
+// globaux `[data-reveal]` / `.cw-in`) n'est armée que côté client, avant le
+// premier paint, et uniquement pour les éléments encore hors de l'écran au
+// montage. Un élément déjà visible n'est jamais masqué.
+//
+// `prefers-reduced-motion` est réévalué : si la préférence est active au
+// montage, on ne masque rien.
+
+// useLayoutEffect côté client (arme l'état avant le paint, pas de flash),
+// useEffect côté serveur (évite l'avertissement React au rendu SSR).
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
+type Phase = 'idle' | 'armed' | 'shown';
+
 export function RevealOnScroll({
   className,
   delay,
@@ -16,23 +39,31 @@ export function RevealOnScroll({
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
+  // 'idle' = état SSR + 1er rendu client : visible, aucun attribut, aucune classe.
+  const [phase, setPhase] = useState<Phase>('idle');
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    ) {
-      setShown(true);
-      return;
-    }
+
+    const reduce =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || typeof IntersectionObserver === 'undefined') return;
+
+    // Déjà (au moins partiellement) dans le viewport au montage : pas
+    // d'animation, et surtout on ne le masque jamais.
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) return;
+
+    // Arme l'état masqué avant le paint (l'élément est hors écran de toute façon).
+    setPhase('armed');
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
-            setShown(true);
+            setPhase('shown');
             io.unobserve(e.target);
           }
         });
@@ -43,12 +74,18 @@ export function RevealOnScroll({
     return () => io.disconnect();
   }, []);
 
+  const animating = phase !== 'idle';
+
   return (
     <div
       ref={ref}
-      data-reveal
-      className={[shown ? 'cw-in' : undefined, className].filter(Boolean).join(' ')}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      data-reveal={animating ? '' : undefined}
+      className={
+        [phase === 'shown' ? 'cw-in' : undefined, className]
+          .filter(Boolean)
+          .join(' ') || undefined
+      }
+      style={animating && delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}
     </div>
