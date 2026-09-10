@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { HubHead } from './_shared';
 import { hubMethod } from '@/content/fr/servicesHub';
 import styles from './ServicesHub.module.css';
@@ -21,7 +22,10 @@ export function HubMethod() {
               <span className={styles.stepNum}>
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <h3>{s.title}</h3>
+              <h3>
+                {s.icon ? <Icon name={s.icon} className={styles.leadIcon} /> : null}
+                <span>{s.title}</span>
+              </h3>
               <p>{s.body}</p>
             </li>
           ))}

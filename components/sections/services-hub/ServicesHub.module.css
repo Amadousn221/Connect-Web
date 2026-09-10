@@ -149,6 +149,30 @@
   letter-spacing: -0.01em;
   color: inherit;
 }
+
+/* Glyphe qui coiffe un titre (index, marqueurs, méthode, orientation). */
+.leadIcon {
+  flex: 0 0 auto;
+  color: var(--orange);
+  margin-top: 2px;
+}
+.section[data-bg='deep'] .leadIcon {
+  color: var(--orange-h);
+}
+.indexRow h3,
+.situation h3,
+.marker h3,
+.step h3 {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.indexRow h3 > span,
+.situation h3 > span,
+.marker h3 > span,
+.step h3 > span {
+  min-width: 0;
+}
 .indexRow p {
   margin: 0;
   font-size: var(--text-body-sm);

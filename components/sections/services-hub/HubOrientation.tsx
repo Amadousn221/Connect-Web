@@ -1,5 +1,6 @@
 import type { Locale } from '@/lib/i18n/config';
 import { Button } from '@/components/ui/Button';
+import { Icon } from '@/components/ui/Icon';
 import { HubHead, HubCta } from './_shared';
 import { hubOrientation } from '@/content/fr/servicesHub';
 import styles from './ServicesHub.module.css';
@@ -25,7 +26,10 @@ export function HubOrientation({ locale }: { locale: Locale }) {
                 key={s.situation}
                 className={`${styles.situation} ${single ? styles.clickable : ''}`}
               >
-                <h3>{s.situation}</h3>
+                <h3>
+                  {s.icon ? <Icon name={s.icon} className={styles.leadIcon} /> : null}
+                  <span>{s.situation}</span>
+                </h3>
                 <div>
                   <p>{s.answer}</p>
                   <div className={styles.situationLinks}>

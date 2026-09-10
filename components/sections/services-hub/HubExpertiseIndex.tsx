@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { HubHead } from './_shared';
 import { hubIndex } from '@/content/fr/servicesHub';
 import styles from './ServicesHub.module.css';
@@ -20,7 +21,10 @@ export function HubExpertiseIndex() {
               <span className={styles.indexNum}>
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <h3>{row.title}</h3>
+              <h3>
+                {row.icon ? <Icon name={row.icon} className={styles.leadIcon} /> : null}
+                <span>{row.title}</span>
+              </h3>
               <p>{row.summary}</p>
               <span className={styles.indexArrow} aria-hidden="true">
                 ↘

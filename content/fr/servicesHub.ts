@@ -25,6 +25,8 @@ export type HubLink = { label: string; href: string };
 export interface HubExpertiseRow {
   /** numéro affiché (« 01 ») — dérivé de l'index à l'affichage */
   title: string;
+  /** glyphe qui coiffe le titre (registre components/ui/Icon) */
+  icon?: string;
   summary: string;
   /** ancre interne vers la section détaillée (#s3 … #s7) */
   anchor: string;
@@ -62,6 +64,7 @@ export interface HubWebPlatform {
 
 export interface HubSituation {
   situation: string;
+  icon?: string;
   answer: string;
   links: HubLink[];
 }
@@ -69,6 +72,7 @@ export interface HubSituation {
 export interface HubMarker {
   title: string;
   body: string;
+  icon?: string;
 }
 
 export interface HubProject {
@@ -85,6 +89,7 @@ export interface HubProject {
 export interface HubStep {
   title: string;
   body: string;
+  icon?: string;
 }
 
 export interface HubFaq {
@@ -123,30 +128,35 @@ export const hubIndex = {
     "Nous ne cochons pas des cases. Chaque expertise repose sur des projets livrés, des outils que nous maîtrisons, et un principe simple : vous devez comprendre ce que nous construisons pour vous, et pouvoir le reprendre en main à tout moment.",
   rows: [
     {
+      icon: 'globe',
       title: 'Conception et développement web',
       summary:
         "Sites institutionnels, sites d'entreprise, boutiques en ligne. Que vous partiez d'une page blanche ou d'un site existant qui ne vous sert plus, nous concevons des sites qui vous représentent et qui tiennent dans le temps.",
       anchor: '#web',
     },
     {
+      icon: 'app-window',
       title: 'Logiciels et applications web',
       summary:
         "Plateformes métier, portails clients, applications sur mesure. Quand un outil du marché ne suffit pas ou n'existe pas, nous développons celui qui correspond à votre manière de travailler.",
       anchor: '#logiciels',
     },
     {
+      icon: 'database',
       title: 'ERP, CRM et intégrations',
       summary:
         'Digitaliser vos opérations, connecter vos outils entre eux, arrêter de ressaisir les mêmes données. Un système d’information qui vous fait gagner du temps, pas un logiciel de plus à surveiller.',
       anchor: '#erp',
     },
     {
+      icon: 'workflow',
       title: 'IA et automatisation',
       summary:
         "Automatiser ce qui doit l'être — rapports, relances, traitements récurrents — et intégrer l'IA là où elle apporte une vraie valeur, pas comme un effet de mode.",
       anchor: '#ia',
     },
     {
+      icon: 'megaphone',
       title: 'Marketing et génération de prospects',
       summary:
         'Rendre visible ce que vous faites, faire venir les bons prospects, mesurer ce qui fonctionne. Sans promesse magique de trafic ni de conversion instantanée.',
@@ -323,6 +333,7 @@ export const hubOrientation = {
     'Nous partons du besoin, pas de la technologie. Voici les situations les plus fréquentes qui nous sont soumises, et vers quelle page elles renvoient.',
   situations: [
     {
+      icon: 'building',
       situation: '« Je veux une présence en ligne crédible pour mon entreprise. »',
       answer: "Sites d'entreprise, ou Sites institutionnels et ONG selon votre structure.",
       links: [
@@ -331,11 +342,13 @@ export const hubOrientation = {
       ],
     },
     {
+      icon: 'shopping-bag',
       situation: "« Je veux vendre en ligne, au Sénégal ou à l'international. »",
       answer: 'Boutiques en ligne, avec un focus Shopify si votre marque vise le haut de gamme et le cross-border.',
       links: [{ label: 'Boutiques en ligne', href: '/services/boutiques-en-ligne' }],
     },
     {
+      icon: 'refresh',
       situation: '« Mon site existe mais ne me sert plus. »',
       answer: 'Refonte de site internet — diagnostic d’abord, réécriture ensuite.',
       // Lien provisoire (décision PO 2026-09-08) : la page Refonte n'est pas
@@ -345,6 +358,7 @@ export const hubOrientation = {
       links: [{ label: 'Discuter de ma refonte', href: '#contact' }],
     },
     {
+      icon: 'database',
       situation: '« Je veux digitaliser une opération métier (stock, ventes, comptabilité, relation client). »',
       answer: 'ERP, CRM et intégrations, ou Logiciels et applications web si aucun outil du marché ne colle.',
       links: [
@@ -353,16 +367,19 @@ export const hubOrientation = {
       ],
     },
     {
+      icon: 'workflow',
       situation: '« Je perds du temps sur des tâches répétitives. »',
       answer: 'IA et automatisation.',
       links: [{ label: 'IA et automatisation', href: '/services/ia-automatisation' }],
     },
     {
+      icon: 'megaphone',
       situation: '« Je veux faire venir des prospects, sans me faire promettre monts et merveilles. »',
       answer: 'Marketing et génération de prospects.',
       links: [{ label: 'Marketing et génération de prospects', href: '/services/marketing-acquisition' }],
     },
     {
+      icon: 'compass',
       situation: "« Je ne sais pas encore, j'ai besoin d'y voir clair. »",
       answer: 'Conseil et stratégie, ou une conversation directe.',
       links: [
@@ -382,14 +399,17 @@ export const hubMarkers = {
     'Trois principes qui gouvernent la manière dont nous concevons et livrons chaque projet, quel que soit le type d’expertise mobilisée.',
   markers: [
     {
+      icon: 'shield-check',
       title: 'Standard international',
       body: 'Nos livrables — code, design, contenu, accessibilité, performance — répondent aux standards attendus par une clientèle exigeante, qu’elle soit à Dakar, à Paris, à Montréal ou à Casablanca. Nous concevons pour le mobile en premier, nous mesurons les performances réelles, et nous ne relâchons pas la finition au dernier kilomètre.',
     },
     {
+      icon: 'map-pin',
       title: 'Terrain ouest-africain',
       body: "Nous connaissons les contraintes concrètes du contexte : qualité de réseau variable, poids des images, coûts data, comportements Mobile Money, moyens de paiement locaux, réalités de la logistique, temporalité des projets. Ce n'est pas du storytelling — c'est ce qui décide de vos ventes le lundi matin.",
     },
     {
+      icon: 'key',
       title: 'Propriété des accès',
       body: "À la livraison, vos comptes, votre domaine, votre code, vos accès administrateurs vous appartiennent. Vous n'êtes ni prisonnier de notre hébergement, ni dépendant de notre présence pour continuer à faire tourner ce que nous avons construit. Les modalités précises sont formalisées au contrat, service par service — nous ne promettons pas ce qui dépend d'un tiers.",
     },
@@ -436,18 +456,22 @@ export const hubMethod = {
     'Nous ne commençons jamais par coder. Chaque projet suit la même trame — plus détaillée sur les projets complexes, plus resserrée sur les projets simples, mais toujours dans cet ordre.',
   steps: [
     {
+      icon: 'users',
       title: 'Écouter',
       body: 'Nous prenons le temps de comprendre votre activité, vos utilisateurs, ce qui fonctionne déjà, et ce qui bloque. Sans cette étape, nous concevrions dans le vide.',
     },
     {
+      icon: 'clipboard',
       title: 'Cadrer',
       body: 'Nous formalisons le périmètre, les livrables, le budget et le calendrier. Vous devez pouvoir dire « oui » ou « non » à un plan clair avant que la première ligne de code ne soit écrite.',
     },
     {
+      icon: 'code',
       title: 'Construire',
       body: 'Développement itératif, avec des points de validation réguliers. Vous voyez ce qui est en train d’être construit avant que ce soit terminé — pas de tunnel de trois mois.',
     },
     {
+      icon: 'key',
       title: 'Transmettre',
       body: 'À la livraison, nous vous remettons ce qui vous appartient : accès, domaine, code, documentation, formation minimale pour prendre la main. Nous pouvons continuer à vous accompagner si vous le souhaitez — mais vous n’y êtes jamais forcé.',
     },

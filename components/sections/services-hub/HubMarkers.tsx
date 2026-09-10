@@ -1,9 +1,10 @@
+import { Icon } from '@/components/ui/Icon';
 import { HubHead } from './_shared';
 import { hubMarkers } from '@/content/fr/servicesHub';
 import styles from './ServicesHub.module.css';
 
-// S10 — Ce qui nous différencie. Trois colonnes éditoriales à filets, sobres :
-// le texte porte la valeur, pas d'icône décorative.
+// S10 — Ce qui nous différencie. Trois colonnes éditoriales à filets ; un glyphe
+// fonctionnel coiffe chaque marqueur (numéro conservé).
 export function HubMarkers() {
   return (
     <section id="differenciation" className={styles.section} data-bg="soft">
@@ -20,7 +21,10 @@ export function HubMarkers() {
               <span className={styles.markerNum}>
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <h3>{m.title}</h3>
+              <h3>
+                {m.icon ? <Icon name={m.icon} className={styles.leadIcon} /> : null}
+                <span>{m.title}</span>
+              </h3>
               <p>{m.body}</p>
             </article>
           ))}

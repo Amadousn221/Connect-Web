@@ -58,6 +58,7 @@ export type IconName =
   | 'clipboard'
   | 'bar-chart'
   | 'shield-check'
+  | 'map-pin'
   | 'refresh'
   | 'plug'
   | 'arrow-up-right'
@@ -363,6 +364,12 @@ const PATHS: Record<IconName, React.ReactNode> = {
     <>
       <path d="M12 3 5 5.8V11c0 4.6 3 8 7 9.8 4-1.8 7-5.2 7-9.8V5.8L12 3Z" />
       <path d="m9 11.6 2.2 2.2L15.4 9.6" />
+    </>
+  ),
+  'map-pin': (
+    <>
+      <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" />
+      <circle cx="12" cy="10" r="2.6" />
     </>
   ),
   refresh: (
