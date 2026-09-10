@@ -107,6 +107,15 @@
   opacity: 0;
   transform: translateX(-50%) rotate(90deg);
 }
+@media (prefers-reduced-motion: reduce) {
+  .icon::before,
+  .icon::after {
+    transition: none;
+  }
+  .qButton {
+    transition: none;
+  }
+}
 
 .body {
   composes: cw-prose from global;

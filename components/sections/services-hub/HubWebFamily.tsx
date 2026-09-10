@@ -1,4 +1,5 @@
 import type { Locale } from '@/lib/i18n/config';
+import { BrandGlyph } from '@/components/ui/BrandGlyph';
 import { HubHead, HubCta, SmartLink } from './_shared';
 import { hubWeb } from '@/content/fr/servicesHub';
 import styles from './ServicesHub.module.css';
@@ -36,7 +37,17 @@ export function HubWebFamily({ locale }: { locale: Locale }) {
         <div className={styles.platformList}>
           {hubWeb.platforms.map((p) => (
             <article key={p.title} className={styles.platform}>
-              <h3>{p.title}</h3>
+              <h3>
+                {p.brand ? (
+                  <BrandGlyph
+                    brand={p.brand}
+                    label={p.brand === 'wordpress' ? 'WordPress' : 'Shopify'}
+                    size={22}
+                    className={styles.brandGlyph}
+                  />
+                ) : null}
+                <span>{p.title}</span>
+              </h3>
               <p>{p.body}</p>
             </article>
           ))}

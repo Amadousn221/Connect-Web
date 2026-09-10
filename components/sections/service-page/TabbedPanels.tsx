@@ -1,10 +1,10 @@
 'use client';
 
 import { useId, useRef, useState } from 'react';
-import { SpProse } from './parts';
+import { SpProse, LeadIcon } from './parts';
 import styles from './service-page.module.css';
 
-export type TabItem = { label: string; body: string[] };
+export type TabItem = { label: string; body: string[]; icon?: string };
 
 // Sélecteur générique : motif ARIA « tabs », navigation clavier ← → Home Fin,
 // tous les panneaux dans le DOM. Sans hydratation, le SSR montre le 1ᵉʳ panneau
@@ -68,7 +68,8 @@ export function TabbedPanels({
             className={styles.tab}
             onClick={() => setActive(i)}
           >
-            {it.label}
+            <LeadIcon icon={it.icon} />
+            <span>{it.label}</span>
           </button>
         ))}
       </div>
@@ -84,7 +85,10 @@ export function TabbedPanels({
           className={styles.tabPanel}
         >
           {panelEyebrow ? <span className={styles.tabPanelEyebrow}>{panelEyebrow}</span> : null}
-          <h3 className={`cw-serif ${styles.tabPanelTitle}`}>{it.label}</h3>
+          <h3 className={`cw-serif ${styles.tabPanelTitle}`}>
+            <LeadIcon icon={it.icon} />
+            <span>{it.label}</span>
+          </h3>
           <SpProse blocks={it.body} />
         </div>
       ))}

@@ -37,12 +37,14 @@ export const wpFit = {
   ],
   cards: [
     {
+      icon: 'check',
       title: 'WordPress est généralement pertinent quand',
       body: [
         "- Votre site doit être alimenté régulièrement par votre équipe : actualités, articles, publications, mises à jour de pages, événements.\n- Vous avez besoin d'un site de présentation, de services, institutionnel ou éditorial avec une administration confortable.\n- Vous voulez modifier vos contenus vous-même sans compétence technique.\n- Vous avez besoin d'un site multilingue avec gestion de traductions.\n- Vous envisagez un commerce en ligne d'ampleur modérée (via WooCommerce), intégré à un site de contenus existant.",
       ],
     },
     {
+      icon: 'git-branch',
       title: "WordPress n'est pas toujours le meilleur choix quand",
       body: [
         "- Votre projet est principalement une boutique ambitieuse (gros catalogue, vente transfrontalière, logistique complexe) : Shopify peut être plus adapté.\n- Votre besoin est une application web, un portail avec comptes, un outil métier ou un tableau de bord : c'est le terrain de Plateformes et applications web.\n- Votre projet exige des interactions complexes, du temps réel ou une architecture qui dépasse ce qu'un CMS classique peut offrir.",
@@ -61,6 +63,7 @@ export const wpProjects = {
   ],
   items: [
     {
+      icon: 'building',
       title: "Sites d'entreprise et de services",
       body: [
         "Présentation d'activité, offres de services, références, prise de contact. L'essentiel des sites que nous livrons à des PME, des prestataires et des entreprises B2B est développé sur WordPress.",
@@ -68,6 +71,7 @@ export const wpProjects = {
       link: { label: "Voir Sites d'entreprise", href: '/services/sites-entreprise' } as SpLinkData,
     },
     {
+      icon: 'landmark',
       title: "Sites institutionnels, d'ONG et d'associations",
       body: [
         "Missions, programmes, publications, rapports, actualités de terrain, galeries. WordPress excelle sur les sites à forte dimension éditoriale, où plusieurs contributeurs publient régulièrement.",
@@ -78,18 +82,21 @@ export const wpProjects = {
       } as SpLinkData,
     },
     {
+      icon: 'book',
       title: 'Sites éducatifs',
       body: [
         "Programmes d'enseignement, admissions, équipes pédagogiques, événements scolaires. Un site qui parle à la fois aux familles, aux étudiants, aux partenaires et aux autorités.",
       ],
     },
     {
+      icon: 'newspaper',
       title: "Sites de contenus et d'éditeurs",
       body: [
         "Magazines en ligne, blogs structurés, espaces de ressources documentaires, glossaires, bases de connaissances. WordPress a été conçu pour ça.",
       ],
     },
     {
+      icon: 'shopping-bag',
       title: "Boutiques d'ampleur modérée (WooCommerce)",
       body: [
         "Catalogue limité à moyen, vente locale ou régionale, commerce intégré à un site de contenus existant. Pour les projets plus ambitieux, notre page Boutiques en ligne détaille les options.",
@@ -108,18 +115,21 @@ export const wpApproach = {
   ],
   items: [
     {
+      icon: 'layout',
       title: 'Gutenberg',
       body: [
         "Convient quand votre site a besoin d'une édition sobre et performante, avec des blocs de contenu maîtrisés. L'approche la plus légère techniquement.",
       ],
     },
     {
+      icon: 'pen-tool',
       title: 'Elementor',
       body: [
         "Convient quand votre équipe a besoin d'une édition visuelle poussée, sans toucher au code. Plus flexible visuellement, mais ajoute une dépendance technique et peut affecter les performances si mal utilisé.",
       ],
     },
     {
+      icon: 'code',
       title: 'Le développement personnalisé',
       body: [
         "Convient quand votre site a des exigences de design, de performance ou d'intégration qui dépassent les constructeurs. Plus coûteux et plus long, mais c'est ce qui produit les sites les plus rapides et les plus maîtrisés.",
@@ -189,18 +199,21 @@ export const wpQuality = {
   ],
   items: [
     {
+      icon: 'gauge',
       title: 'Performance',
       body: [
         "Optimisation dès la conception : thème allégé, images compressées, cache configuré (LiteSpeed quand l'hébergement le permet), chargement différé des ressources non essentielles. Sur le terrain ouest-africain, la performance pèse d'autant plus que les connexions varient et que la data mobile coûte.",
       ],
     },
     {
+      icon: 'shield-check',
       title: 'Sécurité',
       body: [
         "Mises à jour régulières du cœur, du thème et des extensions ; limitation des extensions au strict nécessaire ; configuration des accès ; sauvegardes automatiques ; certificat SSL. Nous ne promettons pas un site invulnérable — aucun ne l'est — mais nous fermons les vecteurs d'attaque les plus courants.",
       ],
     },
     {
+      icon: 'refresh',
       title: 'Maintenance',
       body: [
         "Un site WordPress a besoin d'entretien : mises à jour de sécurité, vérification de compatibilité, sauvegardes, renouvellement d'hébergement et de domaine. Nous proposons un accompagnement — mais le site vous appartient et il est documenté pour être repris.",
@@ -219,18 +232,21 @@ export const wpRefonte = {
   ],
   steps: [
     {
+      icon: 'settings',
       title: 'Améliorations ciblées',
       body: [
         "Le site est structurellement sain mais a besoin d'un nettoyage : extensions inutiles à retirer, thème à optimiser, cache à configurer, contenus à restructurer, design à rafraîchir. La voie la moins coûteuse.",
       ],
     },
     {
+      icon: 'refresh',
       title: 'Reconstruction sur la même plateforme',
       body: [
         "Le site doit être reconstruit, mais WordPress reste le bon choix. Nouveau thème, contenus restructurés, données utiles migrées, maintenance appropriée.",
       ],
     },
     {
+      icon: 'git-branch',
       title: 'Changement de plateforme',
       body: [
         "Parfois le problème est WordPress lui-même (par exemple un commerce qui a dépassé WooCommerce). Nous vous le disons et nous vous orientons. Le détail de notre approche de migration vit sur notre page Refonte de site internet.",
@@ -245,13 +261,14 @@ export const wpOwnership = {
   title: 'Votre site WordPress, votre code, vos accès',
   intro: ["À la livraison :"],
   rows: [
-    { label: 'Domaine', text: 'Enregistré à votre nom.' },
-    { label: 'Hébergement', text: "À votre nom, sur un compte auquel vous avez accès. Nous vous aidons à le choisir et à le configurer." },
-    { label: "Accès d'administration", text: "Les vôtres — administrateur principal, avec la possibilité de créer d'autres comptes selon vos besoins." },
-    { label: 'Thème et code', text: "Développés spécifiquement pour votre site, remis avec une documentation." },
-    { label: 'Contenus', text: 'Textes, images, documents, base de données — hébergés sur votre serveur et exportables à tout moment.' },
+    { icon: 'globe', label: 'Domaine', text: 'Enregistré à votre nom.' },
+    { icon: 'server', label: 'Hébergement', text: "À votre nom, sur un compte auquel vous avez accès. Nous vous aidons à le choisir et à le configurer." },
+    { icon: 'key', label: "Accès d'administration", text: "Les vôtres — administrateur principal, avec la possibilité de créer d'autres comptes selon vos besoins." },
+    { icon: 'code', label: 'Thème et code', text: "Développés spécifiquement pour votre site, remis avec une documentation." },
+    { icon: 'files', label: 'Contenus', text: 'Textes, images, documents, base de données — hébergés sur votre serveur et exportables à tout moment.' },
   ],
   aside: {
+    icon: 'puzzle',
     eyebrow: 'Limite transparente',
     title: 'Extensions et thèmes premium tiers',
     body: [
@@ -310,21 +327,25 @@ export const wpNext = {
   ],
   rows: [
     {
+      icon: 'shopping-bag',
       title: 'Vendre en ligne avec un catalogue ambitieux',
       text: "WooCommerce suffit pour un commerce modéré. Au-delà, Shopify ou une solution spécifique peuvent être plus adaptés. Notre page Boutiques en ligne compare les options.",
       link: { label: 'Explorer ce service', href: '/services/boutiques-en-ligne' },
     },
     {
+      icon: 'app-window',
       title: "Un portail, une application ou un outil métier",
       text: "Comptes utilisateurs, interactions récurrentes, données structurées, traitements : le terrain de notre expertise Plateformes et applications web.",
       link: { label: 'Explorer ce service', href: '/services/plateformes-applications' },
     },
     {
+      icon: 'database',
       title: 'Connecter votre site à votre système de gestion',
       text: 'ERP, CRM, comptabilité, facturation : notre expertise ERP, CRM et intégrations prend le relais.',
       link: { label: 'Explorer ce service', href: '/services/crm-erp-integrations' },
     },
     {
+      icon: 'compass',
       title: "Vous n'êtes pas sûr de ce dont vous avez besoin",
       text: "Notre offre Conseil et stratégie aide à cadrer avant tout choix technique.",
       link: { label: 'Explorer ce service', href: '/services/conseil-strategie' },

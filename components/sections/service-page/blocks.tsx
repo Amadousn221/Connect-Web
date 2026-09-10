@@ -4,7 +4,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { contactInfo } from '@/components/layout/site-nav';
-import { SpHead, SpLink, SpProse, type SpLinkData } from './parts';
+import { SpHead, SpLink, SpProse, LeadIcon, CtaArrow, type SpLinkData } from './parts';
 import { TabbedPanels, type TabItem } from './TabbedPanels';
 import styles from './service-page.module.css';
 
@@ -37,7 +37,12 @@ export function Section({
   );
 }
 
-export type NumberedItem = { title: string; body: string[]; link?: SpLinkData };
+export type NumberedItem = {
+  title: string;
+  body: string[];
+  link?: SpLinkData;
+  icon?: string;
+};
 
 /** Section de pure prose : tête (+ chapô optionnel) + corps de texte. */
 export function Prose({
@@ -102,6 +107,7 @@ export function Sequence({
         <article key={it.title} className={styles.seqRow}>
           <h3>
             <span className={styles.seqNum}>{`0${i + 1}`}</span>
+            <LeadIcon icon={it.icon} />
             <span>{it.title}</span>
           </h3>
           <SpProse blocks={it.body} />
@@ -144,12 +150,15 @@ export function Reading({
     <div className={styles.reading}>
       {items.map((it) => (
         <article key={it.title} className={styles.readingRow}>
-          <h3>{it.title}</h3>
+          <h3>
+            <LeadIcon icon={it.icon} />
+            <span>{it.title}</span>
+          </h3>
           <SpProse blocks={it.body} />
           {it.link && locale ? (
             <SpLink href={it.link.href} locale={locale} className={styles.cta}>
               {it.link.label}
-              <span aria-hidden="true">↗</span>
+              <CtaArrow />
             </SpLink>
           ) : null}
         </article>
@@ -182,7 +191,7 @@ export function ConfigCards({
   eyebrow: string;
   title: string;
   intro?: string[];
-  cards: { title: string; body: string[]; accent?: boolean }[];
+  cards: { title: string; body: string[]; accent?: boolean; icon?: string; brand?: string }[];
   outro?: string;
   notes?: { title: string; body: string[] }[];
 }) {
@@ -197,7 +206,10 @@ export function ConfigCards({
             className={styles.configCard}
             data-accent={c.accent || undefined}
           >
-            <h3>{c.title}</h3>
+            <h3>
+              <LeadIcon icon={c.icon} brand={c.brand} />
+              <span>{c.title}</span>
+            </h3>
             <SpProse blocks={c.body} />
           </article>
         ))}
@@ -230,7 +242,7 @@ export function Timeline({
   eyebrow: string;
   title: string;
   intro?: string[];
-  steps: { title: string; body: string[] }[];
+  steps: { title: string; body: string[]; icon?: string }[];
   split?: boolean;
 }) {
   const list = (
@@ -238,7 +250,10 @@ export function Timeline({
       {steps.map((s, i) => (
         <li key={s.title} className={styles.step}>
           <span className={styles.stepNum}>{`0${i + 1}`}</span>
-          <h3>{s.title}</h3>
+          <h3>
+            <LeadIcon icon={s.icon} />
+            <span>{s.title}</span>
+          </h3>
           <SpProse blocks={s.body} />
         </li>
       ))}
@@ -269,7 +284,7 @@ export function Trio({
   eyebrow: string;
   title: string;
   intro?: string[];
-  items: { title: string; body: string[] }[];
+  items: { title: string; body: string[]; icon?: string; brand?: string }[];
   notes?: { title: string; body: string[] }[];
   numbered?: boolean;
 }) {
@@ -280,7 +295,10 @@ export function Trio({
         {items.map((it, i) => (
           <article key={it.title} className={styles.trio}>
             {numbered ? <span className={styles.stepNum}>{`0${i + 1}`}</span> : null}
-            <h3>{it.title}</h3>
+            <h3>
+              <LeadIcon icon={it.icon} brand={it.brand} />
+              <span>{it.title}</span>
+            </h3>
             <SpProse blocks={it.body} />
           </article>
         ))}
@@ -313,8 +331,8 @@ export function Ownership({
   eyebrow: string;
   title: string;
   intro?: string[];
-  rows: { label: string; text: string }[];
-  aside: { eyebrow: string; title: string; body: string[] };
+  rows: { label: string; text: string; icon?: string }[];
+  aside: { eyebrow: string; title: string; body: string[]; icon?: string };
   tone?: 'on-dark';
 }) {
   return (
@@ -327,14 +345,20 @@ export function Ownership({
         <dl className={styles.ownList}>
           {rows.map((r) => (
             <div key={r.label} className={styles.ownRow}>
-              <dt>{r.label}</dt>
+              <dt>
+                <LeadIcon icon={r.icon} />
+                <span>{r.label}</span>
+              </dt>
               <dd>{r.text}</dd>
             </div>
           ))}
         </dl>
         <aside className={styles.ownAside}>
           <span className={styles.miniEyebrow}>{aside.eyebrow}</span>
-          <h3>{aside.title}</h3>
+          <h3>
+            <LeadIcon icon={aside.icon} />
+            <span>{aside.title}</span>
+          </h3>
           <SpProse blocks={aside.body} />
         </aside>
       </div>
@@ -390,7 +414,7 @@ export function Projects({
               <p>{c.text}</p>
               <SpLink href={c.link.href} locale={locale} className={styles.cta}>
                 {c.link.label}
-                <span aria-hidden="true">↗</span>
+                <CtaArrow />
               </SpLink>
             </div>
           </article>
@@ -401,7 +425,7 @@ export function Projects({
         <p className={styles.sectionCta}>
           <SpLink href={cta.href} locale={locale} className={styles.cta}>
             {cta.label}
-            <span aria-hidden="true">↗</span>
+            <CtaArrow />
           </SpLink>
         </p>
       ) : null}
@@ -422,7 +446,7 @@ export function Extensions({
   eyebrow: string;
   title: string;
   intro?: string[];
-  rows: { title: string; text: string; link: SpLinkData }[];
+  rows: { title: string; text: string; link: SpLinkData; icon?: string }[];
   locale: Locale;
 }) {
   return (
@@ -431,11 +455,14 @@ export function Extensions({
       <div className={styles.extensions}>
         {rows.map((r) => (
           <div key={r.title} className={`${styles.extension} ${styles.clickable}`}>
-            <h3>{r.title}</h3>
+            <h3>
+              <LeadIcon icon={r.icon} />
+              <span>{r.title}</span>
+            </h3>
             <p>{r.text}</p>
             <SpLink href={r.link.href} locale={locale} className={styles.cta}>
               {r.link.label}
-              <span aria-hidden="true">↗</span>
+              <CtaArrow />
             </SpLink>
           </div>
         ))}

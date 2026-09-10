@@ -5,10 +5,12 @@ import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { Eyebrow } from '@/components/ui/Eyebrow';
+import { Icon } from '@/components/ui/Icon';
+import { BrandGlyph } from '@/components/ui/BrandGlyph';
 import { contactInfo } from '@/components/layout/site-nav';
 import { CwScroll } from './CwScroll';
 import { CwIntentTabs } from './CwIntentTabs';
-import { CwLink, CwCta, CwHead } from './_shared';
+import { CwLink, CwCta, CwArrow, CwHead } from './_shared';
 import styles from './ConceptionWeb.module.css';
 import {
   cwHero,
@@ -97,11 +99,14 @@ export function ConceptionWebPage({ locale }: { locale: Locale }) {
               {cwUsages.items.map((u) => (
                 <article key={u.title} className={`${styles.usage} ${styles.clickable}`}>
                   <span className={styles.usageAudience}>{u.audience}</span>
-                  <h3 className={styles.usageTitle}>{u.title}</h3>
+                  <h3 className={styles.usageTitle}>
+                    {u.icon ? <Icon name={u.icon} className={styles.leadIcon} /> : null}
+                    <span>{u.title}</span>
+                  </h3>
                   <p>{u.text}</p>
                   <CwLink href={u.link.href} locale={locale} className={styles.cta}>
                     {u.link.label}
-                    <span aria-hidden="true">↗</span>
+                    <CwArrow />
                   </CwLink>
                 </article>
               ))}
@@ -125,12 +130,13 @@ export function ConceptionWebPage({ locale }: { locale: Locale }) {
                 <article key={c.title} className={styles.platformCard}>
                   <span className={styles.platformEyebrow}>{c.eyebrow}</span>
                   <h3 className={styles.platformTitle} data-brand={c.kind}>
-                    {c.title}
+                    <BrandGlyph brand={c.brand} size={24} className={styles.brandGlyph} />
+                    <span>{c.title}</span>
                   </h3>
                   <p>{c.text}</p>
                   <CwLink href={c.link.href} locale={locale} className={styles.cta}>
                     {c.link.label}
-                    <span aria-hidden="true">↗</span>
+                    <CwArrow />
                   </CwLink>
                 </article>
               ))}
@@ -139,7 +145,12 @@ export function ConceptionWebPage({ locale }: { locale: Locale }) {
             <div className={styles.adapted}>
               <div>
                 <span className={styles.platformEyebrow}>{cwPlatform.adapted.eyebrow}</span>
-                <h3 className={styles.adaptedTitle}>{cwPlatform.adapted.title}</h3>
+                <h3 className={styles.adaptedTitle}>
+                  {cwPlatform.adapted.icon ? (
+                    <Icon name={cwPlatform.adapted.icon} className={styles.leadIcon} />
+                  ) : null}
+                  <span>{cwPlatform.adapted.title}</span>
+                </h3>
               </div>
               <div>
                 <p>{cwPlatform.adapted.text}</p>
@@ -199,7 +210,10 @@ export function ConceptionWebPage({ locale }: { locale: Locale }) {
               {cwMethod.steps.map((s, i) => (
                 <li key={s.title} className={styles.step}>
                   <span className={styles.stepNum}>{`0${i + 1}`}</span>
-                  <h3>{s.title}</h3>
+                  <h3>
+                    {s.icon ? <Icon name={s.icon} className={styles.leadIcon} /> : null}
+                    <span>{s.title}</span>
+                  </h3>
                   <p>{s.text}</p>
                 </li>
               ))}
@@ -217,7 +231,10 @@ export function ConceptionWebPage({ locale }: { locale: Locale }) {
               {cwDurable.items.map((d, i) => (
                 <article key={d.title} className={styles.durable}>
                   <span className={styles.stepNum}>{`0${i + 1}`}</span>
-                  <h3>{d.title}</h3>
+                  <h3>
+                    {d.icon ? <Icon name={d.icon} className={styles.leadIcon} /> : null}
+                    <span>{d.title}</span>
+                  </h3>
                   <p>{d.text}</p>
                 </article>
               ))}
@@ -240,14 +257,22 @@ export function ConceptionWebPage({ locale }: { locale: Locale }) {
               <dl className={styles.ownershipList}>
                 {cwOwnership.rows.map((r) => (
                   <div key={r.label} className={styles.ownershipRow}>
-                    <dt>{r.label}</dt>
+                    <dt>
+                      {r.icon ? <Icon name={r.icon} className={styles.leadIcon} /> : null}
+                      <span>{r.label}</span>
+                    </dt>
                     <dd>{r.text}</dd>
                   </div>
                 ))}
               </dl>
               <aside className={styles.thirdParty}>
                 <span className={styles.platformEyebrow}>{cwOwnership.aside.eyebrow}</span>
-                <h3>{cwOwnership.aside.title}</h3>
+                <h3>
+                  {cwOwnership.aside.icon ? (
+                    <Icon name={cwOwnership.aside.icon} className={styles.leadIcon} />
+                  ) : null}
+                  <span>{cwOwnership.aside.title}</span>
+                </h3>
                 <p>{cwOwnership.aside.text}</p>
               </aside>
             </div>
@@ -282,7 +307,7 @@ export function ConceptionWebPage({ locale }: { locale: Locale }) {
                     <p>{p.text}</p>
                     <CwLink href={p.link.href} locale={locale} className={styles.cta}>
                       {p.link.label}
-                      <span aria-hidden="true">↗</span>
+                      <CwArrow />
                     </CwLink>
                   </div>
                 </article>
@@ -304,7 +329,7 @@ export function ConceptionWebPage({ locale }: { locale: Locale }) {
                     className={styles.cta}
                   >
                     {cwProjects.portfolio.link.label}
-                    <span aria-hidden="true">↗</span>
+                    <CwArrow />
                   </CwLink>
                 </div>
               </article>
@@ -326,11 +351,14 @@ export function ConceptionWebPage({ locale }: { locale: Locale }) {
             <div className={styles.extensions}>
               {cwExtensions.rows.map((r) => (
                 <div key={r.title} className={`${styles.extension} ${styles.clickable}`}>
-                  <h3>{r.title}</h3>
+                  <h3>
+                    {r.icon ? <Icon name={r.icon} className={styles.leadIcon} /> : null}
+                    <span>{r.title}</span>
+                  </h3>
                   <p>{r.text}</p>
                   <CwLink href={r.link.href} locale={locale} className={styles.cta}>
                     {r.link.label}
-                    <span aria-hidden="true">↗</span>
+                    <CwArrow />
                   </CwLink>
                 </div>
               ))}

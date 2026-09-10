@@ -32,6 +32,9 @@
   gap: 6px;
 }
 .choice {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   text-align: left;
   padding: 12px 12px 12px 0;
   min-height: 44px;
@@ -44,6 +47,15 @@
   color: var(--text-muted);
   cursor: pointer;
   transition: color var(--dur-quick) ease;
+}
+.choiceIcon {
+  flex-shrink: 0;
+  color: var(--orange);
+}
+.panelTitleIcon {
+  flex-shrink: 0;
+  color: var(--orange);
+  margin-top: 2px;
 }
 .choice:last-child {
   border-bottom: 0;
@@ -69,6 +81,9 @@
   margin-bottom: 8px;
 }
 .panelTitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   margin: 0 0 10px;
   font-size: 20px;
   font-weight: 500;

@@ -48,6 +48,7 @@ export function DeveloppementWordpressPage({ locale }: { locale: Locale }) {
         focalMobile="50% 42%"
         overlay="strong"
         reassurance={wpHero.reassurance}
+        brandGlyph="wordpress"
       />
 
       <Section id="s2" bg="soft" labelledBy="wp-s2">

@@ -80,11 +80,11 @@ export const ongAudiences = {
   selectorLabel: 'Choisir un public',
   panelEyebrow: 'Ce que ce public vient chercher',
   publics: [
-    { label: 'Bailleurs', seeks: ["Rapports d'activité", 'Gouvernance', 'Résultats et redevabilité'] },
-    { label: 'Bénéficiaires', seeks: ['Programmes', 'Inscriptions', 'Contacts locaux'] },
-    { label: 'Médias', seeks: ['Communiqués', 'Chiffres clés', 'Interlocuteurs'] },
-    { label: 'Candidats', seeks: ['Offres', 'Mission', "Conditions d'engagement"] },
-    { label: 'Grand public', seeks: ['Comprendre votre action en quelques minutes'] },
+    { icon: 'landmark', label: 'Bailleurs', seeks: ["Rapports d'activité", 'Gouvernance', 'Résultats et redevabilité'] },
+    { icon: 'users', label: 'Bénéficiaires', seeks: ['Programmes', 'Inscriptions', 'Contacts locaux'] },
+    { icon: 'newspaper', label: 'Médias', seeks: ['Communiqués', 'Chiffres clés', 'Interlocuteurs'] },
+    { icon: 'briefcase', label: 'Candidats', seeks: ['Offres', 'Mission', "Conditions d'engagement"] },
+    { icon: 'globe', label: 'Grand public', seeks: ['Comprendre votre action en quelques minutes'] },
   ],
   outro: [
     "Si votre site n'est structuré que pour un seul de ces publics, les autres se perdent. Si vous essayez de tout montrer à tout le monde sur la même page d'accueil, personne ne s'y retrouve.",
@@ -102,18 +102,21 @@ export const ongAutonomie = {
   ],
   items: [
     {
+      icon: 'file-pen',
       title: 'Publier sans demander à personne',
       body: [
         "Ajouter une actualité de terrain, mettre en ligne un rapport annuel en PDF, publier les photos d'un événement — ces gestes doivent être aussi simples que rédiger un e-mail.",
       ],
     },
     {
+      icon: 'user-cog',
       title: 'Gérer les droits selon les rôles',
       body: [
         "Chargé de communication, responsable de programme, coordinateur terrain : chacun peut avoir son propre accès, avec des permissions adaptées à son rôle. Nous configurons ces rôles à la livraison.",
       ],
     },
     {
+      icon: 'book',
       title: 'Transmettre quand les responsables changent',
       body: [
         "Les équipes d'organisations tournent. Nous livrons une documentation claire et une architecture lisible pour qu'un nouveau responsable prenne la main sans repartir de zéro. Sur des projets comme WAS Africa et Fahamu Africa, nous avons assuré la création et la mise à jour des contenus pendant plusieurs années.",
@@ -132,18 +135,21 @@ export const ongEditorial = {
   ],
   items: [
     {
+      icon: 'layers',
       title: 'Les programmes et projets',
       body: [
         "Organisés par zone, par thème ou par période selon ce qui fait sens pour votre organisation. Chaque programme peut avoir sa propre page, avec sa description, ses résultats et ses contenus associés.",
       ],
     },
     {
+      icon: 'files',
       title: 'Les publications et documents',
       body: [
         "Rapports, études, guides, communiqués — classés, filtrables, téléchargeables. Un bailleur qui cherche votre dernier rapport d'activité ne devrait pas parcourir trente articles de blog pour le trouver.",
       ],
     },
     {
+      icon: 'newspaper',
       title: 'Les actualités et contenus de terrain',
       body: [
         "Articles, photos, vidéos — publiés régulièrement pour montrer l'activité vivante de l'organisation, avec des catégories qui permettent de filtrer par thème ou par zone.",
@@ -163,24 +169,28 @@ export const ongStandards = {
   ],
   items: [
     {
+      icon: 'type',
       title: 'Lisibilité et structure',
       body: [
         "Textes clairs, titres informatifs, hiérarchie visuelle qui guide le regard, contenu compréhensible pour quelqu'un qui ne connaît pas votre jargon interne, contrastes suffisants pour la lecture prolongée.",
       ],
     },
     {
+      icon: 'smartphone',
       title: 'Mobile et performance',
       body: [
         "Plus de la moitié des visites arrivent d'un téléphone de milieu de gamme avec une connexion variable. Nous optimisons le poids des pages, la compression des images et le temps de chargement dès la conception.",
       ],
     },
     {
+      icon: 'accessibility',
       title: 'Accessibilité',
       body: [
         "Structure sémantique du HTML, navigation au clavier, textes alternatifs, contrastes conformes, formulaires utilisables. Nous ne promettons pas une conformité WCAG certifiée — cela suppose un audit spécialisé — mais nous concevons avec ces critères comme objectifs.",
       ],
     },
     {
+      icon: 'search',
       title: 'Référencement naturel',
       body: [
         "Architecture de pages lisible pour les moteurs, balisage technique, vitesse de chargement, contenu structuré. Le SEO de base fait partie de la conception ; les stratégies de contenu avancées relèvent d'une expertise complémentaire.",
@@ -197,13 +207,14 @@ export const ongProprio = {
     "Dans le monde des organisations, la continuité est un enjeu permanent : équipes qui tournent, financements par cycles, responsables de communication qui changent tous les deux ou trois ans. Un site captif chez un prestataire finit presque toujours par une reconstruction à zéro. Nous concevons pour l'inverse.",
   ],
   rows: [
-    { label: 'Nom de domaine', text: "Enregistré au nom de l'organisation, pas de l'agence." },
-    { label: 'Hébergement', text: "À votre nom ; vous en conservez l'accès indépendamment de nous." },
-    { label: "Accès d'administration", text: "Ceux de l'organisation. Après la livraison, elle décide qui accède à quoi." },
-    { label: 'Code', text: "Thème et développements spécifiques remis, avec une documentation suffisante pour un autre prestataire." },
-    { label: 'Contenus', text: 'Textes, images, documents, rapports exportables à tout moment.' },
+    { icon: 'globe', label: 'Nom de domaine', text: "Enregistré au nom de l'organisation, pas de l'agence." },
+    { icon: 'server', label: 'Hébergement', text: "À votre nom ; vous en conservez l'accès indépendamment de nous." },
+    { icon: 'key', label: "Accès d'administration", text: "Ceux de l'organisation. Après la livraison, elle décide qui accède à quoi." },
+    { icon: 'code', label: 'Code', text: "Thème et développements spécifiques remis, avec une documentation suffisante pour un autre prestataire." },
+    { icon: 'files', label: 'Contenus', text: 'Textes, images, documents, rapports exportables à tout moment.' },
   ],
   aside: {
+    icon: 'puzzle',
     eyebrow: 'Limite transparente',
     title: 'Éléments qui dépendent d’un tiers',
     body: [
@@ -288,16 +299,19 @@ export const ongNext = {
   ],
   rows: [
     {
+      icon: 'app-window',
       title: 'Un espace avec comptes, inscriptions ou interactions',
       text: 'Portail partenaires, plateforme de suivi, espace de candidature, gestion de membres : le terrain de notre expertise Plateformes et applications web.',
       link: { label: 'Explorer ce service', href: '/services/plateformes-applications' },
     },
     {
+      icon: 'database',
       title: 'Connecter votre site à vos outils de gestion',
       text: 'Base de contacts, CRM, gestion de projets ou comptabilité : le terrain de notre expertise ERP, CRM et intégrations.',
       link: { label: 'Explorer ce service', href: '/services/crm-erp-integrations' },
     },
     {
+      icon: 'compass',
       title: 'Un cadrage avant de vous engager',
       text: "Notre offre Conseil et stratégie aide à clarifier le besoin et à définir un périmètre réaliste avant tout choix technique.",
       link: { label: 'Explorer ce service', href: '/services/conseil-strategie' },

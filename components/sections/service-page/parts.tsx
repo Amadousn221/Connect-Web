@@ -2,9 +2,30 @@ import Link from 'next/link';
 import { localePath } from '@/lib/i18n/routing';
 import type { Locale } from '@/lib/i18n/config';
 import { Eyebrow } from '@/components/ui/Eyebrow';
+import { Icon } from '@/components/ui/Icon';
+import { BrandGlyph, type BrandName } from '@/components/ui/BrandGlyph';
 import styles from './service-page.module.css';
 
 export type SpLinkData = { label: string; href: string };
+
+/** Icône (ou marque) qui coiffe le titre d'une carte / ligne — réplique du
+ *  `.web-icon-heading` des maquettes : glyphe orange ~22 px, aligné en haut,
+ *  décoratif (le titre porte le sens). `icon` : nom libre (voir `Icon.tsx`). */
+export function LeadIcon({ icon, brand }: { icon?: string; brand?: BrandName | string }) {
+  if (brand === 'wordpress' || brand === 'shopify') {
+    return (
+      <span className={styles.iconLead}>
+        <BrandGlyph brand={brand} size={22} />
+      </span>
+    );
+  }
+  if (!icon) return null;
+  return (
+    <span className={styles.iconLead} aria-hidden="true">
+      <Icon name={icon} />
+    </span>
+  );
+}
 
 /** Ancre in-page (`#x`), lien externe (`http…`), ou route interne préfixée. */
 export function SpLink({
@@ -39,6 +60,12 @@ export function SpLink({
   );
 }
 
+/** Flèche des liens tertiaires — SVG 15 px, décalage discret au survol/focus
+ *  (piloté par `.cta` dans le module, neutralisé sous `prefers-reduced-motion`). */
+export function CtaArrow() {
+  return <Icon name="arrow-up-right" className={styles.ctaArrow} width={15} height={15} />;
+}
+
 /** Lien tertiaire orange à flèche (maquette `.cw-link`). `tone` sur fond pétrole. */
 export function SpCta({
   href,
@@ -58,7 +85,7 @@ export function SpCta({
       className={`${styles.cta} ${tone === 'on-dark' ? styles.ctaOnDark : ''}`}
     >
       {children}
-      <span aria-hidden="true">↗</span>
+      <CtaArrow />
     </SpLink>
   );
 }

@@ -2,7 +2,13 @@ import Link from 'next/link';
 import { localePath } from '@/lib/i18n/routing';
 import type { Locale } from '@/lib/i18n/config';
 import { Eyebrow } from '@/components/ui/Eyebrow';
+import { Icon } from '@/components/ui/Icon';
 import styles from './ConceptionWeb.module.css';
+
+/** Flèche des liens tertiaires — SVG 15 px, décalage discret au survol/focus. */
+export function CwArrow() {
+  return <Icon name="arrow-up-right" className={styles.ctaArrow} width={15} height={15} />;
+}
 
 /** Ancre in-page (`#x`), lien externe (`http…`), ou route interne préfixée. */
 export function CwLink({
@@ -50,7 +56,7 @@ export function CwCta({
   return (
     <CwLink href={href} locale={locale} className={styles.cta}>
       {children}
-      <span aria-hidden="true">↗</span>
+      <CwArrow />
     </CwLink>
   );
 }

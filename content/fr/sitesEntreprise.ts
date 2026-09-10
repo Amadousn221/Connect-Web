@@ -72,30 +72,35 @@ export const seCritères = {
   ],
   items: [
     {
+      icon: 'eye',
       title: "La clarté de votre offre",
       body: [
         "Ce que vous faites, pour qui, dans quelle situation, avec quels résultats. Un visiteur qui peut résumer votre activité après vingt secondes de lecture est à mi-chemin de vous appeler. Celui qui repart sans avoir compris votre métier ne reviendra pas.",
       ],
     },
     {
+      icon: 'ruler',
       title: "La cohérence entre votre site et votre niveau d'exigence",
       body: [
         "Si vous facturez des prestations rigoureuses, votre site doit refléter cette rigueur — mise en page, qualité des textes, visuels. L'écart entre ce que vous promettez et ce que votre site montre est perçu immédiatement. Un site trop luxueux pour une activité modeste sonne aussi faux.",
       ],
     },
     {
+      icon: 'badge-check',
       title: 'Vos preuves',
       body: [
         "Des noms de clients quand vous êtes autorisé à les citer, des descriptions de projets, des secteurs d'intervention, des résultats. Un portfolio sans commentaire vaut mieux qu'un portfolio inexistant ; un portfolio avec contexte vaut mieux que les deux.",
       ],
     },
     {
+      icon: 'pointer',
       title: "La facilité d'accès à l'action",
       body: [
         "Téléphone, e-mail, formulaire court, WhatsApp Business : ces accès doivent être visibles sans chercher. Les entreprises qui rendent le contact difficile envoient un signal involontaire sur leur disponibilité.",
       ],
     },
     {
+      icon: 'smartphone',
       title: "L'expérience sur téléphone",
       body: [
         "Plus de la moitié des visites web se font sur mobile. Un site qui se lit mal sur un téléphone, ralentit, ou demande de zoomer pour cliquer perd cette moitié de son audience. C'est encore plus vrai sur le terrain ouest-africain, où la connexion varie et où le téléphone est le premier écran de travail.",
@@ -114,18 +119,21 @@ export const seContenu = {
   ],
   cards: [
     {
+      icon: 'file-text',
       title: 'Vous fournissez des textes rédigés',
       body: [
         "Vous avez préparé les descriptions de vos services, votre présentation, vos contenus clés. Nous les intégrons, les structurons pour le web et les adaptons aux exigences de lecture en ligne. La configuration la plus rapide et la moins coûteuse.",
       ],
     },
     {
+      icon: 'folder',
       title: 'Vous fournissez de la matière brute',
       body: [
         "Plaquettes, présentations, fiches, anciens devis, e-mails de prospection : vous n'avez pas de textes web mais vous avez des documents. Nous les reprenons, les réécrivons pour le web, et vous validez chaque section avant intégration.",
       ],
     },
     {
+      icon: 'message',
       title: 'Nous rédigeons à partir d’entretiens avec vous',
       body: [
         "Quand aucun contenu formalisé n'existe, nous organisons un ou deux entretiens pour comprendre votre activité, vos clients, vos méthodes, vos meilleurs projets, et nous rédigeons à partir de ces échanges.",
@@ -188,18 +196,21 @@ export const seDurable = {
   ],
   items: [
     {
+      icon: 'settings',
       title: "L'administration au quotidien",
       body: [
         "WordPress — la plateforme que nous utilisons pour la majorité de nos sites d'entreprise — offre une interface d'administration conçue pour des équipes non techniques. Modifier un texte, ajouter une actualité, changer une photo : accessible sans formation poussée. Prise en main à la livraison, documentation claire, accompagnement de maintenance en option.",
       ],
     },
     {
+      icon: 'gauge',
       title: 'La performance sur le terrain',
       body: [
         "Un site lent perd ses visiteurs avant qu'ils aient compris votre offre. Nous optimisons les temps de chargement, le poids des images et l'affichage mobile dès la conception. Sur le terrain ouest-africain, cela suppose une attention à la variabilité du réseau et au coût de la data mobile.",
       ],
     },
     {
+      icon: 'layers',
       title: "L'évolutivité",
       body: [
         "Votre activité bouge : un nouveau service, une gamme qui s'élargit, un marché qui s'ouvre. Un site bien structuré absorbe ces évolutions sans obliger à revoir l'architecture complète. C'est une décision de conception, pas un ajout technique.",
@@ -216,13 +227,14 @@ export const seProprio = {
     "Nous transmettons ce qui vous appartient et précisons clairement ce qui dépend d'un tiers.",
   ],
   rows: [
-    { label: 'Nom de domaine', text: "Enregistré à votre nom. Il reste chez vous, quelle que soit l'agence." },
-    { label: 'Hébergement', text: "Enregistré à votre nom ; vous en conservez l'accès indépendamment de nous." },
-    { label: "Accès d'administration", text: "Les vôtres. Après la livraison, vous décidez de qui a accès à quoi." },
-    { label: 'Code', text: "Thème et développements spécifiques remis, avec une documentation suffisante pour un autre développeur." },
-    { label: 'Contenus', text: 'Textes, images, documents exportables à tout moment.' },
+    { icon: 'globe', label: 'Nom de domaine', text: "Enregistré à votre nom. Il reste chez vous, quelle que soit l'agence." },
+    { icon: 'server', label: 'Hébergement', text: "Enregistré à votre nom ; vous en conservez l'accès indépendamment de nous." },
+    { icon: 'key', label: "Accès d'administration", text: "Les vôtres. Après la livraison, vous décidez de qui a accès à quoi." },
+    { icon: 'code', label: 'Code', text: "Thème et développements spécifiques remis, avec une documentation suffisante pour un autre développeur." },
+    { icon: 'files', label: 'Contenus', text: 'Textes, images, documents exportables à tout moment.' },
   ],
   aside: {
+    icon: 'puzzle',
     eyebrow: 'Limite transparente',
     title: 'Éléments qui dépendent d’un tiers',
     body: [
@@ -280,21 +292,25 @@ export const seNext = {
   ],
   rows: [
     {
+      icon: 'shopping-bag',
       title: 'Vendre en ligne, pas seulement présenter',
       text: 'Catalogue, panier, paiement, livraison : le terrain de notre expertise Boutiques en ligne.',
       link: { label: 'Explorer ce service', href: '/services/boutiques-en-ligne' },
     },
     {
+      icon: 'database',
       title: 'Digitaliser une opération métier',
       text: 'Gestion commerciale, stock, facturation, relation client : le terrain de notre expertise ERP, CRM et intégrations.',
       link: { label: 'Explorer ce service', href: '/services/crm-erp-integrations' },
     },
     {
+      icon: 'megaphone',
       title: 'Faire venir des visiteurs qualifiés',
       text: "SEO éditorial, stratégie de contenu, acquisition ciblée : le terrain de notre expertise Marketing et génération de prospects.",
       link: { label: 'Explorer ce service', href: '/services/marketing-acquisition' },
     },
     {
+      icon: 'compass',
       title: "Vous n'êtes pas encore sûr de votre besoin",
       text: "Notre offre Conseil et stratégie aide à cadrer votre projet avant tout choix technique.",
       link: { label: 'Explorer ce service', href: '/services/conseil-strategie' },

@@ -84,6 +84,7 @@ export const shopPayShip = {
   ],
   items: [
     {
+      icon: 'credit-card',
       title: 'Le paiement — adapté à vos clients, pas à votre plateforme',
       body: [
         "L'enjeu n'est pas d'empiler le maximum d'options, mais de proposer celles que vos clients utilisent réellement — et qui sont techniquement et contractuellement disponibles pour votre commerce.",
@@ -92,6 +93,7 @@ export const shopPayShip = {
       ],
     },
     {
+      icon: 'truck',
       title: 'La livraison — claire avant la commande, pas après',
       body: [
         "Vos clients doivent savoir, avant de valider leur panier, combien ils paieront de frais, quel sera le délai annoncé, et ce qui se passe en cas de problème.",
@@ -112,24 +114,28 @@ export const shopOps = {
   panelEyebrow: 'Au quotidien',
   operations: [
     {
+      icon: 'package',
       label: 'Gérer votre catalogue',
       body: [
         "Ajouter un produit, modifier un prix, mettre à jour un stock, créer une promotion saisonnière, activer ou désactiver un article. Simple et rapide, que vous ayez dix produits ou cinq cents.",
       ],
     },
     {
+      icon: 'clipboard',
       label: 'Traiter vos commandes',
       body: [
         "Voir les nouvelles commandes, vérifier les paiements, préparer les expéditions, marquer les commandes traitées, gérer les annulations ou remboursements. Le flux doit être clair pour votre équipe, même si c'est une seule personne.",
       ],
     },
     {
+      icon: 'bar-chart',
       label: 'Suivre vos résultats',
       body: [
         "Nombre de commandes, chiffre d'affaires, produits les plus vendus, paniers abandonnés, provenance des visiteurs. Les tableaux de bord natifs de Shopify ou WooCommerce fournissent ces données — nous vous montrons comment les lire et les utiliser.",
       ],
     },
     {
+      icon: 'file-pen',
       label: 'Mettre à jour vos contenus',
       body: [
         "Pages, textes, images, conditions de livraison, politique de retour, page À propos. Votre boutique est aussi un site — ses contenus doivent rester à jour.",
@@ -149,12 +155,14 @@ export const shopPlatform = {
   ],
   cards: [
     {
+      brand: 'shopify',
       title: 'Shopify',
       body: [
         "Plateforme spécialisée e-commerce, adaptée aux marques DTC, aux boutiques avec vente transfrontalière, aux catalogues de taille moyenne et aux marchands qui veulent une infrastructure fiable sans gérer d'hébergement. Coûts récurrents (abonnement + frais de transaction), maintenance technique réduite, écosystème d'applications solide. C'est sur Shopify que nous avons construit ATTA Africa.",
       ],
     },
     {
+      brand: 'wordpress',
       title: 'WooCommerce (WordPress)',
       body: [
         "Extension e-commerce de WordPress, adaptée aux commerces qui veulent intégrer la vente sur un site de contenus existant, aux budgets qui privilégient un faible coût récurrent (pas d'abonnement de plateforme, mais hébergement et maintenance à charge) et aux projets qui demandent une personnalisation technique poussée. Plus de flexibilité de code, plus de responsabilité technique.",
@@ -232,12 +240,13 @@ export const shopOwnership = {
     "La propriété d'une boutique en ligne est plus nuancée que celle d'un site vitrine, parce qu'elle dépend en partie de la plateforme utilisée.",
   ],
   rows: [
-    { label: 'Nom de domaine', text: 'Enregistré à votre nom, dans tous les cas.' },
-    { label: 'Contenus', text: 'Textes, images, descriptions de produits, pages — les vôtres.' },
-    { label: 'Données clients et commandes', text: 'Exportables depuis toutes les plateformes que nous utilisons.' },
-    { label: 'Développements spécifiques', text: 'Thème personnalisé, code sur mesure réalisé par nos soins, remis à la livraison.' },
+    { icon: 'globe', label: 'Nom de domaine', text: 'Enregistré à votre nom, dans tous les cas.' },
+    { icon: 'files', label: 'Contenus', text: 'Textes, images, descriptions de produits, pages — les vôtres.' },
+    { icon: 'database', label: 'Données clients et commandes', text: 'Exportables depuis toutes les plateformes que nous utilisons.' },
+    { icon: 'code', label: 'Développements spécifiques', text: 'Thème personnalisé, code sur mesure réalisé par nos soins, remis à la livraison.' },
   ],
   aside: {
+    icon: 'server',
     eyebrow: 'Ce qui dépend de la plateforme',
     title: 'SaaS ou auto-hébergé — deux modèles de propriété',
     body: [
@@ -257,21 +266,25 @@ export const shopNext = {
   ],
   rows: [
     {
+      icon: 'workflow',
       title: 'Automatisation des opérations',
       text: "Rapports de ventes automatiques, relances de paniers abandonnés, traitement de commandes : chez ATTA Africa, une suite d'automatisations tourne en production chaque jour. Un prolongement conçu quand le volume le justifie.",
       link: { label: 'Explorer ce service', href: '/services/ia-automatisation' },
     },
     {
+      icon: 'megaphone',
       title: 'Acquisition et marketing',
       text: "Votre boutique ne fabrique pas ses propres clients. Référencement, campagnes, e-mailing, contenu : l'acquisition est un chantier distinct.",
       link: { label: 'Explorer ce service', href: '/services/marketing-acquisition' },
     },
     {
+      icon: 'database',
       title: 'Gestion commerciale et intégrations',
       text: 'Comptabilité, facturation, stocks centralisés, CRM : quand votre boutique doit dialoguer avec vos outils de gestion.',
       link: { label: 'Explorer ce service', href: '/services/crm-erp-integrations' },
     },
     {
+      icon: 'compass',
       title: 'Conseil',
       text: "Pas certain que c'est le bon moment pour ouvrir une boutique, ou vous hésitez entre plusieurs modèles ? Notre offre Conseil aide à poser le cadre avant tout engagement.",
       link: { label: 'Explorer ce service', href: '/services/conseil-strategie' },

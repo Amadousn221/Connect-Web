@@ -60,6 +60,14 @@
   max-width: min(var(--container-max), 900px);
 }
 
+/* Marque techno (WordPress / Shopify) devant l'eyebrow. */
+.brandRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--orange-h);
+}
+
 .title {
   margin: 14px 0 18px;
   font-size: clamp(36px, 5.1vw, 61px);

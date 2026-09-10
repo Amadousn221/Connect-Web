@@ -79,6 +79,40 @@
   color: var(--orange-h);
 }
 
+/* Flèche SVG — décalage discret au survol / focus clavier. */
+.ctaArrow {
+  flex-shrink: 0;
+  transition: transform var(--dur-instant, 100ms) var(--ease-default, ease);
+}
+.cta:hover .ctaArrow,
+.cta:focus-visible .ctaArrow {
+  transform: translate(2px, -2px);
+}
+
+/* Icône qui coiffe un titre de carte / ligne (maquette `.web-icon`). */
+.leadIcon {
+  flex: 0 0 auto;
+  color: var(--orange);
+  margin-top: 1px;
+}
+.deep .leadIcon {
+  color: var(--orange-h);
+}
+.brandGlyph {
+  flex: 0 0 auto;
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaArrow {
+    transition: none;
+  }
+  .cta:hover .ctaArrow,
+  .cta:focus-visible .ctaArrow {
+    transform: none;
+  }
+}
+
 /* ── S2 — Section de lecture + sélecteur d'intentions ──────────────────── */
 .reading {
   max-width: 760px;
@@ -223,6 +257,30 @@
   font-size: 19px;
   font-weight: 500;
   letter-spacing: -0.01em;
+}
+
+/* Titres portant une icône : passage en ligne flex, icône alignée en haut. */
+.usageTitle,
+.platformTitle,
+.adaptedTitle,
+.step h3,
+.durable h3,
+.ownershipRow dt,
+.thirdParty h3,
+.extension h3 {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.usageTitle > span,
+.platformTitle > span,
+.adaptedTitle > span,
+.step h3 > span,
+.durable h3 > span,
+.ownershipRow dt > span,
+.thirdParty h3 > span,
+.extension h3 > span {
+  min-width: 0;
 }
 .usage p {
   margin: 0 0 16px;

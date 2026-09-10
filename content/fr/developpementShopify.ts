@@ -36,24 +36,28 @@ export const spfPlatform = {
   ],
   cards: [
     {
+      icon: 'check',
       title: 'Ce que Shopify fait bien',
       body: [
         "L'administration d'une boutique (catalogue, commandes, clients, promotions, rapports), l'infrastructure (disponibilité, vitesse, sécurité), l'écosystème d'applications, la gestion multi-devises / multi-langues / multi-zones, et la fiabilité sous forte charge.",
       ],
     },
     {
+      icon: 'credit-card',
       title: 'Ce que Shopify impose',
       body: [
         "Un abonnement mensuel selon le forfait, des frais de transaction sur chaque vente, une dépendance à la plateforme, des applications tierces qui ajoutent coûts et parfois incompatibilités, et des limites sur la personnalisation du tunnel de paiement.",
       ],
     },
     {
+      icon: 'badge-check',
       title: 'Quand Shopify est un bon choix',
       body: [
         "Marques DTC, catalogue structuré, commerce transfrontalier, marchands qui veulent se concentrer sur leur commerce sans gérer l'infrastructure, projets qui ont besoin d'une plateforme éprouvée pour tenir la croissance.",
       ],
     },
     {
+      icon: 'git-branch',
       title: 'Quand une autre voie peut être plus adaptée',
       body: [
         "Commerce très modeste intégré à un site de contenus (WooCommerce peut suffire), besoin de personnalisation technique extrême, budget qui ne supporte pas les coûts récurrents.",
@@ -72,6 +76,7 @@ export const spfWork = {
   ],
   items: [
     {
+      icon: 'pen-tool',
       title: 'Personnalisation et développement du thème',
       body: [
         "Le thème est l'ensemble du code qui détermine l'apparence et le comportement de votre boutique. Nous travaillons en Liquid, HTML, CSS et JavaScript pour l'adapter à votre identité et à vos besoins.",
@@ -80,12 +85,14 @@ export const spfWork = {
       ],
     },
     {
+      icon: 'package',
       title: "Configuration du catalogue et de l'expérience produit",
       body: [
         "Fiches produits, variantes, collections, filtres, navigation. La manière dont vos produits sont présentés, organisés et trouvés influence directement vos ventes.",
       ],
     },
     {
+      icon: 'globe',
       title: 'Configuration des marchés et des paramètres commerciaux',
       body: [
         "Zones de livraison, tarifs, devises, langues, taxes selon les marchés. Shopify propose des outils natifs — leur configuration correcte demande une compréhension de votre modèle commercial, pas seulement de la plateforme.",
@@ -105,24 +112,28 @@ export const spfOps = {
   panelEyebrow: 'Au quotidien',
   operations: [
     {
+      icon: 'package',
       label: 'Gérer le catalogue',
       body: [
         "Ajouter un produit, modifier un prix, mettre à jour un stock, créer une collection ou une promotion — depuis l'interface Shopify, sur ordinateur ou sur l'application mobile.",
       ],
     },
     {
+      icon: 'clipboard',
       label: 'Traiter les commandes',
       body: [
         "Consulter les nouvelles commandes, vérifier les paiements, préparer les expéditions, gérer les annulations et les remboursements.",
       ],
     },
     {
+      icon: 'bar-chart',
       label: 'Suivre les résultats',
       body: [
         "Shopify fournit des tableaux de bord natifs : chiffre d'affaires, commandes, produits les plus vendus, paniers abandonnés, sources de trafic. Nous vous montrons comment les lire et les utiliser.",
       ],
     },
     {
+      icon: 'file-pen',
       label: 'Mettre à jour les contenus',
       body: [
         "Pages, textes, images, informations de livraison, conditions de vente — sans toucher au code.",
@@ -141,6 +152,7 @@ export const spfPayments = {
   ],
   items: [
     {
+      icon: 'credit-card',
       title: "Ce qu'il faut savoir d'emblée",
       body: [
         "Shopify Payments n'est pas disponible dans tous les pays ; sa disponibilité dépend du pays d'établissement du marchand. Les marchands établis dans un pays non couvert utilisent des prestataires de paiement tiers, dont la disponibilité, les frais et les conditions varient.",
@@ -148,12 +160,14 @@ export const spfPayments = {
       ],
     },
     {
+      icon: 'compass',
       title: 'Comment nous abordons le sujet',
       body: [
         "Au cadrage, nous identifions avec vous :\n- Votre pays d'établissement et son éligibilité aux différents prestataires.\n- Les moyens de paiement que vos clients utilisent réellement.\n- Les prestataires disponibles pour intégrer chaque moyen de paiement, selon les contrats que vous pouvez signer.\n- Les devises à gérer si vous vendez dans plusieurs pays.",
       ],
     },
     {
+      icon: 'badge-check',
       title: "L'expérience ATTA Africa",
       body: [
         "Configuration multi-marchés avec quatre devises (EUR, USD, CAD, XOF), paiements internationaux (cartes, PayPal, Apple Pay, Shop Pay) et Mobile Money via PayDunya (Wave, Orange Money, Free Money) pour les clients ouest-africains.",
@@ -172,12 +186,14 @@ export const spfMigration = {
   ],
   steps: [
     {
+      icon: 'route',
       title: 'Ce que la migration implique concrètement',
       body: [
         "- Transfert du catalogue : produits, variantes, images, descriptions, prix, collections.\n- Conservation des données clients et de l'historique de commandes, dans la limite de ce que la source permet d'exporter et de ce que Shopify permet d'importer.\n- Plan de redirections d'URLs pour préserver le référencement acquis.\n- Reconfiguration des paiements selon les prestataires disponibles pour votre pays.\n- Reconfiguration de la livraison, des zones, des tarifs et des règles.\n- Tests de commandes réels sur tous les moyens de paiement avant la mise en ligne.",
       ],
     },
     {
+      icon: 'shield-check',
       title: 'Ce que nous ne pouvons pas garantir',
       body: [
         "Une migration sans aucune variation de référencement, sans aucune interruption et sans aucune perte de données. Ce que nous pouvons faire : identifier les risques, les anticiper et les réduire autant que possible. Les cas complexes sont traités sur notre page Refonte.",
@@ -197,6 +213,7 @@ export const spfApps = {
   ],
   items: [
     {
+      icon: 'puzzle',
       title: 'Ce que nous faisons dans ces situations',
       body: [
         "Nous auditons les applications installées : lesquelles sont utilisées, redondantes, remplaçables par une fonctionnalité native ou un développement ciblé, ou indispensables.",
@@ -216,12 +233,14 @@ export const spfOwnership = {
   ],
   cards: [
     {
+      icon: 'key',
       title: 'Ce qui vous appartient',
       body: [
         "- **Votre domaine**, enregistré à votre nom, indépendamment de Shopify.\n- **Vos données** — clients, commandes, historique, contenus, images, descriptions — exportables à tout moment.\n- **Le code personnalisé** — thème, sections, templates, développements — remis avec sa documentation.\n- **Vos contenus** — textes, pages, articles, images.",
       ],
     },
     {
+      icon: 'server',
       title: 'Ce qui reste chez Shopify',
       body: [
         "- **L'infrastructure technique** — serveurs, CDN, SSL, mises à jour. Vous êtes locataire, pas propriétaire. Si vous arrêtez l'abonnement, la boutique s'éteint.\n- **Certaines fonctionnalités natives** liées à votre forfait.\n- **Les applications tierces** — chacune a sa licence et ses données.",
@@ -247,30 +266,35 @@ export const spfProof = {
   },
   details: [
     {
+      icon: 'pen-tool',
       title: "Le thème et l'expérience produit",
       body: [
         "Développement et personnalisation du thème Shopify : sections, templates, assets. Une expérience produit conçue pour une marque premium.",
       ],
     },
     {
+      icon: 'globe',
       title: 'Les marchés et les devises',
       body: [
         "Configuration multi-marchés avec quatre devises (EUR, USD, CAD, XOF). Chaque marché a ses propres règles de livraison et ses paramètres adaptés.",
       ],
     },
     {
+      icon: 'credit-card',
       title: 'Les paiements locaux et internationaux',
       body: [
         "Paiements internationaux (cartes, PayPal, Apple Pay, Shop Pay) et Mobile Money via PayDunya (Wave, Orange Money, Free Money) pour les clients ouest-africains.",
       ],
     },
     {
+      icon: 'puzzle',
       title: "L'audit et la rationalisation des applications",
       body: [
         "Suppression d'applications redondantes, remplacement de fonctionnalités par du code ou des solutions plus légères, recherche d'économies sur les coûts récurrents.",
       ],
     },
     {
+      icon: 'workflow',
       title: 'Les automatisations opérationnelles',
       body: [
         "Reporting mensuel des ventes (par produit, taille et zone), traitement de commandes, relances de paniers abandonnés, flows d'emailing via Klaviyo. Ces automatisations tournent en production.",
@@ -286,21 +310,25 @@ export const spfNext = {
   intro: [],
   rows: [
     {
+      icon: 'workflow',
       title: 'Automatisations et opérations',
       text: "Rapports automatiques, relances, traitement de commandes, synchronisations : chez ATTA Africa, une suite d'automatisations tourne chaque jour. Le terrain de notre expertise IA et automatisation.",
       link: { label: 'Explorer ce service', href: '/services/ia-automatisation' },
     },
     {
+      icon: 'megaphone',
       title: 'Acquisition et marketing',
       text: "Votre boutique ne fabrique pas ses propres clients. Référencement, campagnes, e-mailing, contenu : un chantier distinct.",
       link: { label: 'Explorer ce service', href: '/services/marketing-acquisition' },
     },
     {
+      icon: 'database',
       title: 'Gestion commerciale et intégrations',
       text: 'Comptabilité, facturation, stocks centralisés, CRM : quand votre boutique doit dialoguer avec vos outils de gestion.',
       link: { label: 'Explorer ce service', href: '/services/crm-erp-integrations' },
     },
     {
+      icon: 'compass',
       title: 'Cadrage avant engagement',
       text: "Pas sûr que Shopify est le bon choix, ou vous voulez comparer avec d'autres solutions avant de vous engager ?",
       link: { label: 'Explorer ce service', href: '/services/conseil-strategie' },

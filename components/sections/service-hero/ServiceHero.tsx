@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
+import { BrandGlyph, type BrandName } from '@/components/ui/BrandGlyph';
 import { TrustLine } from '@/components/sections/TrustLine';
 import { localePath } from '@/lib/i18n/routing';
 import type { Locale } from '@/lib/i18n/config';
@@ -36,6 +37,9 @@ export interface ServiceHeroProps {
   overlay?: 'strong' | 'medium';
   /** Ligne de réassurance optionnelle sous les CTA. */
   reassurance?: string[];
+  /** Marque technologique affichée devant l'eyebrow (pages WordPress / Shopify).
+   *  Logo officiel, non déformé, lisible sur le pétrole. */
+  brandGlyph?: BrandName;
   /** Si fourni, les hrefs internes des CTA (hors `#ancre` et `http…`) sont
    *  préfixés par la locale. Absent → href passé tel quel (compat. hub). */
   locale?: Locale;
@@ -52,6 +56,7 @@ export function ServiceHero({
   focalMobile,
   overlay = 'strong',
   reassurance,
+  brandGlyph,
   locale,
 }: ServiceHeroProps) {
   const resolve = (href: string) =>
@@ -83,7 +88,14 @@ export function ServiceHero({
       ) : null}
 
       <div className={`cw-sec ${styles.inner}`}>
-        <Eyebrow tone="on-dark">{eyebrow}</Eyebrow>
+        {brandGlyph ? (
+          <span className={styles.brandRow}>
+            <BrandGlyph brand={brandGlyph} label={brandGlyph === 'wordpress' ? 'WordPress' : 'Shopify'} size={20} />
+            <Eyebrow tone="on-dark">{eyebrow}</Eyebrow>
+          </span>
+        ) : (
+          <Eyebrow tone="on-dark">{eyebrow}</Eyebrow>
+        )}
 
         <h1 className={`cw-serif ${styles.title}`}>{title}</h1>
         <p className={styles.intro}>{intro}</p>

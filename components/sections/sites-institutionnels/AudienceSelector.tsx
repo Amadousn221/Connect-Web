@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { Icon } from '@/components/ui/Icon';
 import styles from './AudienceSelector.module.css';
 
-type Public = { label: string; seeks: string[] };
+type Public = { label: string; seeks: string[]; icon?: string };
 
 // S3 — sélecteur de publics. Groupe de boutons `aria-pressed` : un seul panneau
 // visible à la fois, mais tous les contenus restent dans le DOM (repli
@@ -31,7 +32,8 @@ export function AudienceSelector({
             className={styles.choice}
             onClick={() => setActive(i)}
           >
-            {p.label}
+            {p.icon ? <Icon name={p.icon} width={18} height={18} className={styles.choiceIcon} /> : null}
+            <span>{p.label}</span>
           </button>
         ))}
       </div>
@@ -39,7 +41,10 @@ export function AudienceSelector({
       {publics.map((p, i) => (
         <div key={p.label} className={styles.panel} hidden={i !== active} aria-live="polite">
           <span className={styles.panelEyebrow}>{panelEyebrow}</span>
-          <h3 className={`cw-serif ${styles.panelTitle}`}>{p.label}</h3>
+          <h3 className={`cw-serif ${styles.panelTitle}`}>
+            {p.icon ? <Icon name={p.icon} width={20} height={20} className={styles.panelTitleIcon} /> : null}
+            <span>{p.label}</span>
+          </h3>
           <ul className={styles.panelList}>
             {p.seeks.map((s) => (
               <li key={s}>{s}</li>

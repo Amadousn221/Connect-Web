@@ -55,6 +55,8 @@ export interface HubWebUsage {
 export interface HubWebPlatform {
   title: string;
   body: string;
+  /** marque officielle affichée devant le titre (pages technologiques) */
+  brand?: 'wordpress' | 'shopify';
   /** pas de lien tant que la page dédiée n'existe pas (décision PO) */
 }
 
@@ -188,10 +190,12 @@ export const hubWeb = {
   // Pas de lien : pages dédiées à créer (pages 6-8 du chantier). Décision PO.
   platforms: [
     {
+      brand: 'wordpress',
       title: 'Développement WordPress',
       body: "Personnalisation, thèmes sur mesure, administration confortable, contenus qui évoluent avec votre activité. Quand WordPress correspond à votre besoin, nous le maîtrisons de bout en bout.",
     },
     {
+      brand: 'shopify',
       title: 'Développement Shopify',
       body: 'Boutiques Shopify sur mesure, personnalisation avancée, intégrations, adaptations aux réalités locales de paiement et de livraison. Notre expertise Shopify est illustrée par le projet ATTA Africa.',
     },

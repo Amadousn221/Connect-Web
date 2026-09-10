@@ -45,6 +45,7 @@ export function DeveloppementShopifyPage({ locale }: { locale: Locale }) {
         focalMobile="50% 42%"
         overlay="strong"
         reassurance={spfHero.reassurance}
+        brandGlyph="shopify"
       />
 
       <Section id="s2" bg="soft" labelledBy="spf-s2">

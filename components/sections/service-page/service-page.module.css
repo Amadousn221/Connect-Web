@@ -123,6 +123,62 @@
   margin: 28px 0 0;
 }
 
+/* Flèche SVG — décalage discret au survol / focus clavier du lien. */
+.ctaArrow {
+  flex-shrink: 0;
+  transition: transform var(--dur-instant, 100ms) var(--ease-default, ease);
+}
+.cta:hover .ctaArrow,
+.cta:focus-visible .ctaArrow {
+  transform: translate(2px, -2px);
+}
+
+/* ── Icône qui coiffe un titre de carte / ligne (maquette `.web-icon`) ─── */
+.iconLead {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--orange);
+  margin-top: 1px; /* alignement optique avec la casse haute du titre */
+}
+.deep .iconLead {
+  color: var(--orange-h);
+}
+/* Titres portant une icône : passage en ligne flex, icône alignée en haut
+   (le texte peut passer sur plusieurs lignes sans décaler l'icône). */
+.readingRow h3,
+.configCard h3,
+.step h3,
+.trio h3,
+.extension h3,
+.ownRow dt,
+.ownAside h3,
+.tabPanelTitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.seqRow h3 {
+  align-items: flex-start;
+}
+.iconLead + span,
+.seqNum + .iconLead + span {
+  min-width: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ctaArrow {
+    transition: none;
+  }
+  .cta:hover .ctaArrow,
+  .cta:focus-visible .ctaArrow {
+    transform: none;
+  }
+}
+
 /* ── Sequence — blocs numérotés ──────────────────────────────────────── */
 .sequence {
   display: grid;

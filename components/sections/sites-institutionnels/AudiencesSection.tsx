@@ -8,7 +8,7 @@ type Data = {
   intro: string[];
   selectorLabel: string;
   panelEyebrow: string;
-  publics: { label: string; seeks: string[] }[];
+  publics: { label: string; seeks: string[]; icon?: string }[];
   outro: string[];
 };
 

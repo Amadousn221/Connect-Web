@@ -123,14 +123,14 @@ export const appsMethod = {
     "Le développement ne commence pas au premier fichier de code. Il commence quand nous avons répondu à trois questions : qu'est-ce que la plateforme doit permettre de faire, à qui, et dans quel ordre.",
   ],
   steps: [
-    { title: 'Comprendre le besoin et le processus actuel', body: ["Comment cela se passe aujourd'hui, avec quels outils, à quel coût de temps, avec quels blocages. Sans cette étape, nous concevrions dans le vide."] },
-    { title: 'Identifier les utilisateurs', body: ["Qui va se connecter, avec quels rôles, quels droits, quelles attentes. Un même projet peut réunir clients, administrateurs, prestataires, superviseurs — chacun avec une expérience distincte."] },
-    { title: 'Cadrer les fonctionnalités prioritaires', body: ["Toutes les idées ne peuvent pas être développées d'un coup, et ne le doivent pas. Nous distinguons l'essentiel pour que la plateforme soit utile dès la mise en ligne de ce qui viendra ensuite."] },
-    { title: 'Définir une première version réellement utile', body: ["Une version que vos utilisateurs peuvent réellement utiliser au quotidien, pas une maquette. C'est ce que d'autres appellent un MVP ; nous préférons « première version utile », plus fidèle à l'intention."] },
-    { title: 'Concevoir les parcours et interfaces', body: ["Nous dessinons les écrans, les enchaînements et les interactions avant de coder. Vous validez à quoi ressemblera votre plateforme avant la première ligne de code."] },
-    { title: 'Développer et connecter', body: ["Développement itératif, points de validation réguliers. Si votre plateforme doit dialoguer avec d'autres outils (ERP, CRM, paiement, messagerie, comptabilité), les connexions sont mises en place ici."] },
-    { title: 'Tester avec les usages réels', body: ["Nous ne validons pas seulement que les boutons fonctionnent. Nous testons avec les utilisateurs prévus, sur les cas d'usage prévus, pour ajuster ce qui aurait été mal anticipé."] },
-    { title: 'Mettre en ligne, documenter, améliorer', body: ["Formation minimale de vos équipes, documentation claire, plan pour les évolutions à venir. La mise en ligne n'est pas la fin du travail : c'est le début de la vie du produit."] },
+    { icon: 'search', title: 'Comprendre le besoin et le processus actuel', body: ["Comment cela se passe aujourd'hui, avec quels outils, à quel coût de temps, avec quels blocages. Sans cette étape, nous concevrions dans le vide."] },
+    { icon: 'users', title: 'Identifier les utilisateurs', body: ["Qui va se connecter, avec quels rôles, quels droits, quelles attentes. Un même projet peut réunir clients, administrateurs, prestataires, superviseurs — chacun avec une expérience distincte."] },
+    { icon: 'clipboard', title: 'Cadrer les fonctionnalités prioritaires', body: ["Toutes les idées ne peuvent pas être développées d'un coup, et ne le doivent pas. Nous distinguons l'essentiel pour que la plateforme soit utile dès la mise en ligne de ce qui viendra ensuite."] },
+    { icon: 'package', title: 'Définir une première version réellement utile', body: ["Une version que vos utilisateurs peuvent réellement utiliser au quotidien, pas une maquette. C'est ce que d'autres appellent un MVP ; nous préférons « première version utile », plus fidèle à l'intention."] },
+    { icon: 'layout', title: 'Concevoir les parcours et interfaces', body: ["Nous dessinons les écrans, les enchaînements et les interactions avant de coder. Vous validez à quoi ressemblera votre plateforme avant la première ligne de code."] },
+    { icon: 'code', title: 'Développer et connecter', body: ["Développement itératif, points de validation réguliers. Si votre plateforme doit dialoguer avec d'autres outils (ERP, CRM, paiement, messagerie, comptabilité), les connexions sont mises en place ici."] },
+    { icon: 'check', title: 'Tester avec les usages réels', body: ["Nous ne validons pas seulement que les boutons fonctionnent. Nous testons avec les utilisateurs prévus, sur les cas d'usage prévus, pour ajuster ce qui aurait été mal anticipé."] },
+    { icon: 'refresh', title: 'Mettre en ligne, documenter, améliorer', body: ["Formation minimale de vos équipes, documentation claire, plan pour les évolutions à venir. La mise en ligne n'est pas la fin du travail : c'est le début de la vie du produit."] },
   ],
 };
 
@@ -154,10 +154,10 @@ export const appsReassure = {
   eyebrow: 'Des fondations durables',
   title: 'Les quatre points sur lesquels vous devrez être rassuré',
   items: [
-    { title: 'Sécurité', body: ["Authentification robuste, gestion des rôles et permissions, protection des données personnelles, sauvegardes régulières, mises à jour de sécurité. Le niveau exact — chiffrement, journalisation, exigences réglementaires — se cadre au moment du projet, selon la sensibilité de vos données."] },
-    { title: 'Performance', body: ["Une application doit rester fluide même quand le nombre d'utilisateurs augmente. Nous concevons des architectures qui tiennent la charge prévue et permettent d'évoluer. Sur le terrain ouest-africain : attention au poids des pages, à la qualité de réseau variable et à l'expérience mobile."] },
-    { title: 'Maintenance', body: ["Une application vit : navigateurs qui évoluent, bibliothèques à mettre à jour, usages qui changent. Nous proposons un accompagnement après la livraison — mais vous n'y êtes jamais forcé. Si vous préférez reprendre la main en interne, tout est prévu pour que ce soit possible."] },
-    { title: 'Évolutivité', body: ["Ajouter une fonctionnalité six mois après la mise en ligne ne doit pas obliger à tout reconstruire. Nous concevons l'architecture pour que les évolutions restent possibles sans casser l'existant."] },
+    { icon: 'shield-check', title: 'Sécurité', body: ["Authentification robuste, gestion des rôles et permissions, protection des données personnelles, sauvegardes régulières, mises à jour de sécurité. Le niveau exact — chiffrement, journalisation, exigences réglementaires — se cadre au moment du projet, selon la sensibilité de vos données."] },
+    { icon: 'gauge', title: 'Performance', body: ["Une application doit rester fluide même quand le nombre d'utilisateurs augmente. Nous concevons des architectures qui tiennent la charge prévue et permettent d'évoluer. Sur le terrain ouest-africain : attention au poids des pages, à la qualité de réseau variable et à l'expérience mobile."] },
+    { icon: 'refresh', title: 'Maintenance', body: ["Une application vit : navigateurs qui évoluent, bibliothèques à mettre à jour, usages qui changent. Nous proposons un accompagnement après la livraison — mais vous n'y êtes jamais forcé. Si vous préférez reprendre la main en interne, tout est prévu pour que ce soit possible."] },
+    { icon: 'layers', title: 'Évolutivité', body: ["Ajouter une fonctionnalité six mois après la mise en ligne ne doit pas obliger à tout reconstruire. Nous concevons l'architecture pour que les évolutions restent possibles sans casser l'existant."] },
   ],
 };
 
@@ -211,16 +211,19 @@ export const appsNext = {
   ],
   rows: [
     {
+      icon: 'database',
       title: 'ERP, CRM et intégrations',
       text: "Si votre plateforme doit s'appuyer sur un outil de gestion, ou si elle constitue un des maillons d'un système d'information plus vaste.",
       link: { label: 'Explorer ce service', href: '/services/crm-erp-integrations' },
     },
     {
+      icon: 'workflow',
       title: 'IA et automatisation',
       text: "Pour tout ce qui doit se déclencher automatiquement autour de votre plateforme : rapports générés, relances programmées, synchronisations, traitements récurrents.",
       link: { label: 'Explorer ce service', href: '/services/ia-automatisation' },
     },
     {
+      icon: 'compass',
       title: 'Conseil et stratégie',
       text: "Si vous n'êtes pas encore certain qu'un développement sur mesure est la bonne réponse, ou si vous avez besoin d'un cadrage indépendant avant tout engagement.",
       link: { label: 'Explorer ce service', href: '/services/conseil-strategie' },

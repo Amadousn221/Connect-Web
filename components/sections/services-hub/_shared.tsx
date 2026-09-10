@@ -1,8 +1,14 @@
 import Link from 'next/link';
 import { Eyebrow } from '@/components/ui/Eyebrow';
+import { Icon } from '@/components/ui/Icon';
 import { localePath } from '@/lib/i18n/routing';
 import type { Locale } from '@/lib/i18n/config';
 import styles from './ServicesHub.module.css';
+
+/** Flèche des liens tertiaires du hub — SVG 15 px, décalage discret au survol. */
+export function HubArrow() {
+  return <Icon name="arrow-up-right" className={styles.ctaArrow} width={15} height={15} />;
+}
 
 /**
  * Lien contextuel : ancre in-page (`#x`), lien externe (`http…`, nouvel
@@ -63,7 +69,7 @@ export function HubCta({
   return (
     <SmartLink href={href} locale={locale} className={styles.link} ariaLabel={ariaLabel}>
       {children}
-      <span aria-hidden="true">↗</span>
+      <HubArrow />
     </SmartLink>
   );
 }

@@ -93,12 +93,14 @@ export const cwUsages = {
   items: [
     {
       audience: 'Entreprises et prestataires',
+      icon: 'building',
       title: "Sites d'entreprise",
       text: "Présenter vos services, inspirer confiance en dix secondes et favoriser une prise de contact qualifiée. B2B, cabinets, bureaux d'études, exportateurs, industries.",
       link: { label: "Voir Sites d'entreprise", href: '/services/sites-entreprise' },
     },
     {
       audience: 'Organisations et institutions',
+      icon: 'landmark',
       title: 'Sites institutionnels & ONG',
       text: "Structurer missions, programmes et publications, et s'adresser à plusieurs publics à la fois : bénéficiaires, partenaires, bailleurs, presse, grand public.",
       link: {
@@ -108,6 +110,7 @@ export const cwUsages = {
     },
     {
       audience: 'Marques et commerçants',
+      icon: 'shopping-bag',
       title: 'Boutiques en ligne',
       text: "Vendre avec un parcours complet — produits physiques ou numériques, catalogue étendu, ventes transfrontalières. Nous intégrons les moyens de paiement adaptés à votre marché.",
       link: { label: 'Voir Boutiques en ligne', href: '/services/boutiques-en-ligne' },
@@ -124,6 +127,7 @@ export const cwPlatform = {
   cards: [
     {
       kind: 'wordpress' as const,
+      brand: 'wordpress' as const,
       eyebrow: 'Sites éditoriaux et institutionnels',
       title: 'WordPress',
       text: "La plateforme la plus polyvalente pour les sites dont le contenu vit et évolue régulièrement, avec une administration confortable pour les équipes non techniques. WooCommerce en extension pour les boutiques d'ampleur modérée.",
@@ -131,6 +135,7 @@ export const cwPlatform = {
     },
     {
       kind: 'shopify' as const,
+      brand: 'shopify' as const,
       eyebrow: 'Commerce en ligne',
       title: 'Shopify',
       text: "La plateforme spécialisée e-commerce, adaptée aux marques DTC, aux ventes transfrontalières et aux catalogues qui gèrent plusieurs devises, zones et moyens de paiement. Notre projet ATTA Africa en est l'illustration.",
@@ -138,6 +143,7 @@ export const cwPlatform = {
     },
   ],
   adapted: {
+    icon: 'code',
     eyebrow: 'Quand les outils standards ne suffisent pas',
     title: 'Développement adapté',
     text: "Pour une expérience particulière ou une intégration profonde avec vos outils, nous développons une solution dédiée. Ce cas relève souvent de notre expertise Plateformes & applications web plutôt que d'un site classique.",
@@ -175,12 +181,12 @@ export const cwMethod = {
   lead:
     "Nous ne commençons jamais par ouvrir un logiciel de maquette. La conception d'un site utile suit une séquence stable, que nous compressons ou étirons selon la complexité du projet.",
   steps: [
-    { title: 'Cadrer', text: "Intention, publics et critères de réussite du site." },
-    { title: 'Structurer', text: "Arborescence, hiérarchie des pages, parcours du visiteur, ancrage des appels à l'action." },
-    { title: 'Concevoir', text: "Maquettes, choix visuels, hiérarchie typographique, composants réutilisables — sur les gabarits qui portent l'essentiel." },
-    { title: 'Écrire', text: "Créer, réécrire ou intégrer les contenus. Un site n'existe pas sans ses textes." },
-    { title: 'Développer', text: "Intégration des contenus, connexions nécessaires, points de validation intermédiaires." },
-    { title: 'Transmettre', text: "Mise en ligne, redirections, formation de vos équipes, mesure des premiers résultats." },
+    { icon: 'compass', title: 'Cadrer', text: "Intention, publics et critères de réussite du site." },
+    { icon: 'layout', title: 'Structurer', text: "Arborescence, hiérarchie des pages, parcours du visiteur, ancrage des appels à l'action." },
+    { icon: 'pen-tool', title: 'Concevoir', text: "Maquettes, choix visuels, hiérarchie typographique, composants réutilisables — sur les gabarits qui portent l'essentiel." },
+    { icon: 'file-text', title: 'Écrire', text: "Créer, réécrire ou intégrer les contenus. Un site n'existe pas sans ses textes." },
+    { icon: 'code', title: 'Développer', text: "Intégration des contenus, connexions nécessaires, points de validation intermédiaires." },
+    { icon: 'key', title: 'Transmettre', text: "Mise en ligne, redirections, formation de vos équipes, mesure des premiers résultats." },
   ],
 };
 
@@ -192,18 +198,22 @@ export const cwDurable = {
     "Un site n'est pas un livrable figé. Il vieillit, ou il vit, selon quatre décisions prises dès la conception.",
   items: [
     {
+      icon: 'file-text',
       title: 'Le contenu',
       text: "Le premier facteur, avant le design et la technique. Des textes précis et sincères convertissent mieux qu'un site parfait mais générique. Nous en parlons dès le cadrage.",
     },
     {
+      icon: 'search',
       title: 'Le référencement naturel',
       text: "Nous appliquons les bonnes pratiques SEO à la conception — structure, balisage, performances, contenus lisibles par les moteurs — sans jamais promettre de position sur Google : personne ne peut le faire honnêtement.",
     },
     {
+      icon: 'settings',
       title: "L'administration",
       text: "Un site qui décourage l'équipe qui doit l'alimenter se fossilise. Nous concevons l'interface pour que vos équipes publient sans nous rappeler chaque semaine.",
     },
     {
+      icon: 'gauge',
       title: 'Performance et accessibilité',
       text: "Un site rapide, léger, lisible sur mobile et accessible. Sur le terrain ouest-africain, une attention particulière au poids des pages et à la qualité de réseau variable.",
     },
@@ -217,13 +227,14 @@ export const cwOwnership = {
   lead:
     "À la livraison, vous êtes propriétaire de votre site. Nous transmettons ce qui vous appartient et précisons clairement ce qui dépend de services tiers.",
   rows: [
-    { label: 'Domaine', text: 'Enregistré à votre nom.' },
-    { label: 'Hébergement', text: 'Compte à votre nom, auquel vous avez accès.' },
-    { label: 'Administration', text: 'Accès administrateurs du CMS remis à votre équipe.' },
-    { label: 'Code', text: 'Thème et développements spécifiques remis et documentés.' },
-    { label: 'Contenus', text: 'Base de données et images exportables à tout moment.' },
+    { icon: 'globe', label: 'Domaine', text: 'Enregistré à votre nom.' },
+    { icon: 'server', label: 'Hébergement', text: 'Compte à votre nom, auquel vous avez accès.' },
+    { icon: 'key', label: 'Administration', text: 'Accès administrateurs du CMS remis à votre équipe.' },
+    { icon: 'code', label: 'Code', text: 'Thème et développements spécifiques remis et documentés.' },
+    { icon: 'files', label: 'Contenus', text: 'Base de données et images exportables à tout moment.' },
   ],
   aside: {
+    icon: 'puzzle',
     eyebrow: 'Limite transparente',
     title: 'Services et licences tiers',
     text: "Une licence de thème premium, une extension propriétaire ou un service SaaS intégré conserve ses propres conditions. Ces dépendances sont expliquées au cadrage et formalisées au contrat — nous préférons cette clarté à des promesses absolues.",
@@ -269,26 +280,31 @@ export const cwExtensions = {
     "Un site est souvent la première brique d'un ensemble numérique plus large. Voici les prolongements les plus fréquents chez nous.",
   rows: [
     {
+      icon: 'app-window',
       title: 'Plateformes & applications web',
       text: "Quand vos utilisateurs doivent faire quelque chose de récurrent : compte, tableau de bord, portail, système d'inscription.",
       link: { label: 'Explorer', href: '/services/plateformes-applications' },
     },
     {
+      icon: 'database',
       title: 'ERP, CRM & intégrations',
       text: "Quand votre site doit communiquer avec vos outils de gestion (Odoo, CRM, comptabilité, facturation).",
       link: { label: 'Explorer', href: '/services/crm-erp-integrations' },
     },
     {
+      icon: 'workflow',
       title: 'IA & automatisation',
       text: "Pour ce qui doit se déclencher automatiquement autour de votre site : rapports, relances, alertes, traitements récurrents.",
       link: { label: 'Explorer', href: '/services/ia-automatisation' },
     },
     {
+      icon: 'megaphone',
       title: 'Marketing & génération de prospects',
       text: "Pour donner à votre site le trafic et les prospects qu'il mérite : SEO éditorial, campagnes d'acquisition, mesure de conversion.",
       link: { label: 'Explorer', href: '/services/marketing-acquisition' },
     },
     {
+      icon: 'compass',
       title: 'Conseil & stratégie',
       text: "Si vous n'êtes pas encore certain qu'un site est la bonne réponse, ou avant tout engagement.",
       link: { label: 'Explorer', href: '/services/conseil-strategie' },
