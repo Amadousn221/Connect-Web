@@ -134,6 +134,7 @@ export function Reading({
   intro,
   items,
   outro,
+  cta,
   split = true,
   locale,
 }: {
@@ -143,6 +144,7 @@ export function Reading({
   intro?: string[];
   items: NumberedItem[];
   outro?: string;
+  cta?: SpLinkData;
   split?: boolean;
   locale?: Locale;
 }) {
@@ -164,6 +166,14 @@ export function Reading({
         </article>
       ))}
       {outro ? <p className={styles.configOutro}>{outro}</p> : null}
+      {cta && locale ? (
+        <p className={styles.sectionCta}>
+          <SpLink href={cta.href} locale={locale} className={styles.cta}>
+            {cta.label}
+            <CtaArrow />
+          </SpLink>
+        </p>
+      ) : null}
     </div>
   );
   return (
