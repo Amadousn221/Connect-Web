@@ -40,3 +40,6 @@ yarn-error.log*
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+# pack de handoff Services (conception : captures + maquettes ~25 Mo) — local uniquement
+/CONNECT-WEB-SERVICES-HANDOFF-V1/
